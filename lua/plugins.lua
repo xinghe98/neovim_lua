@@ -6,6 +6,7 @@ return require('packer').startup(function(use)
 use 'wbthomason/packer.nvim'
 use 'mhinz/vim-startify'
 use 'theniceboy/nvim-deus'
+use 'sainnhe/gruvbox-material'
 use 'liuchengxu/vista.vim'
 use 'rcarriga/nvim-notify'
 use 'h-hg/fcitx.nvim'
