@@ -18,3 +18,4 @@ set.hlsearch=true
 set.expandtab=false
 set.autoread=true
 vim.g.t_Co=256
+vim.opt.completeopt = {'noinsert','menuone','noselect','preview'}

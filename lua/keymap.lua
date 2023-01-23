@@ -22,3 +22,9 @@ keymap('i', '<C-a>', '<Home>',opts)
 keymap('i','<C-e>', '<End>',opts)
 keymap('n','<leader><leader>p', ':set paste<CR>',opts)
 keymap('n', '<leader>np', ':set nopaste<CR>',opts)
+vim.keymap.set('i', '<Tab>', function()
+    return vim.fn.pumvisible() == 1 and '<C-N>' or '<Tab>'
+end, {expr = true})
+vim.keymap.set('i', '<S-Tab>', function()
+    return vim.fn.pumvisible() == 1 and '<C-P>' or '<S-Tab>'
+end, {expr = true})
