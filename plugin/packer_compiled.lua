@@ -85,6 +85,7 @@ _G.packer_plugins = {
     url = "https://github.com/dkarter/bullets.vim"
   },
   ["coc.nvim"] = {
+    config = { "require('packsettings/coc').setup()" },
     loaded = true,
     path = "/Users/xinghe/.local/share/nvim/site/pack/packer/start/coc.nvim",
     url = "https://github.com/neoclide/coc.nvim"
@@ -98,6 +99,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/xinghe/.local/share/nvim/site/pack/packer/start/fcitx.nvim",
     url = "https://github.com/h-hg/fcitx.nvim"
+  },
+  ["gruvbox-material"] = {
+    loaded = true,
+    path = "/Users/xinghe/.local/share/nvim/site/pack/packer/start/gruvbox-material",
+    url = "https://github.com/sainnhe/gruvbox-material"
   },
   indentLine = {
     loaded = true,
@@ -247,6 +253,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: coc.nvim
+time([[Config for coc.nvim]], true)
+require('packsettings/coc').setup()
+time([[Config for coc.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

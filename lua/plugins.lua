@@ -23,7 +23,8 @@ use 'vim-airline/vim-airline-themes'
 use 'ryanoasis/vim-devicons'
 use 'nvim-tree/nvim-web-devicons'
 use 'Yggdroot/indentLine'
-use {'neoclide/coc.nvim',branch = 'release'}
+require('packsettings/coc').config()
+use {'neoclide/coc.nvim', config = "require('packsettings/coc').setup()", branch = 'release' }
 use 'jiangmiao/auto-pairs'
 use 'tell-k/vim-autopep8'
 use 'scrooloose/nerdcommenter'
@@ -39,7 +40,8 @@ use 'dhruvasagar/vim-table-mode'
 use 'mzlogin/vim-markdown-toc'
 use 'dkarter/bullets.vim'
 use 'fatih/vim-go'
-use 'github/copilot.vim'
+require('packsettings/copilot').config()
+use { 'github/copilot.vim', config = "require('packsettings/copilot').setup()", event = 'InsertEnter' }
 use 'godlygeek/tabular'
 
   -- 你可以在这里定义你所需要的插件列表
