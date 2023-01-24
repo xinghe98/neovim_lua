@@ -15,14 +15,14 @@ use 'posva/vim-vue'
 use 'rakr/vim-one'
 use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 use 'roxma/nvim-yarp'
+use {'windwp/windline.nvim', config = function() require('wlsample.wind') end}
 use 'voldikss/vim-translator'
 use 'tpope/vim-surround'
 use 'itchyny/vim-cursorword'
-use 'vim-airline/vim-airline'
-use 'vim-airline/vim-airline-themes'
-use 'ryanoasis/vim-devicons'
-use 'nvim-tree/nvim-web-devicons'
 use 'Yggdroot/indentLine'
+-- using packer.nvim
+use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'
+,config = function() require('bufferline').setup() end}
 require('packsettings/coc').config()
 use {'neoclide/coc.nvim', config = "require('packsettings/coc').setup()", branch = 'release' }
 use 'jiangmiao/auto-pairs'

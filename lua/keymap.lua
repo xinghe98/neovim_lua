@@ -22,3 +22,25 @@ keymap('i', '<C-a>', '<Home>',opts)
 keymap('i','<C-e>', '<End>',opts)
 keymap('n','<leader><leader>p', ':set paste<CR>',opts)
 keymap('n', '<leader>np', ':set nopaste<CR>',opts)
+keymap('n', 'r', ':call CompileRunGcc()<CR>',opts)
+vim.cmd([[func! CompileRunGcc()
+	exec "w"
+	if &filetype == 'python'
+		set splitbelow
+		:sp
+		:term python3 %
+	elseif &filetype == 'html'
+		silent! exec "!".g:mkdp_browser." % &"
+	elseif &filetype == 'markdown'
+		exec "MarkdownPreview"
+		exec "TableModeEnable"
+	elseif &filetype == 'javascript'
+		set splitbelow
+		:sp
+		:term export DEBUG="INFO,ERROR,WARNING"; node --trace-warnings .
+	elseif &filetype == 'go'
+		set splitbelow
+		:sp
+		:term go run .
+	endif
+endfunc]])

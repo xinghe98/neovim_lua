@@ -79,6 +79,12 @@ _G.packer_plugins = {
     path = "/Users/xinghe/.local/share/nvim/site/pack/packer/start/auto-pairs",
     url = "https://github.com/jiangmiao/auto-pairs"
   },
+  ["bufferline.nvim"] = {
+    config = { "\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15bufferline\frequire\0" },
+    loaded = true,
+    path = "/Users/xinghe/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
+    url = "https://github.com/akinsho/bufferline.nvim"
+  },
   ["bullets.vim"] = {
     loaded = true,
     path = "/Users/xinghe/.local/share/nvim/site/pack/packer/start/bullets.vim",
@@ -91,8 +97,11 @@ _G.packer_plugins = {
     url = "https://github.com/neoclide/coc.nvim"
   },
   ["copilot.vim"] = {
-    loaded = true,
-    path = "/Users/xinghe/.local/share/nvim/site/pack/packer/start/copilot.vim",
+    config = { "require('packsettings/copilot').setup()" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/Users/xinghe/.local/share/nvim/site/pack/packer/opt/copilot.vim",
     url = "https://github.com/github/copilot.vim"
   },
   ["fcitx.nvim"] = {
@@ -165,16 +174,6 @@ _G.packer_plugins = {
     path = "/Users/xinghe/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
-  ["vim-airline"] = {
-    loaded = true,
-    path = "/Users/xinghe/.local/share/nvim/site/pack/packer/start/vim-airline",
-    url = "https://github.com/vim-airline/vim-airline"
-  },
-  ["vim-airline-themes"] = {
-    loaded = true,
-    path = "/Users/xinghe/.local/share/nvim/site/pack/packer/start/vim-airline-themes",
-    url = "https://github.com/vim-airline/vim-airline-themes"
-  },
   ["vim-autopep8"] = {
     loaded = true,
     path = "/Users/xinghe/.local/share/nvim/site/pack/packer/start/vim-autopep8",
@@ -184,11 +183,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/xinghe/.local/share/nvim/site/pack/packer/start/vim-cursorword",
     url = "https://github.com/itchyny/vim-cursorword"
-  },
-  ["vim-devicons"] = {
-    loaded = true,
-    path = "/Users/xinghe/.local/share/nvim/site/pack/packer/start/vim-devicons",
-    url = "https://github.com/ryanoasis/vim-devicons"
   },
   ["vim-floaterm"] = {
     loaded = true,
@@ -249,6 +243,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/xinghe/.local/share/nvim/site/pack/packer/start/vista.vim",
     url = "https://github.com/liuchengxu/vista.vim"
+  },
+  ["windline.nvim"] = {
+    config = { "\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18wlsample.wind\frequire\0" },
+    loaded = true,
+    path = "/Users/xinghe/.local/share/nvim/site/pack/packer/start/windline.nvim",
+    url = "https://github.com/windwp/windline.nvim"
   }
 }
 
@@ -257,6 +257,21 @@ time([[Defining packer_plugins]], false)
 time([[Config for coc.nvim]], true)
 require('packsettings/coc').setup()
 time([[Config for coc.nvim]], false)
+-- Config for: windline.nvim
+time([[Config for windline.nvim]], true)
+try_loadstring("\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18wlsample.wind\frequire\0", "config", "windline.nvim")
+time([[Config for windline.nvim]], false)
+-- Config for: bufferline.nvim
+time([[Config for bufferline.nvim]], true)
+try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15bufferline\frequire\0", "config", "bufferline.nvim")
+time([[Config for bufferline.nvim]], false)
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Event lazy-loads
+time([[Defining lazy-load event autocommands]], true)
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'copilot.vim'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
+time([[Defining lazy-load event autocommands]], false)
+vim.cmd("augroup END")
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
