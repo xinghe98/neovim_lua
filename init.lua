@@ -1,6 +1,6 @@
 -- 基本配
-require('lua/options')
+require('options')
 -- 键盘映射
-require('lua/keymap')
+require('keymap')
 -- 插件
-require('lua/plugins')
+require('plugins')
