@@ -23,6 +23,8 @@ keymap('i','<C-e>', '<End>',opts)
 keymap('n','<leader><leader>p', ':set paste<CR>',opts)
 keymap('n', '<leader>np', ':set nopaste<CR>',opts)
 keymap('n', 'r', ':call CompileRunGcc()<CR>',opts)
+keymap('n', '<leader>t', ':TranslateW<CR>',opts)
+keymap('v', '<leader>t', ':TranslateW<CR>',opts)
 vim.cmd([[func! CompileRunGcc()
 	exec "w"
 	if &filetype == 'python'

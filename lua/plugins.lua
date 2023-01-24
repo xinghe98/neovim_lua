@@ -20,11 +20,10 @@ use 'voldikss/vim-translator'
 use 'tpope/vim-surround'
 use 'itchyny/vim-cursorword'
 use 'Yggdroot/indentLine'
--- using packer.nvim
-use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'
-,config = function() require('bufferline').setup() end}
-require('packsettings/coc').config()
-use {'neoclide/coc.nvim', config = "require('packsettings/coc').setup()", branch = 'release' }
+require('packsettings/bufferline')
+use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
+use {'neoclide/coc.nvim' , branch = 'release' }
+require('packsettings/coc')
 use 'jiangmiao/auto-pairs'
 use 'tell-k/vim-autopep8'
 use 'scrooloose/nerdcommenter'
@@ -39,6 +38,7 @@ use {'iamcco/markdown-preview.nvim'}
 use 'dhruvasagar/vim-table-mode'
 use 'mzlogin/vim-markdown-toc'
 use 'dkarter/bullets.vim'
+require('packsettings.vimgo')
 use 'fatih/vim-go'
 require('packsettings/copilot').config()
 use { 'github/copilot.vim', config = "require('packsettings/copilot').setup()", event = 'InsertEnter' }
