@@ -37,10 +37,9 @@ use {'iamcco/markdown-preview.nvim'}
 use 'dhruvasagar/vim-table-mode'
 use 'mzlogin/vim-markdown-toc'
 use 'dkarter/bullets.vim'
-use {'fatih/vim-go', run = ':GoUpdateBinaries',config = function() require('packsettings.vim-go') end}
+use {'fatih/vim-go', run = ':GoUpdateBinaries',config = function() require('packsettings.vimgo') end}
 require('packsettings/copilot').config()
 use { 'github/copilot.vim', config = "require('packsettings/copilot').setup()", event = 'InsertEnter' }
 use 'godlygeek/tabular'
-
   -- 你可以在这里定义你所需要的插件列表
 end)
