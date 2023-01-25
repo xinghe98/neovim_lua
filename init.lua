@@ -4,6 +4,3 @@ require('options')
 require('keymap')
 -- 插件
 require('plugins')
--- 插件配置
-require('packsettings/bufferline')
-require('packsettings/coc')

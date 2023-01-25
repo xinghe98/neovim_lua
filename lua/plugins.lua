@@ -2,7 +2,6 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
   -- Packer can manage itself
-  -- 
 use 'wbthomason/packer.nvim'
 use 'mhinz/vim-startify'
 use 'theniceboy/nvim-deus'
@@ -20,9 +19,11 @@ use 'voldikss/vim-translator'
 use 'tpope/vim-surround'
 use 'itchyny/vim-cursorword'
 use 'Yggdroot/indentLine'
-use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
-use {'neoclide/coc.nvim' , branch = 'release' }
+use {'neoclide/coc.nvim' , branch = 'release' , config = function() require('packsettings.coc') end}
 use 'jiangmiao/auto-pairs'
+-- using packer.nvim
+use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons',
+config = function() require('packsettings.bufferline') end}
 use 'tell-k/vim-autopep8'
 use 'scrooloose/nerdcommenter'
 use 'yuezk/vim-js'
@@ -36,8 +37,7 @@ use {'iamcco/markdown-preview.nvim'}
 use 'dhruvasagar/vim-table-mode'
 use 'mzlogin/vim-markdown-toc'
 use 'dkarter/bullets.vim'
-require('packsettings.vimgo')
-use 'fatih/vim-go'
+use {'fatih/vim-go', run = ':GoUpdateBinaries',config = function() require('packsettings.vim-go') end}
 require('packsettings/copilot').config()
 use { 'github/copilot.vim', config = "require('packsettings/copilot').setup()", event = 'InsertEnter' }
 use 'godlygeek/tabular'

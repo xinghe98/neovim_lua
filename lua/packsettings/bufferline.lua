@@ -1,11 +1,6 @@
-  local status, bufferline = pcall(require, "bufferline")
-if not status then
-  vim.notify("没有找到 bufferline")
-  return
-end
 -- bfferline 配置
 -- https://github.com/akinsho/bufferline.nvim#configuration
-bufferline.setup({
+require("bufferline").setup({
   options = {
     -- 关闭 Tab 的命令
     close_command = "Bdelete! %d",
@@ -20,8 +15,7 @@ bufferline.setup({
         text_align = "left",
       },
     },
-    -- 使用 nvim 内置 LSP  后续课程会配置
-    diagnostics = "nvim_lsp",
+    diagnostics = "coc",
     -- 可选，显示 LSP 报错图标
     ---@diagnostic disable-next-line: unused-local
     diagnostics_indicator = function(count, level, diagnostics_dict, context)
