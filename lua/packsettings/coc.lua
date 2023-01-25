@@ -40,4 +40,4 @@ keymap( 'i', '<TAB>', "coc#pum#visible() ? coc#pum#next(1) : col('.') == 1 || ge
 keymap( 'i', '<s-tab>', "coc#pum#visible() ? coc#pum#prev(1) : \"\\<s-tab>\"", {silent = true, noremap = true, expr = true})
 keymap( 'i', '<cr>', "coc#pum#visible() ? coc#pum#confirm() : \"\\<c-g>u\\<cr>\\<c-r>=coc#on_enter()\\<cr>\"", {silent = true, noremap = true, expr = true})
 keymap( 'i', '<c-y>', "coc#pum#visible() ? coc#pum#confirm() : '<c-y>'", {silent = true, noremap = true, expr = true})
-keymap('n', '<leader>h', ':call CocAction("doHover")<cr>', {silent = true} )
+keymap('n', '<leader>hp', ':call CocAction("doHover")<cr>', {silent = true} )

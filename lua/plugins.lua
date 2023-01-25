@@ -20,10 +20,8 @@ use 'voldikss/vim-translator'
 use 'tpope/vim-surround'
 use 'itchyny/vim-cursorword'
 use 'Yggdroot/indentLine'
-require('packsettings/bufferline')
 use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
 use {'neoclide/coc.nvim' , branch = 'release' }
-require('packsettings/coc')
 use 'jiangmiao/auto-pairs'
 use 'tell-k/vim-autopep8'
 use 'scrooloose/nerdcommenter'
