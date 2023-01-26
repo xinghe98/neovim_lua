@@ -1,33 +1,4 @@
 local keymap = vim.api.nvim_set_keymap
-vim.g.coc_global_extensions={
-	 'coc-css',
-	 'coc-diagnostic',
-	 'coc-docker',
-	 'coc-eslint',
-	 'coc-explorer',
-	 'coc-flutter-tools',
-	 'coc-gitignore',
-	 'coc-git',
-	 'coc-html',
-	 'coc-import-cost',
-	 'coc-jest',
-	 'coc-json',
-	 'coc-lists',
-	 'coc-omnisharp',
-	 'coc-prettier',
-	 'coc-prisma',
-	 'coc-pyright',
-	 'coc-snippets',
-	 'coc-sourcekit',
-	 'coc-stylelint',
-	 'coc-syntax',
-	 'coc-tasks',
-	 'coc-tsserver',
-	 'coc-vetur',
-	 'coc-vimlsp',
-	 'coc-yaml',
-	 'coc-yank'
-}
 vim.api.nvim_command("command! -nargs=? Fold :call CocAction('fold', <f-args>)")
 vim.api.nvim_command("hi! link CocPum Pmenu")
 keymap('n', '<leader>rn', '<Plug>(coc-rename)', {silent = true})
