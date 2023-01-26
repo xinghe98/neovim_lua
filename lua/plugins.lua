@@ -6,7 +6,7 @@ use 'wbthomason/packer.nvim'
 use 'mhinz/vim-startify'
 use 'theniceboy/nvim-deus'
 use 'sainnhe/gruvbox-material'
-use 'liuchengxu/vista.vim'
+use {'liuchengxu/vista.vim'}
 use 'rcarriga/nvim-notify'
 use 'h-hg/fcitx.nvim'
 use {'mg979/vim-visual-multi',branch='master'}
@@ -14,7 +14,7 @@ use 'posva/vim-vue'
 use 'rakr/vim-one'
 use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 use 'roxma/nvim-yarp'
-use {'windwp/windline.nvim', config = function() require('wlsample.wind') end}
+use {'windwp/windline.nvim', config = function() require('packsettings.windline') end}
 use 'voldikss/vim-translator'
 use 'tpope/vim-surround'
 use 'itchyny/vim-cursorword'

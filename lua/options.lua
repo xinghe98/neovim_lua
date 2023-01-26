@@ -28,6 +28,7 @@ vim.o.swapfile = false
 vim.o.timeoutlen = 500
 -- split window 从下边和右边出现
 vim.o.splitbelow = true
+vim.o.pumheight = 10
 vim.o.splitright = true
 vim.cmd([[
 if has("autocmd")
