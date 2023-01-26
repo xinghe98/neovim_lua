@@ -21,3 +21,11 @@ vim.g.t_Co=256
 --vim.opt.termguicolors = true
 vim.cmd('colorscheme gruvbox-material')
 vim.opt.completeopt = {'noinsert','menuone','noselect','preview'}
+-- 禁止创建备份文件
+vim.o.backup = false
+vim.o.writebackup = false
+vim.o.swapfile = false
+vim.o.timeoutlen = 500
+-- split window 从下边和右边出现
+vim.o.splitbelow = true
+vim.o.splitright = true
