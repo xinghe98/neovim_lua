@@ -4,6 +4,10 @@ require('options')
 require('keymap')
 -- 插件
 require('plugins')
+--markdown快捷键
+require('markdown')
+
+
 vim.g.coc_global_extensions={
 	 'coc-css',
 	 'coc-diagnostic',

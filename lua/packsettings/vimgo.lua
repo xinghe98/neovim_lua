@@ -26,3 +26,9 @@ vim.g.go_highlight_trailing_whitespace_error = 1
 vim.g.go_highlight_types = 1
 vim.g.go_highlight_variable_assignments = 0
 vim.g.go_highlight_variable_declarations = 0
+vim.cmd([[
+augroup go
+  autocmd!
+  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+augroup END
+]])

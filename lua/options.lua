@@ -29,3 +29,9 @@ vim.o.timeoutlen = 500
 -- split window 从下边和右边出现
 vim.o.splitbelow = true
 vim.o.splitright = true
+vim.cmd([[
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+]])

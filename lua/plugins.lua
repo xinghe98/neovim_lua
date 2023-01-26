@@ -36,7 +36,7 @@ use {'nvim-telescope/telescope.nvim',tag ='0.1.1' }
 use {'iamcco/markdown-preview.nvim'}
 use 'dhruvasagar/vim-table-mode'
 use 'mzlogin/vim-markdown-toc'
-use 'dkarter/bullets.vim'
+use {'dkarter/bullets.vim', config = function() require('packsettings.bullets') end}
 use {'fatih/vim-go', run = ':GoUpdateBinaries',config = function() require('packsettings.vimgo') end}
 require('packsettings/copilot').config()
 use { 'github/copilot.vim', config = "require('packsettings/copilot').setup()", event = 'InsertEnter' }
