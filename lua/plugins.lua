@@ -31,7 +31,7 @@ use 'yuezk/vim-js'
 use 'voldikss/vim-floaterm'
 -- 文件搜索插件
 use 'nvim-lua/plenary.nvim'
-use {'nvim-telescope/telescope.nvim',tag ='0.1.1' }
+use {'nvim-telescope/telescope.nvim',tag ='0.1.1',config = function() require('packsettings.telescope') end}
 -- Markdown
 use {'iamcco/markdown-preview.nvim'}
 use 'dhruvasagar/vim-table-mode'
