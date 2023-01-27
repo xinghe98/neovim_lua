@@ -7,7 +7,7 @@ use 'mhinz/vim-startify'
 use 'theniceboy/nvim-deus'
 use 'folke/tokyonight.nvim'
 use 'sainnhe/gruvbox-material'
-use {'liuchengxu/vista.vim'}
+use {'liuchengxu/vista.vim',config = function() require('packsettings.vista') end}
 use 'rcarriga/nvim-notify'
 use 'h-hg/fcitx.nvim'
 use {'mg979/vim-visual-multi',branch='master'}
@@ -24,7 +24,10 @@ use 'voldikss/vim-translator'
 use 'tpope/vim-surround'
 use 'itchyny/vim-cursorword'
 use 'Yggdroot/indentLine'
-use {'neoclide/coc.nvim' , branch = 'release' , config = function() require('packsettings.coc') end}
+use {
+'neoclide/coc.nvim' , branch = 'release',
+config = function() require('packsettings.coc') end
+}
 use 'jiangmiao/auto-pairs'
 -- using packer.nvim
 use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons',
