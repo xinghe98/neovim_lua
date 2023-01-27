@@ -18,8 +18,8 @@ set.hlsearch=true
 set.expandtab=false
 set.autoread=true
 vim.g.t_Co=256
---vim.opt.termguicolors = true
-vim.cmd('colorscheme gruvbox-material')
+vim.opt.termguicolors = true
+--vim.cmd('colorscheme gruvbox-material')
 vim.opt.completeopt = {'noinsert','menuone','noselect','preview'}
 -- 禁止创建备份文件
 vim.o.backup = false
@@ -38,3 +38,5 @@ if has("autocmd")
 endif
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 ]])
+vim.cmd[[hi Normal guibg=NONE ctermbg=NONE]]
+vim.cmd[[hi Pmenu guibg=NONE ctermbg=NONE]]

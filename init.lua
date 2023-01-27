@@ -6,7 +6,8 @@ require('keymap')
 require('plugins')
 --markdown快捷键
 require('markdown')
-
+-- 主题设置
+require('theme')
 
 vim.g.coc_global_extensions={
 	 'coc-css',

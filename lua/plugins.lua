@@ -5,6 +5,7 @@ return require('packer').startup(function(use)
 use 'wbthomason/packer.nvim'
 use 'mhinz/vim-startify'
 use 'theniceboy/nvim-deus'
+use 'folke/tokyonight.nvim'
 use 'sainnhe/gruvbox-material'
 use {'liuchengxu/vista.vim'}
 use 'rcarriga/nvim-notify'
@@ -35,7 +36,13 @@ use 'yuezk/vim-js'
 use 'voldikss/vim-floaterm'
 -- 文件搜索插件
 use 'nvim-lua/plenary.nvim'
-use {'nvim-telescope/telescope.nvim',tag ='0.1.1',config = function() require('packsettings.telescope') end}
+use {'nvim-telescope/telescope.nvim',tag ='0.1.1',
+requires = {
+            "nvim-lua/plenary.nvim", -- Lua 开发模块
+            "BurntSushi/ripgrep", -- 文字查找
+            "sharkdp/fd" -- 文件查找
+        },
+config = function() require('packsettings.telescope') end}
 -- Markdown
 use {'iamcco/markdown-preview.nvim'}
 use 'dhruvasagar/vim-table-mode'
