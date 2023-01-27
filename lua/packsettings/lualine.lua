@@ -155,10 +155,10 @@ ins_left {
   end,
 }
 
-ins_left {
-	function()
-		return '%{strftime("%m/%d %H:%M")}'
-	end,
+ins_left{
+function()
+	return ' ' .. os.date('%H:%M')
+end,
 }
 
 -- Add components to right sections
