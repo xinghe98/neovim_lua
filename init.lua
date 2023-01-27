@@ -8,6 +8,8 @@ require('plugins')
 require('markdown')
 -- 主题设置
 require('theme')
+-- neovide
+require('guiConfig')
 
 vim.g.coc_global_extensions={
 	 'coc-css',
