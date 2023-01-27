@@ -33,7 +33,8 @@ use 'jiangmiao/auto-pairs'
 use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons',
 config = function() require('packsettings.bufferline') end}
 use 'tell-k/vim-autopep8'
-use 'scrooloose/nerdcommenter'
+-- 快速注释
+use {'b3nj5m1n/kommentary', config = function() require('packsettings.kommentary') end}
 use 'yuezk/vim-js'
 -- 终端悬浮窗
 use 'voldikss/vim-floaterm'
