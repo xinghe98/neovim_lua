@@ -12,3 +12,4 @@ keymap( 'i', '<s-tab>', "coc#pum#visible() ? coc#pum#prev(1) : \"\\<s-tab>\"", {
 keymap( 'i', '<cr>', "coc#pum#visible() ? coc#pum#confirm() : \"\\<c-g>u\\<cr>\\<c-r>=coc#on_enter()\\<cr>\"", {silent = true, noremap = true, expr = true})
 keymap( 'i', '<c-y>', "coc#pum#visible() ? coc#pum#confirm() : '<c-y>'", {silent = true, noremap = true, expr = true})
 keymap('n', '<leader>hp', ':call CocAction("doHover")<cr>', {silent = true} )
+keymap('i', '<C-q>', 'coc#refresh()', {silent = true, expr = true})

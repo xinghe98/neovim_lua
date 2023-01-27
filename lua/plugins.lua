@@ -14,7 +14,11 @@ use 'posva/vim-vue'
 use 'rakr/vim-one'
 use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 use 'roxma/nvim-yarp'
-use {'windwp/windline.nvim', config = function() require('packsettings.windline') end}
+use {
+  'nvim-lualine/lualine.nvim',
+  requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+  config = function() require('packsettings.lualine') end
+}
 use 'voldikss/vim-translator'
 use 'tpope/vim-surround'
 use 'itchyny/vim-cursorword'
