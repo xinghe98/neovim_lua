@@ -13,13 +13,56 @@ keymap( 'i', '<cr>', "coc#pum#visible() ? coc#pum#confirm() : \"\\<c-g>u\\<cr>\\
 keymap( 'i', '<c-y>', "coc#pum#visible() ? coc#pum#confirm() : '<c-y>'", {silent = true, noremap = true, expr = true})
 keymap('n', '<leader>hp', ':call CocAction("doHover")<cr>', {silent = true} )
 keymap('i', '<C-q>', 'coc#refresh()', {silent = true, expr = true})
-vim.cmd([[
-lua << EOF
+-- Utility functions shared between progress reports for LSP and DAP
+
+local client_notifs = {}
+
+local function get_notif_data(client_id, token)
+ if not client_notifs[client_id] then
+   client_notifs[client_id] = {}
+ end
+
+ if not client_notifs[client_id][token] then
+   client_notifs[client_id][token] = {}
+ end
+
+ return client_notifs[client_id][token]
+end
+
+
+local spinner_frames = { "⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷" }
+
+local function update_spinner(client_id, token)
+ local notif_data = get_notif_data(client_id, token)
+
+ if notif_data.spinner then
+   local new_spinner = (notif_data.spinner + 1) % #spinner_frames
+   notif_data.spinner = new_spinner
+
+   notif_data.notification = vim.notify(nil, nil, {
+     hide_from_history = true,
+     icon = spinner_frames[new_spinner],
+     replace = notif_data.notification,
+   })
+
+   vim.defer_fn(function()
+     update_spinner(client_id, token)
+   end, 100)
+ end
+end
+
+local function format_title(title, client_name)
+ return client_name .. (#title > 0 and ": " .. title or "")
+end
+
+local function format_message(message, percentage)
+ return (percentage and percentage .. "%\t" or "") .. (message or "")
+end
 
 local coc_status_record = {}
 
 function coc_status_notify(msg, level)
-  local notify_opts = { title = "LSP Status", timeout = 5000, hide_from_history = true, on_close = reset_coc_status_record }
+  local notify_opts = { title = "LSP Status", timeout = 500, hide_from_history = true, on_close = reset_coc_status_record }
   -- if coc_status_record is not {} then add it to notify_opts to key called "replace"
   if coc_status_record ~= {} then
     notify_opts["replace"] = coc_status_record.id
@@ -45,8 +88,7 @@ end
 function reset_coc_diag_record(window)
   coc_diag_record = {}
 end
-EOF
-
+vim.cmd([[
 function! s:DiagnosticNotify() abort
   let l:info = get(b:, 'coc_diagnostic_info', {})
   if empty(l:info) | return '' | endif
@@ -80,8 +122,9 @@ function! s:StatusNotify() abort
   let l:status = get(g:, 'coc_status', '')
   let l:level = 'info'
   if empty(l:status) | return '' | endif
-  call v:lua.coc_status_notify(l:status, l:level)
+	  call v:lua.coc_status_notify(l:status, l:level)
 endfunction
+
 
 function! s:InitCoc() abort
   execute "lua vim.notify('Initialized coc.nvim for LSP support', 'info', { title = 'LSP Status' })"
