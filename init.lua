@@ -13,6 +13,7 @@ require('guiConfig')
 
 vim.g.coc_global_extensions={
 	 'coc-css',
+	 'coc-lua',
 	 'coc-go',
 	 'coc-diagnostic',
 	 'coc-docker',
