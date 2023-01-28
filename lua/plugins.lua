@@ -8,7 +8,7 @@ use 'theniceboy/nvim-deus'
 use 'folke/tokyonight.nvim'
 use 'sainnhe/gruvbox-material'
 use {'liuchengxu/vista.vim',config = function() require('packsettings.vista') end}
-use 'rcarriga/nvim-notify'
+use {'rcarriga/nvim-notify',config = function() require('packsettings.notify') end}
 use 'h-hg/fcitx.nvim'
 use {'mg979/vim-visual-multi',branch='master'}
 use 'posva/vim-vue'
