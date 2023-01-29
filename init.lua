@@ -10,4 +10,5 @@ require('markdown')
 require('theme')
 -- neovide
 require('guiConfig')
-
+-- lsp配置
+require('lsp/lspconf')

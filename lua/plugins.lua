@@ -3,6 +3,29 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
   -- Packer can manage itself
 use 'wbthomason/packer.nvim'
+-- lsp config
+use {
+        'williamboman/mason.nvim',
+        config = function()
+            require('lsp/mason')
+        end
+    }
+    use 'williamboman/mason-lspconfig.nvim'
+    use 'neovim/nvim-lspconfig'
+    use {'hrsh7th/nvim-cmp',config = function() require('lsp.cmp') end}
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/cmp-nvim-lua'
+	use {
+	'tami5/lspsaga.nvim',
+	config = function()
+		require('lsp/lspsaga')
+	end
+}
+
+
 use 'mhinz/vim-startify'
 use 'theniceboy/nvim-deus'
 use 'folke/tokyonight.nvim'
