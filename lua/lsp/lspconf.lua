@@ -8,7 +8,7 @@ local function attach(client, bufnr)
     -- 工作区诊断（代替内置 LSP 的窗口，telescope 插件让工作区诊断更方便）
     vim.keymap.set("n", "gi", "<cmd>Telescope diagnostics theme=dropdown<CR>", bufopts)
     -- 显示代码可用操作（代替内置 LSP 的窗口，telescope 插件让代码行为更方便）
-    vim.keymap.set("n", "<leader>hp", "<cmd>Telescope lsp_code_actions theme=dropdown<CR>", bufopts)
+    vim.keymap.set("n", "<leader>he", "<cmd>Telescope lsp_code_actions theme=dropdown<CR>", bufopts)
     -- 变量重命名（代替内置 LSP 的窗口，Lspsaga 让变量重命名更美观）
     vim.keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", bufopts)
     -- 查看帮助信息（代替内置 LSP 的窗口，Lspsaga 让查看帮助信息更美观）
@@ -21,6 +21,8 @@ local function attach(client, bufnr)
     vim.keymap.set("n", "<S-p>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", bufopts)
     -- 悬浮窗口下翻页，由 Lspsaga 提供
     vim.keymap.set("n", "<S-n>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", bufopts)
+    -- 显示错误信息（代替内置 LSP 的窗口）
+	vim.keymap.set('n', '<leader>e', "<cmd>Lspsaga show_line_diagnostics<CR>", bufopts)
 
     -- ** auto format when saving a file **
     -- ** if need this, plz enable it mannually. **
@@ -38,7 +40,7 @@ end
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-
+vim.notify("lspload")
 require("mason").setup()
 require("mason-lspconfig").setup()
 require("mason-lspconfig").setup_handlers {

@@ -15,6 +15,13 @@ use {
     use {'hrsh7th/nvim-cmp',config = function() require('lsp.cmp') end}
     use 'hrsh7th/cmp-nvim-lsp'
     use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
+	use 'rafamadriz/friendly-snippets' -- Snippets (vscode-like) collection for different languages
+    use {
+        'L3MON4D3/LuaSnip', -- Snippets plugin
+        config = function()
+            require("luasnip.loaders.from_vscode").lazy_load()
+        end
+    }
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-nvim-lua'
@@ -24,18 +31,16 @@ use {
 		require('lsp/lspsaga')
 	end
 }
-
-
+--------lsp end -------------------
+use {'rcarriga/nvim-notify',config = function() require('packsettings.notify') end}
 use 'mhinz/vim-startify'
 use 'theniceboy/nvim-deus'
 use 'folke/tokyonight.nvim'
 use 'sainnhe/gruvbox-material'
 use {'liuchengxu/vista.vim',config = function() require('packsettings.vista') end}
-use {'rcarriga/nvim-notify',config = function() require('packsettings.notify') end}
 use 'h-hg/fcitx.nvim'
 use {'mg979/vim-visual-multi',branch='master'}
 use 'posva/vim-vue'
-use 'rakr/vim-one'
 use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 use 'roxma/nvim-yarp'
 use {

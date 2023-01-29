@@ -25,6 +25,7 @@ local kind_icons = {
   Operator = "",
   TypeParameter = "",
 }
+local luasnip = require 'luasnip'
   local cmp = require 'cmp'
 cmp.setup {
     snippet = {
@@ -63,19 +64,6 @@ cmp.setup {
             end
         end, { 'i', 's' }),
     }),
-    sources = {
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
-        { name = 'buffer' },
-        { name = 'path' },
-        { name = 'nvim_lua' },
-    },
-}
-vim.diagnostic.config({
-    virtual_text = {
-        prefix = '●',
-    },
-})
 formatting = {
     fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
@@ -89,4 +77,17 @@ formatting = {
       })[entry.source.name]
       return vim_item
     end,
-  }
+  },
+    sources = {
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' },
+        { name = 'buffer' },
+        { name = 'path' },
+        { name = 'nvim_lua' },
+    },
+}
+vim.diagnostic.config({
+    virtual_text = {
+        prefix = '●',
+    },
+})
