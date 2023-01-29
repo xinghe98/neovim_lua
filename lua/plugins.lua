@@ -33,6 +33,12 @@ use {
 }
 --------lsp end -------------------
 use {'rcarriga/nvim-notify',config = function() require('packsettings.notify') end}
+use {
+  'mrded/nvim-lsp-notify',
+  config = function()
+    require('lsp-notify').setup({})
+  end
+}
 use 'mhinz/vim-startify'
 use 'theniceboy/nvim-deus'
 use 'folke/tokyonight.nvim'
@@ -43,6 +49,14 @@ use {'mg979/vim-visual-multi',branch='master'}
 use 'posva/vim-vue'
 use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 use 'roxma/nvim-yarp'
+use {
+  'nvim-tree/nvim-tree.lua',
+  requires = {
+    'nvim-tree/nvim-web-devicons', -- optional, for file icons
+  },
+  config = function() require('packsettings.nvimtree') end,
+  tag = 'nightly' -- optional, updated every week. (see issue #1193)
+}
 use {
   'nvim-lualine/lualine.nvim',
   requires = { 'kyazdani42/nvim-web-devicons', opt = true },
