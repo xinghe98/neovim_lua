@@ -66,8 +66,10 @@ use 'voldikss/vim-translator'
 use 'tpope/vim-surround'
 use 'itchyny/vim-cursorword'
 use 'Yggdroot/indentLine'
-use 'jiangmiao/auto-pairs'
--- using packer.nvim
+use {
+	"windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+}
 use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons',
 config = function() require('packsettings.bufferline') end}
 use 'tell-k/vim-autopep8'
