@@ -25,6 +25,8 @@ use {
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-nvim-lua'
+    use 'hrsh7th/cmp-look'
+    use 'f3fora/cmp-spell'
 	use {
 	'tami5/lspsaga.nvim',
 	config = function()
