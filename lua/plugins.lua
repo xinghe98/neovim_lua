@@ -24,10 +24,6 @@ use 'voldikss/vim-translator'
 use 'tpope/vim-surround'
 use 'itchyny/vim-cursorword'
 use 'Yggdroot/indentLine'
-use {
-'neoclide/coc.nvim' , branch = 'release',
-config = function() require('packsettings.coc') end
-}
 use 'jiangmiao/auto-pairs'
 -- using packer.nvim
 use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons',
