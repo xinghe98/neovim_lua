@@ -1,11 +1,12 @@
 vim.cmd("au FileType go nmap <Leader>gd <Plug>(go-doc)")
 vim.g.go_doc_keywordprg_enabled    = 0
+vim.g.go_gopls_enabled = 0
 vim.g.go_echo_go_info = 0
 vim.g.go_doc_popup_window = 1
 vim.g.go_def_mapping_enabled = 0
 vim.g.go_template_autocreate = 0
 vim.g.go_textobj_enabled = 0
-vim.g.go_auto_type_info = 1
+vim.g.go_auto_type_info = 0
 vim.g.go_def_mapping_enabled = 0
 vim.g.go_highlight_array_whitespace_error = 1
 vim.g.go_highlight_build_constraints = 1
@@ -27,8 +28,5 @@ vim.g.go_highlight_types = 1
 vim.g.go_highlight_variable_assignments = 0
 vim.g.go_highlight_variable_declarations = 0
 vim.cmd([[
-augroup go
-  autocmd!
-  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
-augroup END
+autocmd BufWritePre *.go lua vim.lsp.buf.format()
 ]])
