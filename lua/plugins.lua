@@ -34,7 +34,12 @@ use {
 	end
 }
 --------lsp end -------------------
-use 'mhinz/vim-startify'
+-- use 'mhinz/vim-startify'
+use {
+  'glepnir/dashboard-nvim',
+  config = function() require('packsettings.dashboard') end,
+  requires = {'nvim-tree/nvim-web-devicons'}
+}
 use 'theniceboy/nvim-deus'
 use 'folke/tokyonight.nvim'
 use 'sainnhe/gruvbox-material'
