@@ -34,13 +34,6 @@ use {
 	end
 }
 --------lsp end -------------------
-use {'rcarriga/nvim-notify',config = function() require('packsettings.notify') end}
-use {
-  'mrded/nvim-lsp-notify',
-  config = function()
-    require('lsp-notify').setup({})
-  end
-}
 use 'mhinz/vim-startify'
 use 'theniceboy/nvim-deus'
 use 'folke/tokyonight.nvim'
@@ -81,7 +74,6 @@ use 'yuezk/vim-js'
 -- 终端悬浮窗
 use 'voldikss/vim-floaterm'
 -- 文件搜索插件
-use 'nvim-lua/plenary.nvim'
 use {'nvim-telescope/telescope.nvim',tag ='0.1.1',
 requires = {
             "nvim-lua/plenary.nvim", -- Lua 开发模块
@@ -98,5 +90,15 @@ use {'fatih/vim-go', run = ':GoUpdateBinaries',config = function() require('pack
 require('packsettings/copilot').config()
 use { 'github/copilot.vim', config = "require('packsettings/copilot').setup()", event = 'InsertEnter' }
 use 'godlygeek/tabular'
+---------------通知美化相关
+use "folke/todo-comments.nvim"
+use {'j-hui/fidget.nvim'}
+use {'rcarriga/nvim-notify'}
+use ('mrded/nvim-lsp-notify')
+use{"folke/noice.nvim",requires = {
+    "MunifTanjim/nui.nvim",
+    "rcarriga/nvim-notify",
+    }}
+-- todo list
   -- 你可以在这里定义你所需要的插件列表
 end)

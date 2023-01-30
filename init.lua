@@ -12,3 +12,5 @@ require('theme')
 require('guiConfig')
 -- lsp配置
 require('lsp/lspconf')
+-- 美化相关
+require('style')
