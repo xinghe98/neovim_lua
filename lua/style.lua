@@ -1,9 +1,18 @@
-require'fidget'.setup{}
+require("todo-comments").setup()
 require("notify").setup({
   background_colour = "#000000",
 })
 require('lsp-notify').setup({})
 require("noice").setup({
+	cmdline = {
+      view = "cmdline",
+    },
+	routes = {
+      {
+        view = "notify",
+        filter = { event = "msg_showmode" },
+      },
+    },
 	lsp = {
     -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
     override = {

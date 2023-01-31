@@ -28,9 +28,7 @@ keymap('v', '<leader>t', ':TranslateW<CR>',opts)
 keymap('','<C-c>','"+y',opts)
 keymap('n','(','%',opts)
 -- coc-exporler
-keymap('n', 'tt', ':NvimTreeToggle<CR>',{silent = true})
-vim.cmd([[autocmd bufenter * if (winnr("$") == 1 && &filetype == "coc-explorer") | q | endif]])
-
+keymap('n', 'tt', ':NvimTreeToggle<CR>',opts)
 vim.cmd([[func! CompileRunGcc()
 	exec "w"
 	if &filetype == 'python'

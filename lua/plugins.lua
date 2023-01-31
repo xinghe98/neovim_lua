@@ -42,7 +42,6 @@ use {
 }
 use 'theniceboy/nvim-deus'
 use 'folke/tokyonight.nvim'
-use 'sainnhe/gruvbox-material'
 use {'liuchengxu/vista.vim',config = function() require('packsettings.vista') end}
 use 'h-hg/fcitx.nvim'
 use {'mg979/vim-visual-multi',branch='master'}
@@ -72,7 +71,6 @@ use {
 }
 use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons',
 config = function() require('packsettings.bufferline') end}
-use 'tell-k/vim-autopep8'
 -- 快速注释
 use {'b3nj5m1n/kommentary', config = function() require('packsettings.kommentary') end}
 use 'yuezk/vim-js'
@@ -97,13 +95,15 @@ use { 'github/copilot.vim', config = "require('packsettings/copilot').setup()", 
 use 'godlygeek/tabular'
 ---------------通知美化相关
 use "folke/todo-comments.nvim"
-use {'j-hui/fidget.nvim'}
+use {'j-hui/fidget.nvim',config = function ()
+	require"fidget".setup{}
+end}
 use {'rcarriga/nvim-notify'}
 use ('mrded/nvim-lsp-notify')
 use{"folke/noice.nvim",requires = {
     "MunifTanjim/nui.nvim",
     "rcarriga/nvim-notify",
     }}
--- todo list
+
   -- 你可以在这里定义你所需要的插件列表
 end)

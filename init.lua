@@ -11,6 +11,6 @@ require('theme')
 -- neovide
 require('guiConfig')
 -- lsp配置
-require('lsp/lspconf')
+require('lsp.lspconf')
 -- 美化相关
 require('style')
