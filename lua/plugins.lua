@@ -20,15 +20,33 @@ use {
   requires = { 'kyazdani42/nvim-web-devicons', opt = true },
   config = function() require('packsettings.lualine') end
 }
+use {
+  'nvim-tree/nvim-tree.lua',
+  requires = {
+    'nvim-tree/nvim-web-devicons', -- optional, for file icons
+  },
+  config = function() require('packsettings.nvimtree') end,
+  tag = 'nightly' -- optional, updated every week. (see issue #1193)
+}
 use 'voldikss/vim-translator'
-use 'tpope/vim-surround'
+use({
+    "kylechui/nvim-surround",
+    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    config = function()
+        require("nvim-surround").setup({
+        })
+    end
+})
 use 'itchyny/vim-cursorword'
 use 'Yggdroot/indentLine'
 use {
 'neoclide/coc.nvim' , branch = 'release',
 config = function() require('packsettings.coc') end
 }
-use 'jiangmiao/auto-pairs'
+use {
+	"windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+}
 -- using packer.nvim
 use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons',
 config = function() require('packsettings.bufferline') end}

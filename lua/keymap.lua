@@ -1,7 +1,7 @@
 local keymap = vim.api.nvim_set_keymap
 local opts ={noremap= true,silent=true}
-keymap('n','H' ,'^',opts)
-keymap('n','L', '$',opts)
+keymap('','H' ,'^',opts)
+keymap('','L', '$',opts)
 keymap('n','<leader>l', '<C-w>l',opts)
 keymap('n','<leader>k', '<C-w>k',opts)
 keymap('n','<leader>h', '<C-w>h',opts)
@@ -25,10 +25,10 @@ keymap('n', '<leader>np', ':set nopaste<CR>',opts)
 keymap('n', 'r', ':call CompileRunGcc()<CR>',opts)
 keymap('n', '<leader>t', ':TranslateW<CR>',opts)
 keymap('v', '<leader>t', ':TranslateW<CR>',opts)
+keymap('','<C-c>','"+y',opts)
+keymap('n','(','%',opts)
 -- coc-exporler
-keymap('n', 'tt', ':CocCommand explorer<CR>',{silent = true})
-vim.cmd([[autocmd bufenter * if (winnr("$") == 1 && &filetype == "coc-explorer") | q | endif]])
-
+keymap('n', 'tt', ':NvimTreeToggle<CR>',opts)
 vim.cmd([[func! CompileRunGcc()
 	exec "w"
 	if &filetype == 'python'
