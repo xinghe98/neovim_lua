@@ -14,7 +14,6 @@ use {'mg979/vim-visual-multi',branch='master'}
 use 'posva/vim-vue'
 use 'rakr/vim-one'
 use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
-use 'roxma/nvim-yarp'
 use {
   'nvim-lualine/lualine.nvim',
   requires = { 'kyazdani42/nvim-web-devicons', opt = true },
@@ -74,5 +73,9 @@ use {'fatih/vim-go', run = ':GoUpdateBinaries',config = function() require('pack
 require('packsettings/copilot').config()
 use { 'github/copilot.vim', config = "require('packsettings/copilot').setup()", event = 'InsertEnter' }
 use 'godlygeek/tabular'
+use "folke/todo-comments.nvim"
+use {'j-hui/fidget.nvim',config = function ()
+	require"fidget".setup{}
+end}
   -- 你可以在这里定义你所需要的插件列表
 end)

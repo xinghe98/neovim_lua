@@ -14,6 +14,9 @@ keymap( 'i', '<cr>', "coc#pum#visible() ? coc#_select_confirm() : \"\\<c-g>u\\<c
 keymap( 'i', '<c-y>', "coc#pum#visible() ? coc#pum#confirm() : '<c-y>'", {silent = true, noremap = true, expr = true})
 keymap('n', 'gh', ':call CocAction("doHover")<cr>', {silent = true} )
 keymap('i', '<C-q>', 'coc#refresh()', {silent = true, expr = true})
+keymap('n', 'g[', '<Plug>(coc-diagnostic-prev)', {silent = true, expr = true})
+keymap('n', 'g]', '<Plug>(coc-diagnostic-next)', {silent = true, expr = true})
+keymap('i', '<C-q>', 'coc#refresh()', {silent = true, expr = true})
 -- Utility functions shared between progress reports for LSP and DAP
 
 local client_notifs = {}
