@@ -3,6 +3,9 @@
 
 + [说明](#说明)
 + [展示](#展示)
+	* [golang](#golang)
+	* [typeScript](#typescript)
+	* [python](#python)
 + [安装方法](#安装方法)
 + [键盘配置映射表](#键盘配置映射表)
 
@@ -12,7 +15,20 @@
 `coc` 和`lsp` 都尝试过，最终选择了`coc` ，因为设置方便，小bug更少，且作者是个中国人。
 
 # 展示
+
 ![](./assets/1.gif)
+
+## golang
+
+![](./assets/go.gif) 
+
+## typeScript
+
+![](./assets/ts.gif) 
+
+## python
+
+![](./assets/python.gif) 
 
 # 安装方法
 
