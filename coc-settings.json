@@ -8,15 +8,12 @@
 	"coc.source.around.firstMatch": false,
 	"coc.source.buffer.firstMatch": false,
 	"coc.source.syntax.firstMatch": false,
-
-	"suggest.detailMaxLength": 60,
+	"suggest.labelMaxLength": 60,
 	"suggest.noselect": true,
 	"suggest.enablePreselect": false,
 	"suggest.triggerAfterInsertEnter": true,
 	"suggest.autoTrigger": "always",
 	"suggest.timeout": 5000,
-	"suggest.enablePreview": true,
-	"suggest.floatEnable": true,
 	"diagnostic.floatConfig": {
 		"border": true,
 		"rounded": true,
@@ -36,7 +33,7 @@
 	},
 	"suggest.detailField": "preview",
 	"suggest.snippetIndicator": "",
-	"suggest.triggerCompletionWait": 100,
+	"suggest.triggerCompletionWait": 50,
 	"suggest.echodocSupport": true,
 	"suggest.completionItemKindLabels": {
 		"text": " text",
@@ -118,7 +115,6 @@
 	"flutter.lsp.initialization.onlyAnalyzeProjectsWithOpenFiles": false,
 	"flutter.trace.server": "off",
 	"dart.lineLength": 100,
-	"tslint.autoFixOnSave": false,
 	"python.formatting.provider": "yapf",
 	"python.formatting.yapfArgs": [
 		"--style",
@@ -137,8 +133,6 @@
 	"prettier.useTabs": true,
 	"prettier.trailingComma": "all",
 	"prettier.singleQuote": false,
-	"todolist.autoUpload": true,
-	"todolist.promptForReminder": false,
 	"coc-actions.hideCursor": false,
 	"coc-actions.showActionKind": true,
 	"diagnostic-languageserver.formatFiletypes": {
