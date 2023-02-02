@@ -4,6 +4,7 @@
 + [screenshots](#screenshots)
 + [Usage](#usage)
 + [Chinese](#chinese)
++ [Use vim_lsp](#use-vim_lsp)
 
 <!-- /TOC -->
 # screenshots
@@ -57,3 +58,7 @@ Don't forget to install the language highlighting you need using tsinstall:
 
 # Chinese
 For more content or Chinese, please refer to [README_CN.md](https://github.com/xinghe98/neovim_lua/blob/main/README_CN.md)
+
+# Use vim_lsp
+
+[click here](https://github.com/xinghe98/neovim_lua/tree/use_lsp) 
