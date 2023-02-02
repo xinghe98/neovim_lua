@@ -3,6 +3,7 @@
 
 + [screenshots](#screenshots)
 + [Usage](#usage)
++ [Chinese](#chinese)
 
 <!-- /TOC -->
 # screenshots
@@ -53,3 +54,6 @@ Don't forget to install the language highlighting you need using tsinstall:
 # eg:
 :TsInstall python
 ```
+
+# Chinese
+For more content or Chinese, please refer to [README_CN.md](https://github.com/xinghe98/neovim_lua/blob/main/README_CN.md)
