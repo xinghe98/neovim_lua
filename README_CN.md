@@ -1,18 +1,20 @@
 
 <!-- TOC Marked -->
 
++ [说明](#说明)
 + [展示](#展示)
 + [安装方法](#安装方法)
 + [键盘配置映射表](#键盘配置映射表)
 
 <!-- /TOC -->
+# 说明
+
+`coc` 和`lsp` 都尝试过，最终选择了`coc` ，因为设置方便，小bug更少，且作者是个中国人。
+
 # 展示
 ![](./assets/1.gif)
 
 # 安装方法
-
-此分支使用的是nvim+lsp配置，但与之前的main分支(coc)安装方式完全相同，**但是** main分支的安装会有些许变化，
-因转为lsp，因此main分支不再做更新。
 
 安装方法及其他依赖详见：[REDME](https://github.com/xinghe98/neovim_lua/tree/main#usage) 
 
@@ -35,11 +37,13 @@
 | normal |           qq          |   :nohlsearch   |      退出搜索高亮      |
 | normal |   \<leader>\<leader>  |       :bn       | 移动到下一个buffer窗口 |
 | normal | \<leader>\<backspace> |       :bp       | 移动到上一个buffer窗口 |
-| normal      |         \<c-w>        |       :bd       |          关闭当前buffer窗口|
-| normal      |         \<S-s>        |        :w       |          <++>          |
-| normal      |         \<S-q>        |        :q       |          <++>          |
-| insert      |         \<C-a>        |     \<Home>     |          <++>          |
-| insert      |         \<C-e>        |      \<End>     |          <++>          |
-| normal |       \<leader>t      | :TranslateW<CR> |          <++>          |
-| visual |       \<leader>t      | :TranslateW<CR> |          <++>          |
-| normal      |           (           |        %        |                        |
+| normal |         \<c-w>        |       :bd       |   关闭当前buffer窗口   |
+| normal |         \<S-s>        |        :w       |          保存          |
+| normal |         \<S-q>        |        :q       |          退出          |
+| insert |         \<C-a>        |     \<Home>     |    编辑的时候到行首    |
+| insert |         \<C-e>        |      \<End>     |    编辑到时候到行尾    |
+| normal |       \<leader>t      | :TranslateW<CR> |          翻译          |
+| visual |       \<leader>t      | :TranslateW<CR> |          翻译          |
+| normal |           (           |        %        |     找到匹配到符号     |
+|        |      \<leader\>cc     |                 |          注释          |
+|        |           gd          |                 |       跳转到定义       |
