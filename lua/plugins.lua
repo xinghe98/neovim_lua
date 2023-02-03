@@ -42,10 +42,10 @@ use {
 'neoclide/coc.nvim' , branch = 'release',
 config = function() require('packsettings.coc') end
 }
-use {
+--[[ use {
 	"windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
-}
+} ]]
 -- using packer.nvim
 use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons',
 config = function() require('packsettings.bufferline') end}

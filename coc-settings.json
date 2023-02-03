@@ -1,4 +1,6 @@
 {
+	"sumneko-lua.locale": "zh-cn",
+	"tsserver.locale": "zh-CN",
 	"coc.preferences.semanticTokensHighlights": false,
 	"coc.preferences.enableMessageDialog": true,
 	"coc.preferences.enableFloatHighlight": true,

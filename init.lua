@@ -1,3 +1,4 @@
+---@diagnostic disable-next-line: undefined-global
 -- 基本配
 require('options')
 -- 键盘映射
@@ -14,6 +15,7 @@ require('guiConfig')
 vim.g.coc_global_extensions={
 	 'coc-css',
 	 'coc-sumneko-lua',
+	 'coc-pairs',
 	 'coc-go',
 	 'coc-diagnostic',
 	 'coc-docker',
