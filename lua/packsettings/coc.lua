@@ -1,22 +1,5 @@
-local keymap = vim.api.nvim_set_keymap
 vim.api.nvim_command("command! -nargs=? Fold :call CocAction('fold', <f-args>)")
 vim.api.nvim_command("hi! link CocPum Pmenu")
---[[ keymap('n', '<leader>rn', '<Plug>(coc-rename)', {silent = true})
-keymap( 'n', 'gd', '<Plug>(coc-definition)', {silent = true})
-keymap( 'n', 'gy', '<Plug>(coc-type-definition)', {silent = true})
-keymap( 'n', 'gi', '<Plug>(coc-implementation)', {silent = true})
-keymap( 'n', 'gr', '<Plug>(coc-references)', {silent = true})
-keymap( 'i', '<c-f>', "coc#pum#visible() ? '<c-y>' : '<c-f>'", {silent = true, expr = true})
-keymap( 'i', '<TAB>', "coc#pum#visible() ? coc#pum#next(1) : col('.') == 1 || getline('.')[col('.') - 2] =~# '\\s' ? \"\\<TAB>\" : coc#refresh()", {silent = true, noremap = true, expr = true})
-keymap( 'i', '<s-tab>', "coc#pum#visible() ? coc#pum#prev(1) : \"\\<s-tab>\"", {silent = true, noremap = true, expr = true})
--- keymap( 'i', '<cr>', "coc#pum#visible() ? coc#_select_confirm() : \"\\<c-g>u\\<cr>\\<c-r>=coc#on_enter()\\<cr>\"", {silent = true, noremap = true, expr = true})
-keymap( 'i', '<enter>', "coc#pum#visible() ? coc#pum#confirm() : '<enter>'", {silent = true, noremap = true, expr = true})
-keymap( 'i', '<c-y>', "coc#pum#visible() ? coc#pum#confirm() : '<c-y>'", {silent = true, noremap = true, expr = true})
-keymap('n', 'gh', ':call CocAction("doHover")<cr>', {silent = true} )
-keymap('i', '<C-q>', 'coc#refresh()', {silent = true, expr = true})
-keymap('n', 'gk', '<Plug>(coc-diagnostic-prev)', {silent = true})
-keymap('n', 'gj', '<Plug>(coc-diagnostic-next)', {silent = true})
-keymap('n', '<C-a>', '<plug>(coc-codeaction)', {silent = true}) ]]
 vim.g.coc_snippet_next = '<tab>'
 -- Utility functions shared between progress reports for LSP and DAP
 -- Some servers have issues with backup files, see #649
@@ -113,9 +96,9 @@ keyset("n", "<leader>ac", "<Plug>(coc-codeaction-cursor)", opts)
 -- Remap keys for apply code actions affect whole buffer.
 keyset("n", "<leader>as", "<Plug>(coc-codeaction-source)", opts)
 -- Remap keys for applying codeActions to the current buffer
-keyset("n", "<leader>ac", "<Plug>(coc-codeaction)", opts)
+keyset("n", "<A-a>", "<Plug>(coc-codeaction)", opts)
 -- Apply the most preferred quickfix action on the current line.
-keyset("n", "<leader>qf", "<Plug>(coc-fix-current)", opts)
+keyset("n", "<A-f>", "<Plug>(coc-fix-current)", opts)
 
 -- Remap keys for apply refactor code actions.
 keyset("n", "<leader>re", "<Plug>(coc-codeaction-refactor)", { silent = true })
@@ -171,26 +154,6 @@ vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'edito
 -- provide custom statusline: lightline.vim, vim-airline
 vim.opt.statusline:prepend("%{coc#status()}%{get(b:,'coc_current_function','')}")
 
--- Mappings for CoCList
--- code actions and coc stuff
----@diagnostic disable-next-line: redefined-local
-local opts = {silent = true, nowait = true}
--- Show all diagnostics
-keyset("n", "<space>a", ":<C-u>CocList diagnostics<cr>", opts)
--- Manage extensions
-keyset("n", "<space>e", ":<C-u>CocList extensions<cr>", opts)
--- Show commands
-keyset("n", "<space>c", ":<C-u>CocList commands<cr>", opts)
--- Find symbol of current document
-keyset("n", "<space>o", ":<C-u>CocList outline<cr>", opts)
--- Search workspace symbols
-keyset("n", "<space>s", ":<C-u>CocList -I symbols<cr>", opts)
--- Do default action for next item
-keyset("n", "<space>j", ":<C-u>CocNext<cr>", opts)
--- Do default action for previous item
-keyset("n", "<space>k", ":<C-u>CocPrev<cr>", opts)
--- Resume latest coc list
-keyset("n", "<space>p", ":<C-u>CocListResume<cr>", opts)
 
 local client_notifs = {}
 
