@@ -28,7 +28,6 @@ keymap('v', '<leader>t', ':TranslateW<CR>',opts)
 keymap('','<C-c>','"+y',opts)
 keymap('n','<C-t>',':FloatermToggle<CR>',opts)
 keymap('t','<C-t>','<C-\\><C-n>:FloatermToggle<CR>',opts)
-keymap('i','<enter><enter>','<enter><enter><backspace>',opts)
 -- coc-exporler
 keymap('n', 'tt', ':NvimTreeToggle<CR>',opts)
 vim.cmd([[func! CompileRunGcc()
