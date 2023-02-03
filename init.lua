@@ -39,5 +39,6 @@ vim.g.coc_global_extensions={
 	 'coc-vetur',
 	 'coc-vimlsp',
 	 'coc-yaml',
+	 'coc-tabnine',
 	 'coc-yank'
 }
