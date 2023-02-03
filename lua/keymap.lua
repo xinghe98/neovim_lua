@@ -28,14 +28,13 @@ keymap('v', '<leader>t', ':TranslateW<CR>',opts)
 keymap('','<C-c>','"+y',opts)
 keymap('n','<C-t>',':FloatermToggle<CR>',opts)
 keymap('t','<C-t>','<C-\\><C-n>:FloatermToggle<CR>',opts)
+keymap('i','<enter><enter>','<enter><enter><backspace>',opts)
 -- coc-exporler
 keymap('n', 'tt', ':NvimTreeToggle<CR>',opts)
 vim.cmd([[func! CompileRunGcc()
 	exec "w"
 	if &filetype == 'python'
-		set splitbelow
-		:sp
-		:term python3 %
+		:FloatermNew --autoclose=0 python3 %
 	elseif &filetype == 'html'
 		silent! exec "!".g:mkdp_browser." % &"
 	elseif &filetype == 'markdown'
@@ -46,8 +45,6 @@ vim.cmd([[func! CompileRunGcc()
 		:sp
 		:term export DEBUG="INFO,ERROR,WARNING"; node --trace-warnings .
 	elseif &filetype == 'go'
-		set splitbelow
-		:sp
-		:term go run .
+		:FloatermNew --autoclose=0 go run .
 	endif
 endfunc]])
