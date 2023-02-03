@@ -1,6 +1,5 @@
 vim.api.nvim_command("command! -nargs=? Fold :call CocAction('fold', <f-args>)")
 vim.api.nvim_command("hi! link CocPum Pmenu")
-vim.g.coc_snippet_next = '<tab>'
 -- Utility functions shared between progress reports for LSP and DAP
 -- Some servers have issues with backup files, see #649
 vim.opt.backup = false
