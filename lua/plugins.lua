@@ -19,15 +19,13 @@ use {
   requires = { 'kyazdani42/nvim-web-devicons', opt = true },
   config = function() require('packsettings.lualine') end
 }
+use 'nvim-tree/nvim-web-devicons'
 use {
-  'nvim-tree/nvim-tree.lua',
-  requires = {
-    'nvim-tree/nvim-web-devicons', -- optional, for file icons
-  },
-  config = function() require('packsettings.nvimtree') end,
-  tag = 'nightly' -- optional, updated every week. (see issue #1193)
+'nvim-tree/nvim-tree.lua',
+config = function() require('packsettings.nvimtree') end,
+tag = 'nightly' -- optional, updated every week. (see issue #1193)
 }
-use 'voldikss/vim-translator'
+	use 'voldikss/vim-translator'
 use({
     "kylechui/nvim-surround",
     tag = "*", -- Use for stability; omit to use `main` branch for the latest features

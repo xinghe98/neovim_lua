@@ -57,7 +57,7 @@ require 'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
                 git = true,
             },
             glyphs = {
-                default = "",
+                -- default = "",
                 symlink = "",
                 folder = {
                     arrow_closed = "",
