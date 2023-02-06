@@ -1,7 +1,7 @@
 local keymap = vim.api.nvim_set_keymap
 local opts ={noremap= true,silent=true}
-keymap('n','H' ,'^',opts)
-keymap('n','L', '$',opts)
+keymap('','H' ,'^',opts)
+keymap('','L', '$',opts)
 keymap('n','<leader>l', '<C-w>l',opts)
 keymap('n','<leader>k', '<C-w>k',opts)
 keymap('n','<leader>h', '<C-w>h',opts)
@@ -26,15 +26,14 @@ keymap('n', 'r', ':call CompileRunGcc()<CR>',opts)
 keymap('n', '<leader>t', ':TranslateW<CR>',opts)
 keymap('v', '<leader>t', ':TranslateW<CR>',opts)
 keymap('','<C-c>','"+y',opts)
-keymap('n','(','%',opts)
+keymap('n','<C-t>',':FloatermToggle<CR>',opts)
+keymap('t','<C-t>','<C-\\><C-n>:FloatermToggle<CR>',opts)
 -- coc-exporler
 keymap('n', 'tt', ':NvimTreeToggle<CR>',opts)
 vim.cmd([[func! CompileRunGcc()
 	exec "w"
 	if &filetype == 'python'
-		set splitbelow
-		:sp
-		:term python3 %
+		:FloatermNew --autoclose=0 python3 %
 	elseif &filetype == 'html'
 		silent! exec "!".g:mkdp_browser." % &"
 	elseif &filetype == 'markdown'
@@ -45,8 +44,6 @@ vim.cmd([[func! CompileRunGcc()
 		:sp
 		:term export DEBUG="INFO,ERROR,WARNING"; node --trace-warnings .
 	elseif &filetype == 'go'
-		set splitbelow
-		:sp
-		:term go run .
+		:FloatermNew --autoclose=0 go run .
 	endif
 endfunc]])

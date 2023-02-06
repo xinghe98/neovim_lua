@@ -31,12 +31,10 @@ vim.o.splitbelow = true
 vim.o.pumheight = 10
 vim.o.splitright = true
 vim.opt.signcolumn = "yes"
-vim.notify = require('notify')
+--vim.notify = require('notify')
 vim.cmd([[
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 ]])
-vim.cmd[[hi Normal guibg=NONE ctermbg=NONE]]
-vim.cmd[[hi Pmenu guibg=NONE ctermbg=NONE]]

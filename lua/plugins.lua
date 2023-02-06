@@ -47,12 +47,9 @@ use 'h-hg/fcitx.nvim'
 use {'mg979/vim-visual-multi',branch='master'}
 use 'posva/vim-vue'
 use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
-use 'roxma/nvim-yarp'
+use 'nvim-tree/nvim-web-devicons'
 use {
   'nvim-tree/nvim-tree.lua',
-  requires = {
-    'nvim-tree/nvim-web-devicons', -- optional, for file icons
-  },
   config = function() require('packsettings.nvimtree') end,
   tag = 'nightly' -- optional, updated every week. (see issue #1193)
 }
@@ -100,10 +97,6 @@ use {'j-hui/fidget.nvim',config = function ()
 end}
 use {'rcarriga/nvim-notify'}
 use ('mrded/nvim-lsp-notify')
-use{"folke/noice.nvim",requires = {
-    "MunifTanjim/nui.nvim",
-    "rcarriga/nvim-notify",
-    }}
 
   -- 你可以在这里定义你所需要的插件列表
 end)
