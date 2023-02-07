@@ -40,10 +40,10 @@ vim.cmd([[func! CompileRunGcc()
 		exec "MarkdownPreview"
 		exec "TableModeEnable"
 	elseif &filetype == 'javascript'
-		set splitbelow
-		:sp
-		:term export DEBUG="INFO,ERROR,WARNING"; node --trace-warnings .
+		:FloatermNew --autoclose=0 export DEBUG="INFO,ERROR,WARNING"; node --trace-warnings .
 	elseif &filetype == 'go'
 		:FloatermNew --autoclose=0 go run .
+	elseif &filetype == 'typescript'
+		:FloatermNew --autoclose=0 export DEBUG="INFO,ERROR,WARNING"; ts-node %
 	endif
 endfunc]])
