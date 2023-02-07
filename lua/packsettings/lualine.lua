@@ -49,7 +49,7 @@ local config = {
   },
   sections = {
     -- these are to remove the defaults
-    lualine_a = {},
+    lualine_a = {'g:coc_status','bo:filetype'},
     lualine_b = {},
     lualine_y = {},
     lualine_z = {},
@@ -138,7 +138,7 @@ ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
 
 ins_left {
   'diagnostics',
-  sources = { 'nvim_diagnostic' },
+  sources = { 'nvim_diagnostic','coc' },
   symbols = { error = ' ', warn = ' ', info = ' ' },
   diagnostics_color = {
     color_error = { fg = colors.red },

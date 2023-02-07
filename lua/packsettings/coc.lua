@@ -154,7 +154,7 @@ vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'edito
 vim.opt.statusline:prepend("%{coc#status()}%{get(b:,'coc_current_function','')}")
 
 
-local client_notifs = {}
+--[[ local client_notifs = {}
 
 local function get_notif_data(client_id, token)
  if not client_notifs[client_id] then
@@ -273,4 +273,4 @@ endfunction
 autocmd User CocNvimInit call s:InitCoc()
 autocmd User CocDiagnosticChange call s:DiagnosticNotify()
 autocmd User CocStatusChange call s:StatusNotify()
-]])
+]]

@@ -72,8 +72,5 @@ require('packsettings/copilot').config()
 use { 'github/copilot.vim', config = "require('packsettings/copilot').setup()", event = 'InsertEnter' }
 use 'godlygeek/tabular'
 use "folke/todo-comments.nvim"
-use {'j-hui/fidget.nvim',config = function ()
-	require"fidget".setup{}
-end}
   -- 你可以在这里定义你所需要的插件列表
 end)
