@@ -29,7 +29,7 @@ keymap('','<C-c>','"+y',opts)
 keymap('n','<C-t>',':FloatermToggle<CR>',opts)
 keymap('t','<C-t>','<C-\\><C-n>:FloatermToggle<CR>',opts)
 -- coc-exporler
-keymap('n', 'tt', ':NvimTreeToggle<CR>',opts)
+keymap('n', 'tt', ':NvimTreeFindFileToggle<CR>',opts)
 vim.cmd([[func! CompileRunGcc()
 	exec "w"
 	if &filetype == 'python'
