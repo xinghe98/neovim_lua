@@ -49,8 +49,10 @@ local config = {
   },
   sections = {
     -- these are to remove the defaults
-    lualine_a = {'g:coc_status','bo:filetype'},
-    lualine_b = {},
+    lualine_a = {},
+    lualine_b = {
+'g:coc_status','bo:filetype'
+	},
     lualine_y = {},
     lualine_z = {},
     -- These will be filled later
