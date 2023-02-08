@@ -127,7 +127,7 @@ require 'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
             max_folder_discovery = 300,
         },
         open_file = {
-            quit_on_open = false,
+            quit_on_open = true,
             resize_window = true,
             window_picker = {
                 enable = true,
