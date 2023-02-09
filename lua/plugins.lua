@@ -13,7 +13,10 @@ use 'h-hg/fcitx.nvim'
 use {'mg979/vim-visual-multi',branch='master'}
 use 'posva/vim-vue'
 use 'rakr/vim-one'
-use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+use {'nvim-treesitter/nvim-treesitter',config = function ()
+	require('packsettings.treesitter')
+end}
+use {'p00f/nvim-ts-rainbow'}
 use {
   'nvim-lualine/lualine.nvim',
   requires = { 'kyazdani42/nvim-web-devicons', opt = true },
