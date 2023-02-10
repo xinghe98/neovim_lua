@@ -2,6 +2,8 @@ local keymap = vim.api.nvim_set_keymap
 local opts ={noremap= true,silent=true}
 keymap('','H' ,'^',opts)
 keymap('','L', '$',opts)
+keymap('n','o', 'ozz',opts)
+keymap('n','O', 'Ozz',opts)
 keymap('n','<leader>l', '<C-w>l',opts)
 keymap('n','<leader>k', '<C-w>k',opts)
 keymap('n','<leader>h', '<C-w>h',opts)
