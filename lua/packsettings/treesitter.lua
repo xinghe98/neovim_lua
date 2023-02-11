@@ -4,6 +4,7 @@ require("nvim-treesitter.configs").setup {
 	"ruby","dart","elixir","haskell","julia","kotlin",
 	"ocaml","perl","query","r","scala","swift","verilog","vue","zig" },
 	auto_install = true,
+	ignore_install = { "markdown" },
   highlight = {
       -- ...
 	  enable = true,
