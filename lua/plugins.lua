@@ -43,6 +43,7 @@ use {
 'neoclide/coc.nvim' , branch = 'release',
 config = function() require('packsettings.coc') end
 }
+use 'neoclide/jsonc.vim'
 --[[ use {
 	"windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
