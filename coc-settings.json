@@ -118,6 +118,7 @@
 	"prettier.singleQuote": false,
 	"coc-actions.hideCursor": false,
 	"coc-actions.showActionKind": true,
+	"pairs.enableBackspace": true,
 	"diagnostic-languageserver.formatFiletypes": {
 		"elixir": "mix_format",
 		"eelixir": "mix_format"
