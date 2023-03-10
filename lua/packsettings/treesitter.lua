@@ -1,6 +1,6 @@
 require("nvim-treesitter.configs").setup {
 	ensure_installed = { "lua", "vim", "help", "python", "typescript", "go", "rust", "json", "yaml", "html", "css"
-	, "javascript", "bash", "toml", "regex", "jsonc", "graphql", "vue", "tsx",
+	, "javascript", "bash", "toml", "regex", "jsonc", "graphql", "tsx",
 		"haskell", "julia", "kotlin", "vue" },
 	auto_install = true,
 	ignore_install = { "markdown" },

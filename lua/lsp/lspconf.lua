@@ -19,8 +19,8 @@ local function attach(client, bufnr)
 	vim.keymap.set("n", "g]", "<cmd>Lspsaga diagnostic_jump_next<CR>", bufopts)
 	-- 悬浮窗口上翻页，由 Lspsaga 提供
 	vim.keymap.set("n", "<c-p>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", bufopts)
-	-- 悬浮窗口下翻页，由 Lspsaga 提供
-	vim.keymap.set("n", "<c-n>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", bufopts)
+	-- 悬浮窗口下翻页，由 Lssaga 提供
+	vim.keymap.set("n", "<c-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", bufopts)
 	-- 显示错误信息（代替内置 LSP 的窗口）
 	vim.keymap.set('n', '<leader>e', "<cmd>Lspsaga show_line_diagnostics<CR>", bufopts)
 	vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
