@@ -6,7 +6,7 @@ local function attach(client, bufnr)
 	-- 列出光标下所有引用（代替内置 LSP 的窗口，telescope 插件让查看引用更方便）
 	vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references theme=dropdown<CR>", bufopts)
 	-- 工作区诊断（代替内置 LSP 的窗口，telescope 插件让工作区诊断更方便）
-	vim.keymap.set("n", "gg", "<cmd>Telescope diagnostics theme=dropdown<CR>", bufopts)
+	-- vim.keymap.set("n", "gg", "<cmd>Telescope diagnostics theme=dropdown<CR>", bufopts)
 	-- 显示代码可用操作（代替内置 LSP 的窗口，telescope 插件让代码行为更方便）
 	vim.keymap.set("n", "<A-a>", "<cmd>Lspsaga code_action<CR>", bufopts)
 	-- 变量重命名（代替内置 LSP 的窗口，Lspsaga 让变量重命名更美观）

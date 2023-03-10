@@ -14,10 +14,10 @@ return require('packer').startup(function(use)
 	use 'neovim/nvim-lspconfig'
 	use { 'hrsh7th/nvim-cmp', config = function() require('lsp.cmp') end }
 	use 'hrsh7th/cmp-nvim-lsp'
-	use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
+	use 'saadparwaiz1/cmp_luasnip'  -- Snippets source for nvim-cmp
 	use 'rafamadriz/friendly-snippets' -- Snippets (vscode-like) collection for different languages
 	use {
-		'L3MON4D3/LuaSnip', -- Snippets plugin
+		'L3MON4D3/LuaSnip',         -- Snippets plugin
 		config = function()
 			require("luasnip.loaders.from_vscode").lazy_load()
 		end
@@ -47,7 +47,10 @@ return require('packer').startup(function(use)
 	use 'h-hg/fcitx.nvim'
 	use { 'mg979/vim-visual-multi', branch = 'master' }
 	use 'posva/vim-vue'
-	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+	use { 'nvim-treesitter/nvim-treesitter', config = function()
+		require('packsettings.treesitter')
+	end }
+	use { 'p00f/nvim-ts-rainbow' }
 	use 'nvim-tree/nvim-web-devicons'
 	use {
 		'nvim-tree/nvim-tree.lua',
@@ -79,7 +82,7 @@ return require('packer').startup(function(use)
 		requires = {
 			"nvim-lua/plenary.nvim", -- Lua 开发模块
 			"BurntSushi/ripgrep", -- 文字查找
-			"sharkdp/fd" -- 文件查找
+			"sharkdp/fd"    -- 文件查找
 		},
 		config = function() require('packsettings.telescope') end }
 	-- Markdown
