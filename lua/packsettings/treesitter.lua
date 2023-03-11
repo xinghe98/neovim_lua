@@ -1,11 +1,8 @@
 require("nvim-treesitter.configs").setup {
-	ensure_installed = { "lua", "vim", "help", "python", "typescript", "go", "rust", "json", "yaml", "html", "css"
-	, "javascript", "bash", "toml", "regex", "jsonc", "graphql", "tsx",
-		"haskell", "julia", "kotlin", "vue" },
-	auto_install = true,
-	ignore_install = { "markdown" },
+	ensure_installed = { "go", "python", "typescript", "lua" },
 	highlight = {
 		-- ...
+
 		enable = true,
 	},
 	-- ...
@@ -27,3 +24,4 @@ require("nvim-treesitter.configs").setup {
 		-- termcolors = {} -- table of colour name strings
 	}
 }
+require 'nvim-treesitter.install'.compilers = { 'zig' }
