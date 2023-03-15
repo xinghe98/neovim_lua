@@ -40,7 +40,7 @@ return require('packer').startup(function(use)
 	use 'itchyny/vim-cursorword'
 	use 'Yggdroot/indentLine'
 	use {
-		'neoclide/coc.nvim', branch = 'release',
+		'neoclide/coc.nvim', branch = 'master', run = 'yarn install --frozen-lockfile',
 		config = function() require('packsettings.coc') end
 	}
 	use 'neoclide/jsonc.vim'
