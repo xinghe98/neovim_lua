@@ -56,7 +56,6 @@ cmp.setup {
 			end
 		}),
 		['<Tab>'] = cmp.mapping(function(fallback)
-
 			if cmp.visible() then
 				cmp.select_next_item()
 			elseif luasnip.expand_or_jumpable() then
@@ -93,12 +92,12 @@ cmp.setup {
 	},
 	sources = {
 		{ name = 'nvim_lsp' },
-		{ name = 'luasnip' },
 		{ name = 'buffer' },
 		{ name = 'path' },
 		{ name = 'nvim_lua' },
 		{ name = 'look' },
 		{ name = 'spell' },
+		{ name = 'luasnip' },
 		{ name = 'nvim_lsp_signature_help' },
 	},
 }

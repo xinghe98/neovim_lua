@@ -17,7 +17,8 @@ require 'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
 	reload_on_bufenter = false,
 	respect_buf_cwd = false,
 	view = {
-		width = 23,
+		width =
+			30,
 		hide_root_folder = false,
 		side = "left",
 		preserve_window_proportions = false,
@@ -198,4 +199,3 @@ vim.api.nvim_create_autocmd("WinClosed", {
 	end,
 	nested = true
 })
-
