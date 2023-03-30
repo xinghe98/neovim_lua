@@ -71,8 +71,19 @@ return require('packer').startup(function(use)
 	use 'mzlogin/vim-markdown-toc'
 	use { 'dkarter/bullets.vim', config = function() require('packsettings.bullets') end }
 	use { 'fatih/vim-go', run = ':GoUpdateBinaries', config = function() require('packsettings.vimgo') end }
-	require('packsettings/copilot').config()
-	use { 'github/copilot.vim', config = "require('packsettings/copilot').setup()", event = 'InsertEnter' }
+	-- Remove the `use` here if you're using folke/lazy.nvim.
+	use {
+		'Exafunction/codeium.vim',
+		config = function()
+			-- Change '<C-g>' here to any keycode you like.
+			vim.keymap.set('i', '<C-e>', function() return vim.fn['codeium#Accept']() end, { expr = true })
+			vim.keymap.set('i', '<C-n>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+			vim.keymap.set('i', '<C-p>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
+			vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
+		end
+	}
+	--[[ require('packsettings/copilot').config()
+	use { 'github/copilot.vim', config = "require('packsettings/copilot').setup()", event = 'InsertEnter' } ]]
 	use 'godlygeek/tabular'
 	use "folke/todo-comments.nvim"
 	-- 你可以在这里定义你所需要的插件列表
