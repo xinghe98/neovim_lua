@@ -11,11 +11,9 @@ require("mason").setup({
 require("mason-lspconfig").setup {
 	ensure_installed = {
 		"rust_analyzer",
-		"pyright",
 		"gopls",
 		"volar",
 		"tsserver",
-		"lua_ls",
 		"jsonls"
 
 	},
