@@ -28,12 +28,20 @@ return require('packer').startup(function(use)
 	use 'hrsh7th/cmp-nvim-lua'
 	use 'hrsh7th/cmp-look'
 	use 'f3fora/cmp-spell'
-	use {
-		'tami5/lspsaga.nvim',
-		config = function()
-			require('lsp/lspsaga')
-		end
-	}
+	use({
+    "glepnir/lspsaga.nvim",
+    opt = true,
+    branch = "main",
+    event = "LspAttach",
+    config = function()
+        require("lspsaga").setup({})
+    end,
+    requires = {
+        {"nvim-tree/nvim-web-devicons"},
+        --Please make sure you install markdown and markdown_inline parser
+        {"nvim-treesitter/nvim-treesitter"}
+    }
+})
 	--------lsp end -------------------
 	-- use 'mhinz/vim-startify'
 	use {
