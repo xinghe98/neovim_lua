@@ -29,19 +29,19 @@ return require('packer').startup(function(use)
 	use 'hrsh7th/cmp-look'
 	use 'f3fora/cmp-spell'
 	use({
-    "glepnir/lspsaga.nvim",
-    opt = true,
-    branch = "main",
-    event = "LspAttach",
-    config = function()
-        require("lspsaga").setup({})
-    end,
-    requires = {
-        {"nvim-tree/nvim-web-devicons"},
-        --Please make sure you install markdown and markdown_inline parser
-        {"nvim-treesitter/nvim-treesitter"}
-    }
-})
+		"glepnir/lspsaga.nvim",
+		opt = true,
+		branch = "main",
+		event = "LspAttach",
+		config = function()
+			require("lspsaga").setup({})
+		end,
+		requires = {
+			{ "nvim-tree/nvim-web-devicons" },
+			--Please make sure you install markdown and markdown_inline parser
+			{ "nvim-treesitter/nvim-treesitter" }
+		}
+	})
 	--------lsp end -------------------
 	-- use 'mhinz/vim-startify'
 	use {
@@ -99,13 +99,16 @@ return require('packer').startup(function(use)
 	use 'mzlogin/vim-markdown-toc'
 	use { 'dkarter/bullets.vim', config = function() require('packsettings.bullets') end }
 	use { 'fatih/vim-go', run = ':GoUpdateBinaries', config = function() require('packsettings.vimgo') end }
-	require('packsettings/copilot').config()
-	use { 'github/copilot.vim', config = "require('packsettings/copilot').setup()", event = 'InsertEnter' }
+	use { 'github/copilot.vim', config = function() require('packsettings/copilot') end }
 	use 'godlygeek/tabular'
 	---------------通知美化相关
 	use "folke/todo-comments.nvim"
 	use { 'j-hui/fidget.nvim', config = function()
 		require "fidget".setup {}
+	end }
+	use { "ybian/smartim", event = { "InsertEnter" }, config = function()
+		-- default IME mode
+		vim.g.smartim_default = "com.apple.keylayout.ABC"
 	end }
 	use { 'rcarriga/nvim-notify' }
 	use('mrded/nvim-lsp-notify')
