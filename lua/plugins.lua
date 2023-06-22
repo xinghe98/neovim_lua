@@ -103,7 +103,7 @@ return require('packer').startup(function(use)
 	use 'godlygeek/tabular'
 	---------------通知美化相关
 	use "folke/todo-comments.nvim"
-	use { 'j-hui/fidget.nvim', config = function()
+	use { 'j-hui/fidget.nvim',tag='legacy', config = function()
 		require "fidget".setup {}
 	end }
 	use { "ybian/smartim", event = { "InsertEnter" }, config = function()
