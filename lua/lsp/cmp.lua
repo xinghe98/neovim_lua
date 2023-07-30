@@ -80,11 +80,11 @@ cmp.setup {
 			-- Kind icons
 			vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
 			vim_item.menu = ({
-				nvim_lsp = "[LSP]",
-				ultisnips = "[Snippet]",
-				buffer = "[Buffer]",
-				path = "[Path]",
-				look = "[Look]",
+				nvim_lsp = "🚀",
+				ultisnips = "🔎",
+				buffer = "📌",
+				path = "[📄]",
+				look = "[👀]",
 				spell = "[Spell]",
 			})[entry.source.name]
 			return vim_item
@@ -103,6 +103,6 @@ cmp.setup {
 }
 vim.diagnostic.config({
 	virtual_text = {
-		prefix = '●',
+		prefix = '😥',
 	},
 })

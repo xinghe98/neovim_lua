@@ -29,12 +29,20 @@ return require('packer').startup(function(use)
 	use 'hrsh7th/cmp-look'
 	use 'f3fora/cmp-spell'
 	use({
-		"glepnir/lspsaga.nvim",
-		opt = true,
-		branch = "main",
-		event = "LspAttach",
+		"hrsh7th/cmp-emoji",
 		config = function()
-			require("lspsaga").setup({})
+			require 'cmp'.setup {
+				sources = {
+					{ name = 'emoji' }
+				}
+			}
+		end
+	})
+	use({
+		'nvimdev/lspsaga.nvim',
+		after = 'nvim-lspconfig',
+		config = function()
+			require('lspsaga').setup({})
 		end,
 		requires = {
 			{ "nvim-tree/nvim-web-devicons" },
@@ -55,9 +63,11 @@ return require('packer').startup(function(use)
 	use 'h-hg/fcitx.nvim'
 	use { 'mg979/vim-visual-multi', branch = 'master' }
 	use 'posva/vim-vue'
-	use { 'nvim-treesitter/nvim-treesitter', config = function()
-		require('packsettings.treesitter')
-	end }
+	use { 'nvim-treesitter/nvim-treesitter',
+		run = ':TSUpdate',
+		config = function()
+			require('packsettings.treesitter')
+		end }
 	use { 'p00f/nvim-ts-rainbow' }
 	use 'nvim-tree/nvim-web-devicons'
 	use {
@@ -71,9 +81,14 @@ return require('packer').startup(function(use)
 		config = function() require('packsettings.lualine') end
 	}
 	use 'voldikss/vim-translator'
-	use 'tpope/vim-surround'
-	use 'itchyny/vim-cursorword'
-	use 'Yggdroot/indentLine'
+	use "tpope/vim-surround"
+	use 'xiyaowong/nvim-cursorword'
+	use {
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require('packsettings.indentline')
+		end
+	}
 	use {
 		"windwp/nvim-autopairs",
 		config = function() require("nvim-autopairs").setup {} end
@@ -82,7 +97,6 @@ return require('packer').startup(function(use)
 		config = function() require('packsettings.bufferline') end }
 	-- 快速注释
 	use { 'b3nj5m1n/kommentary', config = function() require('packsettings.kommentary') end }
-	use 'yuezk/vim-js'
 	-- 终端悬浮窗
 	use 'voldikss/vim-floaterm'
 	-- 文件搜索插件
@@ -102,16 +116,14 @@ return require('packer').startup(function(use)
 	use { 'github/copilot.vim', config = function() require('packsettings/copilot') end }
 	use 'godlygeek/tabular'
 	---------------通知美化相关
+	use 'rcarriga/nvim-notify'
 	use "folke/todo-comments.nvim"
-	use { 'j-hui/fidget.nvim',tag='legacy', config = function()
+	--[[ use { 'j-hui/fidget.nvim',tag='legacy', config = function()
 		require "fidget".setup {}
 	end }
 	use { "ybian/smartim", event = { "InsertEnter" }, config = function()
 		-- default IME mode
 		vim.g.smartim_default = "com.apple.keylayout.ABC"
-	end }
-	use { 'rcarriga/nvim-notify' }
-	use('mrded/nvim-lsp-notify')
-
+	end } ]]
 	-- 你可以在这里定义你所需要的插件列表
 end)
