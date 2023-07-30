@@ -82,7 +82,6 @@ return require('packer').startup(function(use)
 	}
 	use 'voldikss/vim-translator'
 	use "tpope/vim-surround"
-	use 'xiyaowong/nvim-cursorword'
 	use {
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
@@ -93,6 +92,7 @@ return require('packer').startup(function(use)
 		"windwp/nvim-autopairs",
 		config = function() require("nvim-autopairs").setup {} end
 	}
+	use 'xiyaowong/nvim-cursorword'
 	use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons',
 		config = function() require('packsettings.bufferline') end }
 	-- 快速注释
