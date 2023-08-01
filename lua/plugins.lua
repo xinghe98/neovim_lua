@@ -73,7 +73,7 @@ return require('packer').startup(function(use)
 	use {
 		'nvim-tree/nvim-tree.lua',
 		config = function() require('packsettings.nvimtree') end,
-		tag = 'nightly' -- optional, updated every week. (see issue #1193)
+		tag = 'nightly'
 	}
 	use {
 		'nvim-lualine/lualine.nvim',
@@ -118,6 +118,7 @@ return require('packer').startup(function(use)
 	---------------通知美化相关
 	use 'rcarriga/nvim-notify'
 	use "folke/todo-comments.nvim"
+	use 'ap/vim-css-color'
 	--[[ use { 'j-hui/fidget.nvim',tag='legacy', config = function()
 		require "fidget".setup {}
 	end }

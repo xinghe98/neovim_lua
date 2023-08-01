@@ -33,7 +33,7 @@ local function attach(client, bufnr)
 		group = vim.api.nvim_create_augroup('LspFormatting', { clear = true }),
 		buffer = bufnr,
 		callback = function()
-			vim.lsp.buf.format({ async = true })
+			vim.lsp.buf.format({ async = false })
 		end
 	})
 end
