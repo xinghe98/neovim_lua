@@ -31,6 +31,9 @@ vim.o.splitbelow = true
 vim.o.pumheight = 10
 vim.o.splitright = true
 vim.opt.signcolumn = "yes"
+vim.o.foldmethod = "indent"
+vim.o.foldenable = false
+vim.o.foldlevel = 99
 vim.notify = require('notify')
 vim.cmd([[
 if has("autocmd")
