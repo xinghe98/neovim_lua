@@ -29,7 +29,7 @@ return require('packer').startup(function(use)
 	use 'hrsh7th/cmp-look'
 	use 'f3fora/cmp-spell'
 	use 'hrsh7th/cmp-cmdline'
-	use({
+	--[[ use({
 		"hrsh7th/cmp-emoji",
 		config = function()
 			require 'cmp'.setup {
@@ -38,7 +38,7 @@ return require('packer').startup(function(use)
 				}
 			}
 		end
-	})
+	}) ]]
 	use({
 		'nvimdev/lspsaga.nvim',
 		after = 'nvim-lspconfig',
@@ -59,6 +59,7 @@ return require('packer').startup(function(use)
 		requires = { 'nvim-tree/nvim-web-devicons' }
 	}
 	use 'theniceboy/nvim-deus'
+	use 'marko-cerovac/material.nvim'
 	use 'folke/tokyonight.nvim'
 	use { 'liuchengxu/vista.vim', config = function() require('packsettings.vista') end }
 	use 'h-hg/fcitx.nvim'

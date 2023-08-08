@@ -4,10 +4,10 @@ require('plugins')
 require('options')
 -- 键盘映射
 require('keymap')
---markdown快捷键
-require('markdown')
 -- 主题设置
 require('theme')
+--markdown快捷键
+require('markdown')
 -- neovide
 require('guiConfig')
 -- lsp配置

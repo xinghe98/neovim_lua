@@ -49,6 +49,7 @@ cmp.setup {
 		["<C-j>"] = cmp.mapping.select_next_item(),
 		["<C-d>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
+		['<C-q>'] = cmp.mapping.abort(),
 		-- TODO: potentially fix emmet nonsense
 		['<CR>'] = cmp.mapping({
 			i = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
@@ -124,7 +125,10 @@ cmp.setup.filetype('gitcommit', {
 cmp.setup.cmdline({ '/', '?' }, {
 	mapping = cmp.mapping.preset.cmdline(),
 	sources = {
-		{ name = 'buffer' }
+		{
+			name = 'buffer',
+			keyword_length = 3
+		}
 	}
 })
 
@@ -132,8 +136,14 @@ cmp.setup.cmdline({ '/', '?' }, {
 cmp.setup.cmdline(':', {
 	mapping = cmp.mapping.preset.cmdline(),
 	sources = cmp.config.sources({
-		{ name = 'path' }
+		{
+			name = 'path',
+			keyword_length = 3
+		}
 	}, {
-		{ name = 'cmdline' }
+		{
+			name = 'cmdline',
+			keyword_length = 3
+		}
 	})
 })
