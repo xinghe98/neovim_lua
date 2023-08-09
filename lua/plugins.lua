@@ -58,9 +58,6 @@ return require('packer').startup(function(use)
 		config = function() require('packsettings.dashboard') end,
 		requires = { 'nvim-tree/nvim-web-devicons' }
 	}
-	use 'theniceboy/nvim-deus'
-	use 'marko-cerovac/material.nvim'
-	use 'folke/tokyonight.nvim'
 	use { 'liuchengxu/vista.vim', config = function() require('packsettings.vista') end }
 	use 'h-hg/fcitx.nvim'
 	use { 'mg979/vim-visual-multi', branch = 'master' }
@@ -121,6 +118,10 @@ return require('packer').startup(function(use)
 	use 'rcarriga/nvim-notify'
 	use "folke/todo-comments.nvim"
 	use 'ap/vim-css-color'
+	use 'theniceboy/nvim-deus'
+	use 'marko-cerovac/material.nvim'
+	use 'rmehri01/onenord.nvim'
+	use 'folke/tokyonight.nvim'
 	--[[ use { 'j-hui/fidget.nvim',tag='legacy', config = function()
 		require "fidget".setup {}
 	end }

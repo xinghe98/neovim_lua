@@ -15,7 +15,7 @@ require("bufferline").setup({
 				text_align = "left",
 			},
 		},
-		diagnostics = "coc",
+		diagnostics = "nvim_lsp",
 		-- 可选，显示 LSP 报错图标
 		---@diagnostic disable-next-line: unused-local
 		diagnostics_indicator = function(count, level, diagnostics_dict, context)
@@ -28,4 +28,3 @@ require("bufferline").setup({
 		end,
 	},
 })
-
