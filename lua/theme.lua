@@ -1,5 +1,5 @@
-vim.cmd("colorscheme onenord")
-require('onenord').setup({
+vim.cmd("colorscheme hardhacker")
+--[[ require('onenord').setup({
 	theme = nil,  -- "dark" or "light". Alternatively, remove the option and set vim.o.background instead
 	borders = true, -- Split window borders
 	fade_nc = false, -- Fade non-current windows, making them more distinguishable
@@ -24,4 +24,4 @@ require('onenord').setup({
 	custom_highlights = {}, -- Overwrite default highlight groups
 	custom_colors = {},  -- Overwrite default colors
 })
-require("onenord.colors").load()
+require("onenord.colors").load() ]]

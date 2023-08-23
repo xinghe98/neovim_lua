@@ -122,6 +122,7 @@ return require('packer').startup(function(use)
 	use 'marko-cerovac/material.nvim'
 	use 'rmehri01/onenord.nvim'
 	use 'folke/tokyonight.nvim'
+	use 'hardhackerlabs/theme-vim'
 	--[[ use { 'j-hui/fidget.nvim',tag='legacy', config = function()
 		require "fidget".setup {}
 	end }
