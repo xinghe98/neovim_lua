@@ -59,7 +59,6 @@ return require('packer').startup(function(use)
 		requires = { 'nvim-tree/nvim-web-devicons' }
 	}
 	use { 'liuchengxu/vista.vim', config = function() require('packsettings.vista') end }
-	use 'h-hg/fcitx.nvim'
 	use { 'mg979/vim-visual-multi', branch = 'master' }
 	use 'posva/vim-vue'
 	use { 'nvim-treesitter/nvim-treesitter',
