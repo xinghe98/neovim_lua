@@ -106,7 +106,9 @@ return require('packer').startup(function(use)
 		},
 		config = function() require('packsettings.telescope') end }
 	-- Markdown
-	use { 'iamcco/markdown-preview.nvim' }
+	use { 'iamcco/markdown-preview.nvim',config = function ()
+		require('packsettings.markdownpre')
+	end }
 	use 'dhruvasagar/vim-table-mode'
 	use 'mzlogin/vim-markdown-toc'
 	use { 'dkarter/bullets.vim', config = function() require('packsettings.bullets') end }
