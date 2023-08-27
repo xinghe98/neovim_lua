@@ -22,8 +22,8 @@ return require('packer').startup(function(use)
 			require("luasnip.loaders.from_vscode").lazy_load()
 		end
 	}
-	-- use "ray-x/lsp_signature.nvim"
-	use 'hrsh7th/cmp-nvim-lsp-signature-help'
+	use "ray-x/lsp_signature.nvim"
+	-- use 'hrsh7th/cmp-nvim-lsp-signature-help'
 	use 'hrsh7th/cmp-buffer'
 	use 'hrsh7th/cmp-path'
 	use 'hrsh7th/cmp-nvim-lua'
