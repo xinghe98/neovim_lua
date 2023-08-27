@@ -29,6 +29,7 @@ local luasnip = require 'luasnip'
 
 local cmp = require 'cmp'
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.register_source('look', require('cmp_look').new())
 cmp.event:on(
 	'confirm_done',
 	cmp_autopairs.on_confirm_done()
@@ -87,11 +88,11 @@ cmp.setup {
 			vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
 			vim_item.menu = ({
 				nvim_lsp = "🚀",
-				luasnip = "🔎",
+				luasnip = "🎯",
 				buffer = "📌",
-				path = "[📄]",
-				look = "[👀]",
-				spell = "[Spell]",
+				path = "📬",
+				look = "📸",
+				spell = "📝",
 			})[entry.source.name]
 			return vim_item
 		end,
@@ -102,7 +103,15 @@ cmp.setup {
 		{ name = 'path' },
 		{ name = 'nvim_lua' },
 		{ name = 'look' },
-		{ name = 'spell' },
+		{
+			name = 'spell',
+			option = {
+				keep_all_entries = false,
+				enable_in_context = function()
+					return true
+				end,
+			},
+		},
 		{ name = 'luasnip' },
 		{ name = 'nvim_lsp_signature_help' },
 	},
@@ -122,7 +131,7 @@ cmp.setup.filetype('gitcommit', {
 })
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline({ '/', '?' }, {
+--[[ cmp.setup.cmdline({ '/', '?' }, {
 	mapping = cmp.mapping.preset.cmdline(),
 	sources = {
 		{
@@ -130,7 +139,7 @@ cmp.setup.cmdline({ '/', '?' }, {
 			keyword_length = 3
 		}
 	}
-})
+}) ]]
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
