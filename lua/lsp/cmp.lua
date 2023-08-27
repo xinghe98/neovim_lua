@@ -113,7 +113,7 @@ cmp.setup {
 			},
 		},
 		{ name = 'luasnip' },
-		{ name = 'nvim_lsp_signature_help' },
+		-- { name = 'nvim_lsp_signature_help' },
 	},
 }
 vim.diagnostic.config({

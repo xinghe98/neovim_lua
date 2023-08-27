@@ -67,7 +67,12 @@ return require('packer').startup(function(use)
 		config = function()
 			require('packsettings.treesitter')
 		end }
-	use { 'p00f/nvim-ts-rainbow' }
+	use { 'HiPhish/nvim-ts-rainbow2',
+		requires = { 'nvim-treesitter/nvim-treesitter' },
+		config = function()
+			require('packsettings.rainbow')
+		end
+	}
 	use 'nvim-tree/nvim-web-devicons'
 	use {
 		'nvim-tree/nvim-tree.lua',
