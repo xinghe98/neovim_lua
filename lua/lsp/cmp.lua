@@ -106,7 +106,7 @@ cmp.setup {
 		{
 			name = 'spell',
 			option = {
-				keep_all_entries = false,
+				keep_all_entries = true,
 				enable_in_context = function()
 					return true
 				end,

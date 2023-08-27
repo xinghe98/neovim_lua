@@ -22,7 +22,8 @@ return require('packer').startup(function(use)
 			require("luasnip.loaders.from_vscode").lazy_load()
 		end
 	}
-	use "ray-x/lsp_signature.nvim"
+	-- use "ray-x/lsp_signature.nvim"
+	use 'hrsh7th/cmp-nvim-lsp-signature-help'
 	use 'hrsh7th/cmp-buffer'
 	use 'hrsh7th/cmp-path'
 	use 'hrsh7th/cmp-nvim-lua'
@@ -106,7 +107,7 @@ return require('packer').startup(function(use)
 		},
 		config = function() require('packsettings.telescope') end }
 	-- Markdown
-	use { 'iamcco/markdown-preview.nvim',config = function ()
+	use { 'iamcco/markdown-preview.nvim', config = function()
 		require('packsettings.markdownpre')
 	end }
 	use 'dhruvasagar/vim-table-mode'
