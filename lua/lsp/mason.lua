@@ -3,18 +3,31 @@ require("mason").setup({
 		icons = {
 			server_installed = "✓",
 			server_pending = "➜",
-			server_uninstalled = "✗"
-		}
-	}
+			server_uninstalled = "✗",
+		},
+	},
 })
 
-require("mason-lspconfig").setup {
+--[[ require("mason-lspconfig").setup({
+	ensure_installed = {},
+}) ]]
+require("mason-tool-installer").setup({
+
+	-- a list of all tools you want to ensure are installed upon
+	-- start; they should be the names Mason uses for each tool
 	ensure_installed = {
 		"rust_analyzer",
 		"gopls",
 		"volar",
 		"tsserver",
-		"jsonls"
-
+		"jsonls",
+		"black",
+		"jq",
+		"gofumpt",
+		"isort",
+		"goimports",
+		"prettier",
+		"prettierd",
+		"stylua",
 	},
-}
+})

@@ -6,11 +6,14 @@ return require("packer").startup(function(use)
 	-- lsp config
 	use({
 		"williamboman/mason.nvim",
+	})
+	use("williamboman/mason-lspconfig.nvim")
+	use({
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		config = function()
 			require("lsp/mason")
 		end,
 	})
-	use("williamboman/mason-lspconfig.nvim")
 	use("neovim/nvim-lspconfig")
 	use({
 		"hrsh7th/nvim-cmp",
