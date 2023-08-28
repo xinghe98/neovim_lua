@@ -1,6 +1,6 @@
 require("conform").setup({
 	-- format_on_save = true,
-	log_level = vim.log.levels.OFF,
+	log_level = vim.log.levels.ERROR,
 	format_on_save = {
 		-- I recommend these options. See :help conform.format for details.
 		lsp_fallback = true,
@@ -21,4 +21,11 @@ require("conform").setup({
 			run_all_formatters = true,
 		},
 	},
+})
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+	group = vim.api.nvim_create_augroup("NotifyClearGrp", {}),
+	pattern = "*",
+	callback = function()
+		require("notify").dismiss({ silent = true })
+	end,
 })

@@ -48,6 +48,7 @@ return require("packer").startup(function(use)
 			}
 		end
 	}) ]]
+	use("dd")
 	use({
 		"nvimdev/lspsaga.nvim",
 		after = "nvim-lspconfig",
