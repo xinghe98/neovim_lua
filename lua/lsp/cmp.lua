@@ -25,17 +25,14 @@ local kind_icons = {
 	Operator = " Operator",
 	TypeParameter = " TypeParameter",
 }
-local luasnip = require 'luasnip'
+local luasnip = require("luasnip")
 
-local cmp = require 'cmp'
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-cmp.register_source('look', require('cmp_look').new())
-cmp.event:on(
-	'confirm_done',
-	cmp_autopairs.on_confirm_done()
-)
+local cmp = require("cmp")
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+cmp.register_source("look", require("cmp_look").new())
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
-cmp.setup {
+cmp.setup({
 	snippet = {
 		expand = function(args)
 			luasnip.lsp_expand(args.body)
@@ -50,9 +47,9 @@ cmp.setup {
 		["<C-j>"] = cmp.mapping.select_next_item(),
 		["<C-d>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
-		['<C-q>'] = cmp.mapping.abort(),
+		["<C-q>"] = cmp.mapping.abort(),
 		-- TODO: potentially fix emmet nonsense
-		['<CR>'] = cmp.mapping({
+		["<CR>"] = cmp.mapping({
 			i = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
 			c = function(fallback)
 				if cmp.visible() then
@@ -60,9 +57,9 @@ cmp.setup {
 				else
 					fallback()
 				end
-			end
+			end,
 		}),
-		['<Tab>'] = cmp.mapping(function(fallback)
+		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
 			elseif luasnip.expand_or_jumpable() then
@@ -70,8 +67,8 @@ cmp.setup {
 			else
 				fallback()
 			end
-		end, { 'i', 's' }),
-		['<S-Tab>'] = cmp.mapping(function(fallback)
+		end, { "i", "s" }),
+		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
 			elseif luasnip.jumpable(-1) then
@@ -79,7 +76,7 @@ cmp.setup {
 			else
 				fallback()
 			end
-		end, { 'i', 's' }),
+		end, { "i", "s" }),
 	}),
 	formatting = {
 		fields = { "abbr", "kind", "menu" },
@@ -98,36 +95,37 @@ cmp.setup {
 		end,
 	},
 	sources = {
-		{ name = 'nvim_lsp' },
-		{ name = 'buffer' },
-		{ name = 'path' },
-		{ name = 'nvim_lua' },
-		{ name = 'look' },
+		{ name = "nvim_lsp", keyword_length = 2 },
+		{ name = "buffer", keyword_length = 3 },
+		{ name = "path", keyword_length = 3 },
+		{ name = "nvim_lua", keyword_length = 3 },
+		{ name = "look", keyword_length = 3 },
 		{
-			name = 'spell',
+			name = "spell",
 			option = {
+				keyword_length = 3,
 				keep_all_entries = true,
 				enable_in_context = function()
 					return true
 				end,
 			},
 		},
-		{ name = 'luasnip' },
+		{ name = "luasnip", keyword_length = 3 },
 		-- { name = 'nvim_lsp_signature_help' },
 	},
-}
+})
 vim.diagnostic.config({
 	virtual_text = {
-		prefix = '😥',
+		prefix = "😥",
 	},
 })
 -- Set configuration for specific filetype.
-cmp.setup.filetype('gitcommit', {
+cmp.setup.filetype("gitcommit", {
 	sources = cmp.config.sources({
-		{ name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
+		{ name = "git" }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
 	}, {
-		{ name = 'buffer' },
-	})
+		{ name = "buffer" },
+	}),
 })
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
@@ -142,17 +140,17 @@ cmp.setup.filetype('gitcommit', {
 }) ]]
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(':', {
+cmp.setup.cmdline(":", {
 	mapping = cmp.mapping.preset.cmdline(),
 	sources = cmp.config.sources({
 		{
-			name = 'path',
-			keyword_length = 3
-		}
+			name = "path",
+			keyword_length = 3,
+		},
 	}, {
 		{
-			name = 'cmdline',
-			keyword_length = 3
-		}
-	})
+			name = "cmdline",
+			keyword_length = 3,
+		},
+	}),
 })
