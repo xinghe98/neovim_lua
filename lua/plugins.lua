@@ -1,35 +1,40 @@
-vim.cmd [[packadd packer.nvim]]
+vim.cmd([[packadd packer.nvim]])
 
-return require('packer').startup(function(use)
+return require("packer").startup(function(use)
 	-- Packer can manage itself
-	use 'wbthomason/packer.nvim'
+	use("wbthomason/packer.nvim")
 	-- lsp config
-	use {
-		'williamboman/mason.nvim',
+	use({
+		"williamboman/mason.nvim",
 		config = function()
-			require('lsp/mason')
-		end
-	}
-	use 'williamboman/mason-lspconfig.nvim'
-	use 'neovim/nvim-lspconfig'
-	use { 'hrsh7th/nvim-cmp', config = function() require('lsp.cmp') end }
-	use 'hrsh7th/cmp-nvim-lsp'
-	use 'saadparwaiz1/cmp_luasnip'  -- Snippets source for nvim-cmp
-	use 'rafamadriz/friendly-snippets' -- Snippets (vscode-like) collection for different languages
-	use {
-		'L3MON4D3/LuaSnip',         -- Snippets plugin
+			require("lsp/mason")
+		end,
+	})
+	use("williamboman/mason-lspconfig.nvim")
+	use("neovim/nvim-lspconfig")
+	use({
+		"hrsh7th/nvim-cmp",
+		config = function()
+			require("lsp.cmp")
+		end,
+	})
+	use("hrsh7th/cmp-nvim-lsp")
+	use("saadparwaiz1/cmp_luasnip") -- Snippets source for nvim-cmp
+	use("rafamadriz/friendly-snippets") -- Snippets (vscode-like) collection for different languages
+	use({
+		"L3MON4D3/LuaSnip", -- Snippets plugin
 		config = function()
 			require("luasnip.loaders.from_vscode").lazy_load()
-		end
-	}
-	use "ray-x/lsp_signature.nvim"
+		end,
+	})
+	use("ray-x/lsp_signature.nvim")
 	-- use 'hrsh7th/cmp-nvim-lsp-signature-help'
-	use 'hrsh7th/cmp-buffer'
-	use 'hrsh7th/cmp-path'
-	use 'hrsh7th/cmp-nvim-lua'
-	use 'hrsh7th/cmp-look'
-	use 'f3fora/cmp-spell'
-	use 'hrsh7th/cmp-cmdline'
+	use("hrsh7th/cmp-buffer")
+	use("hrsh7th/cmp-path")
+	use("hrsh7th/cmp-nvim-lua")
+	use("hrsh7th/cmp-look")
+	use("f3fora/cmp-spell")
+	use("hrsh7th/cmp-cmdline")
 	--[[ use({
 		"hrsh7th/cmp-emoji",
 		config = function()
@@ -41,95 +46,152 @@ return require('packer').startup(function(use)
 		end
 	}) ]]
 	use({
-		'nvimdev/lspsaga.nvim',
-		after = 'nvim-lspconfig',
+		"nvimdev/lspsaga.nvim",
+		after = "nvim-lspconfig",
 		config = function()
-			require('lspsaga').setup({})
+			require("lspsaga").setup({})
 		end,
 		requires = {
 			{ "nvim-tree/nvim-web-devicons" },
 			--Please make sure you install markdown and markdown_inline parser
-			{ "nvim-treesitter/nvim-treesitter" }
-		}
+			{ "nvim-treesitter/nvim-treesitter" },
+		},
+	})
+	use({
+		"stevearc/conform.nvim",
+		config = function()
+			require("packsettings.conform")
+		end,
 	})
 	--------lsp end -------------------
 	-- use 'mhinz/vim-startify'
-	use {
-		'glepnir/dashboard-nvim',
-		config = function() require('packsettings.dashboard') end,
-		requires = { 'nvim-tree/nvim-web-devicons' }
-	}
-	use { 'liuchengxu/vista.vim', config = function() require('packsettings.vista') end }
-	use { 'mg979/vim-visual-multi', branch = 'master' }
-	use 'posva/vim-vue'
-	use { 'nvim-treesitter/nvim-treesitter',
-		run = ':TSUpdate',
+	use({
+		"glepnir/dashboard-nvim",
 		config = function()
-			require('packsettings.treesitter')
-		end }
-	use { 'HiPhish/nvim-ts-rainbow2',
-		requires = { 'nvim-treesitter/nvim-treesitter' },
+			require("packsettings.dashboard")
+		end,
+		requires = { "nvim-tree/nvim-web-devicons" },
+	})
+	use({
+		"liuchengxu/vista.vim",
 		config = function()
-			require('packsettings.rainbow')
-		end
-	}
-	use 'nvim-tree/nvim-web-devicons'
-	use {
-		'nvim-tree/nvim-tree.lua',
-		config = function() require('packsettings.nvimtree') end,
-		tag = 'nightly'
-	}
-	use {
-		'nvim-lualine/lualine.nvim',
-		requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-		config = function() require('packsettings.lualine') end
-	}
-	use 'voldikss/vim-translator'
-	use "tpope/vim-surround"
-	use {
+			require("packsettings.vista")
+		end,
+	})
+	use({ "mg979/vim-visual-multi", branch = "master" })
+	use("posva/vim-vue")
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		run = ":TSUpdate",
+		config = function()
+			require("packsettings.treesitter")
+		end,
+	})
+	use({
+		"HiPhish/nvim-ts-rainbow2",
+		requires = { "nvim-treesitter/nvim-treesitter" },
+		config = function()
+			require("packsettings.rainbow")
+		end,
+	})
+	use("nvim-tree/nvim-web-devicons")
+	use({
+		"nvim-tree/nvim-tree.lua",
+		config = function()
+			require("packsettings.nvimtree")
+		end,
+		tag = "nightly",
+	})
+	use({
+		"nvim-lualine/lualine.nvim",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+		config = function()
+			require("packsettings.lualine")
+		end,
+	})
+	use("voldikss/vim-translator")
+	use("tpope/vim-surround")
+	use({
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
-			require('packsettings.indentline')
-		end
-	}
-	use {
+			require("packsettings.indentline")
+		end,
+	})
+	use({
 		"windwp/nvim-autopairs",
-		config = function() require("nvim-autopairs").setup {} end
-	}
-	use 'xiyaowong/nvim-cursorword'
-	use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons',
-		config = function() require('packsettings.bufferline') end }
+		config = function()
+			require("nvim-autopairs").setup({})
+		end,
+	})
+	use("xiyaowong/nvim-cursorword")
+	use({
+		"akinsho/bufferline.nvim",
+		tag = "v3.*",
+		requires = "nvim-tree/nvim-web-devicons",
+		config = function()
+			require("packsettings.bufferline")
+		end,
+	})
 	-- 快速注释
-	use { 'b3nj5m1n/kommentary', config = function() require('packsettings.kommentary') end }
+	use({
+		"b3nj5m1n/kommentary",
+		config = function()
+			require("packsettings.kommentary")
+		end,
+	})
 	-- 终端悬浮窗
-	use 'voldikss/vim-floaterm'
+	use("voldikss/vim-floaterm")
 	-- 文件搜索插件
-	use { 'nvim-telescope/telescope.nvim', tag = '0.1.1',
+	use({
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.1",
 		requires = {
 			"nvim-lua/plenary.nvim", -- Lua 开发模块
 			"BurntSushi/ripgrep", -- 文字查找
-			"sharkdp/fd"    -- 文件查找
+			"sharkdp/fd", -- 文件查找
 		},
-		config = function() require('packsettings.telescope') end }
+		config = function()
+			require("packsettings.telescope")
+		end,
+	})
 	-- Markdown
-	use { 'iamcco/markdown-preview.nvim', config = function()
-		require('packsettings.markdownpre')
-	end }
-	use 'dhruvasagar/vim-table-mode'
-	use 'mzlogin/vim-markdown-toc'
-	use { 'dkarter/bullets.vim', config = function() require('packsettings.bullets') end }
-	use { 'fatih/vim-go', run = ':GoUpdateBinaries', config = function() require('packsettings.vimgo') end }
-	use { 'github/copilot.vim', config = function() require('packsettings/copilot') end }
-	use 'godlygeek/tabular'
+	use({
+		"iamcco/markdown-preview.nvim",
+		config = function()
+			require("packsettings.markdownpre")
+		end,
+	})
+	use("dhruvasagar/vim-table-mode")
+	use("mzlogin/vim-markdown-toc")
+	use({
+		"dkarter/bullets.vim",
+		config = function()
+			require("packsettings.bullets")
+		end,
+	})
+	use({
+		"fatih/vim-go",
+		run = ":GoUpdateBinaries",
+		config = function()
+			require("packsettings.vimgo")
+		end,
+	})
+	use({
+		"github/copilot.vim",
+		config = function()
+			require("packsettings/copilot")
+		end,
+	})
+	use("godlygeek/tabular")
 	---------------通知美化相关
-	use 'rcarriga/nvim-notify'
-	use "folke/todo-comments.nvim"
-	use 'ap/vim-css-color'
-	use 'theniceboy/nvim-deus'
-	use 'marko-cerovac/material.nvim'
-	use 'rmehri01/onenord.nvim'
-	use 'folke/tokyonight.nvim'
-	use 'hardhackerlabs/theme-vim'
+	use("rcarriga/nvim-notify")
+	use("folke/todo-comments.nvim")
+	use("ap/vim-css-color")
+	use("theniceboy/nvim-deus")
+	use("marko-cerovac/material.nvim")
+	use("rmehri01/onenord.nvim")
+	use("folke/tokyonight.nvim")
+	use("hardhackerlabs/theme-vim")
 	--[[ use { 'j-hui/fidget.nvim',tag='legacy', config = function()
 		require "fidget".setup {}
 	end }

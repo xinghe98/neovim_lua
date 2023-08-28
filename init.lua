@@ -1,17 +1,17 @@
 -- 插件
-require('plugins')
+require("plugins")
 -- require("nvim-treesitter.install").prefer_git = true
 -- 基本配
-require('options')
+require("options")
 -- 键盘映射
-require('keymap')
+require("keymap")
 -- 主题设置
-require('theme')
+require("theme")
 --markdown快捷键
-require('markdown')
+require("markdown")
 -- neovide
-require('guiConfig')
+require("guiConfig")
 -- lsp配置
-require('lsp.lspconf')
+require("lsp.lspconf")
 -- 美化相关
-require('style')
+require("style")
