@@ -1,36 +1,28 @@
 -- setup with all defaults
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
 -- nested options are documented by accessing them with `.` (eg: `:help nvim-tree.view.mappings.list`).
-require 'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
+require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
 	auto_reload_on_write = true,
 	create_in_closed_folder = false,
 	disable_netrw = false,
 	hijack_cursor = false,
 	hijack_netrw = true,
 	hijack_unnamed_buffer_when_opening = false,
-	ignore_buffer_on_setup = false,
-	open_on_setup = false,
-	open_on_setup_file = false,
+	--open_on_setup = false,
+	--open_on_setup_file = false,
 	open_on_tab = false,
 	sort_by = "name",
 	update_cwd = false,
 	reload_on_bufenter = false,
 	respect_buf_cwd = false,
 	view = {
-		width =
-			30,
+		width = 30,
 		hide_root_folder = false,
 		side = "left",
 		preserve_window_proportions = false,
 		number = false,
 		relativenumber = false,
 		signcolumn = "yes",
-		mappings = {
-			custom_only = false,
-			list = {
-				-- user mappings go here
-			},
-		},
 	},
 	renderer = {
 		add_trailing = false,
@@ -92,7 +84,6 @@ require 'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
 		update_cwd = false,
 		ignore_list = {},
 	},
-	ignore_ft_on_setup = {},
 	system_open = {
 		cmd = "",
 		args = {},
@@ -163,27 +154,29 @@ require 'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
 			profile = false,
 		},
 	},
-} -- END_DEFAULT_OPTS
+}) -- END_DEFAULT_OPTS
 local function tab_win_closed(winnr)
-	local api = require "nvim-tree.api"
+	local api = require("nvim-tree.api")
 	local tabnr = vim.api.nvim_win_get_tabpage(winnr)
 	local bufnr = vim.api.nvim_win_get_buf(winnr)
 	local buf_info = vim.fn.getbufinfo(bufnr)[1]
-	local tab_wins = vim.tbl_filter(function(w) return w ~= winnr end, vim.api.nvim_tabpage_list_wins(tabnr))
+	local tab_wins = vim.tbl_filter(function(w)
+		return w ~= winnr
+	end, vim.api.nvim_tabpage_list_wins(tabnr))
 	local tab_bufs = vim.tbl_map(vim.api.nvim_win_get_buf, tab_wins)
 	if buf_info.name:match(".*NvimTree_%d*$") then -- close buffer was nvim tree
 		-- Close all nvim tree on :q
-		if not vim.tbl_isempty(tab_bufs) then   -- and was not the last window (not closed automatically by code below)
+		if not vim.tbl_isempty(tab_bufs) then -- and was not the last window (not closed automatically by code below)
 			api.tree.close()
 		end
-	else                                               -- else closed buffer was normal buffer
-		if #tab_bufs == 1 then                         -- if there is only 1 buffer left in the tab
+	else -- else closed buffer was normal buffer
+		if #tab_bufs == 1 then -- if there is only 1 buffer left in the tab
 			local last_buf_info = vim.fn.getbufinfo(tab_bufs[1])[1]
 			if last_buf_info.name:match(".*NvimTree_%d*$") then -- and that buffer is nvim tree
 				vim.schedule(function()
 					if #vim.api.nvim_list_wins() == 1 then -- if its the last buffer in vim
-						vim.cmd "quit"                 -- then close all of vim
-					else                               -- else there are more tabs open
+						vim.cmd("quit") -- then close all of vim
+					else -- else there are more tabs open
 						vim.api.nvim_win_close(tab_wins[1], true) -- then close only the tab
 					end
 				end)
@@ -197,5 +190,5 @@ vim.api.nvim_create_autocmd("WinClosed", {
 		local winnr = tonumber(vim.fn.expand("<amatch>"))
 		vim.schedule_wrap(tab_win_closed(winnr))
 	end,
-	nested = true
+	nested = true,
 })

@@ -18,8 +18,8 @@ autocmd Filetype markdown inoremap <buffer> ,4 ####<Space><Enter><++><Esc>kA
 autocmd Filetype markdown inoremap <buffer> ,l --------<Enter>
 ]])
 vim.g.vmt_cycle_list_item_markers = 1
-vim.g.vmt_fence_text = 'TOC'
-vim.g.vmt_fence_closing_text = '/TOC'
+vim.g.vmt_fence_text = "TOC"
+vim.g.vmt_fence_closing_text = "/TOC"
 vim.cmd([[
 let g:input_toggle = 0
 function! Fcitx2en()

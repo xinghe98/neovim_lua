@@ -1,6 +1,6 @@
 local keymap = vim.api.nvim_set_keymap
-local opts ={noremap= true,silent=true}
-keymap('n', 'tg', ':Vista!!<CR>',opts)
+local opts = { noremap = true, silent = true }
+keymap("n", "tg", ":Vista!!<CR>", opts)
 vim.cmd([[
 autocmd bufenter * if (winnr("$") == 1 && &filetype == "Vista") | q | endif
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
@@ -23,4 +23,3 @@ let g:vista#renderer#icons = {
 \   "variable": "\uf71b",
 \  }
 ]])
-

@@ -9,8 +9,9 @@ set.shiftwidth = 4
 set.showmatch = true
 set.scrolloff = 5
 set.laststatus = 2
-set.fenc = 'utf-8'
+set.fenc = "utf-8"
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 set.matchtime = 5
 set.ignorecase = true
 set.incsearch = true
@@ -19,7 +20,7 @@ set.expandtab = false
 set.autoread = true
 vim.g.t_Co = 256
 vim.opt.termguicolors = true
-vim.opt.completeopt = { 'noinsert', 'menuone', 'noselect', 'preview' }
+vim.opt.completeopt = { "noinsert", "menuone", "noselect", "preview" }
 -- 禁止创建备份文件
 vim.o.backup = false
 vim.o.writebackup = false
@@ -33,7 +34,7 @@ vim.opt.signcolumn = "yes"
 vim.o.foldmethod = "indent"
 vim.o.foldenable = false
 vim.o.foldlevel = 99
-vim.notify = require('notify')
+vim.notify = require("notify")
 vim.cmd([[
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif

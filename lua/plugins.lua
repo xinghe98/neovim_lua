@@ -107,11 +107,14 @@ require("lazy").setup({
 		config = function()
 			require("packsettings.nvimtree")
 		end,
-		version = "nightly",
+		lazy = false,
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+		version = "*",
 	},
 	{
 		"nvim-lualine/lualine.nvim",
-		dependencies = { "kyazdani42/nvim-web-devicons", lazy = true },
 		config = function()
 			require("packsettings.lualine")
 		end,
@@ -135,6 +138,7 @@ require("lazy").setup({
 	-- 快速注释
 	{
 		"b3nj5m1n/kommentary",
+		event = "ColorScheme",
 		config = function()
 			require("packsettings.kommentary")
 		end,
@@ -144,7 +148,8 @@ require("lazy").setup({
 	-- 文件搜索插件
 	{
 		"nvim-telescope/telescope.nvim",
-		version = "0.1.1",
+		tag = "0.1.2",
+		event = "ColorScheme",
 		dependencies = {
 			"nvim-lua/plenary.nvim", -- Lua 开发模块
 			"BurntSushi/ripgrep", -- 文字查找
