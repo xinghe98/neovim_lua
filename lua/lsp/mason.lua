@@ -28,7 +28,7 @@ require("mason-tool-installer").setup({
 		"isort",
 		"goimports",
 		"prettier",
-		"prettierd",
+		-- "prettierd",
 		"stylua",
 	},
 })
