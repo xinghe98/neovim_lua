@@ -115,12 +115,23 @@ require("lazy").setup({
 	},
 	{
 		"nvim-lualine/lualine.nvim",
+		checker = {
+			-- automatically check for plugin updates
+			enabled = true,
+			concurrency = nil, ---@type number? set to 1 to check for updates very slowly
+			notify = true, -- get a notification when new updates are found
+			frequency = 3600, -- check for updates every hour
+		},
 		config = function()
 			require("packsettings.lualine")
 		end,
 	},
 	{ "voldikss/vim-translator" },
-	{ "tpope/vim-surround" },
+	{
+		"tpope/vim-surround",
+		version = "*", -- Use for stability; omit to use `main` branch for the latest features
+		event = "VeryLazy",
+	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
