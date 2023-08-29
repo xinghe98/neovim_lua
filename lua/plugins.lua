@@ -49,11 +49,11 @@ require("lazy").setup({
 	{ "hrsh7th/cmp-cmdline" },
 	{
 		"nvimdev/lspsaga.nvim",
-		after = "nvim-lspconfig",
+		-- after = "nvim-lspconfig",
 		config = function()
 			require("lspsaga").setup({})
 		end,
-		requires = {
+		dependencies = {
 			{ "nvim-tree/nvim-web-devicons" },
 			--Please make sure you install markdown and markdown_inline parser
 			{ "nvim-treesitter/nvim-treesitter" },
@@ -72,6 +72,7 @@ require("lazy").setup({
 		end,
 	},
 	--------lsp end -------------------
+	--------一些美化啥的 -------------------
 	{ "rcarriga/nvim-notify" },
 	{ "folke/todo-comments.nvim" },
 	{ "ap/vim-css-color" },
