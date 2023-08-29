@@ -72,6 +72,117 @@ require("lazy").setup({
 		end,
 	},
 	--------lsp end -------------------
+	{
+		"glepnir/dashboard-nvim",
+		config = function()
+			require("packsettings.dashboard")
+		end,
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
+	{
+		"liuchengxu/vista.vim",
+		config = function()
+			require("packsettings.vista")
+		end,
+	},
+	{ "mg979/vim-visual-multi", branch = "master" },
+	{ "posva/vim-vue" },
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		config = function()
+			require("packsettings.treesitter")
+		end,
+	},
+	{
+		"HiPhish/nvim-ts-rainbow2",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		config = function()
+			require("packsettings.rainbow")
+		end,
+	},
+	{ "nvim-tree/nvim-web-devicons" },
+	{
+		"nvim-tree/nvim-tree.lua",
+		config = function()
+			require("packsettings.nvimtree")
+		end,
+		version = "nightly",
+	},
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "kyazdani42/nvim-web-devicons", lazy = true },
+		config = function()
+			require("packsettings.lualine")
+		end,
+	},
+	{ "voldikss/vim-translator" },
+	{ "tpope/vim-surround" },
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require("packsettings.indentline")
+		end,
+	},
+	{ "xiyaowong/nvim-cursorword" },
+	{
+		"akinsho/bufferline.nvim",
+		version = "v3.*",
+		config = function()
+			require("packsettings.bufferline")
+		end,
+	},
+	-- 快速注释
+	{
+		"b3nj5m1n/kommentary",
+		config = function()
+			require("packsettings.kommentary")
+		end,
+	},
+	-- 终端悬浮窗
+	{ "voldikss/vim-floaterm" },
+	-- 文件搜索插件
+	{
+		"nvim-telescope/telescope.nvim",
+		version = "0.1.1",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- Lua 开发模块
+			"BurntSushi/ripgrep", -- 文字查找
+			"sharkdp/fd", -- 文件查找
+		},
+		config = function()
+			require("packsettings.telescope")
+		end,
+	},
+	-- Markdown
+	{
+		"iamcco/markdown-preview.nvim",
+		config = function()
+			require("packsettings.markdownpre")
+		end,
+	},
+	{ "dhruvasagar/vim-table-mode" },
+	{ "mzlogin/vim-markdown-toc" },
+	{
+		"dkarter/bullets.vim",
+		config = function()
+			require("packsettings.bullets")
+		end,
+	},
+	{
+		"fatih/vim-go",
+		build = ":GoUpdateBinaries",
+		config = function()
+			require("packsettings.vimgo")
+		end,
+	},
+	{
+		"github/copilot.vim",
+		config = function()
+			require("packsettings/copilot")
+		end,
+	},
+	{ "godlygeek/tabular" },
 	--------一些美化啥的 -------------------
 	{ "rcarriga/nvim-notify" },
 	{ "folke/todo-comments.nvim" },
