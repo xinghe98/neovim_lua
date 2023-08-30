@@ -39,6 +39,7 @@ keymap("n", "<leader><backspace>", ":bp<CR>", opts)
 keymap("n", "<c-w>", ":bd<CR>", opts)
 -- coc-exporler
 keymap("n", "tt", ":NvimTreeFindFileToggle<CR>", opts)
+keymap("i", "<C-e>", 'copilot#Accept("<CR>")', { script = true, silent = true, expr = true })
 vim.cmd([[func! CompileRunGcc()
 	exec "w"
 	if &filetype == 'python'

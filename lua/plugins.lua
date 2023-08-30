@@ -32,7 +32,7 @@ require("lazy").setup({
 			{ "hrsh7th/cmp-nvim-lua" },
 			{ "hrsh7th/cmp-look" },
 			{ "f3fora/cmp-spell" },
-			{ "hrsh7th/cmp-cmdline" },
+			-- { "hrsh7th/cmp-cmdline" },
 			{ "hrsh7th/cmp-calc" },
 		},
 		config = function()
@@ -197,8 +197,12 @@ require("lazy").setup({
 	},
 	{
 		"github/copilot.vim",
+		lazy = false,
+		event = "ColorScheme",
 		config = function()
-			require("packsettings/copilot")
+			vim.g.copilot_enabled = true
+			vim.g.copilot_no_tab_map = true
+			vim.g.copilot_no_cr_map = true
 		end,
 	},
 	{ "godlygeek/tabular" },
