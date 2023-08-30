@@ -26,6 +26,22 @@ require("lazy").setup({
 	{ "neovim/nvim-lspconfig" },
 	{
 		"hrsh7th/nvim-cmp",
+		dependencies = {
+			{ "hrsh7th/cmp-buffer" },
+			{ "hrsh7th/cmp-path" },
+			{ "hrsh7th/cmp-nvim-lua" },
+			{ "hrsh7th/cmp-look" },
+			{ "f3fora/cmp-spell" },
+			{ "hrsh7th/cmp-cmdline" },
+			{ "hrsh7th/cmp-calc" },
+			{
+				"onsails/lspkind.nvim",
+				lazy = false,
+				config = function()
+					require("lspkind").init()
+				end,
+			},
+		},
 		config = function()
 			require("lsp.cmp")
 		end,
@@ -41,12 +57,6 @@ require("lazy").setup({
 	},
 	{ "ray-x/lsp_signature.nvim" },
 	-- use 'hrsh7th/cmp-nvim-lsp-signature-help'
-	{ "hrsh7th/cmp-buffer" },
-	{ "hrsh7th/cmp-path" },
-	{ "hrsh7th/cmp-nvim-lua" },
-	{ "hrsh7th/cmp-look" },
-	{ "f3fora/cmp-spell" },
-	{ "hrsh7th/cmp-cmdline" },
 	{
 		"nvimdev/lspsaga.nvim",
 		-- after = "nvim-lspconfig",
