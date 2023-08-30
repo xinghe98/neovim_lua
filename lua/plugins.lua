@@ -34,13 +34,6 @@ require("lazy").setup({
 			{ "f3fora/cmp-spell" },
 			{ "hrsh7th/cmp-cmdline" },
 			{ "hrsh7th/cmp-calc" },
-			{
-				"onsails/lspkind.nvim",
-				lazy = false,
-				config = function()
-					require("lspkind").init()
-				end,
-			},
 		},
 		config = function()
 			require("lsp.cmp")

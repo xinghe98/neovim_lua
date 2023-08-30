@@ -43,7 +43,7 @@ end
 local kind_icons = {
 	Text = " Text",
 	Method = "m Method",
-	Function = " Function",
+	Function = " Func",
 	Constructor = " Constructor",
 	Field = " Field",
 	Variable = " Variable",
@@ -67,19 +67,13 @@ local kind_icons = {
 	Operator = " Operator",
 	TypeParameter = " TypeParameter",
 }
-local limitStr = function(str)
-	if #str > 25 then
-		str = string.sub(str, 1, 22) .. "..."
-	end
-	return str
-end
+
 local luasnip = require("luasnip")
-local lspkind = require("lspkind")
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 local cmp = require("cmp")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-cmp.register_source("look", require("cmp_look").new())
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+cmp.register_source("look", require("cmp_look").new())
 setCompHL()
 cmp.setup({
 	snippet = {
@@ -89,6 +83,11 @@ cmp.setup({
 	},
 	window = {
 		completion = cmp.config.window.bordered(),
+		--[[ completion = {
+			-- winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+			col_offset = -3,
+			side_padding = 0,
+		}, ]]
 		documentation = cmp.config.window.bordered(),
 	},
 	mapping = cmp.mapping.preset.insert({
@@ -134,15 +133,17 @@ cmp.setup({
 			local kind = string.format("%s", kind_icons[vim_item.kind])
 			local strings = vim.split(kind, "%s", { trimempty = true })
 			vim_item.kind = " " .. (strings[1] or "") .. " "
-			vim_item.menu = "    (" .. (strings[2] or "") .. ")"
-			vim_item.menu = ({
-				nvim_lsp = "🚀",
-				luasnip = "🎯",
-				buffer = "📌",
-				path = "📬",
-				look = "📸",
-				spell = "📝",
-			})[entry.source.name]
+			vim_item.menu = "   "
+				.. (strings[2] or "")
+				.. " "
+				.. ({
+					nvim_lsp = "🚀",
+					luasnip = "🎯",
+					buffer = "📌",
+					path = "📬",
+					look = "📸",
+					spell = "📝",
+				})[entry.source.name]
 			return vim_item
 			--[[ local kind = lspkind.cmp_format({
 				mode = "symbol_text",

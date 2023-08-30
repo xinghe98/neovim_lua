@@ -20,7 +20,8 @@ set.expandtab = false
 set.autoread = true
 vim.g.t_Co = 256
 vim.opt.termguicolors = true
-vim.opt.completeopt = { "noinsert", "menuone", "noselect", "preview" }
+vim.opt.completeopt = { "preview", "noselect", "noinsert" }
+-- vim.opt.completeopt = { "noinsert", "menuone", "noselect", "preview" }
 -- 禁止创建备份文件
 vim.o.backup = false
 vim.o.writebackup = false
