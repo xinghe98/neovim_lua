@@ -1,5 +1,5 @@
-local lspsaga = require 'lspsaga'
-lspsaga.setup { -- defaults ...
+local lspsaga = require("lspsaga")
+lspsaga.setup({ -- defaults ...
 	ui = {
 		kind = require("onenord.integrations.lspsaga").custom_kind(),
 	},
@@ -35,7 +35,7 @@ lspsaga.setup { -- defaults ...
 		exec = "<CR>",
 	},
 	rename_action_keys = {
-		quit = "<C-c>",
+		quit = "<Esc>",
 		exec = "<CR>",
 	},
 	definition_preview_icon = "  ",
@@ -49,4 +49,4 @@ lspsaga.setup { -- defaults ...
 	diagnostic_prefix_format = "%d. ",
 	diagnostic_message_format = "%m %c",
 	highlight_prefix = false,
-}
+})

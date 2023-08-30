@@ -40,6 +40,15 @@ local setCompHL = function()
 	vim.api.nvim_set_hl(0, "CmpItemKindTypeParameter", { fg = fgdark, bg = "#58B5A8" })
 end
 
+local source_icons = {
+	nvim_lsp = "🚀",
+	luasnip = "🎯",
+	buffer = "📌",
+	path = "📬",
+	look = "📸",
+	spell = "📝",
+}
+
 local kind_icons = {
 	Text = " Text",
 	Method = "m Method",
@@ -90,6 +99,10 @@ cmp.setup({
 		}, ]]
 		documentation = cmp.config.window.bordered(),
 	},
+	confirm_opts = {
+		behavior = cmp.ConfirmBehavior.Insert,
+		select = false,
+	},
 	mapping = cmp.mapping.preset.insert({
 		["<C-k>"] = cmp.mapping.select_prev_item(),
 		["<C-j>"] = cmp.mapping.select_next_item(),
@@ -98,10 +111,10 @@ cmp.setup({
 		["<C-q>"] = cmp.mapping.abort(),
 		-- TODO: potentially fix emmet nonsense
 		["<CR>"] = cmp.mapping({
-			i = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
+			i = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true }),
 			c = function(fallback)
 				if cmp.visible() then
-					cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+					cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true })
 				else
 					fallback()
 				end
@@ -133,17 +146,12 @@ cmp.setup({
 			local kind = string.format("%s", kind_icons[vim_item.kind])
 			local strings = vim.split(kind, "%s", { trimempty = true })
 			vim_item.kind = " " .. (strings[1] or "") .. " "
-			vim_item.menu = "   "
-				.. (strings[2] or "")
-				.. " "
-				.. ({
-					nvim_lsp = "🚀",
-					luasnip = "🎯",
-					buffer = "📌",
-					path = "📬",
-					look = "📸",
-					spell = "📝",
-				})[entry.source.name]
+			local name = entry.source.name
+			if entry.source.name ~= nil then
+				vim_item.menu = "   " .. (strings[2] or "") .. " " .. source_icons[name]
+			else
+				vim_item.menu = "   " .. (strings[2] or "") .. " "
+			end
 			return vim_item
 			--[[ local kind = lspkind.cmp_format({
 				mode = "symbol_text",
@@ -190,7 +198,6 @@ cmp.setup.filetype("gitcommit", {
 		{ name = "buffer" },
 	}),
 })
-
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 --[[ cmp.setup.cmdline({ '/', '?' }, {
 	mapping = cmp.mapping.preset.cmdline(),
@@ -203,7 +210,7 @@ cmp.setup.filetype("gitcommit", {
 }) ]]
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(":", {
+--[[ cmp.setup.cmdline(":", {
 	mapping = cmp.mapping.preset.cmdline(),
 	sources = cmp.config.sources({
 		{
@@ -216,4 +223,4 @@ cmp.setup.cmdline(":", {
 			keyword_length = 3,
 		},
 	}),
-})
+}) ]]
