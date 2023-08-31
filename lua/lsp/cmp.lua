@@ -187,11 +187,6 @@ cmp.setup({
 		-- { name = 'nvim_lsp_signature_help' },
 	},
 })
-vim.diagnostic.config({
-	virtual_text = {
-		prefix = "😥",
-	},
-})
 -- Set configuration for specific filetype.
 cmp.setup.filetype("gitcommit", {
 	sources = cmp.config.sources({
