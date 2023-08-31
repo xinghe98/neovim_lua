@@ -47,6 +47,7 @@ local source_icons = {
 	path = "📬",
 	look = "📸",
 	spell = "📝",
+	calc = "[calc]",
 }
 
 local kind_icons = {
@@ -109,6 +110,7 @@ cmp.setup({
 		["<C-d>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
 		["<C-q>"] = cmp.mapping.abort(),
+		["<Esc>"] = cmp.mapping.abort(),
 		-- TODO: potentially fix emmet nonsense
 		["<CR>"] = cmp.mapping({
 			i = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true }),

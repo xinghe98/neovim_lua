@@ -10,7 +10,7 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
-
+--config.defaults.lazy = true
 require("lazy").setup({
 	-- lsp config
 	{
@@ -26,6 +26,7 @@ require("lazy").setup({
 	{ "neovim/nvim-lspconfig" },
 	{
 		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
 		dependencies = {
 			{ "hrsh7th/cmp-buffer" },
 			{ "hrsh7th/cmp-path" },
@@ -84,6 +85,7 @@ require("lazy").setup({
 	},
 	{
 		"liuchengxu/vista.vim",
+		lazy = false,
 		config = function()
 			require("packsettings.vista")
 		end,
@@ -118,6 +120,7 @@ require("lazy").setup({
 	},
 	{
 		"nvim-lualine/lualine.nvim",
+		lazy = false,
 		checker = {
 			-- automatically check for plugin updates
 			enabled = true,
@@ -210,9 +213,9 @@ require("lazy").setup({
 	{ "rcarriga/nvim-notify" },
 	{ "folke/todo-comments.nvim" },
 	{ "ap/vim-css-color" },
-	{ "theniceboy/nvim-deus" },
-	{ "marko-cerovac/material.nvim" },
-	{ "rmehri01/onenord.nvim" },
-	{ "folke/tokyonight.nvim" },
-	{ "hardhackerlabs/theme-vim" },
-})
+	{ "theniceboy/nvim-deus", lazy = false, priority = 1000 },
+	{ "marko-cerovac/material.nvim", lazy = false, priority = 1000 },
+	{ "rmehri01/onenord.nvim", lazy = false, priority = 1000 },
+	{ "folke/tokyonight.nvim", lazy = false, priority = 1000 },
+	{ "hardhackerlabs/theme-vim", lazy = false, priority = 1000 },
+}, { defaults = { lazy = true } })
