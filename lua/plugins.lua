@@ -124,6 +124,7 @@ require("lazy").setup({
 	},
 	{
 		"nvim-lualine/lualine.nvim",
+		event = "VimEnter",
 		lazy = false,
 		checker = {
 			-- automatically check for plugin updates
