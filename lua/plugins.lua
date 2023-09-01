@@ -213,8 +213,8 @@ require("lazy").setup({
 	},
 	{
 		"github/copilot.vim",
-		lazy = false,
-		event = "VimEnter",
+		-- lazy = false,
+		event = "InsertEnter",
 		config = function()
 			vim.g.copilot_enabled = true
 			vim.g.copilot_no_tab_map = true
@@ -224,7 +224,7 @@ require("lazy").setup({
 	--------一些美化啥的 -------------------
 	{ "rcarriga/nvim-notify" },
 	{ "folke/todo-comments.nvim" },
-	{ "ap/vim-css-color", event = "BufWinEnter" },
+	{ "ap/vim-css-color", event = "VimEnter", lazy = false },
 	{ "theniceboy/nvim-deus", lazy = false, priority = 1000 },
 	{ "marko-cerovac/material.nvim", lazy = false, priority = 1000 },
 	{ "rmehri01/onenord.nvim", lazy = false, priority = 1000 },
