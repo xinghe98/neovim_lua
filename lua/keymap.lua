@@ -17,14 +17,11 @@ keymap("", "K", "5k", opts)
 keymap("n", "qq", ":nohlsearch<CR>", opts)
 keymap("n", "<S-s>", ":w<CR>", opts)
 keymap("n", "<S-q>", ":q<CR>", opts)
-keymap("i", "<C-a>", "<Home>", opts)
-keymap("i", "<C-e>", "<End>", opts)
 --[[ keymap('n','<leader><leader>p', ':set paste<CR>',opts)
 keymap('n', '<leader>np', ':set nopaste<CR>',opts) ]]
 keymap("n", "r", ":call CompileRunGcc()<CR>", opts)
 keymap("n", "<leader>t", ":TranslateW<CR>", opts)
 keymap("v", "<leader>t", ":TranslateW<CR>", opts)
-keymap("", "<C-c>", '"+y', opts)
 keymap("n", "<C-t>", ":FloatermToggle<CR>", opts)
 keymap("t", "<C-t>", "<C-\\><C-n>:FloatermToggle<CR>", opts)
 -- tab标签页跳转
@@ -37,8 +34,9 @@ keymap("n", "<leader>6", ":BufferLineGoToBuffer 6<CR>", opts)
 keymap("n", "<leader><leader>", ":bn<CR>", opts)
 keymap("n", "<leader><backspace>", ":bp<CR>", opts)
 keymap("n", "<c-w>", ":bd<CR>", opts)
--- coc-exporler
+-- nvim-tree
 keymap("n", "tt", ":NvimTreeFindFileToggle<CR>", opts)
+-- copilot
 keymap("i", "<C-e>", 'copilot#Accept("<CR>")', { script = true, silent = true, expr = true })
 vim.cmd([[func! CompileRunGcc()
 	exec "w"

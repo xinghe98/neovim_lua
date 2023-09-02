@@ -39,6 +39,12 @@ local function attach(client, bufnr)
 			require("conform").format({ buf = args.buf })
 		end,
 	})
+	vim.api.nvim_create_autocmd("InsertEnter", {
+		pattern = "*",
+		callback = function(args)
+			require("conform").format({ buf = args.buf })
+		end,
+	})
 	--[[ vim.api.nvim_create_autocmd('BufWritePre', {
 		group = vim.api.nvim_create_augroup('LspFormatting', { clear = true }),
 		buffer = bufnr,

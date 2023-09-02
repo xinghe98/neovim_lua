@@ -1,7 +1,8 @@
 local set = vim.opt
 set.number = true
 set.rnu = true
-set.wrap = false
+-- 可以拆行
+set.wrap = true
 set.fileformat = unix
 set.cindent = true
 set.tabstop = 4
@@ -36,6 +37,7 @@ vim.o.foldmethod = "indent"
 vim.o.foldenable = false
 vim.o.foldlevel = 99
 vim.notify = require("notify")
+vim.opt.clipboard = "unnamedplus"
 vim.cmd([[
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif

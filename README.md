@@ -11,10 +11,25 @@
 
 # 安装方法
 
-此分支使用的是nvim+lsp配置，但与之前的main分支(coc)安装方式完全相同，**但是** main分支的安装会有些许变化，
-因转为lsp，因此main分支不再做更新。
+此分支使用的是nvim+lsp配置，lazy.nvim进行包管理，其他的分支分别是[lsp+packer](https://github.com/xinghe98/neovim_lua/tree/use_lsp) 和[coc+packer](https://github.com/xinghe98/neovim_lua/tree/main) ,但是紧跟时代，其他两个分支不再更新。
 
-安装方法及其他依赖详见：[REDME](https://github.com/xinghe98/neovim_lua/tree/main#usage) 
+```bash
+# Clone the repository.
+git clone https://github.com/xinghe98/neovim_lua.git ~/.config/nvim
+```
+```bash
+cd ~/.local/share/nvim/lazy/markdown-preview.nvim
+
+yarn install
+```
+
+```bash
+sudo pacman -S python-pip go nodejs npm yarn xclip qutebrower
+```
+
+```bash
+sudo pacman -S ctags
+```
 
 # 键盘配置映射表
 
@@ -35,11 +50,9 @@
 | normal |           qq          |   :nohlsearch   |      退出搜索高亮      |
 | normal |   \<leader>\<leader>  |       :bn       | 移动到下一个buffer窗口 |
 | normal | \<leader>\<backspace> |       :bp       | 移动到上一个buffer窗口 |
-| normal      |         \<c-w>        |       :bd       |          关闭当前buffer窗口|
-| normal      |         \<S-s>        |        :w       |          <++>          |
-| normal      |         \<S-q>        |        :q       |          <++>          |
-| insert      |         \<C-a>        |     \<Home>     |          <++>          |
-| insert      |         \<C-e>        |      \<End>     |          <++>          |
-| normal |       \<leader>t      | :TranslateW<CR> |          <++>          |
-| visual |       \<leader>t      | :TranslateW<CR> |          <++>          |
-| normal      |           (           |        %        |                        |
+| normal |         \<c-w>        |       :bd       |   关闭当前buffer窗口   |
+| normal |         \<S-s>        |        :w       |          保存          |
+| normal |         \<S-q>        |        :q       |          退出          |
+| normal |       \<leader>t      | :TranslateW<CR> |         翻译词         |
+| visual |       \<leader>t      | :TranslateW<CR> |         翻译句         |
+| normal |           tt          |                 |         打开目录树         |
