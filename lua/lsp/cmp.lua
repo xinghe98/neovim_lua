@@ -40,7 +40,7 @@ local setCompHL = function()
 	vim.api.nvim_set_hl(0, "CmpItemKindTypeParameter", { fg = fgdark, bg = "#58B5A8" })
 end
 
-local source_icons = {
+--[[ local source_icons = {
 	nvim_lsp = "🚀",
 	luasnip = "🎯",
 	buffer = "📌",
@@ -49,7 +49,30 @@ local source_icons = {
 	spell = "📝",
 	calc = "[calc]",
 }
-
+ ]]
+local source_icons = {}
+-- mac下emoji表情真丑，以前都没发现
+if vim.fn.has("mac") == 1 then
+	source_icons = {
+		nvim_lsp = "  [lsp]",
+		luasnip = "  [luasnip]",
+		buffer = "  [buffer]",
+		path = "  [path]",
+		look = "  [look]",
+		spell = "  [spell]",
+		calc = "  [calc]",
+	}
+else
+	source_icons = {
+		nvim_lsp = "🚀",
+		luasnip = "🎯",
+		buffer = "📌",
+		path = "📬",
+		look = "📸",
+		spell = "📝",
+		calc = "[calc]",
+	}
+end
 local kind_icons = {
 	Text = "󰓽 Text",
 	Method = "m Method",

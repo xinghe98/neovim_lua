@@ -45,12 +45,12 @@ local function attach(client, bufnr)
 		end,
 	}) ]]
 	-- ** (don't forget the 'conf/rust-tools-conf.lua) **
-	vim.api.nvim_create_autocmd("InsertEnter", {
+	--[[ vim.api.nvim_create_autocmd("InsertEnter", {
 		pattern = "*",
 		callback = function(args)
 			require("conform").format({ buf = args.buf })
 		end,
-	})
+	}) ]]
 	vim.api.nvim_create_autocmd("BufWritePre", {
 		pattern = "*",
 		callback = function(args)
