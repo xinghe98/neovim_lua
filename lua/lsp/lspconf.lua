@@ -32,13 +32,19 @@ local function attach(client, bufnr)
 
 	-- ** auto format when saving a file **
 	-- ** if need this, plz enable it mannually. **
-	-- ** (don't forget the 'conf/rust-tools-conf.lua) **
-	vim.api.nvim_create_autocmd("BufWritePre", {
+	vim.api.nvim_create_autocmd("BufWritePost", {
 		pattern = "*",
 		callback = function(args)
-			require("conform").format({ buf = args.buf })
+			require("conform").format({ async = true, lsp_fallback = true, buf = args.buf }, function(err)
+				if not err then
+					vim.api.nvim_buf_call(args.buf, function()
+						vim.cmd.update()
+					end)
+				end
+			end)
 		end,
 	})
+	-- ** (don't forget the 'conf/rust-tools-conf.lua) **
 	vim.api.nvim_create_autocmd("InsertEnter", {
 		pattern = "*",
 		callback = function(args)
