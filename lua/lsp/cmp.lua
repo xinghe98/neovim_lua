@@ -51,12 +51,12 @@ local source_icons = {
 }
 
 local kind_icons = {
-	Text = " Text",
+	Text = "󰓽 Text",
 	Method = "m Method",
-	Function = " Func",
+	Function = "󰊕 Func",
 	Constructor = " Constructor",
 	Field = " Field",
-	Variable = " Variable",
+	Variable = " Variable",
 	Class = " Class",
 	Interface = " Interface",
 	Module = " Module",
@@ -67,15 +67,15 @@ local kind_icons = {
 	Keyword = " Keyword",
 	Snippet = " snippet",
 	Color = " Color",
-	File = " File",
+	File = " File",
 	Reference = " Reference",
-	Folder = " Folder",
+	Folder = " Folder",
 	EnumMember = " EnumMember",
-	Constant = " Constant",
+	Constant = " Constant",
 	Struct = "  Struct",
 	Event = " Event",
-	Operator = " Operator",
-	TypeParameter = " TypeParameter",
+	Operator = " Operator",
+	TypeParameter = "󰉺 TypeParameter",
 }
 
 local luasnip = require("luasnip")
