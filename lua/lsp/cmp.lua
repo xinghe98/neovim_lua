@@ -48,8 +48,8 @@ end
 	look = "📸",
 	spell = "📝",
 	calc = "[calc]",
-}
- ]]
+} ]]
+
 local source_icons = {}
 -- mac下emoji表情真丑，以前都没发现
 if vim.fn.has("mac") == 1 then
