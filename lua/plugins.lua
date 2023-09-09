@@ -224,7 +224,7 @@ require("lazy").setup({
 	},
 	--------一些美化啥的 -------------------
 	{ "rcarriga/nvim-notify" },
-	{ "folke/todo-comments.nvim" },
+	{ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, event = "VimEnter" },
 	{ "ap/vim-css-color", event = "VimEnter", lazy = false },
 	{ "theniceboy/nvim-deus", lazy = false, priority = 1000 },
 	{ "marko-cerovac/material.nvim", lazy = false, priority = 1000 },

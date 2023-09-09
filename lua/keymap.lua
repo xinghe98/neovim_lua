@@ -38,6 +38,16 @@ keymap("n", "<c-w>", ":bd<CR>", opts)
 keymap("n", "tt", ":NvimTreeFindFileToggle<CR>", opts)
 -- copilot
 keymap("i", "<C-e>", 'copilot#Accept("<CR>")', { script = true, silent = true, expr = true })
+-- todo comments
+keymap("n", "<leader>ft", ":TodoTelescope<CR>", opts)
+vim.keymap.set("n", "]t", function()
+	require("todo-comments").jump_next()
+end, { desc = "Next todo comment" })
+
+vim.keymap.set("n", "[t", function()
+	require("todo-comments").jump_prev()
+end, { desc = "Previous todo comment" })
+
 vim.cmd([[func! CompileRunGcc()
 	exec "w"
 	if &filetype == 'python'
