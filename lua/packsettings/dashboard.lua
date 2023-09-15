@@ -43,7 +43,7 @@ require("dashboard").setup({
 			},
 			{
 				desc = "󱠿 Project",
-				group = "@variable",
+				group = "DiagnosticHint",
 				action = "edit ~/project/",
 				key = "d",
 			},
