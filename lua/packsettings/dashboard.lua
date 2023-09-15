@@ -44,8 +44,8 @@ require("dashboard").setup({
 			{
 				desc = "󱠿 Project",
 				group = "DiagnosticHint",
-				action = "edit ~/project/",
-				key = "d",
+				action = "edit ~/Project/",
+				key = "p",
 			},
 		},
 	},
