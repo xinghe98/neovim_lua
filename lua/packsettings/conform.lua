@@ -14,7 +14,7 @@ require("conform").setup({
 		-- Conform will use the first available formatter in the list
 		javascript = { "prettierd" },
 		typescript = { "prettierd" },
-		vue = { "prettierd" },
+		vue = { formatters = { "volar", "prettierd" }, run_all_formatters = true },
 		-- Formatters can also be specified with additional options
 		python = {
 			formatters = { "isort", "black" },

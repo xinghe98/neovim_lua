@@ -1,5 +1,5 @@
 require("dashboard").setup({
-	theme = "hyper",
+	--[[ theme = "hyper",
 	config = {
 		week_header = {
 			enable = true,
@@ -11,6 +11,41 @@ require("dashboard").setup({
 				group = "Label",
 				action = "Telescope find_files",
 				key = "f",
+			},
+		},
+	}, ]]
+	theme = "hyper",
+	config = {
+		week_header = {
+			enable = true,
+		},
+		shortcut = {
+			{ desc = "󰊳 Update", group = "@property", action = "Lazy update", key = "u" },
+			{
+				icon = " ",
+				icon_hl = "@variable",
+				desc = "Files",
+				group = "Label",
+				action = "Telescope find_files",
+				key = "f",
+			},
+			{
+				desc = " NeovimConf",
+				group = "DiagnosticHint",
+				action = "edit ~/.config/nvim/init.lua",
+				key = "n",
+			},
+			{
+				desc = " dotfiles",
+				group = "Number",
+				action = "edit ~/.config/",
+				key = "d",
+			},
+			{
+				desc = "󱠿 Project",
+				group = "@variable",
+				action = "edit ~/project/",
+				key = "d",
 			},
 		},
 	},
