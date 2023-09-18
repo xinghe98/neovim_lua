@@ -4,7 +4,7 @@ keymap("n", "tg", ":Vista!!<CR>", opts)
 vim.cmd([[
 autocmd bufenter * if (winnr("$") == 1 && &filetype == "Vista") | q | endif
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-let g:vista_default_executive = 'ctags'
+let g:vista_default_executive = 'coc'
 
 let g:vista_executive_for = {
   \ 'cpp': 'vim_lsp',

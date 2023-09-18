@@ -12,73 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 --config.defaults.lazy = true
 require("lazy").setup({
-	-- lsp config
-	{
-		"williamboman/mason.nvim",
-	},
-	{ "williamboman/mason-lspconfig.nvim" },
-	{
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		lazy = false,
-		config = function()
-			require("lsp/mason")
-		end,
-	},
-	{ "neovim/nvim-lspconfig" },
-
-	{
-		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
-		dependencies = {
-			{ "hrsh7th/cmp-buffer" },
-			{ "hrsh7th/cmp-path" },
-			{ "hrsh7th/cmp-nvim-lua" },
-			{ "hrsh7th/cmp-look" },
-			{ "f3fora/cmp-spell" },
-			-- { "hrsh7th/cmp-cmdline" },
-			{ "hrsh7th/cmp-calc" },
-			{ "hrsh7th/cmp-nvim-lsp" },
-			{ "saadparwaiz1/cmp_luasnip" }, -- Snippets source for nvim-cmp
-			{ "rafamadriz/friendly-snippets" }, -- Snippets (vscode-like) collection for different languages
-			{
-				"L3MON4D3/LuaSnip", -- Snippets plugin
-				config = function()
-					require("luasnip.loaders.from_vscode").lazy_load()
-				end,
-			},
-			{ "ray-x/lsp_signature.nvim" },
-			-- use 'hrsh7th/cmp-nvim-lsp-signature-help'
-		},
-		config = function()
-			require("lsp.cmp")
-		end,
-	},
-	{
-		"nvimdev/lspsaga.nvim",
-		-- after = "nvim-lspconfig",
-		event = "VimEnter",
-		config = function()
-			require("lspsaga").setup({})
-		end,
-		dependencies = {
-			{ "nvim-tree/nvim-web-devicons" },
-			--Please make sure you install markdown and markdown_inline parser
-			{ "nvim-treesitter/nvim-treesitter" },
-			{
-				"stevearc/conform.nvim",
-				config = function()
-					require("packsettings.conform")
-				end,
-			},
-			{
-				"windwp/nvim-autopairs",
-				config = function()
-					require("nvim-autopairs").setup({})
-				end,
-			},
-		},
-	},
-	--------lsp end -------------------
+	{ "neoclide/coc.nvim", branch = "release", lazy = false, event = "VimEnter" },
 	{
 		"glepnir/dashboard-nvim",
 		config = function()
@@ -91,6 +25,13 @@ require("lazy").setup({
 		event = "BufEnter",
 		config = function()
 			require("packsettings.vista")
+		end,
+	},
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = function()
+			require("nvim-autopairs").setup({})
 		end,
 	},
 	{ "mg979/vim-visual-multi", branch = "master", lazy = false },
