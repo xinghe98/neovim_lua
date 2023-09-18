@@ -4,13 +4,13 @@
 
 -- stylua: ignore
 local colors = {
-  blue   = '#80a0ff',
-  cyan   = '#79dac8',
-  black  = '#080808',
-  white  = '#c6c6c6',
-  red    = '#ff5189',
-  violet = '#d183e8',
-  grey   = '#303030',
+	blue   = '#80a0ff',
+	cyan   = '#79dac8',
+	black  = '#080808',
+	white  = '#c6c6c6',
+	red    = '#ff5189',
+	violet = '#d183e8',
+	grey   = '#303030',
 }
 
 local bubbles_theme = {
@@ -45,29 +45,12 @@ require("lualine").setup({
 		lualine_b = {
 			"filename",
 			{
-
-				function()
-					local msg = "No Active Lsp"
-					local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-					local clients = vim.lsp.get_active_clients()
-					if next(clients) == nil then
-						return msg
-					end
-					for _, client in ipairs(clients) do
-						local filetypes = client.config.filetypes
-						if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-							return client.name
-						end
-					end
-					return msg
-				end,
-				icon = " LSP:",
-				color = { fg = "#ffffff", gui = "bold" },
+				'g:coc_status', 'bo:filetype'
 			},
 			{
 
 				"diagnostics",
-				sources = { "nvim_diagnostic" },
+				sources = { "nvim_diagnostic", "coc" },
 				symbols = { error = " ", warn = " ", info = " " },
 				diagnostics_color = {
 					color_error = { fg = colors.red },

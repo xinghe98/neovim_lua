@@ -12,7 +12,14 @@ end
 vim.opt.rtp:prepend(lazypath)
 --config.defaults.lazy = true
 require("lazy").setup({
-	{ "neoclide/coc.nvim", branch = "release", lazy = false, event = "VimEnter" },
+	{
+		'neoclide/coc.nvim',
+		branch = "release",
+		event = "VimEnter",
+		config = function()
+			require("packsettings.coc")
+		end,
+	},
 	{
 		"glepnir/dashboard-nvim",
 		config = function()
@@ -27,14 +34,7 @@ require("lazy").setup({
 			require("packsettings.vista")
 		end,
 	},
-	{
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
-		config = function()
-			require("nvim-autopairs").setup({})
-		end,
-	},
-	{ "mg979/vim-visual-multi", branch = "master", lazy = false },
+	{ "mg979/vim-visual-multi",     branch = "master", lazy = false },
 	{
 		"HiPhish/nvim-ts-rainbow2",
 		event = "VimEnter",
@@ -79,7 +79,7 @@ require("lazy").setup({
 			require("packsettings.lualine")
 		end,
 	},
-	{ "voldikss/vim-translator", event = "BufEnter" },
+	{ "voldikss/vim-translator",   event = "BufEnter" },
 	{
 		"tpope/vim-surround",
 		version = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -110,7 +110,7 @@ require("lazy").setup({
 		end,
 	},
 	-- 终端悬浮窗
-	{ "voldikss/vim-floaterm", lazy = false },
+	{ "voldikss/vim-floaterm",       lazy = false },
 	-- 文件搜索插件
 	{
 		"nvim-telescope/telescope.nvim",
@@ -119,7 +119,8 @@ require("lazy").setup({
 		dependencies = {
 			"nvim-lua/plenary.nvim", -- Lua 开发模块
 			"BurntSushi/ripgrep", -- 文字查找
-			"sharkdp/fd", -- 文件查找
+			"sharkdp/fd",   -- 文件查找
+			'fannheyward/telescope-coc.nvim'
 		},
 		config = function()
 			require("packsettings.telescope")
@@ -165,11 +166,11 @@ require("lazy").setup({
 	},
 	--------一些美化啥的 -------------------
 	{ "rcarriga/nvim-notify" },
-	{ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, event = "VimEnter" },
-	{ "ap/vim-css-color", event = "VimEnter", lazy = false },
-	{ "theniceboy/nvim-deus", lazy = false, priority = 1000 },
-	{ "marko-cerovac/material.nvim", lazy = false, priority = 1000 },
-	{ "rmehri01/onenord.nvim", lazy = false, priority = 1000 },
-	{ "folke/tokyonight.nvim", lazy = false, priority = 1000 },
-	{ "hardhackerlabs/theme-vim", lazy = false, priority = 1000 },
+	{ "folke/todo-comments.nvim",    dependencies = { "nvim-lua/plenary.nvim" }, event = "VimEnter" },
+	{ "ap/vim-css-color",            event = "VimEnter",                         lazy = false },
+	{ "theniceboy/nvim-deus",        lazy = false,                               priority = 1000 },
+	{ "marko-cerovac/material.nvim", lazy = false,                               priority = 1000 },
+	{ "rmehri01/onenord.nvim",       lazy = false,                               priority = 1000 },
+	{ "folke/tokyonight.nvim",       lazy = false,                               priority = 1000 },
+	{ "hardhackerlabs/theme-vim",    lazy = false,                               priority = 1000 },
 }, { defaults = { lazy = true } })

@@ -1,20 +1,19 @@
 {
 	"sumneko-lua.locale": "zh-cn",
 	"tsserver.locale": "zh-CN",
-	"coc.preferences.semanticTokensHighlights": false,
+	"colors.enable": true,
+	"semanticTokens.enable": true,
 	"coc.preferences.enableMessageDialog": true,
-	"coc.preferences.enableFloatHighlight": true,
-	"coc.preferences.snippetStatusText": "Ⓢ ",
+	"snippet.statusText": "Ⓢ ",
 	"coc.preferences.extensionUpdateCheck": "daily",
 	"coc.preferences.messageLevel": "error",
-	"coc.source.around.firstMatch": false,
-	"coc.source.buffer.firstMatch": false,
 	"coc.source.syntax.firstMatch": false,
 	"suggest.labelMaxLength": 60,
 	"suggest.noselect": true,
 	"suggest.enablePreselect": false,
 	"suggest.triggerAfterInsertEnter": true,
 	"suggest.autoTrigger": "always",
+	"suggest.minTriggerInputLength": 3,
 	"suggest.timeout": 5000,
 	"diagnostic.floatConfig": {
 		"border": true,
@@ -36,32 +35,32 @@
 	"suggest.detailField": "preview",
 	"suggest.snippetIndicator": "",
 	"suggest.triggerCompletionWait": 50,
-	"suggest.echodocSupport": true,
 	"suggest.completionItemKindLabels": {
-		"text": " text",
+		"text": "󰓽 text",
 		"method": "m method",
-		"function": " function",
+		"function": "󰊕 func",
 		"constructor": " constructor",
 		"field": " field",
-		"variable": " variable",
+		"variable": " variable",
 		"class": " class",
 		"interface": " interface",
 		"module": " module",
 		"property": " property",
 		"unit": " unit",
 		"value": " value",
-		"enum": " enum",
 		"keyword": " keyword",
 		"snippet": " snippet",
 		"color": " color",
-		"file": " file",
+		"file": " file",
 		"reference": " reference",
-		"folder": " folder",
-		"constant": " constant",
+		"folder": " folder",
+		"enum": " enummember",
+		"constant": " constant",
 		"struct": "  struct",
 		"event": " event",
-		"operator": " operator"
+		"operator": " operator"
 	},
+	"suggest.formatItems": ["abbr", "menu", "kind", "shortcut"],
 	"diagnostic.errorSign": "\uf467",
 	"diagnostic.warningSign": "\uf071",
 	"diagnostic.infoSign": "\uf129",
@@ -72,18 +71,10 @@
 	"diagnostic.virtualTextPrefix": " ❯❯❯ ",
 	"diagnostic.virtualTextCurrentLineOnly": false,
 	"diagnostic.virtualText": true,
+	"diagnostic.enableMessage": "jump",
 	"list.previewHighlightGroup": "Statement",
 	"list.nextKeymap": "<C-e>",
 	"list.previousKeymap": "<C-u>",
-	"importCost.bundleSizeDecoration": "both",
-	"importCost.typescriptExtensions": [
-		"\\.tsx?$"
-	],
-	"importCost.javascriptExtensions": [
-		"\\.jsx?$"
-	],
-	"importCost.showCalculatingDecoration": true,
-	"importCost.debug": false,
 	"snippets.ultisnips.directories": [
 		"$HOME/.config/nvim/Ultisnips/",
 		"$HOME/.config/nvim/plugged/vim-snippets/UltiSnips/"
@@ -101,11 +92,6 @@
 	"flutter.lsp.initialization.onlyAnalyzeProjectsWithOpenFiles": false,
 	"flutter.trace.server": "off",
 	"dart.lineLength": 100,
-	"python.formatting.provider": "yapf",
-	"python.formatting.yapfArgs": [
-		"--style",
-		"{SPACES_AROUND_POWER_OPERATOR: True, SPACES_BEFORE_COMMENT: 1}"
-	],
 	"html.format.enable": true,
 	"javascript.showUnused": true,
 	"javascript.suggest.names": true,
@@ -118,11 +104,11 @@
 	"prettier.useTabs": true,
 	"prettier.trailingComma": "all",
 	"prettier.singleQuote": false,
-	"coc-actions.hideCursor": false,
-	"coc-actions.showActionKind": true,
 	"pairs.enableBackspace": true,
 	"diagnostic-languageserver.formatFiletypes": {
 		"elixir": "mix_format",
 		"eelixir": "mix_format"
-	}
+	},
+	"snippets.ultisnips.pythonPrompt": false,
+	"symbol-line.separator": " "
 }

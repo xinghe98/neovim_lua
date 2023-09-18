@@ -1,3 +1,4 @@
+vim.api.nvim_set_hl(0, "CocSymbolLineSeparator", { fg = "#82AAFF", bg = "NONE", bold = true })
 vim.api.nvim_command("command! -nargs=? Fold :call CocAction('fold', <f-args>)")
 vim.api.nvim_command("hi! link CocPum Pmenu")
 -- Utility functions shared between progress reports for LSP and DAP
@@ -25,6 +26,7 @@ end
 -- no select by setting `"suggest.noselect": true` in your configuration file
 -- NOTE: Use command ':verbose imap <tab>' to make sure Tab is not mapped by
 -- other plugins before putting this into your config
+
 local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
 keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
 keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
@@ -37,18 +39,19 @@ keyset("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r
 keyset("i", "<c-j>", "<Plug>(coc-snippets-expand-jump)")
 -- Use <c-space> to trigger completion
 keyset("i", "<c-space>", "coc#refresh()", { silent = true, expr = true })
-
 -- Use `[g` and `]g` to navigate diagnostics
 -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
 keyset("n", "gk", "<Plug>(coc-diagnostic-prev)", { silent = true })
 keyset("n", "gj", "<Plug>(coc-diagnostic-next)", { silent = true })
+keyset("n", "ge", "<cmd>Telescope coc diagnostics<CR>", { silent = true })
 
 -- GoTo code navigation
 keyset("n", "gd", "<Plug>(coc-definition)", { silent = true })
 keyset("n", "gy", "<Plug>(coc-type-definition)", { silent = true })
 keyset("n", "gi", "<Plug>(coc-implementation)", { silent = true })
-keyset("n", "gr", "<Plug>(coc-references)", { silent = true })
+keyset("n", "gr", "<cmd>Telescope coc references<CR>", { silent = true })
 keyset("n", "gh", ':call CocAction("doHover")<cr>', { silent = true })
+keyset("n", "<leader>e", '<Plug>(coc-diagnostic-info)', { silent = true })
 
 -- Highlight the symbol and its references on a CursorHold event(cursor is idle)
 vim.api.nvim_create_augroup("CocGroup", {})
@@ -146,6 +149,14 @@ vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'edito
 -- provide custom statusline: lightline.vim, vim-airline
 vim.opt.statusline:prepend("%{coc#status()}%{get(b:,'coc_current_function','')}")
 
+function _G.symbol_line()
+	local curwin = vim.g.statusline_winid or 0
+	local curbuf = vim.api.nvim_win_get_buf(curwin)
+	local ok, line = pcall(vim.api.nvim_buf_get_var, curbuf, 'coc_symbol_line')
+	return ok and line or ''
+end
+
+vim.o.winbar = '%!v:lua.symbol_line()'
 --[[ local client_notifs = {}
 
 local function get_notif_data(client_id, token)
@@ -231,7 +242,7 @@ function! s:DiagnosticNotify() abort
   if get(l:info, 'error', 0)
     let l:level = 'error'
   endif
- 
+
   if get(l:info, 'error', 0)
     call add(l:msgs, ' Errors: ' . l:info['error'])
   endif
