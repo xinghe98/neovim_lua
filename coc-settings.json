@@ -24,10 +24,14 @@
 	"hover.floatConfig": {
 		"border": true,
 		"rounded": true,
-		"highlight": "Normal",
 		"focusable": false
 	},
 	"suggest.floatConfig": {
+		"border": true,
+		"rounded": true,
+		"highlight": "Normal"
+	},
+	"signature.floatConfig": {
 		"border": true,
 		"rounded": true,
 		"highlight": "Normal"

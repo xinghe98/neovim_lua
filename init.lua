@@ -25,6 +25,7 @@ require("guiConfig")
 require("style")
 vim.g.coc_global_extensions = {
 	"coc-css",
+	"coc-highlight",
 	"coc-pairs",
 	"coc-sumneko-lua",
 	"coc-go",
