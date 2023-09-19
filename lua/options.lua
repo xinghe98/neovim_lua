@@ -38,7 +38,7 @@ vim.o.foldenable = false
 vim.o.foldlevel = 99
 vim.notify = require("notify")
 vim.opt.clipboard = "unnamedplus"
-vim.opt.pumblend = 15
+-- vim.opt.pumblend = 15
 vim.cmd([[
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif

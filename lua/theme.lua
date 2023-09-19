@@ -1,8 +1,8 @@
-vim.cmd("colorscheme deus")
+-- vim.cmd("colorscheme deus")
 -- vim.cmd("colorscheme material")
 -- vim.cmd("colorscheme hardhacker")
 --[[ require("onenord").setup({
-	theme = nil, -- "dark" or "light". Alternatively, remove the option and set vim.o.background instead
+	theme = nil,  -- "dark" or "light". Alternatively, remove the option and set vim.o.background instead
 	borders = true, -- Split window borders
 	fade_nc = false, -- Fade non-current windows, making them more distinguishable
 	-- Style that is applied to various groups: see `highlight-args` for options
@@ -24,6 +24,6 @@ vim.cmd("colorscheme deus")
 		match_paren = false,
 	},
 	custom_highlights = {}, -- Overwrite default highlight groups
-	custom_colors = {}, -- Overwrite default colors
+	custom_colors = {},  -- Overwrite default colors
 })
 require("onenord.colors").load() ]]
