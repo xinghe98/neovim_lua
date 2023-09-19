@@ -43,6 +43,7 @@
 	},
 	"suggest.detailField": "preview",
 	"suggest.snippetIndicator": "",
+	"suggest.selection": "recentlyUsedByPrefix",
 	"suggest.triggerCompletionWait": 50,
 	"suggest.completionItemKindLabels": {
 		"text": "󰓽 Text",
@@ -71,7 +72,7 @@
 		"typeParameter": "󰉺 TypeParameter",
 		"default": "󰊨 default"
 	},
-	"suggest.formatItems": ["abbr", "menu", "kind", "shortcut"],
+	"suggest.formatItems": ["abbr", "menu", "kind"],
 	"diagnostic.errorSign": "\uf467",
 	"diagnostic.warningSign": "\uf071",
 	"diagnostic.infoSign": "\uf129",

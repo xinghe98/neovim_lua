@@ -1,6 +1,6 @@
--- vim.cmd("colorscheme deus")
+vim.cmd("colorscheme deus")
 -- vim.cmd("colorscheme material")
-vim.cmd("colorscheme hardhacker")
+-- vim.cmd("colorscheme hardhacker")
 --[[ require("onenord").setup({
 	theme = nil, -- "dark" or "light". Alternatively, remove the option and set vim.o.background instead
 	borders = true, -- Split window borders
