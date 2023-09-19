@@ -1,4 +1,4 @@
--- vim.cmd("colorscheme deus")
+vim.cmd("colorscheme deus")
 -- vim.cmd("colorscheme material")
 -- vim.cmd("colorscheme hardhacker")
 --[[ require("onenord").setup({

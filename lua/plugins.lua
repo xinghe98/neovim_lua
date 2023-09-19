@@ -22,6 +22,7 @@ require("lazy").setup({
 	},
 	{
 		"glepnir/dashboard-nvim",
+		lazy = false,
 		config = function()
 			require("packsettings.dashboard")
 		end,
