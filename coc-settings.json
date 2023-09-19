@@ -30,13 +30,11 @@
 	},
 	"suggest.floatConfig": {
 		"border": true,
-		"rounded": true,
-		"highlight": "Normal"
+		"rounded": true
 	},
 	"suggest.pumFloatConfig": {
 		"border": true,
-		"rounded": true,
-		"highlight": "Normal"
+		"rounded": true
 	},
 	"signature.floatConfig": {
 		"border": true,
