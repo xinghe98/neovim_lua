@@ -30,7 +30,7 @@ require("lazy").setup({
 	{
 		"glepnir/dashboard-nvim",
 		lazy = false,
-		config = function()
+		cfonfig = function()
 			require("packsettings.dashboard")
 		end,
 		dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -103,7 +103,7 @@ require("lazy").setup({
 	{ "xiyaowong/nvim-cursorword", lazy = false },
 	{
 		"akinsho/bufferline.nvim",
-		event = "BufNew",
+		event = "VimEnter",
 		version = "v3.*",
 		config = function()
 			require("packsettings.bufferline")

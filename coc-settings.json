@@ -15,7 +15,7 @@
 	"suggest.triggerAfterInsertEnter": true,
 	"suggest.autoTrigger": "always",
 	"suggest.minTriggerInputLength": 2,
-	"suggest.timeout": 5000,
+	"suggest.timeout": 500,
 	"diagnostic.floatConfig": {
 		"border": true,
 		"rounded": true,
@@ -118,7 +118,7 @@
 	"prettier.useTabs": true,
 	"prettier.trailingComma": "all",
 	"prettier.singleQuote": false,
-	"pairs.enableBackspace": true,
+	"go.goplsOptions": { "gofumpt": true },
 	"diagnostic-languageserver.formatFiletypes": {
 		"elixir": "mix_format",
 		"eelixir": "mix_format"
