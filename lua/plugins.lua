@@ -21,6 +21,13 @@ require("lazy").setup({
 		end,
 	},
 	{
+		'windwp/nvim-autopairs',
+		event = "InsertEnter",
+		opts = {
+			map_cr = false, --  map <CR> on insert mode
+		}          -- this is equalent to setup({}) function
+	},
+	{
 		"glepnir/dashboard-nvim",
 		lazy = false,
 		config = function()

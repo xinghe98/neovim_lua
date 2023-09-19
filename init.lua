@@ -11,7 +11,7 @@
 -- 插件
 require("plugins")
 -- require("nvim-treesitter.install").prefer_git = true
--- 基本配
+-- 基本设置
 require("options")
 -- 键盘映射
 require("keymap")
@@ -26,7 +26,6 @@ require("style")
 vim.g.coc_global_extensions = {
 	"coc-css",
 	"coc-highlight",
-	"coc-pairs",
 	"coc-sumneko-lua",
 	"coc-go",
 	"coc-diagnostic",
