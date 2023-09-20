@@ -7,7 +7,6 @@
 	"snippet.statusText": "Ⓢ ",
 	"coc.preferences.extensionUpdateCheck": "daily",
 	"coc.preferences.messageLevel": "error",
-	"coc.source.syntax.firstMatch": false,
 	"suggest.labelMaxLength": 60,
 	"suggest.noselect": true,
 	"suggest.enablePreselect": false,
@@ -15,7 +14,7 @@
 	"suggest.triggerAfterInsertEnter": true,
 	"suggest.autoTrigger": "always",
 	"suggest.minTriggerInputLength": 2,
-	"suggest.timeout": 500,
+	"suggest.timeout": 4000,
 	"diagnostic.floatConfig": {
 		"border": true,
 		"rounded": true,
@@ -44,7 +43,7 @@
 		"highlight": "Normal"
 	},
 	"suggest.detailField": "preview",
-	"suggest.snippetIndicator": "",
+	"suggest.snippetIndicator": " 󰩫",
 	"suggest.selection": "recentlyUsedByPrefix",
 	"suggest.triggerCompletionWait": 50,
 	"suggest.completionItemKindLabels": {
@@ -87,8 +86,8 @@
 	"diagnostic.virtualText": true,
 	"diagnostic.enableMessage": "jump",
 	"list.previewHighlightGroup": "Statement",
-	"list.nextKeymap": "<C-e>",
-	"list.previousKeymap": "<C-u>",
+	"list.nextKeymap": "<tab>",
+	"list.previousKeymap": "<S-tab>",
 	"snippets.ultisnips.directories": [
 		"$HOME/.config/nvim/Ultisnips/",
 		"$HOME/.config/nvim/plugged/vim-snippets/UltiSnips/"
@@ -124,5 +123,7 @@
 		"eelixir": "mix_format"
 	},
 	"snippets.ultisnips.pythonPrompt": false,
-	"symbol-line.separator": " "
+	"symbol-line.separator": " ",
+	"volar.tsLocale": "zh-cn",
+	"coc.source.word.priority": 0
 }
