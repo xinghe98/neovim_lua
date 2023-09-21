@@ -13,6 +13,7 @@
 	"suggest.insertMode": "insert",
 	"suggest.triggerAfterInsertEnter": true,
 	"suggest.autoTrigger": "always",
+	"suggest.defaultSortMethod": "none",
 	"suggest.minTriggerInputLength": 2,
 	"suggest.timeout": 4000,
 	"diagnostic.floatConfig": {
@@ -40,12 +41,16 @@
 	"signature.floatConfig": {
 		"border": true,
 		"rounded": true,
-		"highlight": "Normal"
+		"highlight": "Normal",
+		"focusable": false
 	},
 	"suggest.detailField": "preview",
+	"suggest.virtualText": true,
+	"suggest.removeDuplicateItems": true,
+	"suggest.reversePumAboveCursor": true,
 	"suggest.snippetIndicator": " 󰩫",
 	"suggest.selection": "recentlyUsedByPrefix",
-	"suggest.triggerCompletionWait": 50,
+	"suggest.triggerCompletionWait": 0,
 	"suggest.completionItemKindLabels": {
 		"text": "󰓽 Text",
 		"method": "m Method",
@@ -84,6 +89,7 @@
 	"diagnostic.virtualTextPrefix": "😢  ",
 	"diagnostic.virtualTextCurrentLineOnly": false,
 	"diagnostic.virtualText": true,
+	"scss.validate": true,
 	"diagnostic.enableMessage": "jump",
 	"list.previewHighlightGroup": "Statement",
 	"list.nextKeymap": "<tab>",
@@ -93,6 +99,7 @@
 		"$HOME/.config/nvim/plugged/vim-snippets/UltiSnips/"
 	],
 	"coc.preferences.formatOnSave": true,
+	"coc.preferences.formatOnType": true,
 	"yaml.format.enable": true,
 	"signature.target": "float",
 	"yank.enableCompletion": false,
