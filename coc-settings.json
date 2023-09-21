@@ -132,5 +132,10 @@
 	"snippets.ultisnips.pythonPrompt": false,
 	"symbol-line.separator": " ",
 	"volar.tsLocale": "zh-cn",
-	"coc.source.word.priority": 0
+	"coc.source.around.shortcut": "Around",
+	"coc.source.word.shortcut": "Words",
+	"coc.source.emoji.shortcut": "Emoji",
+	"snippets.shortcut": "Snippet",
+	"coc.source.buffer.shortcut": "Buffer",
+	"coc.source.file.shortcut": "File"
 }
