@@ -126,6 +126,12 @@
 	"prettier.trailingComma": "all",
 	"prettier.singleQuote": false,
 	"go.goplsOptions": { "gofumpt": true },
+	"emmet.includeLanguages": {
+		"javascript": "javascriptreact",
+		"vue-html": "html",
+		"razor": "html",
+		"plaintext": "jade"
+	},
 	"diagnostic-languageserver.formatFiletypes": {
 		"elixir": "mix_format",
 		"eelixir": "mix_format"

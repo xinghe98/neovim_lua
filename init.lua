@@ -49,6 +49,7 @@ vim.g.coc_global_extensions = {
 	"coc-tasks",
 	"coc-tsserver",
 	"@yaegassy/coc-volar",
+	"coc-emmet",
 	"@yaegassy/coc-volar-tools",
 	"@yaegassy/coc-typescript-vue-plugin",
 	"coc-vimlsp",
