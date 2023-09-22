@@ -1,4 +1,5 @@
 vim.api.nvim_set_hl(0, "CocSymbolLineSeparator", { fg = "#82AAFF", bg = "NONE", bold = true })
+-- vim.api.nvim_set_hl(0, "CocSymbolLineSeparator", { fg = "#82AAFF", bg = "NONE", bold = true })
 vim.api.nvim_command("command! -nargs=? Fold :call CocAction('fold', <f-args>)")
 vim.api.nvim_command("hi! link CocPum Pmenu")
 -- Utility functions shared between progress reports for LSP and DAP
@@ -123,14 +124,8 @@ keyset("o", "ac", "<Plug>(coc-classobj-a)", opts)
 -- Remap <C-f> and <C-b> to scroll float windows/popups
 ---@diagnostic disable-next-line: redefined-local
 local opts = { silent = true, nowait = true, expr = true }
---[[ keyset("n", "<s-f>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<s-f>"', opts)
-keyset("n", "<s-b>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<s-b>"', opts)
-keyset("i", "<s-f>",
-       'coc#float#has_scroll() ? "<c-r>=coc#float#scroll(1)<cr>" : "<Right>"', opts)
-keyset("i", "<s-b>",
-       'coc#float#has_scroll() ? "<c-r>=coc#float#scroll(0)<cr>" : "<Left>"', opts)
-keyset("v", "<s-f>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<s-f>"', opts)
-keyset("v", "<s-b>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<s-b>"', opts) ]]
+keyset("i", "<C-n>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-n>"', opts)
+keyset("i", "<C-u>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-u>"', opts)
 
 -- Use CTRL-S for selections ranges
 -- Requires 'textDocument/selectionRange' support of language server

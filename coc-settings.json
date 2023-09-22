@@ -27,7 +27,6 @@
 	"hover.floatConfig": {
 		"border": true,
 		"rounded": true,
-		"focusable": false,
 		"highlight": "Normal"
 	},
 	"suggest.floatConfig": {
