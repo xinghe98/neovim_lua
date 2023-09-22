@@ -1,10 +1,12 @@
 {
 	"sumneko-lua.locale": "zh-cn",
 	"tsserver.locale": "zh-CN",
+	"codeLens.enable": true,
+	"codeLens.position": "right_align",
 	"colors.enable": true,
 	"semanticTokens.enable": true,
 	"coc.preferences.enableMessageDialog": true,
-	"snippet.statusText": " 󰕹",
+	"snippet.statusText": "󰕹",
 	"coc.preferences.extensionUpdateCheck": "daily",
 	"coc.preferences.messageLevel": "error",
 	"suggest.labelMaxLength": 60,
