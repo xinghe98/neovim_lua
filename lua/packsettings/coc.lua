@@ -51,7 +51,7 @@ keyset("n", "ge", "<cmd>Telescope coc diagnostics<CR>", { silent = true })
 -- GoTo code navigation
 keyset("n", "gd", "<Plug>(coc-definition)", { silent = true })
 keyset("n", "gy", "<Plug>(coc-type-definition)", { silent = true })
-keyset("n", "gi", "<Plug>(coc-implementation)", { silent = true })
+keyset("n", "gi", "<cmd>Telescope coc implementations<CR>", { silent = true })
 keyset("n", "gr", "<cmd>Telescope coc references<CR>", { silent = true })
 keyset("n", "gh", ':call CocAction("doHover")<cr>', { silent = true })
 keyset("n", "<leader>e", '<Plug>(coc-diagnostic-info)', { silent = true })
