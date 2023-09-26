@@ -144,5 +144,7 @@
 	"coc.source.emoji.shortcut": "Emoji",
 	"snippets.shortcut": "Snippet",
 	"coc.source.buffer.shortcut": "Buffer",
-	"coc.source.file.shortcut": "File"
+	"coc.source.file.shortcut": "File",
+	"coc.source.emoji.triggerCharacters": ["-"],
+	"coc.source.emoji.filetypes": null
 }
