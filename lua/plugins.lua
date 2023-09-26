@@ -156,7 +156,7 @@ require("lazy").setup({
 	},
 	{
 		"fatih/vim-go",
-		lazy = false,
+		ft = "go",
 		build = ":GoUpdateBinaries",
 		config = function()
 			require("packsettings.vimgo")
