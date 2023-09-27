@@ -1,6 +1,7 @@
 local set = vim.opt
 set.number = true
 set.rnu = true
+set.cursorline = true
 -- 可以拆行
 set.wrap = true
 set.fileformat = unix
