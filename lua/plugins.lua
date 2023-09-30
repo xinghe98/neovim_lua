@@ -96,6 +96,7 @@ require("lazy").setup({
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufEnter",
+		main = "ibl",
 		config = function()
 			require("packsettings.indentline")
 		end,
