@@ -146,5 +146,7 @@
 	"coc.source.buffer.shortcut": "Buffer",
 	"coc.source.file.shortcut": "File",
 	"coc.source.emoji.triggerCharacters": ["-"],
-	"coc.source.emoji.filetypes": null
+	"coc.source.emoji.filetypes": null,
+	"inlayHint.enableParameter": true,
+	"inlayHint.enable": true
 }
