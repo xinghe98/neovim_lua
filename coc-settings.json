@@ -145,8 +145,11 @@
 	"snippets.shortcut": "Snippet",
 	"coc.source.buffer.shortcut": "Buffer",
 	"coc.source.file.shortcut": "File",
-	"coc.source.emoji.triggerCharacters": ["-"],
+	"coc.source.emoji.triggerCharacters": [";"],
 	"coc.source.emoji.filetypes": null,
 	"inlayHint.enableParameter": true,
-	"inlayHint.enable": true
+	"inlayHint.enable": true,
+	"vue.inlayHints.optionsWrapper": true,
+	"vue.inlayHints.missingProps": true,
+	"vue.inlayHints.inlineHandlerLeading": true
 }
