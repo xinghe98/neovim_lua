@@ -81,7 +81,7 @@ require("lazy").setup({
 			enabled = true,
 			concurrency = nil, ---@type number? set to 1 to check for updates very slowly
 			notify = true, -- get a notification when new updates are found
-			frequency = 200, -- check for updates every hour
+			frequency = 360, -- check for updates every hour
 		},
 		config = function()
 			require("packsettings.lualine")
