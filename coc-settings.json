@@ -139,6 +139,7 @@
 	"snippets.ultisnips.pythonPrompt": false,
 	"symbol-line.separator": " ",
 	"volar.tsLocale": "zh-cn",
+	"volar.autoClosingTags": true,
 	"coc.source.around.shortcut": "Around",
 	"coc.source.word.shortcut": "Words",
 	"coc.source.emoji.shortcut": "Emoji",
