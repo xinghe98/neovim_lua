@@ -126,7 +126,6 @@
 	"prettier.useTabs": true,
 	"prettier.trailingComma": "all",
 	"prettier.singleQuote": false,
-	"go.goplsOptions": { "gofumpt": true },
 	"emmet.includeLanguages": {
 		"javascript": "javascriptreact",
 		"vue-html": "html",
@@ -159,5 +158,18 @@
 	"typescript.inlayHints.variableTypes.enabled": true,
 	"typescript.inlayHints.propertyDeclarationTypes.enabled": true,
 	"typescript.inlayHints.functionLikeReturnTypes.enabled": true,
-	"typescript.inlayHints.enumMemberValues.enabled": true
+	"typescript.inlayHints.enumMemberValues.enabled": true,
+	"inlayHint.refreshOnInsertMode": true,
+	"go.goplsOptions": {
+		"gofumpt": true,
+		"hints": {
+			"assignVariableTypes": true,
+			"compositeLiteralFields": true,
+			"compositeLiteralTypes": true,
+			"constantValues": true,
+			"functionTypeParameters": true,
+			"parameterNames": true,
+			"rangeVariableTypes": true
+		}
+	}
 }
