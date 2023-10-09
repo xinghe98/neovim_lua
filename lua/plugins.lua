@@ -12,14 +12,25 @@ end
 vim.opt.rtp:prepend(lazypath)
 --config.defaults.lazy = true
 require("lazy").setup({
+	-- 等nvim 0.10 版本发布后，可以使用
 	{
+		'neoclide/coc.nvim',
+		branch = "master",
+		build = "yarn install && yarn build",
+		event = "VimEnter",
+		commit = "3dc6153",
+		config = function()
+			require("packsettings.coc")
+		end,
+	},
+	--[[ {
 		'neoclide/coc.nvim',
 		branch = "release",
 		event = "VimEnter",
 		config = function()
 			require("packsettings.coc")
 		end,
-	},
+	}, ]]
 	{
 		'windwp/nvim-autopairs',
 		event = "InsertEnter",
