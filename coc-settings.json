@@ -92,6 +92,7 @@
 	"diagnostic.virtualText": true,
 	"scss.validate": true,
 	"diagnostic.enableMessage": "jump",
+	"session.saveOnVimLeave": false,
 	"list.previewHighlightGroup": "Statement",
 	"list.nextKeymap": "<tab>",
 	"list.previousKeymap": "<S-tab>",
