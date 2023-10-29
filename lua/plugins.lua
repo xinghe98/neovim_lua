@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 --config.defaults.lazy = true
 require("lazy").setup({
 	-- 等nvim 0.10 版本发布后，可以使用
-	{
+	--[[ {
 		'neoclide/coc.nvim',
 		branch = "master",
 		build = "yarn install && yarn build",
@@ -22,15 +22,15 @@ require("lazy").setup({
 		config = function()
 			require("packsettings.coc")
 		end,
-	},
-	--[[ {
+	}, ]]
+	{
 		'neoclide/coc.nvim',
 		branch = "release",
 		event = "VimEnter",
 		config = function()
 			require("packsettings.coc")
 		end,
-	}, ]]
+	},
 	{
 		'windwp/nvim-autopairs',
 		event = "InsertEnter",
@@ -55,6 +55,14 @@ require("lazy").setup({
 	},
 	{ "mg979/vim-visual-multi",     branch = "master", lazy = false },
 	{
+		"nvim-treesitter/nvim-treesitter",
+		event = "VimEnter",
+		build = ":TSUpdate",
+		config = function()
+			require("packsettings.treesitter")
+		end,
+	},
+	--[[ {
 		"HiPhish/nvim-ts-rainbow2",
 		event = "VimEnter",
 		dependencies = {
@@ -70,7 +78,7 @@ require("lazy").setup({
 		config = function()
 			require("packsettings.rainbow")
 		end,
-	},
+	}, ]]
 	{ "nvim-tree/nvim-web-devicons" },
 	{
 		"nvim-tree/nvim-tree.lua",
@@ -189,6 +197,7 @@ require("lazy").setup({
 	{ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, event = "VimEnter" },
 	{ "ap/vim-css-color",         event = "VimEnter",                         lazy = false },
 	{ "theniceboy/nvim-deus",     lazy = false,                               priority = 1000 },
+	{ "hardhackerlabs/theme-vim", lazy = false,                               priority = 1000 },
 	{ "rmehri01/onenord.nvim",    lazy = false,                               priority = 1000 },
 	{ "folke/tokyonight.nvim",    lazy = false,                               priority = 1000 },
 }, { defaults = { lazy = true } })

@@ -37,6 +37,7 @@ vim.opt.signcolumn = "yes"
 vim.o.foldmethod = "indent"
 vim.o.foldenable = false
 vim.o.foldlevel = 99
+vim.g.translator_default_engines = { "haici", "google" }
 vim.notify = require("notify")
 vim.opt.clipboard = "unnamedplus"
 -- vim.opt.pumblend = 15

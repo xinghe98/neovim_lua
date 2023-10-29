@@ -1,7 +1,8 @@
-vim.cmd("colorscheme deus")
+vim.cmd("hi CocInlayHint guifg=#696969 guibg=(0,0,0,0)")
+-- vim.cmd("colorscheme deus")
 -- vim.cmd("colorscheme material")
 -- vim.cmd("colorscheme hardhacker")
---[[ require("onenord").setup({
+require("onenord").setup({
 	theme = nil,  -- "dark" or "light". Alternatively, remove the option and set vim.o.background instead
 	borders = true, -- Split window borders
 	fade_nc = false, -- Fade non-current windows, making them more distinguishable
@@ -26,4 +27,4 @@ vim.cmd("colorscheme deus")
 	custom_highlights = {}, -- Overwrite default highlight groups
 	custom_colors = {},  -- Overwrite default colors
 })
-require("onenord.colors").load() ]]
+require("onenord.colors").load()
