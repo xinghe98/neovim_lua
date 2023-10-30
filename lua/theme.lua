@@ -1,4 +1,3 @@
-vim.cmd("highlight Normal guibg=NONE ctermbg=None")
 -- vim.cmd("colorscheme deus")
 -- vim.cmd("colorscheme material")
 -- vim.cmd("colorscheme hardhacker")

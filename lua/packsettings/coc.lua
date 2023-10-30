@@ -1,5 +1,41 @@
 vim.api.nvim_set_hl(0, "CocSymbolLineSeparator", { fg = "#82AAFF", bg = "NONE", bold = true })
-vim.cmd("hi CocInlayHint guifg=#696969 guibg=(0,0,0,0)")
+vim.cmd([[
+hi CocInlayHint guifg=#696969 guibg=(0,0,0,0)
+hi CocSymbolUnit  ctermfg=6 guifg=#EF9A9A
+hi CocSymbolNumber ctermfg=5 guifg=#F48FB1
+hi CocSymbolFunction ctermfg=6 guifg=#CE93D8
+hi CocSymbolKey   ctermfg=223 guifg=#B39DDB
+hi CocSymbolKeyword ctermfg=4 guifg=#EF5350
+hi CocSymbolReference ctermfg=223 guifg=#C5CAE9
+hi CocSymbolFolder ctermfg=6 guifg=#42A5F5
+hi CocSymbolVariable ctermfg=223 guifg=#4FC3F7
+hi CocSymbolNull  ctermfg=4 guifg=#E91E63
+hi CocSymbolValue ctermfg=6 guifg=#4DD0E1
+hi CocSymbolConstant ctermfg=223 guifg=#81C784
+hi CocSymbolText  ctermfg=6 guifg=#C8E6C9
+hi CocSymbolModule ctermfg=4 guifg=#29B6F6
+hi CocSymbolPackage ctermfg=4 guifg=#AB47BC
+hi CocSymbolClass ctermfg=223 guifg=#FFA726
+hi CocSymbolOperator ctermfg=4 guifg=#F8BBD0
+hi CocSymbolStruct ctermfg=4 guifg=#8BC34A
+hi CocSymbolObject ctermfg=6 guifg=#26A69A
+hi CocSymbolMethod ctermfg=6 guifg=#4DB6AC
+hi CocSymbolArray ctermfg=6 guifg=#FF8F00
+hi CocSymbolEnum  ctermfg=6 guifg=#FFB300
+hi CocSymbolField ctermfg=223 guifg=#4FC3F7
+hi CocSymbolInterface ctermfg=6 guifg=#B39DDB
+hi CocSymbolProperty ctermfg=223 guifg=#E1BEE7
+hi CocSymbolColor ctermfg=5 guifg=#FFEBEE
+hi CocSymbolFile  ctermfg=4 guifg=#F3E5F5
+hi CocSymbolEvent ctermfg=223 guifg=#FFF3E0
+hi CocSymbolTypeParameter ctermfg=223 guifg=#26C6DA
+hi CocSymbolConstructor ctermfg=223 guifg=#4DD0E1
+hi CocSymbolSnippet ctermfg=6 guifg=#9575CD
+hi CocSymbolBoolean ctermfg=4 guifg=#FFAB91
+hi CocSymbolNamespace ctermfg=4 guifg=#FFAB91
+hi CocSymbolString ctermfg=2 guifg=#F44336
+hi CocSymbolEnumMember ctermfg=223 guifg=#AB47BC
+]])
 vim.api.nvim_command("command! -nargs=? Fold :call CocAction('fold', <f-args>)")
 vim.api.nvim_command("hi! link CocPum Pmenu")
 -- Utility functions shared between progress reports for LSP and DAP
