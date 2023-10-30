@@ -1,5 +1,5 @@
 vim.api.nvim_set_hl(0, "CocSymbolLineSeparator", { fg = "#82AAFF", bg = "NONE", bold = true })
--- vim.api.nvim_set_hl(0, "CocSymbolLineSeparator", { fg = "#82AAFF", bg = "NONE", bold = true })
+vim.cmd("hi CocInlayHint guifg=#696969 guibg=(0,0,0,0)")
 vim.api.nvim_command("command! -nargs=? Fold :call CocAction('fold', <f-args>)")
 vim.api.nvim_command("hi! link CocPum Pmenu")
 -- Utility functions shared between progress reports for LSP and DAP

@@ -1,4 +1,4 @@
-vim.cmd("hi CocInlayHint guifg=#696969 guibg=(0,0,0,0)")
+vim.cmd("highlight Normal guibg=NONE ctermbg=None")
 -- vim.cmd("colorscheme deus")
 -- vim.cmd("colorscheme material")
 -- vim.cmd("colorscheme hardhacker")
@@ -16,7 +16,7 @@ require("onenord").setup({
 		diagnostics = "underline",
 	},
 	disable = {
-		background = false, -- Disable setting the background color
+		background = true, -- Disable setting the background color
 		cursorline = false, -- Disable the cursorline
 		eob_lines = true, -- Hide the end-of-buffer lines
 	},
