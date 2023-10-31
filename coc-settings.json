@@ -79,7 +79,7 @@
 		"typeParameter": "󰉺 TypeParameter",
 		"default": "󰊨 default"
 	},
-	"suggest.formatItems": ["abbr", "menu", "kind", "shortcut"],
+	"suggest.formatItems": ["abbr", "kind", "menu", "shortcut"],
 	"diagnostic.errorSign": "\uf467",
 	"diagnostic.warningSign": "\uf071",
 	"diagnostic.infoSign": "\uf129",
