@@ -17,7 +17,7 @@
 	"suggest.autoTrigger": "always",
 	"suggest.defaultSortMethod": "none",
 	"suggest.minTriggerInputLength": 2,
-	"suggest.timeout": 4000,
+	"suggest.timeout": 4010,
 	"diagnostic.floatConfig": {
 		"border": true,
 		"rounded": true,
