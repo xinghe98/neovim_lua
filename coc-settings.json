@@ -97,9 +97,10 @@
 	"list.source.files.excludePatterns": ["node_modules"],
 	"list.nextKeymap": "<tab>",
 	"list.previousKeymap": "<S-tab>",
-	"list.floatPreview": false,
-	"list.previewSplitRight": true,
+	"list.floatPreview": true,
+	// "list.previewSplitRight": true,
 	"list.statusLineSegments": [],
+	"list.alignColumns": true,
 	"snippets.ultisnips.directories": [
 		"$HOME/.config/nvim/Ultisnips/",
 		"$HOME/.config/nvim/plugged/vim-snippets/UltiSnips/"
