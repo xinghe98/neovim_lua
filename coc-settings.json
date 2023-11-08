@@ -94,8 +94,12 @@
 	"diagnostic.enableMessage": "jump",
 	"session.saveOnVimLeave": false,
 	"list.previewHighlightGroup": "Statement",
+	"list.source.files.excludePatterns": ["node_modules"],
 	"list.nextKeymap": "<tab>",
 	"list.previousKeymap": "<S-tab>",
+	"list.floatPreview": false,
+	"list.previewSplitRight": true,
+	"list.statusLineSegments": [],
 	"snippets.ultisnips.directories": [
 		"$HOME/.config/nvim/Ultisnips/",
 		"$HOME/.config/nvim/plugged/vim-snippets/UltiSnips/"

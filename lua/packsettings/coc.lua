@@ -91,7 +91,10 @@ keyset("n", "gi", "<cmd>Telescope coc implementations<CR>", { silent = true })
 keyset("n", "gr", "<cmd>Telescope coc references<CR>", { silent = true })
 keyset("n", "gh", ':call CocAction("doHover")<cr>', { silent = true })
 keyset("n", "<leader>e", '<Plug>(coc-diagnostic-info)', { silent = true })
-
+keyset("n", "<S-f>", "<cmd>CocList --auto-preview files<cr>", { silent = true })
+keyset("n", "<C-d>", "<cmd>CocList grep<cr>", { silent = true })
+keyset("n", "<leader>w", "<cmd>exe 'CocList -I --normal --auto-preview --input='.expand('<cword>').' words'<CR>",
+	{ silent = true })
 -- Highlight the symbol and its references on a CursorHold event(cursor is idle)
 vim.api.nvim_create_augroup("CocGroup", {})
 vim.api.nvim_create_autocmd("CursorHold", {
