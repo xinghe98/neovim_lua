@@ -175,4 +175,5 @@ require("lazy").setup({
 	{ "hardhackerlabs/theme-vim", lazy = false,                               priority = 1000 },
 	{ "rmehri01/onenord.nvim",    lazy = false,                               priority = 1000 },
 	{ "folke/tokyonight.nvim",    lazy = false,                               priority = 1000 },
+	{ "ellisonleao/gruvbox.nvim", lazy = false,                               priority = 1000 },
 }, { defaults = { lazy = true } })

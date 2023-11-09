@@ -21,30 +21,41 @@
 	"diagnostic.floatConfig": {
 		"border": true,
 		"rounded": true,
-		"highlight": "Normal",
-		"focusable": false
+		"highlight": "CocFloating",
+		"focusable": false,
+		"title": "🔐"
 	},
 	"hover.floatConfig": {
 		"border": true,
 		"rounded": true,
-		"highlight": "Normal"
+		"title": "📚",
+		"highlight": "CocFloating"
 	},
 	"suggest.floatConfig": {
 		"border": true,
 		"rounded": true,
-		"highlight": "Normal"
+		"highlight": "CocFloating"
 	},
 	"suggest.pumFloatConfig": {
 		"border": true,
 		"rounded": true,
-		"highlight": "Normal"
+		"highlight": "CocFloating"
 	},
 	"signature.floatConfig": {
 		"border": true,
 		"rounded": true,
-		"highlight": "Normal",
-		"focusable": false
+		"highlight": "CocFloating",
+		"focusable": false,
+		"title": "🏷️"
 	},
+	"floatFactory.floatConfig": {
+		"border": true,
+		"rounded": true,
+		"highlight": "CocFloating",
+		"focusable": false,
+		"title": "🫰"
+	},
+	"notification.winblend": 0,
 	"suggest.detailField": "preview",
 	"suggest.virtualText": true,
 	"suggest.removeDuplicateItems": true,

@@ -1,5 +1,6 @@
 vim.api.nvim_set_hl(0, "CocSymbolLineSeparator", { fg = "#82AAFF", bg = "NONE", bold = true })
 vim.cmd([[
+hi CocFloating ctermbg=6 guibg=(0,0,0,0)
 hi CocSearch ctermfg=6 guifg=#FF8F00
 hi CocInlayHint guifg=#696969 guibg=(0,0,0,0)
 hi CocSymbolUnit  ctermfg=6 guifg=#EF9A9A
