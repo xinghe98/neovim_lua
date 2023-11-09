@@ -165,9 +165,10 @@ keyset("o", "ac", "<Plug>(coc-classobj-a)", opts)
 -- Remap <C-f> and <C-b> to scroll float windows/popups
 ---@diagnostic disable-next-line: redefined-local
 local opts = { silent = true, nowait = true, expr = true }
-keyset("i", "<C-n>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-n>"', opts)
-keyset("i", "<C-u>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-u>"', opts)
-
+keyset("i", "<C-j>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-j>"', opts)
+keyset("n", "<C-j>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-j>"', opts)
+keyset("i", "<C-k>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-k>"', opts)
+keyset("n", "<C-k>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-k>"', opts)
 -- Use CTRL-S for selections ranges
 -- Requires 'textDocument/selectionRange' support of language server
 --[[ keyset("n", "<C-s>", "<Plug>(coc-range-select)", { silent = true })
