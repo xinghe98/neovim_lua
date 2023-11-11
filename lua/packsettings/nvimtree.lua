@@ -119,7 +119,7 @@ require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
 			max_folder_discovery = 300,
 		},
 		open_file = {
-			quit_on_open = true,
+			quit_on_open = false,
 			resize_window = true,
 			window_picker = {
 				enable = true,
@@ -155,40 +155,37 @@ require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
 		},
 	},
 }) -- END_DEFAULT_OPTS
-local function tab_win_closed(winnr)
-	local api = require("nvim-tree.api")
-	local tabnr = vim.api.nvim_win_get_tabpage(winnr)
-	local bufnr = vim.api.nvim_win_get_buf(winnr)
-	local buf_info = vim.fn.getbufinfo(bufnr)[1]
-	local tab_wins = vim.tbl_filter(function(w)
-		return w ~= winnr
-	end, vim.api.nvim_tabpage_list_wins(tabnr))
-	local tab_bufs = vim.tbl_map(vim.api.nvim_win_get_buf, tab_wins)
-	if buf_info.name:match(".*NvimTree_%d*$") then -- close buffer was nvim tree
-		-- Close all nvim tree on :q
-		if not vim.tbl_isempty(tab_bufs) then   -- and was not the last window (not closed automatically by code below)
-			api.tree.close()
-		end
-	else                                               -- else closed buffer was normal buffer
-		if #tab_bufs == 1 then                         -- if there is only 1 buffer left in the tab
-			local last_buf_info = vim.fn.getbufinfo(tab_bufs[1])[1]
-			if last_buf_info.name:match(".*NvimTree_%d*$") then -- and that buffer is nvim tree
-				vim.schedule(function()
-					if #vim.api.nvim_list_wins() == 1 then -- if its the last buffer in vim
-						vim.cmd("quit")                -- then close all of vim
-					else                               -- else there are more tabs open
-						vim.api.nvim_win_close(tab_wins[1], true) -- then close only the tab
-					end
-				end)
-			end
+vim.api.nvim_create_autocmd("BufEnter", {
+	nested = true,
+	callback = function()
+		-- Only 1 window with nvim-tree left: we probably closed a file buffer
+		if #vim.api.nvim_list_wins() == 1 and require("nvim-tree.utils").is_nvim_tree_buf() then
+			local api = require('nvim-tree.api')
+			-- Required to let the close event complete. An error is thrown without this.
+			vim.defer_fn(function()
+				-- close nvim-tree: will go to the last buffer used before closing
+				api.tree.toggle({ find_file = true, focus = true })
+				-- re-open nivm-tree
+				api.tree.toggle({ find_file = true, focus = true })
+				-- nvim-tree is still the active window. Go to the previous window.
+				vim.cmd("wincmd p")
+			end, 0)
 		end
 	end
-end
-
-vim.api.nvim_create_autocmd("WinClosed", {
+})
+vim.api.nvim_create_autocmd("QuitPre", {
 	callback = function()
-		local winnr = tonumber(vim.fn.expand("<amatch>"))
-		vim.schedule_wrap(tab_win_closed(winnr))
-	end,
-	nested = true,
+		local invalid_win = {}
+		local wins = vim.api.nvim_list_wins()
+		for _, w in ipairs(wins) do
+			local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(w))
+			if bufname:match("NvimTree_") ~= nil then
+				table.insert(invalid_win, w)
+			end
+		end
+		if #invalid_win == #wins - 1 then
+			-- Should quit, so we close all invalid windows.
+			for _, w in ipairs(invalid_win) do vim.api.nvim_win_close(w, true) end
+		end
+	end
 })
