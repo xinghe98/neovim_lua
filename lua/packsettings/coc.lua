@@ -1,5 +1,8 @@
 vim.api.nvim_set_hl(0, "CocSymbolLineSeparator", { fg = "#82AAFF", bg = "NONE", bold = true })
 vim.cmd([[
+hi GitGutterAdd    ctermfg=106 guifg=#29B6F6
+hi GitGutterChange ctermfg=136 guifg=#8BC34A
+hi GitGutterDelete ctermfg=160 guifg=#EF5350
 hi CocFloating ctermbg=6 guibg=(0,0,0,0)
 hi CocSearch ctermfg=6 guifg=#FF8F00
 hi CocInlayHint guifg=#696969 guibg=(0,0,0,0)
