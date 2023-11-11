@@ -10,7 +10,6 @@
  ]]
 -- 插件
 require("plugins")
--- require("nvim-treesitter.install").prefer_git = true
 -- 基本设置
 require("options")
 -- 键盘映射
