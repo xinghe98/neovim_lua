@@ -1,19 +1,49 @@
+vim.o.langmap = "ej,je,JE,EJ"
+vim.o.langmap = "nh,hn,HN,NH"
+vim.o.langmap = "he,eh,HE,EH"
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
+keymap("", ";", ":", opts)
+keymap("", "Y", "\"+y", opts)
+keymap("", "`", "~", opts)
+
+-- Movement
+keymap("", "u", "k", opts)
+--[[ keymap("", "e", "j", opts)
+keymap("", "n", "h", opts)
+keymap("", "h", "e", opts) ]]
+keymap("", "i", "l", opts)
+keymap("", "U", "5k", opts)
+keymap("", "E", "5j", opts)
+keymap("", "N", "0", opts)
+keymap("", "I", "$", opts)
+keymap("", "gu", "gk", opts)
+keymap("", "ge", "gj", opts)
+keymap("", "<C-U>", "5<C-y>", opts)
+keymap("", "<C-E>", "5<C-e>", opts)
+keymap("", "ci", "cl", opts)
+keymap("", "cn", "ch", opts)
+keymap("", "ck", "ci", opts)
+keymap("", "c,.", "c%", opts)
+keymap("", "yh", "ye", opts)
+
+-- Actions
+keymap("", "l", "u", opts)
+keymap("", "k", "i", opts)
+keymap("", "K", "I", opts)
+
 keymap("", "H", "^", opts)
 keymap("", "L", "$", opts)
 keymap("n", "o", "zzo", opts)
 keymap("n", "O", "zzO", opts)
-keymap("n", "<leader>l", "<C-w>l", opts)
-keymap("n", "<leader>k", "<C-w>k", opts)
-keymap("n", "<leader>h", "<C-w>h", opts)
-keymap("n", "<leader>j", "<C-w>j", opts)
+keymap("n", "<leader>i", "<C-w>l", opts)
+keymap("n", "<leader>u", "<C-w>k", opts)
+keymap("n", "<leader>n", "<C-w>h", opts)
+keymap("n", "<leader>e", "<C-w>j", opts)
 keymap("n", "<S-Tab>", "<<", opts)
 keymap("n", "<Tab>", ">>", opts)
 keymap("v", "<S-Tab>", "<", opts)
 keymap("v", "<Tab>", ">", opts)
-keymap("", "<S-j>", "5j", opts)
-keymap("", "K", "5k", opts)
 keymap("n", "qq", ":nohlsearch<CR>", opts)
 keymap("n", "<S-s>", ":w<CR>", opts)
 keymap("n", "<S-q>", ":q<CR>", opts)
