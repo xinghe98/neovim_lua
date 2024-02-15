@@ -1,7 +1,26 @@
+local function my_on_attach(bufnr)
+	local api = require "nvim-tree.api"
+
+	local function opts(desc)
+		return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+	end
+
+	-- default mappings
+	api.config.mappings.default_on_attach(bufnr)
+
+	-- custom mappings
+	vim.keymap.set('n', 'e', 'j', opts('none'))
+	vim.keymap.set('n', 'u', 'k', opts('none'))
+	vim.keymap.set('n', 'j', api.fs.rename_basename, opts('rename'))
+	vim.keymap.set('n', 'l', api.fs.rename_full, opts('rename_full'))
+end
+
+-- pass to setup along with your other options
 -- setup with all defaults
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
 -- nested options are documented by accessing them with `.` (eg: `:help nvim-tree.view.mappings.list`).
 require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
+	on_attach = my_on_attach,
 	auto_reload_on_write = true,
 	create_in_closed_folder = false,
 	disable_netrw = false,
