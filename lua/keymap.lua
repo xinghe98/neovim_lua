@@ -12,6 +12,7 @@ keymap("", "e", "j", opt)
 keymap("", "u", "k", opt)
 keymap("", "i", "l", opt)
 keymap("", "h", "e", opt)
+keymap("", "m", "n", opt)
 
 keymap("", "U", "5k", opts)
 keymap("", "E", "5j", opts)
