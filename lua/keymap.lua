@@ -1,15 +1,18 @@
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 local opt = { noremap = true }
-vim.o.langmap = "uk,lu,il,ki,ej,je"
+-- vim.o.langmap = "uk,lu,il,ki,ej,je"
 keymap("", ";", ":", opt)
 keymap("", "Y", "\"+y", opt)
 keymap("", "`", "~", opt)
 
 -- Movement
 keymap("", "n", "h", opt)
--- keymap("", "i", "l", opt)
--- keymap("", "h", "e", opt)
+keymap("", "e", "j", opt)
+keymap("", "u", "k", opt)
+keymap("", "i", "l", opt)
+keymap("", "h", "e", opt)
+
 keymap("", "U", "5k", opts)
 keymap("", "E", "5j", opts)
 keymap("", "N", "0", opts)
@@ -25,8 +28,8 @@ keymap("", "c,.", "c%", opts)
 keymap("", "yh", "ye", opts)
 
 -- Actions
---[[ keymap("", "l", "u", opts)
-keymap("", "k", "i", opts) ]]
+keymap("", "l", "u", opts)
+keymap("", "k", "i", opts)
 keymap("", "K", "I", opts)
 
 keymap("n", "o", "zzo", opts)

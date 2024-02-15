@@ -85,8 +85,8 @@ keyset("i", "<c-j>", "<Plug>(coc-snippets-expand-jump)")
 keyset("i", "<A-a>", "coc#refresh()", { silent = true, expr = true })
 -- Use `[g` and `]g` to navigate diagnostics
 -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
-keyset("n", "ek", "<Plug>(coc-diagnostic-prev)", { silent = true })
-keyset("n", "ej", "<Plug>(coc-diagnostic-next)", { silent = true })
+--[[ keyset("n", "ek", "<Plug>(coc-diagnostic-prev)", { silent = true })
+keyset("n", "ej", "<Plug>(coc-diagnostic-next)", { silent = true }) ]]
 keyset("n", "ge", "<cmd>Telescope coc diagnostics<CR>", { silent = true })
 
 -- GoTo code navigation
