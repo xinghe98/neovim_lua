@@ -1,3 +1,17 @@
 snippet imm "import moudle"
-import ${1} from '${2:moudleName}'
+import ${1} from '${2:moudlename}'
 endsnippet
+
+snippet scripts "scripts tags with setup"
+<script lang="ts" setup>
+// 模块引入区域
+import {${1}} from "vue";
+
+// 变量定义区域
+${2}
+
+// 逻辑代码及函数区域
+${3}
+</script>
+endsnippet
+

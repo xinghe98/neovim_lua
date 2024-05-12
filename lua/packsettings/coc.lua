@@ -76,11 +76,11 @@ keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(0) : "\<C-h>"]], opts)
 -- Make <CR> to accept selected completion item or notify coc.nvim to format
 -- <C-g>u breaks current undo, please make your own choice
 keyset("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
-vim.g.coc_snippet_next = '<c-j>'
+vim.g.coc_snippet_next = '<c-n>'
 
-vim.g.coc_snippet_prev = '<c-k>'
+vim.g.coc_snippet_prev = '<c-u>'
 -- Use <c-j> to trigger snippets
-keyset("i", "<c-j>", "<Plug>(coc-snippets-expand-jump)")
+keyset("i", "<c-e>", "<Plug>(coc-snippets-expand-jump)")
 -- Use <c-space> to trigger completion
 keyset("i", "<A-a>", "coc#refresh()", { silent = true, expr = true })
 -- Use `[g` and `]g` to navigate diagnostics
@@ -168,10 +168,10 @@ keyset("o", "ac", "<Plug>(coc-classobj-a)", opts)
 -- Remap <C-f> and <C-b> to scroll float windows/popups
 ---@diagnostic disable-next-line: redefined-local
 local opts = { silent = true, nowait = true, expr = true }
-keyset("i", "<C-j>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-j>"', opts)
-keyset("n", "<C-j>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-j>"', opts)
-keyset("i", "<C-k>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-k>"', opts)
-keyset("n", "<C-k>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-k>"', opts)
+keyset("i", "<C-e>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-e>"', opts)
+keyset("n", "<C-e>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-e>"', opts)
+keyset("i", "<C-u>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-u>"', opts)
+keyset("n", "<C-u>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-u>"', opts)
 -- Use CTRL-S for selections ranges
 -- Requires 'textDocument/selectionRange' support of language server
 --[[ keyset("n", "<C-s>", "<Plug>(coc-range-select)", { silent = true })
