@@ -66,7 +66,7 @@ keymap("n", "<c-w>", ":bd<CR>", opts)
 -- nvim-tree
 keymap("n", "tt", ":NvimTreeFindFileToggle<CR>", opts)
 -- copilot
-keymap("i", "<C-e>", 'copilot#Accept("<CR>")', { script = true, silent = true, expr = true })
+keymap("i", "<C-q>", 'copilot#Accept("<CR>")', { script = true, silent = true, expr = true })
 -- todo comments
 keymap("n", "<leader>ft", ":TodoTelescope<CR>", opts)
 vim.keymap.set("n", "]t", function()
