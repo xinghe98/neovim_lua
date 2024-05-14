@@ -13,6 +13,9 @@ keymap("", "u", "k", opt)
 keymap("", "i", "l", opt)
 keymap("", "h", "e", opt)
 keymap("", "m", "n", opt)
+keymap("", "M", "N", opt)
+keymap("", "j", "m", opt)
+
 
 keymap("", "U", "5k", opts)
 keymap("", "E", "5j", opts)
@@ -33,8 +36,6 @@ keymap("", "l", "u", opts)
 keymap("", "k", "i", opts)
 keymap("", "K", "I", opts)
 
-keymap("n", "o", "zzo", opts)
-keymap("n", "O", "zzO", opts)
 keymap("n", "<leader>i", "<C-w>l", opts)
 keymap("n", "<leader>u", "<C-w>k", opts)
 keymap("n", "<leader>n", "<C-w>h", opts)
