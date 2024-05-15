@@ -1,4 +1,4 @@
--- vim.cmd("colorscheme deus")
+vim.cmd("colorscheme deus")
 -- vim.cmd("colorscheme material")
 -- vim.cmd("colorscheme hardhacker")
 --[[ require("onenord").setup({
@@ -28,7 +28,7 @@
 })
 require("onenord.colors").load() ]]
 -- Default options:
-require("gruvbox").setup({
+--[[ require("gruvbox").setup({
 	terminal_colors = true, -- add neovim terminal colors
 	undercurl = true,
 	underline = true,
@@ -52,4 +52,4 @@ require("gruvbox").setup({
 	dim_inactive = false,
 	transparent_mode = true,
 })
-vim.cmd("colorscheme gruvbox")
+vim.cmd("colorscheme gruvbox") ]]
