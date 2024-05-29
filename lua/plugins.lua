@@ -99,7 +99,6 @@ require("lazy").setup({
 	{
 		"akinsho/bufferline.nvim",
 		event = "VimEnter",
-		version = "v3.*",
 		config = function()
 			require("packsettings.bufferline")
 		end,
