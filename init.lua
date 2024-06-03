@@ -29,6 +29,7 @@ vim.g.coc_global_extensions = {
 	"coc-diagnostic",
 	"coc-docker",
 	"coc-eslint",
+	"coc-flutter",
 	"coc-flutter-tools",
 	"coc-gitignore",
 	"coc-git",
