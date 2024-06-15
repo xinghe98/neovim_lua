@@ -28,9 +28,9 @@ require("lazy").setup({
 		}          -- this is equalent to setup({}) function
 	},
 	{
-		"glepnir/dashboard-nvim",
-		lazy = false,
-		cfonfig = function()
+		"nvimdev/dashboard-nvim",
+		event = "VimEnter",
+		config = function()
 			require("packsettings.dashboard")
 		end,
 		dependencies = { "nvim-tree/nvim-web-devicons" },
