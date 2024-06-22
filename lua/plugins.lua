@@ -131,7 +131,7 @@ require("lazy").setup({
 	-- Markdown
 	{
 		"iamcco/markdown-preview.nvim",
-		lazy = false,
+		ft = "markdown",
 		config = function()
 			require("packsettings.markdownpre")
 		end,
