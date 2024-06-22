@@ -4,7 +4,6 @@ local opt = { noremap = true }
 -- vim.o.langmap = "uk,lu,il,ki,ej,je"
 keymap("", ";", ":", opt)
 keymap("", "Y", "\"+y", opt)
-keymap("", "`", "~", opt)
 
 -- Movement
 keymap("", "n", "h", opt)
@@ -14,7 +13,7 @@ keymap("", "i", "l", opt)
 keymap("", "h", "e", opt)
 keymap("", "m", "n", opt)
 keymap("", "M", "N", opt)
-keymap("", "j", "m", opt)
+keymap("n", "'", "m", opt)
 
 
 keymap("", "U", "5k", opts)
@@ -77,6 +76,7 @@ end, { desc = "Next todo comment" })
 vim.keymap.set("n", "[t", function()
 	require("todo-comments").jump_prev()
 end, { desc = "Previous todo comment" })
+
 
 vim.cmd([[func! CompileRunGcc()
 	exec "w"

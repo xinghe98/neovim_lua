@@ -100,6 +100,7 @@ keyset("n", "<C-f>", "<cmd>CocList --auto-preview files<cr>", { silent = true })
 keyset("n", "<C-g>", "<cmd>CocList grep<cr>", { silent = true })
 keyset("n", "<leader>w", "<cmd>exe 'CocList -I --normal --auto-preview --input='.expand('<cword>').' words'<CR>",
 	{ silent = true })
+keyset("n", "<C-'>", "<cmd>CocList marks<cr>", { silent = true })
 -- Highlight the symbol and its references on a CursorHold event(cursor is idle)
 vim.api.nvim_create_augroup("CocGroup", {})
 vim.api.nvim_create_autocmd("CursorHold", {

@@ -166,6 +166,39 @@ require("lazy").setup({
 			vim.g.copilot_no_cr_map = true
 		end,
 	},
+	{
+		"folke/flash.nvim",
+		event = "VeryLazy",
+		opts = {},
+		-- stylua: ignore
+		keys = {
+			{ "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+			{ "<A-s>", mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+			{ "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+			{ "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+			{ "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
+		},
+	},
+	{
+		'chentoast/marks.nvim',
+		event = 'VeryLazy',
+		config = function()
+			require 'marks'.setup {
+				default_mappings = false,
+				mappings = {
+					set = "'",
+					delete = "d'",
+					delete_buf = "d'b",
+					set_next = "',",
+					next = "']",
+					preview = "':",
+					set_bookmark0 = "'0",
+					prev = false -- pass false to disable only this default mapping
+				}
+			}
+		end
+	},
+
 	--------一些美化啥的 -------------------
 	{ "rcarriga/nvim-notify" },
 	{ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, event = "VimEnter" },
