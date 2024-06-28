@@ -10,13 +10,14 @@
 	"coc.preferences.formatOnType": true,
 	"coc.preferences.extensionUpdateCheck": "daily",
 	"coc.preferences.messageLevel": "error",
-	"suggest.labelMaxLength": 60,
+	"suggest.labelMaxLength": 200,
 	"suggest.noselect": true,
 	"suggest.enablePreselect": false,
 	"suggest.insertMode": "insert",
 	"suggest.triggerAfterInsertEnter": true,
 	"suggest.autoTrigger": "always",
 	"suggest.defaultSortMethod": "none",
+	"suggest.detailField": "abbr",
 	"suggest.minTriggerInputLength": 2,
 	"suggest.timeout": 4010,
 	"diagnostic.floatConfig": {
@@ -57,7 +58,6 @@
 		"title": "🫰"
 	},
 	"notification.winblend": 0,
-	"suggest.detailField": "preview",
 	"suggest.virtualText": true,
 	"suggest.removeDuplicateItems": true,
 	"suggest.reversePumAboveCursor": true,
