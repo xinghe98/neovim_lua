@@ -1,5 +1,6 @@
 {
 	"sumneko-lua.locale": "zh-cn",
+	"volar.tsLocale": "zh-cn",
 	"tsserver.locale": "zh-CN",
 	"codeLens.enable": true,
 	"codeLens.position": "right_align",
@@ -35,12 +36,10 @@
 	},
 	"suggest.floatConfig": {
 		"border": true,
-		"rounded": true,
 		"highlight": "CocFloating"
 	},
 	"suggest.pumFloatConfig": {
 		"border": true,
-		"rounded": true,
 		"highlight": "CocFloating"
 	},
 	"signature.floatConfig": {
@@ -170,13 +169,6 @@
 	"snippets.ultisnips.pythonPrompt": false,
 	"snippet.statusText": "󰕹",
 	"symbol-line.separator": " ",
-	"volar.tsLocale": "zh-cn",
-	"coc.source.around.shortcut": "Around",
-	"coc.source.word.shortcut": "Words",
-	"coc.source.emoji.shortcut": "Emoji",
-	"snippets.shortcut": "Snippet",
-	"coc.source.buffer.shortcut": "Buffer",
-	"coc.source.file.shortcut": "File",
 	"coc.source.emoji.triggerCharacters": [";"],
 	"coc.source.emoji.filetypes": null,
 	"inlayHint.enableParameter": true,
@@ -198,5 +190,11 @@
 			"parameterNames": true,
 			"rangeVariableTypes": true
 		}
-	}
+	},
+	"coc.source.around.shortcut": "AR",
+	"coc.source.word.shortcut": "WD",
+	"coc.source.emoji.shortcut": "EM",
+	"snippets.shortcut": "SN",
+	"coc.source.buffer.shortcut": "BF",
+	"coc.source.file.shortcut": "FL"
 }
