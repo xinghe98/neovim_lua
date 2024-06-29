@@ -61,7 +61,7 @@
 	"suggest.removeDuplicateItems": true,
 	"suggest.reversePumAboveCursor": true,
 	"suggest.snippetIndicator": " ",
-	"suggest.selection": "recentlyUsedByPrefix",
+	"suggest.selection": "recentlyUsed",
 	"suggest.triggerCompletionWait": 0,
 	"suggest.completionItemKindLabels": {
 		"text": "󰓽 Text",
