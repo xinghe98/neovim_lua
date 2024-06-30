@@ -22,13 +22,14 @@ require("guiConfig")
 -- 美化相关
 require("style")
 vim.g.coc_global_extensions = {
+	"coc-marketplace",
 	"coc-css",
 	"coc-highlight",
 	"coc-sumneko-lua",
 	"coc-go",
 	"coc-diagnostic",
 	"coc-docker",
-	"coc-eslint",
+	-- "coc-eslint",
 	"coc-flutter",
 	"coc-flutter-tools",
 	"coc-gitignore",
