@@ -1,24 +1,9 @@
 -- vim.cmd("colorscheme deus")
 -- vim.cmd("colorscheme material")
 -- vim.cmd("colorscheme hardhacker")
-require("catppuccin").setup({
-	flavour = "frappe", -- latte, frappe, macchiato, mocha
-	styles = {
-		comments = { "bold" },
-		properties = { "bold" },
-		functions = { "bold" },
-		keywords = { "italic" },
-		operators = { "bold" },
-		conditionals = { "italic" },
-		loops = { "italic" },
-		booleans = { "bold", "italic" },
-		numbers = {},
-		types = {},
-		strings = {},
-		variables = {},
-	},
-})
-vim.cmd("colorscheme catppuccin")
+vim.g.material_style = "palenight"
+vim.cmd("colorscheme material")
+--Lua:
 --[[ require("onenord").setup({
 	theme = nil,  -- "dark" or "light". Alternatively, remove the option and set vim.o.background instead
 	borders = true, -- Split window borders
