@@ -173,10 +173,6 @@ keyset("i", "<C-e>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-e>"', o
 keyset("n", "<C-e>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-e>"', opts)
 keyset("i", "<C-u>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-u>"', opts)
 keyset("n", "<C-u>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-u>"', opts)
-keyset("i", "<C-e>", 'coc#pum#has_scroll() ? coc#pum#scroll(1) : "<C-e>"', opts)
-keyset("n", "<C-e>", 'coc#pum#has_scroll() ? coc#pum#scroll(1) : "<C-e>"', opts)
-keyset("i", "<C-u>", 'coc#pum#has_scroll() ? coc#pum#scroll(0) : "<C-u>"', opts)
-keyset("n", "<C-u>", 'coc#pum#has_scroll() ? coc#pum#scroll(0) : "<C-u>"', opts)
 -- Use CTRL-S for selections ranges
 -- Requires 'textDocument/selectionRange' support of language server
 --[[ keyset("n", "<C-s>", "<Plug>(coc-range-select)", { silent = true })
