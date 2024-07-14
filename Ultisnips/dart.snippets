@@ -1,0 +1,42 @@
+
+snippet clsl "Create Stateless widget"
+class ${1:HomePage}  extends StatelessWidget {
+  const ${1:HomePage} ({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar:  ${2},
+	  body: ${3},
+    );
+  }
+}
+endsnippet
+
+
+snippet clsf "Create Stateful Widget" 
+
+class ${1:HomePage} extends StatefulWidget {
+  const ${1:HomePage}({super.key});
+
+  @override
+  State<${1:HomePage}> createState() => _${2:SomePage}();
+}
+
+class _${2:SomePage} extends State<${1:HomePage}> {
+
+  void _${3}() {
+    setState(() {
+	${5}
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+	${4}
+    );
+  }
+}
+
+endsnippet
