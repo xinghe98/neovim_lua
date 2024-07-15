@@ -1,4 +1,5 @@
-vim.cmd("colorscheme deus")
+vim.g.material_style = "palenight"
+vim.cmd("colorscheme material")
 -- vim.cmd("colorscheme material")
 -- vim.cmd("colorscheme hardhacker")
 --[[ require("onenord").setup({

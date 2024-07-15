@@ -1,19 +1,48 @@
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
-keymap("", "H", "^", opts)
-keymap("", "L", "$", opts)
-keymap("n", "o", "zzo", opts)
-keymap("n", "O", "zzO", opts)
-keymap("n", "<leader>l", "<C-w>l", opts)
-keymap("n", "<leader>k", "<C-w>k", opts)
-keymap("n", "<leader>h", "<C-w>h", opts)
-keymap("n", "<leader>j", "<C-w>j", opts)
+local opt = { noremap = true }
+-- vim.o.langmap = "uk,lu,il,ki,ej,je"
+keymap("", ";", ":", opt)
+keymap("", "Y", "\"+y", opt)
+
+-- Movement
+keymap("", "n", "h", opt)
+keymap("", "e", "j", opt)
+keymap("", "u", "k", opt)
+keymap("", "i", "l", opt)
+keymap("", "h", "e", opt)
+keymap("", "m", "n", opt)
+keymap("", "M", "N", opt)
+keymap("n", "'", "m", opt)
+
+
+keymap("", "U", "5k", opts)
+keymap("", "E", "5j", opts)
+keymap("", "N", "0", opts)
+keymap("", "I", "$", opts)
+keymap("", "gu", "gk", opts)
+keymap("", "ge", "gj", opts)
+keymap("", "<C-U>", "5<C-y>", opts)
+keymap("", "<C-E>", "5<C-e>", opts)
+keymap("", "ci", "cl", opts)
+keymap("", "cn", "ch", opts)
+keymap("", "ck", "ci", opts)
+keymap("", "c,.", "c%", opts)
+keymap("", "yh", "ye", opts)
+
+-- Actions
+keymap("", "l", "u", opts)
+keymap("", "k", "i", opts)
+keymap("", "K", "I", opts)
+
+keymap("n", "<leader>i", "<C-w>l", opts)
+keymap("n", "<leader>u", "<C-w>k", opts)
+keymap("n", "<leader>n", "<C-w>h", opts)
+keymap("n", "<leader>e", "<C-w>j", opts)
 keymap("n", "<S-Tab>", "<<", opts)
 keymap("n", "<Tab>", ">>", opts)
 keymap("v", "<S-Tab>", "<", opts)
 keymap("v", "<Tab>", ">", opts)
-keymap("", "<S-j>", "5j", opts)
-keymap("", "K", "5k", opts)
 keymap("n", "qq", ":nohlsearch<CR>", opts)
 keymap("n", "<S-s>", ":w<CR>", opts)
 keymap("n", "<S-q>", ":q<CR>", opts)
@@ -37,7 +66,7 @@ keymap("n", "<c-w>", ":bd<CR>", opts)
 -- nvim-tree
 keymap("n", "tt", ":NvimTreeFindFileToggle<CR>", opts)
 -- copilot
-keymap("i", "<C-e>", 'copilot#Accept("<CR>")', { script = true, silent = true, expr = true })
+keymap("i", "<C-q>", 'copilot#Accept("<CR>")', { script = true, silent = true, expr = true })
 -- todo comments
 keymap("n", "<leader>ft", ":TodoTelescope<CR>", opts)
 vim.keymap.set("n", "]t", function()
@@ -47,6 +76,7 @@ end, { desc = "Next todo comment" })
 vim.keymap.set("n", "[t", function()
 	require("todo-comments").jump_prev()
 end, { desc = "Previous todo comment" })
+
 
 vim.cmd([[func! CompileRunGcc()
 	exec "w"

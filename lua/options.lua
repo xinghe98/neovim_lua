@@ -1,6 +1,7 @@
 local set = vim.opt
 set.number = true
 set.rnu = true
+set.cursorline = true
 -- 可以拆行
 set.wrap = true
 set.fileformat = unix
@@ -36,8 +37,10 @@ vim.opt.signcolumn = "yes"
 vim.o.foldmethod = "indent"
 vim.o.foldenable = false
 vim.o.foldlevel = 99
+vim.g.translator_default_engines = { "haici", "google" }
 vim.notify = require("notify")
 vim.opt.clipboard = "unnamedplus"
+-- vim.opt.pumblend = 15
 vim.cmd([[
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
