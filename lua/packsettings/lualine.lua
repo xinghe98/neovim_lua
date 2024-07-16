@@ -31,6 +31,8 @@ local bubbles_theme = {
 	},
 }
 
+
+
 require("lualine").setup({
 	options = {
 		theme = bubbles_theme,
@@ -47,6 +49,10 @@ require("lualine").setup({
 			{
 				'g:coc_status', 'bo:filetype'
 			},
+			{ function()
+				return vim.g.flutter_tools_decorations.device
+			end
+			},
 			{
 
 				"diagnostics",
@@ -58,6 +64,7 @@ require("lualine").setup({
 					color_info = { fg = colors.cyan },
 				},
 			},
+
 		},
 		lualine_c = {},
 		lualine_x = {

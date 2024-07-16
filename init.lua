@@ -31,7 +31,6 @@ vim.g.coc_global_extensions = {
 	"coc-docker",
 	-- "coc-eslint",
 	"coc-flutter",
-	"coc-flutter-tools",
 	"coc-gitignore",
 	"coc-git",
 	"coc-html",

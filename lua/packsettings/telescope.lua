@@ -3,6 +3,7 @@ vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
 vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
+vim.keymap.set("n", "<C-x>", ":Telescope flutter commands<CR>", {})
 
 require("telescope").setup({
 	defaults = {
@@ -25,3 +26,4 @@ require("telescope").setup({
 	},
 })
 require('telescope').load_extension('coc')
+require("telescope").load_extension("flutter")
