@@ -187,9 +187,9 @@ cmp.setup({
 			local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
 			local strings = vim.split(kind.kind, "%s", { trimempty = true })
 			vim_item.kind = " " .. (strings[1] or "") .. " "
-			local name = entry.source.name
+			-- local name = entry.source.name
 			if entry.source.name ~= nil then
-				vim_item.menu = "   " .. (strings[2] or "") .. " " .. source_icons[name]
+				vim_item.menu = "   " .. (strings[2] or "") .. " "
 			else
 				vim_item.menu = "   " .. (strings[2] or "") .. " "
 			end
