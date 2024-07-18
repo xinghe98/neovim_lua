@@ -41,13 +41,17 @@ require("lazy").setup({
 			{ "saadparwaiz1/cmp_luasnip" }, -- Snippets source for nvim-cmp
 			{ "rafamadriz/friendly-snippets" }, -- Snippets (vscode-like) collection for different languages
 			{
-				"L3MON4D3/LuaSnip", -- Snippets plugin
+				"L3MON4D3/LuaSnip",    -- Snippets plugin
 				config = function()
 					require("luasnip.loaders.from_vscode").lazy_load()
 				end,
 			},
 			{ "ray-x/lsp_signature.nvim" },
 			{ "onsails/lspkind.nvim" },
+			{
+				'j-hui/fidget.nvim',
+				tag = "legacy"
+			},
 			-- use 'hrsh7th/cmp-nvim-lsp-signature-help'
 		},
 		config = function()
@@ -79,6 +83,18 @@ require("lazy").setup({
 			},
 		},
 	},
+	{
+		'akinsho/flutter-tools.nvim',
+		lazy = false,
+		dependencies = {
+			'nvim-lua/plenary.nvim',
+			'stevearc/dressing.nvim', -- optional for vim.ui.select
+		},
+		config = function()
+			require("packsettings.flutterTool")
+		end,
+		ft = "dart"
+	},
 	--------lsp end -------------------
 
 	{
@@ -96,7 +112,7 @@ require("lazy").setup({
 			require("packsettings.vista")
 		end,
 	},
-	{ "mg979/vim-visual-multi", branch = "master", lazy = false },
+	{ "mg979/vim-visual-multi",     branch = "master", lazy = false },
 	{
 		"nvim-treesitter/nvim-treesitter",
 		event = "VimEnter",
@@ -132,7 +148,7 @@ require("lazy").setup({
 			require("packsettings.lualine")
 		end,
 	},
-	{ "voldikss/vim-translator", event = "BufEnter" },
+	{ "voldikss/vim-translator",   event = "BufEnter" },
 	{
 		"tpope/vim-surround",
 		version = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -166,17 +182,16 @@ require("lazy").setup({
 		end,
 	},
 	-- 终端悬浮窗
-	{ "voldikss/vim-floaterm", lazy = false },
+	{ "voldikss/vim-floaterm",       lazy = false },
 	-- 文件搜索插件
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.2",
+		tag = "0.1.8",
 		event = "VimEnter",
 		dependencies = {
 			"nvim-lua/plenary.nvim", -- Lua 开发模块
 			"BurntSushi/ripgrep", -- 文字查找
-			"sharkdp/fd", -- 文件查找
-			"fannheyward/telescope-coc.nvim",
+			"sharkdp/fd",   -- 文件查找
 		},
 		config = function()
 			require("packsettings.telescope")
@@ -255,12 +270,12 @@ require("lazy").setup({
 
 	--------一些美化啥的 -------------------
 	{ "rcarriga/nvim-notify" },
-	{ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, event = "VimEnter" },
-	{ "ap/vim-css-color", event = "VimEnter", lazy = false },
-	{ "theniceboy/nvim-deus", lazy = false, priority = 1000 },
-	{ "hardhackerlabs/theme-vim", lazy = false, priority = 1000 },
-	{ "rmehri01/onenord.nvim", lazy = false, priority = 1000 },
-	{ "folke/tokyonight.nvim", lazy = false, priority = 1000 },
-	{ "ellisonleao/gruvbox.nvim", lazy = false, priority = 1000 },
-	{ "marko-cerovac/material.nvim", lazy = false, priority = 1000 },
+	{ "folke/todo-comments.nvim",    dependencies = { "nvim-lua/plenary.nvim" }, event = "VimEnter" },
+	{ "ap/vim-css-color",            event = "VimEnter",                         lazy = false },
+	{ "theniceboy/nvim-deus",        lazy = false,                               priority = 1000 },
+	{ "hardhackerlabs/theme-vim",    lazy = false,                               priority = 1000 },
+	{ "rmehri01/onenord.nvim",       lazy = false,                               priority = 1000 },
+	{ "folke/tokyonight.nvim",       lazy = false,                               priority = 1000 },
+	{ "ellisonleao/gruvbox.nvim",    lazy = false,                               priority = 1000 },
+	{ "marko-cerovac/material.nvim", lazy = false,                               priority = 1000 },
 }, { defaults = { lazy = true } })

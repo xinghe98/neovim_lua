@@ -25,5 +25,6 @@ require("mason-tool-installer").setup({
 		"goimports",
 		"prettier",
 		"prettierd",
+		"dartls"
 	},
 })
