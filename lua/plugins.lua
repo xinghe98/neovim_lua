@@ -96,7 +96,9 @@ require("lazy").setup({
 		version = "*", -- Use for stability; omit to use `main` branch for the latest features
 		event = "VeryLazy",
 	},
-	{
+
+	-- indentline
+	--[[ {
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufEnter",
 		main = "ibl",
@@ -106,7 +108,14 @@ require("lazy").setup({
 		config = function()
 			require("packsettings.indentline")
 		end,
+	}, ]]
+	{
+		"shellRaining/hlchunk.nvim",
+		init = function()
+			require("packsettings.indentline")
+		end
 	},
+
 	{ "xiyaowong/nvim-cursorword", lazy = false },
 	{
 		"akinsho/bufferline.nvim",
@@ -128,7 +137,7 @@ require("lazy").setup({
 	-- 文件搜索插件
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.2",
+		tag = "0.1.8",
 		event = "VimEnter",
 		dependencies = {
 			"nvim-lua/plenary.nvim", -- Lua 开发模块

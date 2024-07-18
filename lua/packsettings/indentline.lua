@@ -1,4 +1,4 @@
-local rainbow_delimiters = require 'rainbow-delimiters'
+--[[ local rainbow_delimiters = require 'rainbow-delimiters'
 local highlight = {
 	"RainbowRed",
 	"RainbowYellow",
@@ -34,4 +34,24 @@ vim.g.rainbow_delimiters = {
 }
 require("ibl").setup { scope = { highlight = highlight } }
 
-hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
+hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark) ]]
+vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, { pattern = "*", command = "EnableHL", })
+require('hlchunk').setup({
+	chunk = {
+		enable = true,
+		use_treesitter = true,
+		style = {
+			{ fg = "#806d9c" },
+		},
+	},
+	indent = {
+		chars = { "│", "¦", "┆", "┊", },
+		use_treesitter = false,
+	},
+	blank = {
+		enable = false,
+	},
+	line_num = {
+		use_treesitter = true,
+	},
+})

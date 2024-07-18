@@ -23,6 +23,7 @@ require("guiConfig")
 require("style")
 vim.g.coc_global_extensions = {
 	"coc-marketplace",
+	"coc-word",
 	"coc-css",
 	"coc-highlight",
 	"coc-sumneko-lua",
@@ -41,11 +42,9 @@ vim.g.coc_global_extensions = {
 	"coc-prettier",
 	"coc-prisma",
 	"coc-snippets",
-	"coc-sourcekit",
 	-- "coc-syntax",
-	"coc-word",
+	-- "coc-word",
 	"coc-emoji",
-	"coc-tasks",
 	"coc-tsserver",
 	"@yaegassy/coc-volar",
 	"coc-emmet",
