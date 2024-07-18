@@ -21,3 +21,5 @@ require("markdown")
 require("guiConfig")
 -- 美化相关
 require("style")
+-- lsp配置
+require("lsp.lspconf")

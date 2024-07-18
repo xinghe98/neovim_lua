@@ -128,10 +128,10 @@ cmp.setup({
 		select = false,
 	},
 	mapping = cmp.mapping.preset.insert({
-		["<C-k>"] = cmp.mapping.select_prev_item(),
-		["<C-j>"] = cmp.mapping.select_next_item(),
-		["<C-d>"] = cmp.mapping.scroll_docs(-4),
-		["<C-f>"] = cmp.mapping.scroll_docs(4),
+		--[[ ["<C-u>"] = cmp.mapping.select_prev_item(),
+		["<C-e>"] = cmp.mapping.select_next_item(), ]]
+		["<C-u>"] = cmp.mapping.scroll_docs(-4),
+		["<C-e>"] = cmp.mapping.scroll_docs(4),
 		["<C-q>"] = cmp.mapping.abort(),
 		["<Esc>"] = cmp.mapping.abort(),
 		-- TODO: potentially fix emmet nonsense
@@ -191,10 +191,10 @@ cmp.setup({
 	},
 	sources = {
 		{ name = "nvim_lsp", keyword_length = 2 },
-		{ name = "buffer",   keyword_length = 3 },
-		{ name = "path",     keyword_length = 3 },
+		{ name = "buffer", keyword_length = 3 },
+		{ name = "path", keyword_length = 3 },
 		{ name = "nvim_lua", keyword_length = 3 },
-		{ name = "look",     keyword_length = 3 },
+		{ name = "look", keyword_length = 3 },
 		{
 			name = "spell",
 			option = {
