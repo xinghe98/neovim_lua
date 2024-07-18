@@ -73,33 +73,36 @@ else
 		calc = "[calc]",
 	}
 end
-local kind_icons = {
-	text = "󰓽 Text",
-	method = "m Method",
-	Function = "󰊕 Func",
-	constructor = " Constructor",
-	field = " Field",
-	variable = "󱄑 Variable",
-	class = " Class",
-	interface = " Interface",
-	module = " Module",
-	property = "󰀔 Property",
-	unit = " Unit",
-	value = "󱀍 Value",
-	keyword = "󰌆 Keyword",
-	snippet = " Snippet",
-	color = " Color",
-	file = " File",
-	reference = " Reference",
-	folder = " Folder",
-	enum = " Enummember",
-	constant = " Constant",
-	struct = "  Struct",
-	event = " Event",
-	operator = " Operator",
-	typeParameter = "󰉺 TypeParameter",
-	default = "󰊨 default",
-}
+
+require("lspkind").init({
+	symbol_map = {
+		text = "󰓽 Text",
+		method = "m Method",
+		Function = "󰊕 Func",
+		constructor = " Constructor",
+		field = " Field",
+		variable = "󱄑 Variable",
+		class = " Class",
+		interface = " Interface",
+		module = " Module",
+		property = "󰀔 Property",
+		unit = " Unit",
+		value = "󱀍 Value",
+		keyword = "󰌆 Keyword",
+		snippet = " Snippet",
+		color = " Color",
+		file = " File",
+		reference = " Reference",
+		folder = " Folder",
+		enum = " Enummember",
+		constant = " Constant",
+		struct = "  Struct",
+		event = " Event",
+		operator = " Operator",
+		typeParameter = "󰉺 TypeParameter",
+		default = "󰊨 default",
+	},
+})
 
 local luasnip = require("luasnip")
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
@@ -127,13 +130,15 @@ cmp.setup({
 		behavior = cmp.ConfirmBehavior.Insert,
 		select = false,
 	},
+	completion = { completeopt = "noselect" },
+	preselect = cmp.PreselectMode.none,
 	mapping = cmp.mapping.preset.insert({
 		--[[ ["<C-u>"] = cmp.mapping.select_prev_item(),
 		["<C-e>"] = cmp.mapping.select_next_item(), ]]
 		["<C-u>"] = cmp.mapping.scroll_docs(-4),
 		["<C-e>"] = cmp.mapping.scroll_docs(4),
 		["<C-q>"] = cmp.mapping.abort(),
-		["<Esc>"] = cmp.mapping.abort(),
+		-- ["<Esc>"] = cmp.mapping.abort(),
 		-- TODO: potentially fix emmet nonsense
 		["<CR>"] = cmp.mapping({
 			i = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true }),
@@ -147,7 +152,7 @@ cmp.setup({
 		}),
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
-				cmp.select_next_item()
+				cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
 			elseif luasnip.expand_or_jumpable() then
 				luasnip.expand_or_jump()
 			else
@@ -156,7 +161,7 @@ cmp.setup({
 		end, { "i", "s" }),
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
-				cmp.select_prev_item()
+				cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
 			elseif luasnip.jumpable(-1) then
 				luasnip.jump(-1)
 			else
@@ -164,12 +169,23 @@ cmp.setup({
 			end
 		end, { "i", "s" }),
 	}),
+	--[[ formatting = {
+		fields = { "kind", "abbr", "menu" },
+		format = function(entry, vim_item)
+			local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+			local strings = vim.split(kind.kind, "%s", { trimempty = true })
+			kind.kind = " " .. (strings[1] or "") .. " "
+			kind.menu = "    (" .. (strings[2] or "") .. ")"
+
+			return kind
+		end,
+	}, ]]
 	formatting = {
 		fields = { "kind", "abbr", "menu" },
 		format = function(entry, vim_item)
 			-- Kind icons
-			local kind = string.format("%s", kind_icons[vim_item.kind])
-			local strings = vim.split(kind, "%s", { trimempty = true })
+			local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+			local strings = vim.split(kind.kind, "%s", { trimempty = true })
 			vim_item.kind = " " .. (strings[1] or "") .. " "
 			local name = entry.source.name
 			if entry.source.name ~= nil then
@@ -178,15 +194,6 @@ cmp.setup({
 				vim_item.menu = "   " .. (strings[2] or "") .. " "
 			end
 			return vim_item
-			--[[ local kind = lspkind.cmp_format({
-				mode = "symbol_text",
-				symbol_map = { Codeium = "" },
-			})(entry, vim_item)
-			local strings = vim.split(kind.kind, "%s", { trimempty = true })
-			kind.kind = " " .. (strings[1] or "") .. " "
-			kind.menu = limitStr(entry:get_completion_item().detail or "")
-
-			return kind ]]
 		end,
 	},
 	sources = {
