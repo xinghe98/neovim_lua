@@ -2,24 +2,23 @@ require("conform").setup({
 	-- format_on_save = true,
 	log_level = vim.log.levels.ERROR,
 	notify_on_error = false,
-	--[[ format_on_save = {
+	format_on_save = {
 		-- I recommend these options. See :help conform.format for details.
 		lsp_fallback = true,
 		timeout_ms = 500,
-	}, ]]
+	},
 	formatters_by_ft = {
-		go = { formatters = { "gofumpt", "goimports" }, run_all_formatters = true },
+		go = { "gofumpt", "goimports" },
 		lua = { "stylua" },
 		-- go = {formatters=""}
 		-- Conform will use the first available formatter in the list
 		javascript = { "prettierd" },
 		typescript = { "prettierd" },
-		vue = { formatters = { "volar", "prettierd" }, run_all_formatters = true },
+		-- vue = { "volar", "prettierd" },
 		-- Formatters can also be specified with additional options
 		python = {
-			formatters = { "isort", "black" },
+			"isort", "black"
 			-- Run formatters one after another instead of stopping at the first success
-			run_all_formatters = true,
 		},
 	},
 })

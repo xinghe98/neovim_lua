@@ -1,8 +1,4 @@
-local lspsaga = require("lspsaga")
-lspsaga.setup({ -- defaults ...
-	ui = {
-		kind = require("onenord.integrations.lspsaga").custom_kind(),
-	},
+require("lspsaga").setup({ -- defaults ...
 	debug = false,
 	use_saga_diagnostic_sign = true,
 	-- diagnostic sign

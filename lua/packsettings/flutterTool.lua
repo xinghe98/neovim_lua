@@ -1,6 +1,10 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 require("flutter-tools").setup({
+	flutter_path = "/usr/bin/flutter",
+	ui = {
+		border = "rounded",
+	},
 	decorations = {
 		statusline = {
 			-- set to true to be able use the 'flutter_tools_decorations.app_version' in your statusline
@@ -13,17 +17,17 @@ require("flutter-tools").setup({
 			-- set to true to be able use the 'flutter_tools_decorations.project_config' in your statusline
 			-- this will show the currently selected project configuration
 			project_config = false,
-		}
+		},
 	},
 	root_patterns = { ".git", "pubspec.yaml" }, -- patterns to find the root of your flutter project
-	fvm = false,                             -- takes priority over path, uses <workspace>/.fvm/flutter_sdk if enabled
+	fvm = false, -- takes priority over path, uses <workspace>/.fvm/flutter_sdk if enabled
 	widget_guides = {
 		enabled = false,
 	},
 	closing_tags = {
-		highlight = "ErrorMsg", -- highlight for the closing tag
-		prefix = "//",    -- character to use for close tag e.g. > Widget
-		enabled = false   -- set to false to disable
+		highlight = "EndofBuffer", -- highlight for the closing tag
+		prefix = "//", -- character to use for close tag e.g. > Widget
+		enabled = true, -- set to false to disable
 	},
 	dev_log = {
 		enabled = true,
@@ -31,25 +35,34 @@ require("flutter-tools").setup({
 		open_cmd = "tabedit", -- command to use to open the log buffer
 	},
 	dev_tools = {
-		autostart = false,   -- autostart devtools server if not detected
+		autostart = false, -- autostart devtools server if not detected
 		auto_open_browser = false, -- Automatically opens devtools in the browser
 	},
 	outline = {
 		open_cmd = "30vnew", -- command to use to open the outline buffer
-		auto_open = false -- if true this will open the outline automatically when it is first populated
+		auto_open = false, -- if true this will open the outline automatically when it is first populated
 	},
 	lsp = {
-		on_attach = function()
-			vim.cmd('highlight! link FlutterWidgetGuides Comment')
+		on_attach = function(client)
+			vim.cmd("highlight! link FlutterWidgetGuides Comment")
+			vim.lsp.inlay_hint.enable()
 		end,
 		capabilities = capabilities,
+		color = { -- show the derived colours for dart variables
+			enabled = true, -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
+			background = false, -- highlight the background
+			background_color = nil, -- required, when background is transparent (i.e. background_color = { r = 19, g = 17, b = 24},)
+			foreground = false, -- highlight the foreground
+			virtual_text = true, -- show the highlight using virtual text
+			virtual_text_str = "■", -- the virtual text character to highlight
+		},
 		settings = {
-			enableSnippets = false,
+			enableSnippets = true,
 			showTodos = true,
 			completeFunctionCalls = true,
 			analysisExcludedFolders = {
-				vim.fn.expand '$HOME/.pub-cache',
-				vim.fn.expand '$HOME/fvm',
+				vim.fn.expand("$HOME/.pub-cache"),
+				vim.fn.expand("$HOME/fvm"),
 			},
 			lineLength = vim.g.flutter_format_line_length,
 		},
