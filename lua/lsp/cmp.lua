@@ -197,11 +197,11 @@ cmp.setup({
 		end,
 	},
 	sources = {
-		{ name = "nvim_lsp", keyword_length = 2 },
-		{ name = "buffer", keyword_length = 3 },
-		{ name = "path", keyword_length = 3 },
-		{ name = "nvim_lua", keyword_length = 3 },
-		{ name = "look", keyword_length = 3 },
+		{ name = "nvim_lsp", keyword_length = 2, priority = 100 },
+		{ name = "buffer", keyword_length = 3, priority = 60 },
+		{ name = "path", keyword_length = 3, priority = 90 },
+		{ name = "nvim_lua", keyword_length = 3, priority = 80 },
+		{ name = "look", keyword_length = 3, priority = 40 },
 		{
 			name = "spell",
 			option = {
@@ -211,9 +211,10 @@ cmp.setup({
 					return true
 				end,
 			},
+			priority = 40,
 		},
-		{ name = "luasnip", keyword_length = 3 },
-		{ name = "calc" },
+		{ name = "luasnip", keyword_length = 3, priority = 10 },
+		{ name = "calc", priority = 5 },
 		-- { name = 'nvim_lsp_signature_help' },
 	},
 })

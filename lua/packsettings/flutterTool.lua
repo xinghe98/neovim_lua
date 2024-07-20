@@ -23,7 +23,8 @@ dart_capabilities.textDocument.codeAction = {
 }
 
 require("flutter-tools").setup({
-	flutter_path = "/usr/bin/flutter",
+	-- flutter_path = "/usr/bin/flutter",
+	flutter_path = "/Users/lixinghe/.local/share/flutter/bin/flutter",
 	ui = {
 		border = "rounded",
 	},
