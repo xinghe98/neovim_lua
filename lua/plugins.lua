@@ -62,10 +62,9 @@ require("lazy").setup({
 	{
 		"nvimdev/lspsaga.nvim",
 		-- after = "nvim-lspconfig",
-		event = "VimEnter",
-		config = function()
+		event = "LspAttach",
+		init = function()
 			require("lsp.lsp_saga")
-			-- require("lspsaga").setup({})
 		end,
 		dependencies = {
 			{ "nvim-tree/nvim-web-devicons" },

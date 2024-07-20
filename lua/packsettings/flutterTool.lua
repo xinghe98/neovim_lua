@@ -1,5 +1,27 @@
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+--- dart ----
+local lspmoudle = require("lsp.lspconf")
+local dart_capabilities = vim.lsp.protocol.make_client_capabilities()
+dart_capabilities.textDocument.inlayHint = {
+	enabled = true,
+}
+dart_capabilities.textDocument.codeAction = {
+	dynamicRegistration = true,
+	codeActionLiteralSupport = {
+		codeActionKind = {
+			valueSet = {
+				"",
+				"quickfix",
+				"refactor",
+				"refactor.extract",
+				"refactor.inline",
+				"refactor.rewrite",
+				"source",
+				"source.organizeImports",
+			},
+		},
+	},
+}
+
 require("flutter-tools").setup({
 	flutter_path = "/usr/bin/flutter",
 	ui = {
@@ -43,11 +65,10 @@ require("flutter-tools").setup({
 		auto_open = false, -- if true this will open the outline automatically when it is first populated
 	},
 	lsp = {
-		on_attach = function(client)
-			vim.cmd("highlight! link FlutterWidgetGuides Comment")
-			vim.lsp.inlay_hint.enable()
+		on_attach = function(client, buffer)
+			return lspmoudle.attach(client, buffer)
 		end,
-		capabilities = capabilities,
+		capabilities = dart_capabilities,
 		color = { -- show the derived colours for dart variables
 			enabled = true, -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
 			background = false, -- highlight the background

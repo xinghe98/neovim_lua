@@ -2,7 +2,7 @@ require("inlay-hints").setup({
 	commands = { enable = true }, -- Enable InlayHints commands, include `InlayHintsToggle`, `InlayHintsEnable` and `InlayHintsDisable`
 	autocmd = { enable = true }, -- Enable the inlay hints on `LspAttach` event
 })
-
+--[[
 require("lspconfig").lua_ls.setup({
 	settings = {
 		Lua = {
@@ -12,17 +12,7 @@ require("lspconfig").lua_ls.setup({
 		},
 	},
 })
-
---[[ require("lspconfig").dartls.setup({
-	settings = {
-		dart = {
-			hint = {
-				enable = true,
-			},
-		},
-	},
-}) ]]
-
+ ]]
 require("lspconfig").tsserver.setup({
 	settings = {
 		typescript = {

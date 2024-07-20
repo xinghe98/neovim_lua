@@ -51,6 +51,16 @@ require("lualine").setup({
 				end,
 			},
 			{
+
+				function()
+					local luasnip = require("luasnip")
+					if luasnip.expand_or_jumpable() then
+						return "snippetting" .. " 😉"
+					end
+					return ""
+				end,
+			},
+			{
 				function()
 					return vim.g.flutter_tools_decorations.device
 				end,
