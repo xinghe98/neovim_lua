@@ -1,4 +1,10 @@
 --- dart ----
+vim.api.nvim_create_autocmd("VimEnter", {
+	pattern = "*.dart",
+	callback = function()
+		vim.lsp.inlay_hint.enable(true)
+	end,
+})
 local lspmoudle = require("lsp.lspconf")
 local dart_capabilities = vim.lsp.protocol.make_client_capabilities()
 dart_capabilities.textDocument.inlayHint = {

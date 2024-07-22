@@ -104,6 +104,32 @@ require("lspkind").init({
 	},
 })
 
+local limitStr = function(str)
+	if #str > 25 then
+		str = string.sub(str, 1, 22) .. "..."
+	end
+	return str
+end
+--- 解决补全: ,时鼠标光标在,后面的问题
+local has_words_before = function()
+	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+local moveCursorBeforeComma = function()
+	if vim.bo.filetype ~= "dart" then
+		return
+	end
+	vim.defer_fn(function()
+		local line = vim.api.nvim_get_current_line()
+		local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+		local char = line:sub(col - 2, col)
+		if char == ": ," then
+			vim.api.nvim_win_set_cursor(0, { row, col - 1 })
+		end
+	end, 60)
+end
+--- end ----
+
 local luasnip = require("luasnip")
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 local cmp = require("cmp")
@@ -141,14 +167,29 @@ cmp.setup({
 		-- ["<Esc>"] = cmp.mapping.abort(),
 		-- TODO: potentially fix emmet nonsense
 		["<CR>"] = cmp.mapping({
-			i = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true }),
-			c = function(fallback)
+			i = function(fallback)
 				if cmp.visible() then
 					cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true })
+					moveCursorBeforeComma()
+				-- FIX: 可能有错误，遇到再说吧
+				elseif has_words_before() then
+					cmp.complete()
+					moveCursorBeforeComma()
 				else
 					fallback()
 				end
 			end,
+			--[[ c = function(fallback)
+				if cmp.visible() then
+					cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = false })
+					moveCursorBeforeComma()
+				elseif has_words_before() then
+					cmp.complete()
+					moveCursorBeforeComma()
+				else
+					fallback()
+				end
+			end, ]]
 		}),
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
@@ -188,24 +229,38 @@ cmp.setup({
 			local strings = vim.split(kind.kind, "%s", { trimempty = true })
 			vim_item.kind = " " .. (strings[1] or "") .. " "
 			-- local name = entry.source.name
-			if entry.source.name ~= nil then
-				vim_item.menu = "   " .. (strings[2] or "") .. " "
+			if entry:get_completion_item().detail ~= nil then
+				vim_item.menu = " "
+					.. (strings[2] or "")
+					.. ":"
+					.. " "
+					.. limitStr(entry:get_completion_item().detail or "")
 			else
-				vim_item.menu = "   " .. (strings[2] or "") .. " "
+				vim_item.menu = " " .. (strings[2] or "")
 			end
 			return vim_item
 		end,
 	},
+	--[[ sorting = {
+		comparators = {
+			-- label_comparator,
+			cmp.config.compare.offset,
+			cmp.config.compare.exact,
+			cmp.config.compare.score,
+			cmp.config.compare.recently_used,
+			cmp.config.compare.kind,
+		},
+	}, ]]
 	sources = {
 		{ name = "nvim_lsp", keyword_length = 2, priority = 100 },
 		{ name = "buffer", keyword_length = 3, priority = 60 },
 		{ name = "path", keyword_length = 3, priority = 90 },
-		{ name = "nvim_lua", keyword_length = 3, priority = 80 },
+		{ name = "nvim_lua", keyword_length = 3, priority = 50 },
 		{ name = "look", keyword_length = 3, priority = 40 },
 		{
 			name = "spell",
 			option = {
-				keyword_length = 3,
+				keyword_length = 4,
 				keep_all_entries = true,
 				enable_in_context = function()
 					return true
