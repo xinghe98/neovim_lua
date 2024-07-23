@@ -111,10 +111,10 @@ local limitStr = function(str)
 	return str
 end
 --- 解决补全: ,时鼠标光标在,后面的问题
-local has_words_before = function()
+--[[ local has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
+end ]]
 local moveCursorBeforeComma = function()
 	if vim.bo.filetype ~= "dart" then
 		return
@@ -129,6 +129,19 @@ local moveCursorBeforeComma = function()
 	end, 60)
 end
 --- end ----
+local dartColonFirst = function(entry1, entry2)
+	--[[ if vim.bo.filetype ~= "dart" then
+		return nil
+	end ]]
+	local entry1EndsWithColon = string.find(entry1.completion_item.label, ":") and entry1.source.name == "nvim_lsp"
+	local entry2EndsWithColon = string.find(entry2.completion_item.label, ":") and entry2.source.name == "nvim_lsp"
+	if entry1EndsWithColon and not entry2EndsWithColon then
+		return true
+	elseif not entry1EndsWithColon and entry2EndsWithColon then
+		return false
+	end
+	return nil
+end
 
 local luasnip = require("luasnip")
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
@@ -170,10 +183,6 @@ cmp.setup({
 			i = function(fallback)
 				if cmp.visible() then
 					cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true })
-					moveCursorBeforeComma()
-				-- FIX: 可能有错误，遇到再说吧
-				elseif has_words_before() then
-					cmp.complete()
 					moveCursorBeforeComma()
 				else
 					fallback()
@@ -241,16 +250,17 @@ cmp.setup({
 			return vim_item
 		end,
 	},
-	--[[ sorting = {
+	sorting = {
 		comparators = {
 			-- label_comparator,
+			dartColonFirst,
 			cmp.config.compare.offset,
 			cmp.config.compare.exact,
 			cmp.config.compare.score,
 			cmp.config.compare.recently_used,
 			cmp.config.compare.kind,
 		},
-	}, ]]
+	},
 	sources = {
 		{ name = "nvim_lsp", keyword_length = 2, priority = 100 },
 		{ name = "buffer", keyword_length = 3, priority = 60 },

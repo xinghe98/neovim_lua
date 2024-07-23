@@ -50,7 +50,13 @@ require("lazy").setup({
 					-- require("luasnip.loaders.from_snipmate").lazy_load()
 				end,
 			},
-			{ "ray-x/lsp_signature.nvim" },
+			{
+				"ray-x/lsp_signature.nvim",
+				init = function()
+					require("lsp.lspsignature")
+				end,
+			},
+
 			{ "onsails/lspkind.nvim" },
 			{
 				"linrongbin16/lsp-progress.nvim",

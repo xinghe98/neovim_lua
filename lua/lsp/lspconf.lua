@@ -48,25 +48,6 @@ require("mason-lspconfig").setup_handlers({
 			on_attach = lspmoudle.attach,
 			capabilities = capabilities,
 		})
-
-		require("lsp_signature").setup({
-			bind = true,
-			toggle_key = nil,
-			floating_window = true,
-			floating_window_above_cur_line = true,
-			hint_enable = true,
-			fix_pos = false,
-			-- floating_window_above_first = true,
-			log_path = vim.fn.expand("$HOME") .. "/tmp/sig.log",
-			debug = true,
-			hi_parameter = "Search",
-			zindex = 200,
-			timer_interval = 100,
-			extra_trigger_chars = {},
-			handler_opts = {
-				border = "single", -- "shadow", --{"╭", "─" ,"╮", "│", "╯", "─", "╰", "│" },
-			},
-		})
 	end,
 })
 return lspmoudle
