@@ -13,6 +13,7 @@
 	"coc.preferences.messageLevel": "error",
 	"suggest.labelMaxLength": 65,
 	"suggest.localityBonus": false,
+	"suggest.removeCurrentWord": true,
 	"suggest.noselect": true,
 	"suggest.enablePreselect": false,
 	"suggest.filterGraceful": true,
@@ -20,7 +21,7 @@
 	"suggest.triggerAfterInsertEnter": true,
 	"suggest.autoTrigger": "always",
 	"suggest.defaultSortMethod": "none",
-	"suggest.detailField": "preview",
+	"suggest.detailField": "abbr",
 	"suggest.minTriggerInputLength": 2,
 	"suggest.timeout": 600,
 	"diagnostic.floatConfig": {
@@ -62,7 +63,7 @@
 	"suggest.virtualText": true,
 	"suggest.removeDuplicateItems": true,
 	"suggest.reversePumAboveCursor": true,
-	"suggest.snippetIndicator": " 󰁨",
+	"suggest.snippetIndicator": " 󰁨 ",
 	"suggest.selection": "recentlyUsed",
 	"suggest.triggerCompletionWait": 0,
 	"suggest.completionItemKindLabels": {

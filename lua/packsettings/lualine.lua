@@ -100,3 +100,9 @@ require("lualine").setup({
 	tabline = {},
 	extensions = { "lazy", "nvim-tree" },
 })
+vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
+vim.api.nvim_create_autocmd("User", {
+	group = "lualine_augroup",
+	pattern = "CocStatusChange",
+	callback = require("lualine").refresh,
+})
