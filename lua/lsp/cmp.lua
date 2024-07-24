@@ -280,7 +280,6 @@ cmp.setup({
 		},
 		{ name = "luasnip", keyword_length = 3, priority = 10 },
 		{ name = "calc", priority = 5 },
-		-- { name = 'nvim_lsp_signature_help' },
 	},
 })
 -- Set configuration for specific filetype.
@@ -291,28 +290,29 @@ cmp.setup.filetype("gitcommit", {
 		{ name = "buffer" },
 	}),
 })
-local lsp_sig_enabled = true
-local complete_done_debounce = false
 cmp.event:on("menu_opened", function()
-	complete_done_debounce = false
 	vim.defer_fn(function()
-		if lsp_sig_enabled then
-			require("lsp_signature").toggle_float_win()
-			lsp_sig_enabled = false
+		if _LSP_SIG_CFG.winnr ~= nil and _LSP_SIG_CFG.winnr ~= 0 and vim.api.nvim_win_is_valid(_LSP_SIG_CFG.winnr) then
+			vim.api.nvim_win_close(_LSP_SIG_CFG.winnr, true)
+			_LSP_SIG_CFG.winnr = nil
+			_LSP_SIG_CFG.bufnr = nil
 		end
-	end, 0)
+	end, 60)
 end)
 
-cmp.event:on("complete_done", function()
-	complete_done_debounce = true
+--[[ cmp.event:on("complete_done", function()
 	vim.defer_fn(function()
-		if complete_done_debounce and not lsp_sig_enabled then
+		if
+			not (
+				_LSP_SIG_CFG.winnr ~= nil
+				and _LSP_SIG_CFG.winnr ~= 0
+				and vim.api.nvim_win_is_valid(_LSP_SIG_CFG.winnr)
+			)
+		then
 			require("lsp_signature").toggle_float_win()
-			lsp_sig_enabled = true
 		end
-		complete_done_debounce = false
-	end, 10)
-end)
+	end, 60)
+end) ]]
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 --[[ cmp.setup.cmdline({ '/', '?' }, {
 	mapping = cmp.mapping.preset.cmdline(),
