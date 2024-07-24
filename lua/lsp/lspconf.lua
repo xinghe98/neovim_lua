@@ -32,11 +32,11 @@ function lspmoudle.attach(client, bufnr)
 				},
 			},
 			keymaps = {
-				--[[ next_signature = "<C-j>",
-				previous_signature = "<C-k>",
-				next_parameter = "<C-l>",
-				previous_parameter = "<C-h>",
-				close_signature = "<A-s>", ]]
+				-- next_signature = "<C-j>",
+				-- previous_signature = "<C-k>",
+				-- next_parameter = "<C-l>",
+				-- previous_parameter = "<C-h>",
+				close_signature = "<M-h>",
 			},
 			display_automatically = true, -- Uses trigger characters to automatically display the signature overloads when typing a method signature
 		})
@@ -65,6 +65,8 @@ function lspmoudle.attach(client, bufnr)
 	vim.keymap.set("n", "<c-e>", ":lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", bufopts)
 	-- 显示错误信息（代替内置 LSP 的窗口） ]]
 	vim.keymap.set("n", "<leader>e", ":Lspsaga show_line_diagnostics<CR>", bufopts)
+	vim.keymap.set("n", "<M-h>", ":LspOverloadsSignature<CR>", { noremap = true, silent = true, buffer = bufnr })
+	vim.keymap.set("i", "<M-h>", "<cmd>LspOverloadsSignature<CR>", { noremap = true, silent = true, buffer = bufnr })
 
 	-- ** (don't forget the 'conf/rust-tools-conf.lua) **
 	vim.api.nvim_create_autocmd("BufWritePre", {
