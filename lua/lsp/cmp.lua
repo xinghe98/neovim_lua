@@ -169,7 +169,7 @@ cmp.setup({
 		behavior = cmp.ConfirmBehavior.Insert,
 		select = false,
 	},
-	completion = { completeopt = "noselect" },
+	completion = { completeopt = "noselect", keyword_length = 1 },
 	preselect = cmp.PreselectMode.none,
 	mapping = cmp.mapping.preset.insert({
 		--[[ ["<C-u>"] = cmp.mapping.select_prev_item(),
@@ -291,6 +291,28 @@ cmp.setup.filetype("gitcommit", {
 		{ name = "buffer" },
 	}),
 })
+local lsp_sig_enabled = true
+local complete_done_debounce = false
+cmp.event:on("menu_opened", function()
+	complete_done_debounce = false
+	vim.defer_fn(function()
+		if lsp_sig_enabled then
+			require("lsp_signature").toggle_float_win()
+			lsp_sig_enabled = false
+		end
+	end, 0)
+end)
+
+cmp.event:on("complete_done", function()
+	complete_done_debounce = true
+	vim.defer_fn(function()
+		if complete_done_debounce and not lsp_sig_enabled then
+			require("lsp_signature").toggle_float_win()
+			lsp_sig_enabled = true
+		end
+		complete_done_debounce = false
+	end, 10)
+end)
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 --[[ cmp.setup.cmdline({ '/', '?' }, {
 	mapping = cmp.mapping.preset.cmdline(),
