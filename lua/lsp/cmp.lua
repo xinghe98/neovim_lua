@@ -290,7 +290,7 @@ cmp.setup.filetype("gitcommit", {
 		{ name = "buffer" },
 	}),
 })
-cmp.event:on("menu_opened", function()
+--[[ cmp.event:on("menu_opened", function()
 	vim.defer_fn(function()
 		if _LSP_SIG_CFG.winnr ~= nil and _LSP_SIG_CFG.winnr ~= 0 and vim.api.nvim_win_is_valid(_LSP_SIG_CFG.winnr) then
 			vim.api.nvim_win_close(_LSP_SIG_CFG.winnr, true)
@@ -298,7 +298,7 @@ cmp.event:on("menu_opened", function()
 			_LSP_SIG_CFG.bufnr = nil
 		end
 	end, 60)
-end)
+end) ]]
 
 --[[ cmp.event:on("complete_done", function()
 	vim.defer_fn(function()

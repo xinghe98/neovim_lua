@@ -5,6 +5,8 @@ signature.setup({
 	floating_window = true,
 	floating_window_above_cur_line = true,
 	hint_enable = true,
+	always_trigger = false,
+	check_completion_visible = false,
 	hint_inline = function()
 		return true
 	end, -- should the hint be inline(nvim 0.10 only)?  default false

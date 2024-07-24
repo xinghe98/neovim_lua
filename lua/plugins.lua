@@ -51,11 +51,15 @@ require("lazy").setup({
 				end,
 			},
 			{
+				"Issafalcon/lsp-overloads.nvim",
+			},
+
+			--[[ {
 				"ray-x/lsp_signature.nvim",
 				init = function()
 					require("lsp.lspsignature")
 				end,
-			},
+			}, ]]
 
 			{ "onsails/lspkind.nvim" },
 			{
