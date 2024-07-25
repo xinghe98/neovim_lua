@@ -11,7 +11,7 @@ fidget.setup({
 			local client = vim.lsp.get_client_by_id(client_id)
 			return client and client.name or nil
 		end,
-		-- How to get a progress message's notification group key
+		-- How to get a progress message's notification group keyfi
 		notification_group = function(msg)
 			return msg.lsp_client.name
 		end,
@@ -57,7 +57,7 @@ fidget.setup({
 	-- Options related to notification subsystem
 	notification = {
 		poll_rate = 10, -- How frequently to update and render notifications
-		filter = vim.log.levels.INFO, -- Minimum notifications level
+		filter = vim.log.levels.ERROR, -- Minimum notifications level
 		history_size = 128, -- Number of removed messages to retain in history
 		override_vim_notify = false, -- Automatically override vim.notify() with Fidget
 		-- How to configure notification groups when instantiated
@@ -84,8 +84,9 @@ fidget.setup({
 
 		-- Options related to the notification window and buffer
 		window = {
-			normal_hl = "Comment", -- Base highlight group in the notification window
-			winblend = 100, -- Background color opacity in the notification window
+
+			-- normal_hl = "Comment", -- Base highlight group in the notification window
+			winblend = 0, -- Background color opacity in the notification window
 			border = "none", -- Border around the notification window
 			zindex = 45, -- Stacking priority of the notification window
 			max_width = 0, -- Maximum width of the notification window

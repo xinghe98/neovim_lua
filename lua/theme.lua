@@ -31,7 +31,7 @@ require("material").setup({
 		-- "dap",
 		-- "dashboard",
 		-- "eyeliner",
-		-- "fidget",
+		"fidget",
 		-- "flash",
 		-- "gitsigns",
 		-- "harpoon",
