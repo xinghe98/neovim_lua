@@ -50,16 +50,16 @@ require("lazy").setup({
 					-- require("luasnip.loaders.from_snipmate").lazy_load()
 				end,
 			},
-			{
-				"Issafalcon/lsp-overloads.nvim",
-			},
-
 			--[[ {
+				"Issafalcon/lsp-overloads.nvim",
+			}, ]]
+
+			{
 				"ray-x/lsp_signature.nvim",
 				init = function()
 					require("lsp.lspsignature")
 				end,
-			}, ]]
+			},
 
 			{ "onsails/lspkind.nvim" },
 			--[[ {
@@ -124,6 +124,13 @@ require("lazy").setup({
 		dependencies = { "neovim/nvim-lspconfig" },
 		config = function()
 			require("lsp.inlay_hints")
+		end,
+	},
+	{
+		"brenoprata10/nvim-highlight-colors",
+		event = "VimEnter",
+		config = function()
+			require("nvim-highlight-colors").setup({})
 		end,
 	},
 	--------lsp end -------------------

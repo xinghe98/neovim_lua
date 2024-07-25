@@ -1,4 +1,5 @@
 local set = vim.opt
+set.modifiable = true
 set.number = true
 set.rnu = true
 set.cursorline = true
