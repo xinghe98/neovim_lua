@@ -68,6 +68,13 @@ require("lazy").setup({
 					require("lsp.lspProgress")
 				end,
 			},
+			{
+				"j-hui/fidget.nvim",
+				event = "VeryLazy",
+				config = function()
+					require("lsp.fidget")
+				end,
+			},
 		},
 		config = function()
 			require("lsp.cmp")

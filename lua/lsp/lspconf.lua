@@ -59,11 +59,6 @@ function lspmoudle.attach(client, bufnr)
 	vim.keymap.set("n", "g[", ":Lspsaga diagnostic_jump_prev<CR>", bufopts)
 	-- 跳转到下一个问题（代替内置 LSP 的窗口，Lspsaga 让跳转问题更美观）
 	vim.keymap.set("n", "g]", ":Lspsaga diagnostic_jump_next<CR>", bufopts)
-	--[[ -- 悬浮窗口上翻页，由 Lspsaga 提供
-	vim.keymap.set("n", "<c-u>", ":lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", bufopts)
-	-- 悬浮窗口下翻页，由 Lssaga 提供
-	vim.keymap.set("n", "<c-e>", ":lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", bufopts)
-	-- 显示错误信息（代替内置 LSP 的窗口） ]]
 	vim.keymap.set("n", "<leader>e", ":Lspsaga show_line_diagnostics<CR>", bufopts)
 	vim.keymap.set("n", "<M-h>", ":LspOverloadsSignature<CR>", { noremap = true, silent = true, buffer = bufnr })
 	vim.keymap.set("i", "<M-h>", "<cmd>LspOverloadsSignature<CR>", { noremap = true, silent = true, buffer = bufnr })
