@@ -44,12 +44,34 @@ require("lualine").setup({
 		},
 		lualine_b = {
 			"filename",
+
 			{
+				-- Lsp server name .
+				function()
+					local msg = "No Active Lsp"
+					local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+					local clients = vim.lsp.get_active_clients()
+					if next(clients) == nil then
+						return msg
+					end
+					local servername = {}
+					for k, client in ipairs(clients) do
+						local filetypes = client.config.filetypes
+						if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+							servername[k] = client.name
+						end
+					end
+					return table.concat(servername, ", ")
+				end,
+				icon = " LSP:",
+				color = { fg = "#ffffff", gui = "bold" },
+			},
+			--[[ {
 				function()
 					-- invoke `progress` here.
 					return require("lsp-progress").progress()
 				end,
-			},
+			}, ]]
 			{
 
 				function()
@@ -111,9 +133,9 @@ require("lualine").setup({
 	tabline = {},
 	extensions = { "lazy", "nvim-tree" },
 })
-vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
+--[[ vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
 vim.api.nvim_create_autocmd("User", {
 	group = "lualine_augroup",
 	pattern = "LspProgressStatusUpdated",
 	callback = require("lualine").refresh,
-})
+}) ]]

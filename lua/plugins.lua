@@ -62,12 +62,12 @@ require("lazy").setup({
 			}, ]]
 
 			{ "onsails/lspkind.nvim" },
-			{
+			--[[ {
 				"linrongbin16/lsp-progress.nvim",
 				config = function()
 					require("lsp.lspProgress")
 				end,
-			},
+			}, ]]
 			{
 				"j-hui/fidget.nvim",
 				event = "VeryLazy",
