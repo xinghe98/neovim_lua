@@ -298,15 +298,15 @@ cmp.setup.filetype("gitcommit", {
 cmp.event:on("menu_opened", function()
 	vim.defer_fn(function()
 		if _LSP_SIG_CFG.winnr ~= nil and _LSP_SIG_CFG.winnr ~= 0 and vim.api.nvim_win_is_valid(_LSP_SIG_CFG.winnr) then
-			_LSP_SIG_CFG.floating_window = false
 			vim.api.nvim_win_close(_LSP_SIG_CFG.winnr, true)
 			_LSP_SIG_CFG.winnr = nil
 			_LSP_SIG_CFG.bufnr = nil
+			_LSP_SIG_CFG.floating_window = false
 		end
-	end, 0)
+	end, 60)
 end)
 
-cmp.event:on("menu_closed", function()
+cmp.event:on("confirm_done", function()
 	vim.defer_fn(function()
 		--[[ if
 			not (
@@ -316,6 +316,7 @@ cmp.event:on("menu_closed", function()
 			)
 		then ]]
 		_LSP_SIG_CFG.floating_window = true
+		require("lsp_signature").toggle_float_win()
 	end, 0)
 end)
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
