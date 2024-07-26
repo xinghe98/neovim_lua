@@ -1,6 +1,41 @@
 local lspmoudle = {}
 
 function lspmoudle.attach(client, bufnr)
+	if client.server_capabilities.signatureHelpProvider then
+		local fidget = require("fidget")
+		local cmp = require("cmp")
+		require("lsp_signature").on_attach(require("lsp.lspsignature").config, bufnr)
+		cmp.event:on("menu_opened", function()
+			vim.defer_fn(function()
+				if
+					_LSP_SIG_CFG.winnr ~= nil
+					and _LSP_SIG_CFG.winnr ~= 0
+					and vim.api.nvim_win_is_valid(_LSP_SIG_CFG.winnr)
+				then
+					vim.api.nvim_win_close(_LSP_SIG_CFG.winnr, true)
+					_LSP_SIG_CFG.winnr = nil
+					_LSP_SIG_CFG.bufnr = nil
+					_LSP_SIG_CFG.floating_window = false
+					fidget.notify("cmp started,enjoy it", nil, { annote = "signature", key = "foobar" })
+				end
+			end, 60)
+		end)
+
+		cmp.event:on("confirm_done", function()
+			vim.defer_fn(function()
+				--[[ if
+			not (
+				_LSP_SIG_CFG.winnr ~= nil
+				and _LSP_SIG_CFG.winnr ~= 0
+				and vim.api.nvim_win_is_valid(_LSP_SIG_CFG.winnr)
+			)
+		then ]]
+				_LSP_SIG_CFG.floating_window = true
+				require("lsp_signature").toggle_float_win()
+				fidget.notify("open signature_help", nil, { annote = "signature", key = "foobar" })
+			end, 0)
+		end)
+	end
 	--- Guard against servers without the signatureHelper capability
 	local bufopts = { noremap = true, silent = true }
 

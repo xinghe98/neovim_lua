@@ -27,5 +27,6 @@ require("mason-tool-installer").setup({
 		"prettierd",
 		"stylua",
 		"emmet-ls",
+		"css-lsp",
 	},
 })

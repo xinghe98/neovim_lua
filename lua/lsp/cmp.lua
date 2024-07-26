@@ -236,12 +236,7 @@ cmp.setup({
 			-- Kind icons
 			local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
 			local strings = vim.split(kind.kind, "%s", { trimempty = true })
-			local color_item = require("nvim-highlight-colors").format(entry, { kind = vim_item.kind })
 			vim_item.kind = " " .. (strings[1] or "") .. " "
-			if color_item.abbr_hl_group then
-				vim_item.kind_hl_group = color_item.abbr_hl_group
-				vim_item.kind = color_item.abbr
-			end
 			-- local name = entry.source.name
 			if entry:get_completion_item().detail ~= nil then
 				vim_item.menu = " "
@@ -296,33 +291,6 @@ cmp.setup.filetype("gitcommit", {
 	}),
 })
 
-local fidget = require("fidget")
-cmp.event:on("menu_opened", function()
-	vim.defer_fn(function()
-		if _LSP_SIG_CFG.winnr ~= nil and _LSP_SIG_CFG.winnr ~= 0 and vim.api.nvim_win_is_valid(_LSP_SIG_CFG.winnr) then
-			vim.api.nvim_win_close(_LSP_SIG_CFG.winnr, true)
-			_LSP_SIG_CFG.winnr = nil
-			_LSP_SIG_CFG.bufnr = nil
-			_LSP_SIG_CFG.floating_window = false
-			fidget.notify("cmp started,enjoy it", nil, { annote = "signature", key = "foobar" })
-		end
-	end, 60)
-end)
-
-cmp.event:on("confirm_done", function()
-	vim.defer_fn(function()
-		--[[ if
-			not (
-				_LSP_SIG_CFG.winnr ~= nil
-				and _LSP_SIG_CFG.winnr ~= 0
-				and vim.api.nvim_win_is_valid(_LSP_SIG_CFG.winnr)
-			)
-		then ]]
-		_LSP_SIG_CFG.floating_window = true
-		require("lsp_signature").toggle_float_win()
-		fidget.notify("open signature_help", nil, { annote = "signature", key = "foobar" })
-	end, 0)
-end)
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline({ "/", "?" }, {
 	mapping = cmp.mapping.preset.cmdline(),

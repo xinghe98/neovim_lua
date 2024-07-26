@@ -56,9 +56,6 @@ require("lazy").setup({
 
 			{
 				"ray-x/lsp_signature.nvim",
-				init = function()
-					require("lsp.lspsignature")
-				end,
 			},
 
 			{ "onsails/lspkind.nvim" },

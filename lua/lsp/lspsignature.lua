@@ -1,5 +1,5 @@
-local signature = require("lsp_signature")
-signature.setup({
+local M = {}
+M.config = {
 	bind = true,
 	focusable = false,
 	floating_window = true,
@@ -23,7 +23,7 @@ signature.setup({
 	handler_opts = {
 		border = "rounded",
 	},
-})
+}
 local function escape_term_codes(str)
 	return vim.api.nvim_replace_termcodes(str, true, false, true)
 end
@@ -48,3 +48,4 @@ end, {})
 vim.keymap.set("i", "<c-e>", function()
 	scroll_float(scroll_down_mapping)
 end, {})
+return M
