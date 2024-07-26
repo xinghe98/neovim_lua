@@ -295,6 +295,8 @@ cmp.setup.filetype("gitcommit", {
 		{ name = "buffer" },
 	}),
 })
+
+local fidget = require("fidget")
 cmp.event:on("menu_opened", function()
 	vim.defer_fn(function()
 		if _LSP_SIG_CFG.winnr ~= nil and _LSP_SIG_CFG.winnr ~= 0 and vim.api.nvim_win_is_valid(_LSP_SIG_CFG.winnr) then
@@ -302,6 +304,7 @@ cmp.event:on("menu_opened", function()
 			_LSP_SIG_CFG.winnr = nil
 			_LSP_SIG_CFG.bufnr = nil
 			_LSP_SIG_CFG.floating_window = false
+			fidget.notify("cmp started,enjoy it", nil, { annote = "signature", key = "foobar" })
 		end
 	end, 60)
 end)
@@ -317,6 +320,7 @@ cmp.event:on("confirm_done", function()
 		then ]]
 		_LSP_SIG_CFG.floating_window = true
 		require("lsp_signature").toggle_float_win()
+		fidget.notify("open signature_help", nil, { annote = "signature", key = "foobar" })
 	end, 0)
 end)
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
