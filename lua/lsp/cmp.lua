@@ -143,12 +143,27 @@ local dartColonFirst = function(entry1, entry2)
 	return nil
 end
 
+local emmet_ls = function(entry1, entry2)
+	local types = require("cmp.types")
+	local kind1 = entry1:get_kind() --- @type lsp.CompletionItemKind | number
+	local kind2 = entry2:get_kind() --- @type lsp.CompletionItemKind | number
+	kind1 = kind1 == types.lsp.CompletionItemKind.Text and 100 or kind1
+	kind2 = kind2 == types.lsp.CompletionItemKind.Text and 100 or kind2
+	if kind1 == types.lsp.CompletionItemKind.Snippet then
+		return false
+	end
+	if kind2 == types.lsp.CompletionItemKind.Snippet then
+		return true
+	end
+end
+
 local luasnip = require("luasnip")
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 local cmp = require("cmp")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 cmp.register_source("look", require("cmp_look").new())
+vim.opt.ignorecase = true
 setCompHL()
 cmp.setup({
 	snippet = {
@@ -254,10 +269,14 @@ cmp.setup({
 		comparators = {
 			-- label_comparator,
 			dartColonFirst,
-			cmp.config.compare.offset,
-			cmp.config.compare.exact,
-			cmp.config.compare.score,
+			emmet_ls,
 			cmp.config.compare.recently_used,
+			cmp.config.compare.offset,
+			cmp.config.compare.length,
+			cmp.config.compare.locality,
+			cmp.config.compare.scopes,
+			cmp.config.compare.score,
+			cmp.config.compare.exact,
 			cmp.config.compare.kind,
 		},
 	},
