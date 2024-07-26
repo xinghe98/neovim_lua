@@ -172,8 +172,10 @@ cmp.setup({
 		end,
 	},
 	window = {
-		completion = cmp.config.window.bordered({ border = { "", "─", "╮", "│", "╯", "─", "╰", "│" } }),
-		scrollbar = true,
+		completion = cmp.config.window.bordered({
+			border = { "", "─", "╮", "│", "󱡻", "─", "╰", "│" },
+		}),
+		scrollbar = false,
 		--[[ completion = {
 			-- winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
 			col_offset = -3,
