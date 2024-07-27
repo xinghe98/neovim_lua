@@ -17,6 +17,17 @@ require("telescope").setup({
 			"node_modules",
 			"dist",
 		},
+		mappings = {
+			i = {
+				-- map actions.which_key to <C-h> (default: <C-/>)
+				-- actions.which_key shows the mappings for your picker,
+				-- e.g. git_{create, delete, ...}_branch for the git_branches picker
+				["<S-Tab>"] = "move_selection_next",
+				["<Tab>"] = "move_selection_previous",
+				["<C-u>"] = "preview_scrolling_up",
+				["<C-e>"] = "preview_scrolling_down",
+			},
+		},
 	},
 })
 require("telescope").load_extension("flutter")
