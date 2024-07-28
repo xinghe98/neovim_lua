@@ -18,7 +18,7 @@ function lspmoudle.attach(client, bufnr)
 					_LSP_SIG_CFG.floating_window = false
 					fidget.notify("cmp started,enjoy it", nil, { annote = "signature", key = "foobar" })
 				end
-			end, 60)
+			end, 0)
 		end)
 
 		cmp.event:on("confirm_done", function()
