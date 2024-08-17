@@ -1,4 +1,4 @@
-﻿
+
 ;先看效果:替换后的布局
 /*
  `~  1 2 3 4 5 6 7 8 9 0 - = backsp
@@ -44,10 +44,9 @@ n::k
 CapsLock::ESC
 ;大写切换不会经常用,平时用shift
 LShift & CapsLock::CapsLock
-;强烈建议这里换成删除,因为删除的按键距离主键盘过远,影响打字效率
 #q:: Send !{f4}
-!l:: Send ^#{right} 
-!j:: Send ^#{left}
+#+l:: Send ^#{right} 
+#+j:: Send ^#{left}
 
 ;Alt 的 方向组合
 <!i::send {up}
