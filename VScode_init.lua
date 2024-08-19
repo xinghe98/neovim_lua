@@ -8,10 +8,11 @@
 ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝ ╚═════╝     ╚═╝  ╚═╝╚══════╝
 
  ]]
-if vim.g.vscode then
-	-- VSCode extension
-	require("VScode_init")
-else
-	-- ordinary Neovim
-	require("NVIMinit")
-end
+
+require("plugins_vscode")
+-- 基本设置
+require("options")
+-- 键盘映射
+require("keymap")
+--markdown快捷键
+require("markdown")
