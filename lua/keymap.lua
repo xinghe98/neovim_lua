@@ -44,6 +44,15 @@ if vim.g.vscode then
 	-- VSCode extension
 	keymap("n", "<leader>cc", "<Cmd>call VSCodeNotify('editor.action.commentLine')<CR>", opts)
 	keymap("v", "<leader>cc", "<Cmd>call VSCodeNotify('editor.action.commentLine')<CR>", opts)
+	keymap("n", "tt",
+		" <Cmd>call VSCodeNotify('workbench.view.explorer')<CR>",
+		opts)
+
+
+	-- lsp start
+	keymap("n", "gh", "<Cmd>call VSCodeNotify('editor.action.showHover')<CR>", opts)
+	keymap("n", "gd", "<Cmd>call VSCodeNotify('editor.action.revealDefinition')<CR>", opts)
+	keymap("n", "gr", "<Cmd>call VSCodeNotify('editor.action.previewDeclaration')<CR>", opts)
 else
 	-- ordinary Neovim
 	keymap("n", "<S-q>", ":q<CR>", opts)

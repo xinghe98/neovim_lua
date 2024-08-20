@@ -17,31 +17,7 @@ require("lazy").setup({
 		version = "*", -- Use for stability; omit to use `main` branch for the latest features
 		event = "VeryLazy",
 	},
-	{
-		"shellRaining/hlchunk.nvim",
-		init = function()
-			require("packsettings.indentline")
-		end,
-	},
 	{ "xiyaowong/nvim-cursorword", lazy = false },
-	{
-		"fatih/vim-go",
-		ft = "go",
-		build = ":GoUpdateBinaries",
-		config = function()
-			require("packsettings.vimgo")
-		end,
-	},
-	--[[ {
-		"github/copilot.vim",
-		lazy = false,
-		event = "VimEnter",
-		config = function()
-			vim.g.copilot_enabled = true
-			vim.g.copilot_no_tab_map = true
-			vim.g.copilot_no_cr_map = true
-		end,
-	}, ]]
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
