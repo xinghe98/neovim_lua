@@ -9,6 +9,7 @@
 
  ]]
 
+-- 插件
 require("plugins_vscode")
 -- 基本设置
 require("options")
