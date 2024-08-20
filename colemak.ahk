@@ -1,4 +1,4 @@
-
+﻿
 ;先看效果:替换后的布局
 /*
  `~  1 2 3 4 5 6 7 8 9 0 - = backsp
@@ -14,7 +14,7 @@ Ctrl Win Alt  Space Alt Menu Fn Ctrl
  h n e i o '
 
    up↑down
-<< ← ↓ → >> del
+ ← ↓ → >> del
 
 */
 
@@ -44,41 +44,41 @@ n::k
 CapsLock::ESC
 ;大写切换不会经常用,平时用shift
 LShift & CapsLock::CapsLock
+;强烈建议这里换成删除,因为删除的按键距离主键盘过远,影响打字效率
 #q:: Send !{f4}
 #+l:: Send ^#{right} 
 #+j:: Send ^#{left}
 
 ;Alt 的 方向组合
-<!i::send {up}
-<!k::send {Down}
-<!j::send {Left}
-<!l::send {Right}
-<!’::send {Del}
-;<h-o> =>> Home End
-<!h::send {Home}
-<!`;::send {End}
+!i::send {up}
+!k::send {Down}
+!j::send {Left}
+!l::send {Right}
+;h-o> =>> Home End
+!h::send {Home}
+
 
 ;Alt shift组合方向键
-<+<!i::send {Shift down}{up}
-<+<!k::send {Shift down}{Down}
-<+<!j::send {Shift down}{Left}
-<+<!l::send {Shift down}{Right}
-<+<!h::send {Shift down}{Home}
-<+<!`;::send {Shift down}{End}
++!i::send {Shift down}{up}
++!k::send {Shift down}{Down}
++!j::send {Shift down}{Left}
++!l::send {Shift down}{Right}
++!h::send {Shift down}{Home}
+
 
 ;Alt ctrl组合方向键
-<^<!i::send {Ctrl down}{up}
-<^<!k::send {Ctrl down}{Down}
-<^<!j::send {Ctrl down}{Left}
-<^<!l::send {Ctrl down}{Right}
-<^<!h::send {Ctrl down}{Home}
-<^<!`;::send {Ctrl down}{End}
+^!i::send {Ctrl down}{up}
+^!k::send {Ctrl down}{Down}
+^!j::send {Ctrl down}{Left}
+^!l::send {Ctrl down}{Right}
+^!h::send {Ctrl down}{Home}
+
 
 ;Alt Ctrl Shift 组合方向键
-<^<+<!i::send {Ctrl down}{Shift down}{up}
-<^<+<!k::send {Ctrl down}{Shift down}{Down}
-<^<+<!j::send {Ctrl down}{Shift down}{Left}
-<^<+<!l::send {Ctrl down}{Shift down}{Right}
-<^<+<!h::send {Ctrl down}{Shift down}{Home}
-<^<+<!`;::send {Ctrl down}{Shift down}{End}
+^+!i::send {Ctrl down}{Shift down}{up}
+^+!k::send {Ctrl down}{Shift down}{Down}
+^+!j::send {Ctrl down}{Shift down}{Left}
+^+!l::send {Ctrl down}{Shift down}{Right}
+^+!h::send {Ctrl down}{Shift down}{Home}
+
 
