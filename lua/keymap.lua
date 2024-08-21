@@ -42,22 +42,16 @@ keymap("n", "qq", ":nohlsearch<CR>", opts)
 keymap("n", "<S-s>", ":w<CR>", opts)
 if vim.g.vscode then
 	-- VSCode extension
-	keymap("n", "<leader>cc", "<Cmd>call VSCodeNotify('editor.action.commentLine')<CR>", opts)
-	keymap("v", "<leader>cc", "<Cmd>call VSCodeNotify('editor.action.commentLine')<CR>", opts)
 	keymap("n", "tt",
-		" <Cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>",
+		" <Cmd>lua require('vscode').action('workbench.action.toggleSidebarVisibility')<CR>",
 		opts)
 
-	keymap("n", "<leader>i", " <Cmd>call VSCodeNotify('workbench.action.navigateRight')<CR>", opts)
-	keymap("n", "<leader>u", " <Cmd>call VSCodeNotify('workbench.action.navigateUp')<CR>", opts)
-	keymap("n", "<leader>n", " <Cmd>call VSCodeNotify('workbench.action.navigateLeft')<CR>", opts)
-	keymap("n", "<leader>e", " <Cmd>call VSCodeNotify('workbench.action.navigateDown')<CR>", opts)
-	keymap("n", "<C-w>", "<cmd>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>", opts)
+	keymap("n", "<C-w>", "<cmd>lua require('vscode').action('workbench.action.closeActiveEditor')<CR>", opts)
 
 	-- lsp start
-	keymap("n", "gh", "<Cmd>call VSCodeNotify('editor.action.showHover')<CR>", opts)
-	keymap("n", "gd", "<Cmd>call VSCodeNotify('editor.action.revealDefinition')<CR>", opts)
-	keymap("n", "gr", "<Cmd>call VSCodeNotify('editor.action.previewDeclaration')<CR>", opts)
+	keymap("n", "gh", "<Cmd>lua require('vscode').action('editor.action.showHover')<CR>", opts)
+	keymap("n", "gd", "<Cmd>lua require('vscode').action('editor.action.revealDefinition')<CR>", opts)
+	keymap("n", "gr", "<Cmd>lua require('vscode').action('editor.action.previewDeclaration')<CR>", opts)
 else
 	-- ordinary Neovim
 	keymap("n", "<S-q>", ":q<CR>", opts)
