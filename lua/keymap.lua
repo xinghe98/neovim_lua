@@ -45,9 +45,14 @@ if vim.g.vscode then
 	keymap("n", "<leader>cc", "<Cmd>call VSCodeNotify('editor.action.commentLine')<CR>", opts)
 	keymap("v", "<leader>cc", "<Cmd>call VSCodeNotify('editor.action.commentLine')<CR>", opts)
 	keymap("n", "tt",
-		" <Cmd>call VSCodeNotify('workbench.view.explorer')<CR>",
+		" <Cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>",
 		opts)
 
+	keymap("n", "<leader>i", " <Cmd>call VSCodeNotify('workbench.action.navigateRight')<CR>", opts)
+	keymap("n", "<leader>u", " <Cmd>call VSCodeNotify('workbench.action.navigateUp')<CR>", opts)
+	keymap("n", "<leader>n", " <Cmd>call VSCodeNotify('workbench.action.navigateLeft')<CR>", opts)
+	keymap("n", "<leader>e", " <Cmd>call VSCodeNotify('workbench.action.navigateDown')<CR>", opts)
+	keymap("n", "<C-w>", "<cmd>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>", opts)
 
 	-- lsp start
 	keymap("n", "gh", "<Cmd>call VSCodeNotify('editor.action.showHover')<CR>", opts)
@@ -68,12 +73,12 @@ else
 	keymap("n", "<C-t>", ":FloatermToggle<CR>", opts)
 	keymap("t", "<C-t>", "<C-\\><C-n>:FloatermToggle<CR>", opts)
 	-- tab标签页跳转
-	keymap("n", "<leader>1", ":BufferLineGoToBuffer 1<CR>", opts)
-	keymap("n", "<leader>2", ":BufferLineGoToBuffer 2<CR>", opts)
-	keymap("n", "<leader>3", ":BufferLineGoToBuffer 3<CR>", opts)
-	keymap("n", "<leader>4", ":BufferLineGoToBuffer 4<CR>", opts)
-	keymap("n", "<leader>5", ":BufferLineGoToBuffer 5<CR>", opts)
-	keymap("n", "<leader>6", ":BufferLineGoToBuffer 6<CR>", opts)
+	keymap("n", "<A-1>", ":BufferLineGoToBuffer 1<CR>", opts)
+	keymap("n", "<A-2>", ":BufferLineGoToBuffer 2<CR>", opts)
+	keymap("n", "<A-3>", ":BufferLineGoToBuffer 3<CR>", opts)
+	keymap("n", "<A-4>", ":BufferLineGoToBuffer 4<CR>", opts)
+	keymap("n", "<A-5>", ":BufferLineGoToBuffer 5<CR>", opts)
+	keymap("n", "<A-6>", ":BufferLineGoToBuffer 6<CR>", opts)
 	keymap("n", "<leader><leader>", ":bn<CR>", opts)
 	keymap("n", "<leader><backspace>", ":bp<CR>", opts)
 	keymap("n", "<c-w>", ":bd<CR>", opts)
