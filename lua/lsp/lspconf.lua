@@ -75,12 +75,73 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 require("mason").setup()
 require("mason-lspconfig").setup()
+local lspconfig = require("lspconfig")
 require("mason-lspconfig").setup_handlers({
 	function(server_name)
-		require("lspconfig")[server_name].setup({
+		lspconfig[server_name].setup({
 			on_attach = lspmoudle.attach,
 			capabilities = capabilities,
 		})
 	end,
+})
+-- inlayHint
+
+lspconfig.lua_ls.setup({
+	on_attach = lspmoudle.attach,
+	capabilities = capabilities,
+	settings = {
+		Lua = {
+			hint = {
+				enable = true, -- necessary
+			},
+		},
+	},
+})
+
+lspconfig.tsserver.setup({
+	on_attach = lspmoudle.attach,
+	capabilities = capabilities,
+	settings = {
+		typescript = {
+			inlayHints = {
+				includeInlayParameterNameHints = "all",
+				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+				includeInlayFunctionParameterTypeHints = true,
+				includeInlayVariableTypeHints = true,
+				includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+				includeInlayPropertyDeclarationTypeHints = true,
+				includeInlayFunctionLikeReturnTypeHints = true,
+				includeInlayEnumMemberValueHints = true,
+			},
+		},
+		javascript = {
+			inlayHints = {
+				includeInlayParameterNameHints = "all",
+				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+				includeInlayFunctionParameterTypeHints = true,
+				includeInlayVariableTypeHints = true,
+				includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+				includeInlayPropertyDeclarationTypeHints = true,
+				includeInlayFunctionLikeReturnTypeHints = true,
+				includeInlayEnumMemberValueHints = true,
+			},
+		},
+	},
+})
+
+lspconfig.gopls.setup({
+	on_attach = lspmoudle.attach,
+	capabilities = capabilities,
+	settings = {
+		hints = {
+			rangeVariableTypes = true,
+			parameterNames = true,
+			constantValues = true,
+			assignVariableTypes = true,
+			compositeLiteralFields = true,
+			compositeLiteralTypes = true,
+			functionTypeParameters = true,
+		},
+	},
 })
 return lspmoudle
