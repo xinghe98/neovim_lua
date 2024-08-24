@@ -1,6 +1,14 @@
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 local opt = { noremap = true }
+local function notify(cmd)
+	return string.format("<cmd>call VSCodeNotify('%s')<CR>", cmd)
+end
+
+local function v_notify(cmd)
+	return string.format("<cmd>call VSCodeNotifyVisual('%s', 1)<CR>", cmd)
+end
+
 -- vim.o.langmap = "uk,lu,il,ki,ej,je"
 keymap("", ";", ":", opt)
 keymap("", "Y", '"+y', opt)
@@ -43,15 +51,18 @@ keymap("n", "<S-s>", ":w<CR>", opts)
 if vim.g.vscode then
 	-- VSCode extension
 	keymap("n", "tt",
-		" <Cmd>lua require('vscode').action('workbench.action.toggleSidebarVisibility')<CR>",
+		notify 'workbench.action.toggleSidebarVisibility',
 		opts)
 
-	keymap("n", "<C-w>", "<cmd>lua require('vscode').action('workbench.action.closeActiveEditor')<CR>", opts)
+	keymap("n", "<C-w>", notify 'workbench.action.closeActiveEditor', opts)
+	keymap("n", "<C-g>", notify 'workbench.action.findInFiles', opts)
+	keymap("n", "<C-u>", notify 'editor.action.scrollUpHover', opts)
+	keymap("n", "<C-e>", notify 'editor.action.scrollDownHover', opts)
 
 	-- lsp start
-	keymap("n", "gh", "<Cmd>lua require('vscode').action('editor.action.showHover')<CR>", opts)
-	keymap("n", "gd", "<Cmd>lua require('vscode').action('editor.action.revealDefinition')<CR>", opts)
-	keymap("n", "gr", "<Cmd>lua require('vscode').action('editor.action.previewDeclaration')<CR>", opts)
+	keymap("n", "gh", notify 'editor.action.showHover', opts)
+	keymap("n", "gd", notify 'editor.action.revealDefinition', opts)
+	keymap("n", "gr", notify 'editor.action.previewDeclaration', opts)
 else
 	-- ordinary Neovim
 	keymap("n", "<S-q>", ":q<CR>", opts)
