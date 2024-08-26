@@ -130,9 +130,9 @@ local moveCursorBeforeComma = function()
 end
 --- end ----
 local dartColonFirst = function(entry1, entry2)
-	--[[ if vim.bo.filetype ~= "dart" then
+	if vim.bo.filetype ~= "dart" then
 		return nil
-	end ]]
+	end
 	local entry1EndsWithColon = string.find(entry1.completion_item.label, ":") and entry1.source.name == "nvim_lsp"
 	local entry2EndsWithColon = string.find(entry2.completion_item.label, ":") and entry2.source.name == "nvim_lsp"
 	if entry1EndsWithColon and not entry2EndsWithColon then
@@ -147,12 +147,12 @@ local emmet_ls = function(entry1, entry2)
 	local types = require("cmp.types")
 	local kind1 = entry1:get_kind() --- @type lsp.CompletionItemKind | number
 	local kind2 = entry2:get_kind() --- @type lsp.CompletionItemKind | number
-	kind1 = kind1 == types.lsp.CompletionItemKind.Text and 100 or kind1
-	kind2 = kind2 == types.lsp.CompletionItemKind.Text and 100 or kind2
-	if kind1 == types.lsp.CompletionItemKind.Snippet then
+	--[[ kind1 = kind1 == types.lsp.CompletionItemKind.Text and 100 or kind1
+	kind2 = kind2 == types.lsp.CompletionItemKind.Text and 100 or kind2 ]]
+	if kind1 == types.lsp.CompletionItemKind.Text then
 		return false
 	end
-	if kind2 == types.lsp.CompletionItemKind.Snippet then
+	if kind2 == types.lsp.CompletionItemKind.Text then
 		return true
 	end
 end
@@ -275,11 +275,11 @@ cmp.setup({
 			emmet_ls,
 			cmp.config.compare.recently_used,
 			cmp.config.compare.offset,
+			cmp.config.compare.score,
+			cmp.config.compare.kind,
 			cmp.config.compare.locality,
 			cmp.config.compare.scopes,
-			cmp.config.compare.score,
 			cmp.config.compare.exact,
-			cmp.config.compare.kind,
 			cmp.config.compare.length,
 		},
 	},
