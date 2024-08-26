@@ -51,25 +51,27 @@ require("lazy").setup({
 				end,
 			},
 			--[[ {
-				"Issafalcon/lsp-overloads.nvim",
-			}, ]]
-
-			{
 				"ray-x/lsp_signature.nvim",
-			},
+			}, ]]
 
 			{ "onsails/lspkind.nvim" },
 			--[[ {
-				"linrongbin16/lsp-progress.nvim",
-				config = function()
-					require("lsp.lspProgress")
-				end,
-			}, ]]
-			{
 				"j-hui/fidget.nvim",
 				event = "VeryLazy",
 				config = function()
 					require("lsp.fidget")
+				end,
+			}, ]]
+			{
+				"roobert/action-hints.nvim",
+				config = function()
+					require("action-hints").setup({
+						template = {
+							definition = { text = " ⊛", color = "#add8e6" },
+							references = { text = " ↱%s", color = "#ff6666" },
+						},
+						use_virtual_text = true,
+					})
 				end,
 			},
 		},
@@ -132,8 +134,8 @@ require("lazy").setup({
 			require("nvim-highlight-colors").setup({})
 		end,
 	},
-	--------lsp end -------------------
 
+	--------lsp end -------------------
 	{
 		"nvimdev/dashboard-nvim",
 		event = "VimEnter",
@@ -310,6 +312,23 @@ require("lazy").setup({
 			})
 		end,
 	},
+	-- 快速替换插件
+	{
+		"chrisgrieser/nvim-rip-substitute",
+		cmd = "RipSubstitute",
+		keys = {
+			{
+				"<C-h>",
+				function()
+					require("rip-substitute").sub()
+				end,
+				mode = { "n", "x" },
+			},
+		},
+		config = function()
+			require("packsettings.quickreplace")
+		end,
+	},
 
 	--------一些美化啥的 -------------------
 	{ "rcarriga/nvim-notify" },
@@ -321,4 +340,23 @@ require("lazy").setup({
 	{ "folke/tokyonight.nvim", lazy = false, priority = 1000 },
 	{ "ellisonleao/gruvbox.nvim", lazy = false, priority = 1000 },
 	{ "marko-cerovac/material.nvim", lazy = false, priority = 1000 },
+	-- lazy.nvim
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {
+			-- add any options here
+		},
+		dependencies = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+			"MunifTanjim/nui.nvim",
+			-- OPTIONAL:
+			--   `nvim-notify` is only needed, if you want to use the notification view.
+			--   If not available, we use `mini` as the fallback
+			"rcarriga/nvim-notify",
+		},
+		config = function()
+			require("packsettings.noice")
+		end,
+	},
 }, { defaults = { lazy = true } })

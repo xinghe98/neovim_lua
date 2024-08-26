@@ -9,9 +9,8 @@
 
  ]]
 if vim.g.vscode then
-	-- VSCode extension
+	-- VSCode exe
 	require("VScode_init")
 else
-	-- ordinary Neovim
 	require("NVIMinit")
 end

@@ -31,8 +31,8 @@ dart_capabilities.textDocument.codeAction = {
 
 require("flutter-tools").setup({
 	-- flutter_path = "/usr/bin/flutter",
-	flutter_path = "/Users/lixinghe/.local/share/flutter/bin/flutter",
-	-- flutter_path = "/usr/bin/flutter/bin/flutter",
+	-- flutter_path = "/Users/lixinghe/.local/share/flutter/bin/flutter",
+	flutter_path = "C:/Users/mysta/AppData/flutter/bin/flutter.bat",
 	ui = {
 		border = "rounded",
 	},
@@ -51,14 +51,14 @@ require("flutter-tools").setup({
 		},
 	},
 	root_patterns = { ".git", "pubspec.yaml" }, -- patterns to find the root of your flutter project
-	fvm = false,                             -- takes priority over path, uses <workspace>/.fvm/flutter_sdk if enabled
+	fvm = false, -- takes priority over path, uses <workspace>/.fvm/flutter_sdk if enabled
 	widget_guides = {
 		enabled = false,
 	},
 	closing_tags = {
 		highlight = "EndofBuffer", -- highlight for the closing tag
-		prefix = "//",       -- character to use for close tag e.g. > Widget
-		enabled = true,      -- set to false to disable
+		prefix = "//", -- character to use for close tag e.g. > Widget
+		enabled = true, -- set to false to disable
 	},
 	dev_log = {
 		enabled = true,
@@ -66,7 +66,7 @@ require("flutter-tools").setup({
 		open_cmd = "tabedit", -- command to use to open the log buffer
 	},
 	dev_tools = {
-		autostart = false,   -- autostart devtools server if not detected
+		autostart = false, -- autostart devtools server if not detected
 		auto_open_browser = false, -- Automatically opens devtools in the browser
 	},
 	outline = {
