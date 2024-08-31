@@ -5,10 +5,10 @@ if vim.g.neovide then
 	end
 	-- g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.
 	vim.g.neovide_remember_window_size = true
-	vim.g.neovide_window_blurred = true
+	--[[ vim.g.neovide_window_blurred = true
 	vim.g.neovide_transparency = 0.8
 	vim.g.transparency = 0.8
-	vim.g.neovide_background_color = "#0f1117" .. alpha()
+	vim.g.neovide_background_color = "#0f1117" .. alpha() ]]
 	vim.o.guifont = "Monaco_Nerd_Font:h19"
 	-- Put anything you want to happen only in Neovide here
 end
