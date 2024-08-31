@@ -212,7 +212,7 @@ require("lazy").setup({
 		version = "*",
 		event = "BufRead", -- 事件触发插件加载
 		opts = {
-			symbol = "│", -- 缩进线的符号
+			symbol = "┃", -- 缩进线的符号
 			options = { try_as_border = true }, -- 配置项
 		},
 		init = function()
