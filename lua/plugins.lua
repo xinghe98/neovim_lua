@@ -200,16 +200,40 @@ require("lazy").setup({
 		dependencies = {
 			"HiPhish/rainbow-delimiters.nvim",
 		},
-		config = function()
+		opts = {
+			scope = { enabled = false },
+		},
+		--[[ config = function()
 			require("packsettings.indentline")
+		end, ]]
+	},
+	{
+		"echasnovski/mini.indentscope",
+		version = "*",
+		event = "BufRead", -- 事件触发插件加载
+		opts = {
+			symbol = "│", -- 缩进线的符号
+			options = { try_as_border = true }, -- 配置项
+		},
+		init = function()
+			-- 禁用特定文件类型的缩进高亮
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = {
+					"help",
+					"alpha",
+					"dashboard",
+					"lazy",
+					"mason",
+					"neo-tree",
+					"Trouble",
+					"toggleterm",
+				},
+				callback = function()
+					vim.b.miniindentscope_disable = true
+				end,
+			})
 		end,
 	},
-	--[[ {
-		"shellRaining/hlchunk.nvim",
-		init = function()
-			require("packsettings.indentline")
-		end,
-	}, ]]
 	{ "xiyaowong/nvim-cursorword", lazy = false },
 	{
 		"akinsho/bufferline.nvim",
