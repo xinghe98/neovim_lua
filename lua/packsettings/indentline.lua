@@ -1,4 +1,4 @@
---[[ local highlight = {
+local highlight = {
 	"RainbowRed",
 	"RainbowYellow",
 	"RainbowBlue",
@@ -23,8 +23,8 @@ end)
 vim.g.rainbow_delimiters = { highlight = highlight }
 require("ibl").setup({ scope = { highlight = highlight } })
 
-hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark) ]]
-vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, { pattern = "*", command = "EnableHL", })
+hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
+--[[ vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, { pattern = "*", command = "EnableHL", })
 require('hlchunk').setup({
 	chunk = {
 		enable = true,
@@ -43,4 +43,4 @@ require('hlchunk').setup({
 	line_num = {
 		use_treesitter = true,
 	},
-})
+}) ]]

@@ -193,7 +193,7 @@ require("lazy").setup({
 		version = "*", -- Use for stability; omit to use `main` branch for the latest features
 		event = "VeryLazy",
 	},
-	--[[ {
+	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufEnter",
 		main = "ibl",
@@ -203,13 +203,13 @@ require("lazy").setup({
 		config = function()
 			require("packsettings.indentline")
 		end,
-	}, ]]
-	{
+	},
+	--[[ {
 		"shellRaining/hlchunk.nvim",
 		init = function()
 			require("packsettings.indentline")
 		end,
-	},
+	}, ]]
 	{ "xiyaowong/nvim-cursorword", lazy = false },
 	{
 		"akinsho/bufferline.nvim",
