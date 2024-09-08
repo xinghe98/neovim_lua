@@ -71,6 +71,9 @@ require("mason-lspconfig").setup()
 local lspconfig = require("lspconfig")
 require("mason-lspconfig").setup_handlers({
 	function(server_name)
+		if server_name == "tsserver" then
+			server_name = "ts_ls"
+		end
 		lspconfig[server_name].setup({
 			on_attach = lspmoudle.attach,
 			capabilities = capabilities,
@@ -91,7 +94,8 @@ lspconfig.lua_ls.setup({
 	},
 })
 
-lspconfig.tsserver.setup({
+-- lspconfig.tsserver.setup({
+lspconfig.ts_ls.setup({
 	on_attach = lspmoudle.attach,
 	capabilities = capabilities,
 	settings = {
