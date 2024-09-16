@@ -51,5 +51,6 @@ vim.g.coc_global_extensions = {
 	"coc-vimlsp",
 	"coc-yaml",
 	"coc-yank",
+	"coc-pyright",
 	"coc-symbol-line"
 }

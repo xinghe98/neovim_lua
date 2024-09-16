@@ -96,26 +96,63 @@ require("lazy").setup({
 		version = "*", -- Use for stability; omit to use `main` branch for the latest features
 		event = "VeryLazy",
 	},
-
-	-- indentline
-	--[[ {
+	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufEnter",
 		main = "ibl",
 		dependencies = {
-			"HiPhish/rainbow-delimiters.nvim"
+			"HiPhish/rainbow-delimiters.nvim",
+		},
+		opts = {
+			scope = { enabled = false },
+		},
+		--[[ config = function()
+			require("packsettings.indentline")
+		end, ]]
+	},
+	{
+		"echasnovski/mini.indentscope",
+		version = "*",
+		event = "BufRead", -- 事件触发插件加载
+		opts = {
+			symbol = "┃", -- 缩进线的符号
+			options = { try_as_border = true }, -- 配置项
+		},
+		init = function()
+			-- 禁用特定文件类型的缩进高亮
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = {
+					"help",
+					"alpha",
+					"dashboard",
+					"lazy",
+					"mason",
+					"neo-tree",
+					"Trouble",
+					"toggleterm",
+				},
+				callback = function()
+					vim.b.miniindentscope_disable = true
+				end,
+			})
+		end,
+	},
+	{
+		"chrisgrieser/nvim-rip-substitute",
+		cmd = "RipSubstitute",
+		keys = {
+			{
+				"<C-h>",
+				function()
+					require("rip-substitute").sub()
+				end,
+				mode = { "n", "x" },
+			},
 		},
 		config = function()
-			require("packsettings.indentline")
-		end,
-	}, ]]
-	{
-		"shellRaining/hlchunk.nvim",
-		init = function()
-			require("packsettings.indentline")
+			require("packsettings.quickreplace")
 		end
 	},
-
 	{ "xiyaowong/nvim-cursorword", lazy = false },
 	{
 		"akinsho/bufferline.nvim",
@@ -229,5 +266,23 @@ require("lazy").setup({
 	{ "rmehri01/onenord.nvim",       lazy = false,                               priority = 1000 },
 	{ "folke/tokyonight.nvim",       lazy = false,                               priority = 1000 },
 	{ "ellisonleao/gruvbox.nvim",    lazy = false,                               priority = 1000 },
-	{ 'marko-cerovac/material.nvim', lazy = false,                               priority = 1000 }
+	{ 'marko-cerovac/material.nvim', lazy = false,                               priority = 1000 },
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {
+			-- add any options here
+		},
+		dependencies = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+			"MunifTanjim/nui.nvim",
+			-- OPTIONAL:
+			--   `nvim-notify` is only needed, if you want to use the notification view.
+			--   If not available, we use `mini` as the fallback
+			"rcarriga/nvim-notify",
+		},
+		config = function()
+			require("packsettings.noice")
+		end,
+	},
 }, { defaults = { lazy = true } })
