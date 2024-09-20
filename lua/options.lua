@@ -17,6 +17,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 set.matchtime = 5
 set.ignorecase = true
+set.smartcase = true
 set.incsearch = true
 set.hlsearch = true
 set.expandtab = false

@@ -197,7 +197,7 @@
 	"coc.source.around.priority": 50,
 	"coc.source.word.priority": 50,
 	"coc.source.emoji.priority": 49,
-	"coc.source.emoji.shortcut": "EM",
+	"coc.source.emoji.shortcut": "EO",
 	"snippets.shortcut": "SN",
 	"coc.source.buffer.shortcut": "BF",
 	"coc.source.file.shortcut": "FL"

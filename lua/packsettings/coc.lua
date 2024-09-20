@@ -13,7 +13,7 @@ hi CocSymbolKey   ctermfg=223 guifg=#B39DDB
 hi CocSymbolKeyword ctermfg=4 guifg=#EF5350
 hi CocSymbolReference ctermfg=223 guifg=#C5CAE9
 hi CocSymbolFolder ctermfg=6 guifg=#42A5F5
-hi CocSymbolVariable ctermfg=223 guifg=#4FC3F7
+hi CocSymbolVariable ctermfg=223 guifg=#EF5350
 hi CocSymbolNull  ctermfg=4 guifg=#E91E63
 hi CocSymbolValue ctermfg=6 guifg=#4DD0E1
 hi CocSymbolConstant ctermfg=223 guifg=#81C784
