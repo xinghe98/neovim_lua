@@ -359,6 +359,7 @@ require("lazy").setup({
 	{ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, event = "VimEnter" },
 	{ "ap/vim-css-color", event = "VimEnter", lazy = false },
 	{ "theniceboy/nvim-deus", lazy = false, priority = 1000 },
+	{ "olimorris/onedarkpro.nvim", lazy = false, priority = 1000 },
 	{ "hardhackerlabs/theme-vim", lazy = false, priority = 1000 },
 	{ "rmehri01/onenord.nvim", lazy = false, priority = 1000 },
 	{ "folke/tokyonight.nvim", lazy = false, priority = 1000 },
