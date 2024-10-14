@@ -115,6 +115,15 @@ require("lazy").setup({
 		version = "*",
 		event = "BufRead", -- 事件触发插件加载
 		opts = {
+			mappings = {
+				-- Textobjects
+				object_scope = "",
+				object_scope_with_border = "",
+
+				-- Motions (jump to respective border line; if not present - body line)
+				goto_top = "[t",
+				goto_bottom = "]t",
+			},
 			symbol = "┃", -- 缩进线的符号
 			options = { try_as_border = true }, -- 配置项
 		},
@@ -267,6 +276,7 @@ require("lazy").setup({
 	{ "folke/tokyonight.nvim",       lazy = false,                               priority = 1000 },
 	{ "ellisonleao/gruvbox.nvim",    lazy = false,                               priority = 1000 },
 	{ 'marko-cerovac/material.nvim', lazy = false,                               priority = 1000 },
+	{ "olimorris/onedarkpro.nvim",   lazy = false,                               priority = 1000 },
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
