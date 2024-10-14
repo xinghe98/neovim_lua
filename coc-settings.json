@@ -179,7 +179,7 @@
 	"typescript.inlayHints.variableTypes.enabled": true,
 	"typescript.implementationsCodeLens.enabled": true,
 	"typescript.referencesCodeLens.enabled": true,
-	"inlayHint.refreshOnInsertMode": true,
+	"inlayHint.refreshOnInsertMode": false,
 	"go.goplsOptions": {
 		"gofumpt": true,
 		"hints": {
