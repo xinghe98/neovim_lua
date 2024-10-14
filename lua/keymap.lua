@@ -50,19 +50,17 @@ keymap("n", "qq", ":nohlsearch<CR>", opts)
 keymap("n", "<S-s>", ":w<CR>", opts)
 if vim.g.vscode then
 	-- VSCode extension
-	keymap("n", "tt",
-		notify 'workbench.action.toggleSidebarVisibility',
-		opts)
+	keymap("n", "tt", notify("workbench.action.toggleSidebarVisibility"), opts)
 
-	keymap("n", "<C-w>", notify 'workbench.action.closeActiveEditor', opts)
-	keymap("n", "<C-g>", notify 'workbench.action.findInFiles', opts)
-	keymap("n", "<C-u>", notify 'editor.action.scrollUpHover', opts)
-	keymap("n", "<C-e>", notify 'editor.action.scrollDownHover', opts)
+	keymap("n", "<C-w>", notify("workbench.action.closeActiveEditor"), opts)
+	keymap("n", "<C-g>", notify("workbench.action.findInFiles"), opts)
+	keymap("n", "<C-u>", notify("editor.action.scrollUpHover"), opts)
+	keymap("n", "<C-e>", notify("editor.action.scrollDownHover"), opts)
 
 	-- lsp start
-	keymap("n", "gh", notify 'editor.action.showHover', opts)
-	keymap("n", "gd", notify 'editor.action.revealDefinition', opts)
-	keymap("n", "gr", notify 'editor.action.previewDeclaration', opts)
+	keymap("n", "gh", notify("editor.action.showHover"), opts)
+	keymap("n", "gd", notify("editor.action.revealDefinition"), opts)
+	keymap("n", "gr", notify("editor.action.previewDeclaration"), opts)
 else
 	-- ordinary Neovim
 	keymap("n", "<S-q>", ":q<CR>", opts)
@@ -78,7 +76,7 @@ else
 	keymap("n", "<C-t>", ":FloatermToggle<CR>", opts)
 	keymap("t", "<C-t>", "<C-\\><C-n>:FloatermToggle<CR>", opts)
 	-- tab标签页跳转
-	keymap("n", "<A-1>", ":BufferLineGoToBuffer 1<CR>", opts)
+	keymap("n", "<leader>1", ":BufferLineGoToBuffer 1<CR>", opts)
 	keymap("n", "<A-2>", ":BufferLineGoToBuffer 2<CR>", opts)
 	keymap("n", "<A-3>", ":BufferLineGoToBuffer 3<CR>", opts)
 	keymap("n", "<A-4>", ":BufferLineGoToBuffer 4<CR>", opts)

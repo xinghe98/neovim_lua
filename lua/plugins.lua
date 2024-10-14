@@ -212,7 +212,16 @@ require("lazy").setup({
 		version = "*",
 		event = "BufRead", -- 事件触发插件加载
 		opts = {
-			symbol = "┃", -- 缩进线的符号
+			mappings = {
+				-- Textobjects
+				object_scope = "",
+				object_scope_with_border = "",
+
+				-- Motions (jump to respective border line; if not present - body line)
+				goto_top = "[t",
+				goto_bottom = "]t",
+			},
+			symbol = "┃", -- 缩进线的符号lp
 			options = { try_as_border = true }, -- 配置项
 		},
 		init = function()
@@ -316,25 +325,6 @@ require("lazy").setup({
 			{ "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
 			{ "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
 		},
-	},
-	{
-		"chentoast/marks.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("marks").setup({
-				default_mappings = false,
-				mappings = {
-					set = "'",
-					delete = "d'",
-					delete_buf = "d'b",
-					set_next = "',",
-					next = "']",
-					preview = "':",
-					set_bookmark0 = "'0",
-					prev = false, -- pass false to disable only this default mapping
-				},
-			})
-		end,
 	},
 	-- 快速替换插件
 	{
