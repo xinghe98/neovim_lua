@@ -43,12 +43,9 @@ vim.opt.signcolumn = "yes"
 vim.o.foldmethod = "indent"
 vim.o.foldenable = false
 vim.o.foldlevel = 99
-vim.g.translator_default_engines = { "haici", "google" }
 vim.opt.clipboard = "unnamedplus"
 vim.opt.pumblend = 0
 vim.opt.winblend = 0
-vim.diagnostic.config({
-  virtual_text = {
-    prefix = "😥",
-  },
-})
+-- translate
+vim.g.translator_target_lang = "zh"
+-- vim.g.translator_default_engines = { "youdao", "google" }
