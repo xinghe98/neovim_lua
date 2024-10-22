@@ -3,7 +3,6 @@ local setCompHL = function()
 
   vim.api.nvim_set_hl(0, "Pmenu", { bg = "NONE" })
   vim.api.nvim_set_hl(0, "Float", { bg = "NONE" })
-  vim.api.nvim_set_hl(0, "lspInlayHint", { fg = "#82AAFF", bg = "NONE", bold = true })
   vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
   vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = "#82AAFF", bg = "NONE", bold = true })
   vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { fg = "#82AAFF", bg = "NONE", bold = true })
