@@ -1,6 +1,9 @@
 return {
   {
     "folke/noice.nvim",
+    keys = function()
+      return {}
+    end,
     opts = {
       views = {
         mini = {

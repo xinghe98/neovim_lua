@@ -11,33 +11,31 @@ return {
       { "<C-x>", ":Telescope flutter commands<CR>", desc = "flutter" },
     }
   end,
-  config = function()
-    require("telescope").setup({
-      defaults = {
-        sorting_strategy = "ascending",
-        file_ignore_patterns = {
-          "%.env",
-          "yarn.lock",
-          "package-lock.json",
-          "lazy-lock.json",
-          "init.sql",
-          "target/.*",
-          ".git/.*",
-          "node_modules",
-          "dist",
-        },
-        mappings = {
-          i = {
-            -- map actions.which_key to <C-h> (default: <C-/>)
-            -- actions.which_key shows the mappings for your picker,
-            -- e.g. git_{create, delete, ...}_branch for the git_branches picker
-            ["<Tab>"] = "move_selection_next",
-            ["<S-Tab>"] = "move_selection_previous",
-            ["<C-u>"] = "preview_scrolling_up",
-            ["<C-e>"] = "preview_scrolling_down",
-          },
+  opts = {
+    defaults = {
+      sorting_strategy = "ascending",
+      file_ignore_patterns = {
+        "%.env",
+        "yarn.lock",
+        "package-lock.json",
+        "lazy-lock.json",
+        "init.sql",
+        "target/.*",
+        ".git/.*",
+        "node_modules",
+        "dist",
+      },
+      mappings = {
+        i = {
+          -- map actions.which_key to <C-h> (default: <C-/>)
+          -- actions.which_key shows the mappings for your picker,
+          -- e.g. git_{create, delete, ...}_branch for the git_branches picker
+          ["<Tab>"] = "move_selection_next",
+          ["<S-Tab>"] = "move_selection_previous",
+          ["<C-u>"] = "preview_scrolling_up",
+          ["<C-e>"] = "preview_scrolling_down",
         },
       },
-    })
-  end,
+    },
+  },
 }
