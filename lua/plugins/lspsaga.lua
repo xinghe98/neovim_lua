@@ -5,6 +5,9 @@ return {
     event = "LspAttach",
     init = function()
       require("lspsaga").setup({
+        ui = {
+          code_action = "",
+        },
         scroll_preview = {
           scroll_down = "<C-e>",
           scroll_up = "<C-u>",
