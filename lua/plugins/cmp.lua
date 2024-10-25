@@ -85,7 +85,7 @@ return {
           value = "󱀍 Value",
           keyword = "󰌆 Keyword",
           snippet = " Snippet",
-          color = " Color",
+          color = " Color",
           file = " File",
           reference = " Reference",
           folder = " Folder",
