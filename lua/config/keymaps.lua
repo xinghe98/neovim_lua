@@ -1,8 +1,10 @@
+local Util = require("lazyvim.util")
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
 local keymap = vim.api.nvim_set_keymap
+local unmap = vim.keymap.del
 local opts = { noremap = true, silent = true }
 local opt = { noremap = true }
 -- vim.o.langmap = "uk,lu,il,ki,ej,je"
@@ -55,8 +57,13 @@ keymap("n", "<leader>u", "<C-w>k", opts)
 keymap("n", "<leader>n", "<C-w>h", opts)
 keymap("n", "<leader>e", "<C-w>j", opts)
 keymap("n", "r", ":call CompileRunGcc()<CR>", opts)
-keymap("n", "<C-t>", ":FloatermToggle<CR>", opts)
-keymap("t", "<C-t>", "<C-\\><C-n>:FloatermToggle<CR>", opts)
+-- keymap("n", "<C-t>", ":FloatermToggle<CR>", opts)
+-- keymap("t", "<C-t>", "<C-\\><C-n>:FloatermToggle<CR>", opts)
+local lazyterm = function()
+  Util.terminal(nil, { cwd = Util.root() })
+end
+vim.keymap.set("n", "<C-t>", lazyterm, { desc = "Terminal (Root Dir)" })
+vim.keymap.set("t", "<C-t>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 -- tab标签页跳转
 keymap("n", "<leader>1", ":BufferLineGoToBuffer 1<CR>", opts)
 keymap("n", "<leader>2", ":BufferLineGoToBuffer 2<CR>", opts)
@@ -67,6 +74,12 @@ keymap("n", "<leader>6", ":BufferLineGoToBuffer 6<CR>", opts)
 keymap("n", "<leader><leader>", ":bn<CR>", opts)
 keymap("n", "<leader><backspace>", ":bp<CR>", opts)
 keymap("n", "<c-w>", ":bd<CR>", opts)
+vim.keymap.del("n", "<c-/>")
+vim.keymap.del("n", "<c-_>")
+keymap("n", "<C-/>", "gcc", { desc = "Toggle comment for line" })
+keymap("v", "<C-/>", "gc", { desc = "Toggle comment for selection" })
+keymap("n", "<C-_>", "gcc", { desc = "Toggle comment for line" })
+keymap("v", "<C-_>", "gc", { desc = "Toggle comment for line" })
 -- nvim-tree
 keymap("n", "tt", ":NvimTreeFindFileToggle<CR>", opts)
 -- copilot

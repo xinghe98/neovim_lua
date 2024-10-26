@@ -193,20 +193,29 @@ return {
             local strings = vim.split(kind.kind, "%s", { trimempty = true })
             vim_item.kind = " " .. (strings[1] or "") .. " "
             -- local name = entry.source.name
-            if entry.completion_item.detail ~= nil then
-              vim_item.menu = " " .. (strings[2] or "") .. ":" .. " " .. limitStr(entry.completion_item.detail or "")
-            else
-              vim_item.menu = " " .. (strings[2] or "")
-            end
-            local widths = {
-              abbr = vim.g.cmp_widths and vim.g.cmp_widths.abbr or 40,
-              menu = vim.g.cmp_widths and vim.g.cmp_widths.menu or 30,
-            }
-            for key, width in pairs(widths) do
-              if vim_item[key] and vim.fn.strdisplaywidth(vim_item[key]) > width then
-                vim_item[key] = vim.fn.strcharpart(vim_item[key], 0, width - 1) .. "…"
-              end
-            end
+            vim_item.menu = ({
+              buffer = "💊 ",
+              nvim_lsp = "🔋 ",
+              luasnip = "🛠 ",
+              nvim_lua = "💡 ",
+              latex_symbols = "🎀 ",
+              path = "📦 ",
+              look = "🔍 ",
+            })[entry.source.name] .. (strings[2] or "")
+            -- if entry.completion_item.detail ~= nil then
+            --   vim_item.menu = " " .. (strings[2] or "") .. ":" .. " " .. limitStr(entry.completion_item.detail or "")
+            -- else
+            --   vim_item.menu = " " .. (strings[2] or "")
+            -- end
+            -- local widths = {
+            --   abbr = vim.g.cmp_widths and vim.g.cmp_widths.abbr or 40,
+            --   menu = vim.g.cmp_widths and vim.g.cmp_widths.menu or 30,
+            -- }
+            -- for key, width in pairs(widths) do
+            --   if vim_item[key] and vim.fn.strdisplaywidth(vim_item[key]) > width then
+            --     vim_item[key] = vim.fn.strcharpart(vim_item[key], 0, width - 1) .. "…"
+            --   end
+            -- end
             return vim_item
           end,
         },
