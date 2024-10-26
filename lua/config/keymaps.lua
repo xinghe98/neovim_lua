@@ -4,7 +4,6 @@ local Util = require("lazyvim.util")
 -- Add any additional keymaps here
 
 local keymap = vim.api.nvim_set_keymap
-local unmap = vim.keymap.del
 local opts = { noremap = true, silent = true }
 local opt = { noremap = true }
 -- vim.o.langmap = "uk,lu,il,ki,ej,je"
@@ -25,8 +24,6 @@ keymap("", "U", "5k", opts)
 keymap("", "E", "5j", opts)
 keymap("", "N", "0", opts)
 keymap("", "I", "$", opts)
-keymap("", "gu", "gk", opts)
-keymap("", "ge", "gj", opts)
 keymap("", "<C-U>", "5<C-y>", opts)
 keymap("", "<C-E>", "5<C-e>", opts)
 keymap("", "ci", "cl", opts)
@@ -39,6 +36,7 @@ keymap("", "yh", "ye", opts)
 keymap("", "l", "u", opts)
 keymap("", "k", "i", opts)
 keymap("", "K", "I", opts)
+keymap("", "C", "~", opts)
 
 keymap("n", "<S-Tab>", "<<", opts)
 keymap("n", "<Tab>", ">>", opts)
