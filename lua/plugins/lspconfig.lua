@@ -124,6 +124,12 @@ return {
             -- "typescript.tsx",
             "vue",
           },
+          init_options = {
+            vue = {
+              hybridMode = false,
+            },
+          },
+          settings = {},
         },
       },
       -- you can do any additional lsp server setup here
