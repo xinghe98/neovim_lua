@@ -2,14 +2,20 @@ return {
   {
     "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    build = "npm install -g @vue/typescript-plugin",
     opts = {
       filetypes = {
         "javascript",
         "javascriptreact",
         "typescript",
         "typescriptreact",
+        "vue",
       },
       settings = {
+        tsserver_plugins = {
+          "@vue/typescript-plugin",
+          "@styled/typescript-styled-plugin",
+        },
         tsserver_locale = "zh-CN",
         tsserver_file_preferences = {
           includeInlayParameterNameHints = "all",
