@@ -2,7 +2,7 @@ return {
 	{
 		-- "pmizio/typescript-tools.nvim",
 		-- dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-		-- -- build = "yarn add global @vue/typescript-plugin",
+		-- build = "yarn add global @vue/typescript-plugin",
 		-- opts = {
 		-- 	filetypes = {
 		-- 		"javascript",
@@ -13,8 +13,8 @@ return {
 		-- 	},
 		-- 	settings = {
 		-- 		tsserver_plugins = {
-		-- 			-- "@vue/typescript-plugin",
-		-- 			-- "@styled/typescript-styled-plugin",
+		-- 			"@vue/typescript-plugin",
+		-- 			"@styled/typescript-styled-plugin",
 		-- 		},
 		-- 		tsserver_locale = "zh-CN",
 		-- 		tsserver_file_preferences = {
