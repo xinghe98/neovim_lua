@@ -8,7 +8,7 @@ local setCompHL = function()
 	vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { fg = "#82AAFF", bg = "NONE", bold = true })
 	vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { fg = "#7E8294", bg = "NONE", strikethrough = true })
 
-	vim.api.nvim_set_hl(0, "CmpItemMenu", { fg = "#808080", bg = "NONE" })
+	vim.api.nvim_set_hl(0, "CmpItemMenu", { fg = "#C792EA", bg = "NONE" })
 	vim.api.nvim_set_hl(0, "CmpItemKindField", { fg = fgdark, bg = "#B5585F" })
 	vim.api.nvim_set_hl(0, "CmpItemKindProperty", { fg = fgdark, bg = "#B5585F" })
 	vim.api.nvim_set_hl(0, "CmpItemKindEvent", { fg = fgdark, bg = "#B5585F" })
@@ -53,6 +53,7 @@ local has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
+
 return {
 	{
 		"L3MON4D3/LuaSnip", -- Snippets plugin
@@ -68,41 +69,13 @@ return {
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = { { "hrsh7th/cmp-emoji" }, { "saadparwaiz1/cmp_luasnip" } },
-		config = function()
-			require("lspkind").init({
-				symbol_map = {
-					text = "󰓽 Text",
-					method = "m Method",
-					Function = "󰊕 Func",
-					constructor = " Constructor",
-					field = " Field",
-					variable = "󱄑 Variable",
-					class = " Class",
-					interface = " Interface",
-					module = " Module",
-					property = "󰀔 Property",
-					unit = " Unit",
-					value = "󱀍 Value",
-					keyword = "󰌆 Keyword",
-					snippet = " Snippet",
-					color = " Color",
-					file = " File",
-					reference = " Reference",
-					folder = " Folder",
-					enum = " Enummember",
-					constant = " Constant",
-					struct = "  Struct",
-					event = " Event",
-					operator = " Operator",
-					typeParameter = "󰉺 TypeParameter",
-					default = "󰊨 default",
-				},
-			})
-
+		opts = function()
+			vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
+			local defaults = require("cmp.config.default")()
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
 			setCompHL()
-			cmp.setup({
+			return {
 				snippet = {
 					expand = function(args)
 						luasnip.lsp_expand(args.body)
@@ -127,6 +100,58 @@ return {
 					},
 					{ name = "luasnip", keyword_length = 3, priority = 10 },
 					{ name = "calc",    priority = 5 },
+				},
+
+				formatting = {
+					fields = { "kind", "abbr", "menu" },
+					expandable_indicator = true,
+					format = function(entry, vim_item)
+						-- Kind icons
+						require("lspkind").init({
+							symbol_map = {
+								Text = "󰓽 Text",
+								Method = "m Method",
+								Function = "󰊕 Func",
+								Constructor = " Constructor",
+								Field = " Field",
+								Variable = "󰫧 Variable",
+								Class = " Class",
+								Interface = "󱇰 Interface",
+								Module = " Module",
+								Property = "󰀔 Property",
+								Unit = " Unit",
+								Value = "󱀍 Value",
+								Keyword = "󰌆 Keyword",
+								Snippet = " Snippet",
+								Color = " Color",
+								File = " File",
+								Reference = " Reference",
+								Folder = " Folder",
+								Enum = " Enummember",
+								Constant = " Constant",
+								Struct = "  Struct",
+								Event = " Event",
+								Operator = " Operator",
+								TypeParameter = "󰉺 TypeParameter",
+								Default = "󰊨 default",
+							},
+						})
+						local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry,
+							vim_item)
+						local strings = vim.split(kind.kind, "%s", { trimempty = true })
+						vim_item.kind = " " .. (strings[1] or "") .. " "
+						-- local name = entry.source.name
+						vim_item.menu = ({
+							buffer = "💊 ",
+							nvim_lsp = "🔋 ",
+							luasnip = "🛠 ",
+							nvim_lua = "💡 ",
+							latex_symbols = "🎀 ",
+							path = "📦 ",
+							look = "🔍 ",
+						})[entry.source.name] .. (strings[2] or "")
+						return require("tailwindcss-colorizer-cmp").formatter(entry, vim_item)
+					end,
 				},
 				window = {
 					completion = cmp.config.window.bordered({
@@ -184,43 +209,13 @@ return {
 						end
 					end, { "i", "s" }),
 				}),
-				formatting = {
-					fields = { "kind", "abbr", "menu" },
-					expandable_indicator = true,
-					format = function(entry, vim_item)
-						-- Kind icons
-						local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry,
-							vim_item)
-						local strings = vim.split(kind.kind, "%s", { trimempty = true })
-						vim_item.kind = " " .. (strings[1] or "") .. " "
-						-- local name = entry.source.name
-						vim_item.menu = ({
-							buffer = "💊 ",
-							nvim_lsp = "🔋 ",
-							luasnip = "🛠 ",
-							nvim_lua = "💡 ",
-							latex_symbols = "🎀 ",
-							path = "📦 ",
-							look = "🔍 ",
-						})[entry.source.name] .. (strings[2] or "")
-						-- if entry.completion_item.detail ~= nil then
-						--   vim_item.menu = " " .. (strings[2] or "") .. ":" .. " " .. limitStr(entry.completion_item.detail or "")
-						-- else
-						--   vim_item.menu = " " .. (strings[2] or "")
-						-- end
-						-- local widths = {
-						--   abbr = vim.g.cmp_widths and vim.g.cmp_widths.abbr or 40,
-						--   menu = vim.g.cmp_widths and vim.g.cmp_widths.menu or 30,
-						-- }
-						-- for key, width in pairs(widths) do
-						--   if vim_item[key] and vim.fn.strdisplaywidth(vim_item[key]) > width then
-						--     vim_item[key] = vim.fn.strcharpart(vim_item[key], 0, width - 1) .. "…"
-						--   end
-						-- end
-						return require("tailwindcss-colorizer-cmp").formatter(entry, vim_item)
-					end,
+				experimental = {
+					ghost_text = {
+						hl_group = "CmpGhostText",
+					},
 				},
-			})
-		end,
-	},
+				sorting = defaults.sorting,
+			}
+		end
+	}
 }
