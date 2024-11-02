@@ -26,6 +26,7 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.lang.go" },
 		{ import = "lazyvim.plugins.extras.lang.json" },
 		{ import = "lazyvim.plugins.extras.formatting.prettier" },
+		{ import = "lazyvim.plugins.extras.lang.tailwind" },
 		{ import = "lazyvim.plugins.extras.editor.telescope" },
 		-- { import = "lazyvim.plugins.extras.coding.mini-comment" },
 		{ import = "lazyvim.plugins.extras.coding.mini-surround" },
@@ -44,7 +45,7 @@ require("lazy").setup({
 	checker = {
 		enabled = true, -- check for plugin updates periodically
 		notify = false, -- notify on update
-	},              -- automatically check for plugin updates
+	},            -- automatically check for plugin updates
 	performance = {
 		rtp = {
 			-- disable some rtp plugins
