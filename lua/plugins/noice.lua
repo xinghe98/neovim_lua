@@ -5,6 +5,17 @@ return {
       return {}
     end,
     opts = {
+      routes = {
+        {
+          filter = {
+            event = "notify",
+            find = "No information available",
+          },
+          opts = {
+            skip = true,
+          },
+        },
+      },
       presets = {
         bottom_search = true, -- use a classic bottom cmdline for search
         command_palette = true, -- position the cmdline and popupmenu together
@@ -37,6 +48,11 @@ return {
         view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
       },
       lsp = {
+        hover = {
+          -- Set not show a message if hover is not available
+          -- ex: shift+k on Typescript code
+          silent = true,
+        },
         documentation = {
           view = "hover",
           opts = {
