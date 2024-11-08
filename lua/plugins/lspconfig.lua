@@ -5,7 +5,7 @@ return {
     opts = function()
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       -- change a keymap
-      keys[#keys + 1] = { "gh", "<cmd>lua vim.lsp.buf.hover()<CR>" }
+      keys[#keys + 1] = { "gh", "<cmd>Lspsaga hover_doc<CR>" }
       keys[#keys + 1] = { "gd", ":Telescope lsp_definitions theme=dropdown<CR>" }
       keys[#keys + 1] = { "gr", ":Telescope lsp_references theme=dropdown<CR>" }
       keys[#keys + 1] = { "<leader>g", ":Telescope diagnostics theme=dropdown<CR>", desc = "find all diagnostics" }
