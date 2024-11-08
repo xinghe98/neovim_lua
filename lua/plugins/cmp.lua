@@ -211,7 +211,7 @@ return {
           behavior = cmp.ConfirmBehavior.Insert,
           select = false,
         },
-        completion = { completeopt = "noselect", keyword_length = 1 },
+        completion = { completeopt = "menu,menuone, noselect", keyword_length = 2 },
         preselect = cmp.PreselectMode.none,
         mapping = cmp.mapping.preset.insert({
           --[[ ["<C-u>"] = cmp.mapping.select_prev_item(),
@@ -250,6 +250,9 @@ return {
               fallback()
             end
           end, { "i", "s" }),
+          ["<"] = cmp.mapping(function(fallback)
+            fallback() -- 直接调用 fallback，避免 < 触发自动补全
+          end, { "i" }),
         }),
         experimental = {
           ghost_text = {
