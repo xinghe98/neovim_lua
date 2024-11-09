@@ -22,7 +22,7 @@ return {
 				"init.sql",
 				"target/.*",
 				".git/.*",
-				"node_modules",
+				-- "node_modules",
 				"dist",
 			},
 			mappings = {
