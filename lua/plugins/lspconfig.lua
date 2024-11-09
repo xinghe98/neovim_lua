@@ -9,9 +9,10 @@ return {
 			keys[#keys + 1] = { "gd", ":Telescope lsp_definitions theme=dropdown<CR>" }
 			keys[#keys + 1] = { "gr", ":Telescope lsp_references theme=dropdown<CR>" }
 			keys[#keys + 1] = { "<leader>g", ":Telescope diagnostics theme=dropdown<CR>", desc = "find all diagnostics" }
-			keys[#keys + 1] = { "<M-a>", ":Lspsaga code_action<CR>" }
-			keys[#keys + 1] =
-			{ "<M-s>", "<cmd>lua require('lspsaga.codeaction'):code_action({ context = { only = { 'source' } }})<CR>" }
+			-- keys[#keys + 1] = { "<M-a>", ":Lspsaga code_action<CR>" }
+			-- keys[#keys + 1] =
+			-- { "<M-s>", "<cmd>lua require('lspsaga.codeaction'):code_action({ context = { only = { 'source' } }})<CR>" }
+			keys[#keys + 1] = { "<M-a>", ":lua vim.lsp.buf.code_action()<CR>" }
 			-- keys[#keys + 1] = { "<leader>rn", ":Lspsaga rename<CR>" }
 			keys[#keys + 1] = { "<leader>rn", vim.lsp.buf.rename, desc = "Rename", has = "rename" }
 			keys[#keys + 1] = { "g[", ":Lspsaga hover_doc<CR>" }

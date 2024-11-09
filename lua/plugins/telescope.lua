@@ -1,6 +1,8 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	-- replace all Telescope keymaps with only one mapping
+
+	dependencies = { 'nvim-telescope/telescope-ui-select.nvim' },
 	--
 	keys = function()
 		return {
@@ -14,6 +16,10 @@ return {
 	opts = {
 		defaults = {
 			sorting_strategy = "ascending",
+			prompt_prefix = "🔍 ", -- 改变提示符样式
+			selection_caret = "> ", -- 改变选项前面的符号
+			entry_prefix = "  ", -- 删除不需要的符号
+			color_devicons = true, -- 启用或禁用图标颜色
 			file_ignore_patterns = {
 				"%.env",
 				"yarn.lock",
@@ -38,4 +44,27 @@ return {
 			},
 		},
 	},
+	config = function(_, opts)
+		-- 将 opts 传递给 telescope 的 setup
+		require("telescope").setup(opts)
+		-- 配置 ui-select 扩展
+		--
+		require("telescope").setup {
+			extensions = {
+				["ui-select"] = {
+					require("telescope.themes").get_cursor {
+						width = 0.4,
+						winblend = 0,
+					}
+				}
+			}
+		}
+		-- 确保在 setup 后加载 ui-select 扩展
+		vim.api.nvim_create_autocmd("CursorHold", {
+			once = true,
+			callback = function()
+				require("telescope").load_extension("ui-select")
+			end,
+		})
+	end,
 }
