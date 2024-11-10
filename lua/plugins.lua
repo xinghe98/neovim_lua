@@ -40,6 +40,16 @@ require("lazy").setup({
 		}          -- this is equalent to setup({}) function
 	},
 	{
+		"roobert/action-hints.nvim",
+		opts = {
+			template = {
+				definition = { text = " ⊛", color = "#add8e6" },
+				references = { text = " ↱%s", color = "#ff6666" },
+			},
+			use_virtual_text = true,
+		},
+	},
+	{
 		"nvimdev/dashboard-nvim",
 		event = "VimEnter",
 		config = function()
@@ -54,7 +64,38 @@ require("lazy").setup({
 			require("packsettings.vista")
 		end,
 	},
-	{ "mg979/vim-visual-multi",     branch = "master", lazy = false },
+	-- 多光标
+	{
+		"brenton-leighton/multiple-cursors.nvim",
+		version = "*", -- Use the latest tagged version
+		keys = {
+			{ "<C-e>",         "<Cmd>MultipleCursorsAddDown<CR>",        mode = { "n", "x" },      desc = "Add cursor and move down" },
+			{ "<C-u>",         "<Cmd>MultipleCursorsAddUp<CR>",          mode = { "n", "x" },      desc = "Add cursor and move up" },
+
+			{ "<C-Up>",        "<Cmd>MultipleCursorsAddUp<CR>",          mode = { "n", "i", "x" }, desc = "Add cursor and move up" },
+			{ "<C-Down>",      "<Cmd>MultipleCursorsAddDown<CR>",        mode = { "n", "i", "x" }, desc = "Add cursor and move down" },
+
+			{ "<C-LeftMouse>", "<Cmd>MultipleCursorsMouseAddDelete<CR>", mode = { "n", "i" },      desc = "Add or remove cursor" },
+
+			{ "<Leader>a",     "<Cmd>MultipleCursorsAddMatches<CR>",     mode = { "n", "x" },      desc = "Add cursors to cword" },
+			{
+				"<Leader>A",
+				"<Cmd>MultipleCursorsAddMatchesV<CR>",
+				mode = { "n", "x" },
+				desc = "Add cursors to cword in previous area",
+			},
+
+			{
+				"<Leader>d",
+				"<Cmd>MultipleCursorsAddJumpNextMatch<CR>",
+				mode = { "n", "x" },
+				desc = "Add cursor and jump to next cword",
+			},
+			{ "<Leader>D", "<Cmd>MultipleCursorsJumpNextMatch<CR>", mode = { "n", "x" }, desc = "Jump to next cword" },
+
+			{ "<Leader>l", "<Cmd>MultipleCursorsLock<CR>",          mode = { "n", "x" }, desc = "Lock virtual cursors" },
+		},
+	},
 	{
 		"nvim-treesitter/nvim-treesitter",
 		event = "VimEnter",
@@ -90,7 +131,7 @@ require("lazy").setup({
 			require("packsettings.lualine")
 		end,
 	},
-	{ "voldikss/vim-translator",   event = "BufEnter" },
+	{ "voldikss/vim-translator",    event = "BufEnter" },
 	{
 		"tpope/vim-surround",
 		version = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -172,14 +213,16 @@ require("lazy").setup({
 	},
 	-- 快速注释
 	{
-		"b3nj5m1n/kommentary",
+		'echasnovski/mini.nvim',
+		version = '*',
 		event = "VeryLazy",
 		config = function()
-			require("packsettings.kommentary")
+			require("packsettings.minicomment")
 		end,
+
 	},
 	-- 终端悬浮窗
-	{ "voldikss/vim-floaterm",       lazy = false },
+	{ "voldikss/vim-floaterm",     lazy = false },
 	-- 文件搜索插件
 	{
 		"nvim-telescope/telescope.nvim",
@@ -240,7 +283,7 @@ require("lazy").setup({
 		-- stylua: ignore
 		keys = {
 			{ "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-			{ "<A-s>", mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+			{ "<A-S>", mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
 			{ "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
 			{ "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
 			{ "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },

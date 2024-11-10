@@ -7,6 +7,10 @@ vim.keymap.set("n", "<C-x>", ":Telescope flutter commands<CR>", {})
 require("telescope").setup({
 	defaults = {
 		sorting_strategy = "ascending",
+		prompt_prefix = "🔍 ", -- 改变提示符样式
+		selection_caret = "> ", -- 改变选项前面的符号
+		entry_prefix = "  ", -- 删除不需要的符号
+		color_devicons = true, -- 启用或禁用图标颜色
 		file_ignore_patterns = {
 			"%.env",
 			"yarn.lock",
@@ -15,7 +19,7 @@ require("telescope").setup({
 			"init.sql",
 			"target/.*",
 			".git/.*",
-			"node_modules",
+			-- "node_modules",
 			"dist",
 		},
 		mappings = {
