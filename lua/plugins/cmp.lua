@@ -190,7 +190,7 @@ return {
 
 						if menuitem == '' then
 							local lsp_name = entry.source.source.client and entry.source.source.client.name or "LSP"
-							vim_item.menu = icons .. (strings[2] or "") .. ": " .. lsp_name
+							vim_item.menu = icons .. (strings[2] or "")
 						else
 							vim_item.menu = icons .. (strings[2] or "") .. ": " .. menuitem
 						end
