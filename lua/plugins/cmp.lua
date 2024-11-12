@@ -75,13 +75,14 @@ local emmet_ls = function(entry1, entry2)
 	local kind2 = entry2:get_kind() --- @type lsp.CompletionItemKind | number
 	--[[ kind1 = kind1 == types.lsp.CompletionItemKind.Text and 100 or kind1
 	kind2 = kind2 == types.lsp.CompletionItemKind.Text and 100 or kind2 ]]
-	if kind1 == types.lsp.CompletionItemKind.Text then
+	if kind1 == types.lsp.CompletionItemKind.Text or types.lsp.CompletionItemKind.Keyword then
 		return false
 	end
-	if kind2 == types.lsp.CompletionItemKind.Text then
+	if kind2 == types.lsp.CompletionItemKind.Text or types.lsp.CompletionItemKind.Keyword then
 		return true
 	end
 end
+
 
 return {
 	{
@@ -101,6 +102,7 @@ return {
 		opts = function()
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
+			local defaults = require("cmp.config.default")()
 			setCompHL()
 			return {
 				autocomplete = { cmp.TriggerEvent.TextChanged },
@@ -222,6 +224,7 @@ return {
 						cmp.config.compare.length,
 					},
 				},
+				-- sorting = defaults.sorting,
 				window = {
 					completion = cmp.config.window.bordered({
 						border = { "", "─", "╮", "│", "󱡻", "─", "╰", "│" },
