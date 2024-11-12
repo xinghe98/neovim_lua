@@ -110,7 +110,7 @@ return {
 					end,
 				},
 				sources = {
-					{ name = "nvim_lsp", keyword_length = 3, priority = 100 },
+					{ name = "nvim_lsp", keyword_length = 2, priority = 100 },
 					{ name = "buffer",   keyword_length = 3, priority = 60 },
 					{ name = "path",     keyword_length = 3, priority = 90 },
 					{ name = "nvim_lua", keyword_length = 3, priority = 50 },
