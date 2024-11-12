@@ -75,14 +75,31 @@ local emmet_ls = function(entry1, entry2)
 	local kind2 = entry2:get_kind() --- @type lsp.CompletionItemKind | number
 	--[[ kind1 = kind1 == types.lsp.CompletionItemKind.Text and 100 or kind1
 	kind2 = kind2 == types.lsp.CompletionItemKind.Text and 100 or kind2 ]]
-	if kind1 == types.lsp.CompletionItemKind.Text or types.lsp.CompletionItemKind.Keyword then
+	if kind1 == types.lsp.CompletionItemKind.Text then
 		return false
 	end
-	if kind2 == types.lsp.CompletionItemKind.Text or types.lsp.CompletionItemKind.Keyword then
+	if kind2 == types.lsp.CompletionItemKind.Text then
 		return true
 	end
 end
 
+local keywordFirst = function(entry1, entry2)
+	-- 获取 CompletionItemKind 类型
+	--
+	local types = require("cmp.types")
+	local kind1 = entry1:get_kind()
+	local kind2 = entry2:get_kind()
+
+	-- 将 Keyword 排在其他类型之前
+	if kind1 == types.lsp.CompletionItemKind.Keyword and kind2 ~= types.lsp.CompletionItemKind.Keyword then
+		return true
+	elseif kind2 == types.lsp.CompletionItemKind.Keyword and kind1 ~= types.lsp.CompletionItemKind.Keyword then
+		return false
+	end
+
+	-- 如果类型相同或都不是 Keyword，则使用默认比较器
+	return nil
+end
 
 return {
 	{
@@ -213,6 +230,7 @@ return {
 					comparators = {
 						-- label_comparator,
 						dartColonFirst,
+						keywordFirst,
 						emmet_ls,
 						cmp.config.compare.recently_used,
 						cmp.config.compare.offset,
