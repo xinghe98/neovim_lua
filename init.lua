@@ -43,7 +43,7 @@ vim.g.coc_global_extensions = {
 	"coc-prisma",
 	"coc-snippets",
 	-- "coc-syntax",
-	-- "coc-word",
+	"coc-word",
 	"coc-emoji",
 	"coc-tsserver",
 	"@yaegassy/coc-volar",
