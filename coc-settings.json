@@ -125,8 +125,6 @@
 	"yank.enableCompletion": false,
 	"jest.watch": false,
 	"flutter.openDevLogSplitCommand": "botright 12split",
-	"flutter.lsp.initialization.onlyAnalyzeProjectsWithOpenFiles": false,
-	"flutter.trace.server": "off",
 	"dart.lineLength": 100,
 	"html.format.enable": true,
 	"git.addedSign.hlGroup": "GitGutterAdd",
