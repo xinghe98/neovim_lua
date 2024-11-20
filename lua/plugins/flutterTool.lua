@@ -1,3 +1,14 @@
+local flutter_path
+
+-- 自动检测flutter路径
+if vim.fn.has("win32") == 1 then
+  -- Windows 系统: 使用 PowerShell 的 Get-Command 查找
+  flutter_path =
+    vim.fn.trim(vim.fn.system([[powershell -Command "& {Get-Command flutter | Select-Object -ExpandProperty Path}"]]))
+else
+  -- Unix 系统: 使用 `which` 命令查找
+  flutter_path = vim.fn.trim(vim.fn.system("which flutter"))
+end
 return {
   {
     "akinsho/flutter-tools.nvim",
@@ -8,7 +19,7 @@ return {
     opts = {
       -- flutter_path = "/usr/bin/flutter",
       -- flutter_path = "/Users/lixinghe/.local/share/flutter/bin/flutter",
-      flutter_path = "C:/Users/mysta/AppData/flutter/bin/flutter.bat",
+      flutter_path = flutter_path,
       ui = {
         border = "rounded",
       },
