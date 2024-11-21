@@ -12,7 +12,7 @@
 	"coc.preferences.extensionUpdateCheck": "daily",
 	"coc.preferences.messageLevel": "error",
 	"suggest.labelMaxLength": 65,
-	"suggest.localityBonus": false,
+	"suggest.localityBonus": true,
 	"suggest.removeCurrentWord": false,
 	"suggest.noselect": true,
 	"suggest.enablePreselect": false,
