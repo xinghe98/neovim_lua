@@ -11,7 +11,7 @@
 	"coc.preferences.formatOnType": true,
 	"coc.preferences.extensionUpdateCheck": "daily",
 	"coc.preferences.messageLevel": "error",
-	"suggest.labelMaxLength": 90,
+	"suggest.labelMaxLength": 65,
 	"suggest.localityBonus": false,
 	"suggest.removeCurrentWord": true,
 	"suggest.noselect": true,
