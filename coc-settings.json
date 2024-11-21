@@ -11,7 +11,7 @@
 	"coc.preferences.formatOnType": true,
 	"coc.preferences.extensionUpdateCheck": "daily",
 	"coc.preferences.messageLevel": "error",
-	"suggest.labelMaxLength": 200,
+	"suggest.labelMaxLength": 90,
 	"suggest.localityBonus": false,
 	"suggest.removeCurrentWord": true,
 	"suggest.noselect": true,
@@ -31,6 +31,7 @@
 		"focusable": false,
 		"title": "🔐"
 	},
+	"hover.previewMaxHeight": 8,
 	"hover.floatConfig": {
 		"border": true,
 		"rounded": true,
