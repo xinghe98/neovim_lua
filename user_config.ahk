@@ -49,22 +49,22 @@ n::k
 CapsLock::ESC
 ;大写切换不会经常用,平时用shift
 LShift & CapsLock::CapsLock
-#w:: Send !{f4}
-#+l:: Send ^#{right} 
-#+j:: Send ^#{left}
+!w:: Send !{f4}
+!+l:: Send ^#{right} 
+!+j:: Send ^#{left}
 !i::send {up}
 !k::send {Down}
 !j::send {Left}
-!l::send {Right}
+^k::send {Right}
 
-#1::switchDesktopByNumber(1)
-#2::switchDesktopByNumber(2)
-#3::switchDesktopByNumber(3)
-#4::switchDesktopByNumber(4)
-#5::switchDesktopByNumber(5)
-#6::switchDesktopByNumber(6)
-#7::switchDesktopByNumber(7)
-#8::switchDesktopByNumber(8)
+!1::switchDesktopByNumber(1)
+!2::switchDesktopByNumber(2)
+!3::switchDesktopByNumber(3)
+!4::switchDesktopByNumber(4)
+!5::switchDesktopByNumber(5)
+!6::switchDesktopByNumber(6)
+!7::switchDesktopByNumber(7)
+!8::switchDesktopByNumber(8)
 
 
 ; ^!n::switchDesktopToRight()
@@ -76,15 +76,15 @@ LShift & CapsLock::CapsLock
 ; ^!c::createVirtualDesktop()
 ; ^!d::deleteVirtualDesktop()
 
-#+1::MoveCurrentWindowToDesktop(1)
-#+2::MoveCurrentWindowToDesktop(2)
-#+3::MoveCurrentWindowToDesktop(3)
-#+4::MoveCurrentWindowToDesktop(4)
-#+5::MoveCurrentWindowToDesktop(5)
-#+6::MoveCurrentWindowToDesktop(6)
-#+7::MoveCurrentWindowToDesktop(7)
-#+8::MoveCurrentWindowToDesktop(8)
-#+9::MoveCurrentWindowToDesktop(9)
+!+1::MoveCurrentWindowToDesktop(1)
+!+2::MoveCurrentWindowToDesktop(2)
+!+3::MoveCurrentWindowToDesktop(3)
+!+4::MoveCurrentWindowToDesktop(4)
+!+5::MoveCurrentWindowToDesktop(5)
+!+6::MoveCurrentWindowToDesktop(6)
+!+7::MoveCurrentWindowToDesktop(7)
+!+8::MoveCurrentWindowToDesktop(8)
+!+9::MoveCurrentWindowToDesktop(9)
 
 ; ^#Numpad1::MoveCurrentWindowToDesktop(1)
 ; ^#Numpad2::MoveCurrentWindowToDesktop(2)
