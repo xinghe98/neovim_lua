@@ -69,6 +69,22 @@ local dartColonFirst = function(entry1, entry2)
   return nil
 end
 
+local dartColonFirst = function(entry1, entry2)
+  if vim.bo.filetype ~= "python" then
+    return nil
+  end
+  local entry1StartsWithUnderscore = string.sub(entry1.completion_item.label, 1, 1) == "_"
+    and entry1.source.name == "nvim_lsp"
+  local entry2StartsWithUnderscore = string.sub(entry2.completion_item.label, 1, 1) == "_"
+    and entry2.source.name == "nvim_lsp"
+  if entry1StartsWithUnderscore and not entry2StartsWithUnderscore then
+    return false
+  elseif not entry1StartsWithUnderscore and entry2StartsWithUnderscore then
+    return true
+  end
+  return nil
+end
+
 local emmet_ls = function(entry1, entry2)
   local types = require("cmp.types")
   local kind1 = entry1:get_kind() --- @type lsp.CompletionItemKind | number
@@ -100,7 +116,8 @@ local keywordFirst = function(entry1, entry2)
   -- 如果类型相同或都不是 Keyword，则使用默认比较器
   return nil
 end
-
+local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
+local snippet_path = is_windows and "~/AppData/Local/nvim/snippets/" or "~/.config/nvim/snippets/"
 return {
   {
     "L3MON4D3/LuaSnip", -- Snippets plugin
@@ -109,9 +126,22 @@ return {
       require("luasnip.loaders.from_vscode").lazy_load({
         paths = { "~/.local/share/nvim/lazy/friendly-snippets/snippets" },
       })
+      require("luasnip.loaders.from_lua").lazy_load({ paths = { snippet_path } })
       -- require("luasnip.loaders.from_snipmate").lazy_load()
     end,
   },
+  -- {
+  -- 		"SirVer/ultisnips",
+  -- 		dependencies = {
+  -- 			"honza/vim-snippets",
+  -- 		},
+  -- 		config = function()
+  -- 			vim.g.UltiSnipsSnippetDirectories = { "~/.config/nvim/Ultisnips" }
+  -- 			-- vim.g.UltiSnipsExpandTrigger = ""
+  -- 			-- vim.g.UltiSnipsJumpForwardTrigger = ""
+  -- 			-- vim.g.UltiSnipsJumpBackwardTrigger = ""
+  -- 		end
+  -- 	},
   { "onsails/lspkind.nvim" },
   {
     "hrsh7th/nvim-cmp",
