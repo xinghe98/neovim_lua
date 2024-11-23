@@ -48,9 +48,10 @@ return {
         enabled = true, -- set to false to disable
       },
       dev_log = {
-        enabled = true,
+        enabled = false,
         notify_errors = false, -- if there is an error whilst running then notify the user
-        open_cmd = "tabedit", -- command to use to open the log buffer
+        open_cmd = "tabnew",
+        focus_on_open = false,
       },
       dev_tools = {
         autostart = false, -- autostart devtools server if not detected
