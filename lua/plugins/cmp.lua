@@ -369,7 +369,7 @@ return {
         vim.defer_fn(function()
           -- vim.lsp.buf.signature_help()
           close_noice_signature_window()
-        end, 0)
+        end, 50)
       end)
 
       -- 监听补全菜单关闭事件
