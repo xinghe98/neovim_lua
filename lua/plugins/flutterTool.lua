@@ -43,7 +43,7 @@ return {
         enabled = false,
       },
       closing_tags = {
-        highlight = "EndofBuffer", -- highlight for the closing tag
+        highlight = "Comment", -- highlight for the closing tag
         prefix = "//", -- character to use for close tag e.g. > Widget
         enabled = true, -- set to false to disable
       },
