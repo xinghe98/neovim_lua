@@ -152,7 +152,7 @@ return {
       local defaults = require("cmp.config.default")()
       setCompHL()
       return {
-        autocomplete = { cmp.TriggerEvent.TextChanged },
+        autocomplete = { require("cmp.types").cmp.TriggerEvent.TextChanged }, -- 仅在输入内容时触发补全
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)
@@ -341,7 +341,7 @@ return {
       -- 检查是否有可用的签名帮助
       local function has_signature_help(callback)
         local params = vim.lsp.util.make_position_params()
-        vim.lsp.buf_request(0, "textDocument/signatureHelp", params, function(err, result, ctx, config)
+        vim.lsp.buf_request(0, "textDocument/signatureHelp", params, function(err, result, ctx)
           if err or not result or not result.signatures or vim.tbl_isempty(result.signatures) then
             callback(false) -- 没有签名可用
           else
@@ -350,15 +350,14 @@ return {
         end)
       end
 
-      -- 检查是否有签名窗口
-
+      -- 检查和关闭 Noice 签名窗口
       local function handle_noice_signature_window(action)
         for _, win in ipairs(vim.api.nvim_list_wins()) do
           local config = vim.api.nvim_win_get_config(win)
           if config.relative ~= "" then -- 检查是否为浮动窗口
             local buf = vim.api.nvim_win_get_buf(win)
-            local buftype = vim.api.nvim_buf_get_option(buf, "buftype")
-            local winhighlight = vim.api.nvim_win_get_option(win, "winhighlight")
+            local buftype = vim.bo[buf].buftype
+            local winhighlight = vim.wo[win].winhighlight
             local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
 
             -- 检查是否符合 Noice 的 signature 窗口特征
@@ -375,34 +374,43 @@ return {
         return false
       end
 
-      -- 使用示例
+      -- 关闭 Noice 签名窗口
       local function close_noice_signature_window()
         handle_noice_signature_window("close")
       end
 
+      -- 检查 Noice 签名窗口是否已打开
       local function is_signature_window_open()
         return handle_noice_signature_window("check")
       end
 
+      -- 重新打开签名窗口
       local function reopen_signature_window()
         if not is_signature_window_open() then -- 如果签名窗口未打开
+          local current_position = vim.api.nvim_win_get_cursor(0) -- 保存当前光标位置
+          vim.lsp.buf.signature_help()
           vim.defer_fn(function()
-            vim.lsp.buf.signature_help()
-          end, 10)
+            vim.api.nvim_win_set_cursor(0, current_position) -- 恢复光标位置
+            cmp.close()
+          end, 0)
         end
       end
 
-      cmp.event:on("menu_opened", function()
-        -- 调用自定义关闭窗口的逻辑
-        -- close_noice_signature_window()
-
+      -- 优化签名窗口关闭逻辑
+      local function schedule_close_signature_window(delay)
         vim.defer_fn(function()
-          -- vim.lsp.buf.signature_help()
-          close_noice_signature_window()
-        end, 50)
+          if cmp.visible() then -- 检查 cmp 窗口是否仍然打开
+            close_noice_signature_window()
+          end
+        end, delay)
+      end
+
+      -- 监听补全菜单打开事件
+      cmp.event:on("menu_opened", function()
+        schedule_close_signature_window(50) -- 延迟关闭签名窗口
       end)
 
-      -- 监听补全菜单关闭事件
+      -- 监听补全菜单确认事件
       cmp.event:on("confirm_done", function()
         has_signature_help(function(has_help)
           if has_help then
