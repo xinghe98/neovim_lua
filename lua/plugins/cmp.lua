@@ -44,8 +44,8 @@ local setCompHL = function()
   vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
 end
 local limitStr = function(str)
-  if #str > 25 then
-    str = string.sub(str, 1, 22) .. "..."
+  if #str > 50 then
+    str = string.sub(str, 1, 40) .. "..."
   end
   return str
 end
@@ -215,14 +215,22 @@ return {
             local kind = require("lspkind").cmp_format({ mode = "symbol_text" })(entry, vim_item)
             local strings = vim.split(kind.kind, "%s", { trimempty = true })
             vim_item.kind = " " .. (strings[1] or "") .. " "
+            -- 获取当前文件类型
+            local filetype = vim.bo.filetype
+
+            -- 根据文件类型进行自定义
             local menuitem = ""
-            if entry:get_completion_item().labelDetails then
-              menuitem = ""
-              -- if entry:get_completion_item().detail then
-              -- 	menuitem = menuitem .. entry:get_completion_item().labelDetails.detail
-              -- end
-              if entry:get_completion_item().labelDetails.description then
-                menuitem = menuitem .. entry:get_completion_item().labelDetails.description
+            if filetype == "dart" then
+              if entry:get_completion_item().detail then
+                menuitem = limitStr(entry:get_completion_item().detail or "")
+              end
+            end
+            if filetype ~= "dart" then
+              if entry:get_completion_item().labelDetails then
+                menuitem = ""
+                if entry:get_completion_item().labelDetails.description then
+                  menuitem = menuitem .. entry:get_completion_item().labelDetails.description
+                end
               end
             end
             local icons = ({
