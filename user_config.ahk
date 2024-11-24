@@ -55,7 +55,7 @@ LShift & CapsLock::CapsLock
 !i::send {up}
 !k::send {Down}
 !j::send {Left}
-^k::send {Right}
+!l::send {Right}
 
 !1::switchDesktopByNumber(1)
 !2::switchDesktopByNumber(2)

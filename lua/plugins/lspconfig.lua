@@ -1,4 +1,8 @@
 return {
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = { ensure_installed = { "dart" } },
+  },
   -- LSP keymaps
   {
     "neovim/nvim-lspconfig",
