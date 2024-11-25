@@ -415,7 +415,7 @@ return {
 
       -- 监听补全菜单打开事件
       cmp.event:on("menu_opened", function()
-        schedule_close_signature_window(50) -- 延迟关闭签名窗口
+        schedule_close_signature_window(0) -- 延迟关闭签名窗口
       end)
 
       -- 监听补全菜单确认事件
