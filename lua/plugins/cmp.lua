@@ -350,27 +350,28 @@ return {
 
       -- 监听补全菜单打开事件
       cmp.event:on("menu_opened", function()
-        local win = message:win()
-        if (cmp.core.view:visible() or vim.fn.pumvisible() == 1) and win then
-          print("close cmp menu")
-          local release = cmp.core:suspend()
-          cmp.core.view:close()
-          cmp.core:reset()
-          vim.schedule(release)
-        end
+        vim.defer_fn(function()
+          local win = message:win()
+          if win then
+            local release = cmp.core:suspend()
+            cmp.core.view:close()
+            cmp.core:reset()
+            vim.schedule(release)
+          end
+        end, 6)
       end)
 
       -- 监听补全菜单确认事件
-      cmp.event:on("confirm_done", function()
-        vim.defer_fn(function()
-          local win = message:win()
-          if not win then
-            local params = vim.lsp.util.make_position_params()
-            vim.lsp.buf_request(0, "textDocument/signatureHelp", params, require("noice.lsp.signature").on_signature)
-            print("show signature_help")
-          end
-        end, 150)
-      end)
+      -- cmp.event:on("confirm_done", function()
+      --   vim.defer_fn(function()
+      --     local win = message:win()
+      --     if not win then
+      --       local params = vim.lsp.util.make_position_params()
+      --       vim.lsp.buf_request(0, "textDocument/signatureHelp", params, require("noice.lsp.signature").on_signature)
+      --       print("show signature_help")
+      --     end
+      --   end, 150)
+      -- end)
     end,
   },
 }
