@@ -84,6 +84,10 @@ keymap("n", "tt", ":NvimTreeFindFileToggle<CR>", opts)
 keymap("i", "<C-q>", 'copilot#Accept("<CR>")', { script = true, silent = true, expr = true })
 -- todo comments
 keymap("n", "<leader>ft", ":TodoTelescope<CR>", opts)
+
+keymap("n", "<M-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+keymap("i", "<M-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+
 vim.keymap.set("n", "]t", function()
   require("todo-comments").jump_next()
 end, { desc = "Next todo comment" })

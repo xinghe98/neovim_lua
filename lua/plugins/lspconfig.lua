@@ -19,7 +19,7 @@ return {
       -- keys[#keys + 1] = { "<M-a>", ":lua vim.lsp.buf.code_action()<CR>" }
       -- keys[#keys + 1] = { "<leader>rn", ":Lspsaga rename<CR>" }
       keys[#keys + 1] = { "<leader>rn", vim.lsp.buf.rename, desc = "Rename", has = "rename" }
-      keys[#keys + 1] = { "g[", ":Lspsaga hover_doc<CR>" }
+      keys[#keys + 1] = { "g[", ":Lspsaga diagnostic_jump_next<CR>" }
       keys[#keys + 1] = { "g]", ":Lspsaga diagnostic_jump_prev<CR>" }
       keys[#keys + 1] = { "<leader>e", ":Lspsaga show_line_diagnostics<CR>" }
       -- -- disable a keymap
