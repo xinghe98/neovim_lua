@@ -105,6 +105,7 @@ return {
       menu = {
         border = "rounded",
         winblend = 0,
+        winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
         draw = {
           treesitter = { "lsp" },
           columns = { { "kind_icon" }, { "label", "label_description", "source_name", gap = 1 }, { "kind" } },
