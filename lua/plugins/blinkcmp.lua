@@ -2,7 +2,7 @@ local setCompHL = function()
   vim.api.nvim_set_hl(0, "BlinkCmpLabelMatch", { fg = "#82AAFF", bg = "NONE", bold = true })
   vim.api.nvim_set_hl(0, "BlinkCmpLabel", { fg = "#7E8294", bg = "NONE" })
   vim.api.nvim_set_hl(0, "BlinkCmpKind", { fg = "#7e8294" })
-  vim.api.nvim_set_hl(0, "CmpItemMenu", { fg = "#808080", bg = "NONE" })
+  vim.api.nvim_set_hl(0, "BlinkCmpMenu", { fg = "#808080", bg = "NONE" })
 
   vim.api.nvim_set_hl(0, "BlinkCmpKindField", { fg = "#B5585F" })
   vim.api.nvim_set_hl(0, "BlinkCmpKindProperty", { fg = "#B5585F" })
