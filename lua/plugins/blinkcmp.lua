@@ -1,5 +1,49 @@
+local setCompHL = function()
+  vim.api.nvim_set_hl(0, "BlinkCmpLabelMatch", { fg = "#82AAFF", bg = "NONE", bold = true })
+  vim.api.nvim_set_hl(0, "BlinkCmpLabel", { fg = "#7E8294", bg = "NONE" })
+  vim.api.nvim_set_hl(0, "BlinkCmpKind", { fg = "#7e8294" })
+  vim.api.nvim_set_hl(0, "CmpItemMenu", { fg = "#808080", bg = "NONE" })
+
+  vim.api.nvim_set_hl(0, "BlinkCmpKindField", { fg = "#B5585F" })
+  vim.api.nvim_set_hl(0, "BlinkCmpKindProperty", { fg = "#B5585F" })
+  vim.api.nvim_set_hl(0, "BlinkCmpKindEvent", { fg = "#B5585F" })
+
+  vim.api.nvim_set_hl(0, "BlinkCmpKindText", { fg = "#9FBD73" })
+  vim.api.nvim_set_hl(0, "BlinkCmpKindEnum", { fg = "#9FBD73" })
+  vim.api.nvim_set_hl(0, "BlinkCmpKindKeyword", { fg = "#9FBD73" })
+
+  vim.api.nvim_set_hl(0, "BlinkCmpKindConstant", { fg = "#D4BB6C" })
+  vim.api.nvim_set_hl(0, "BlinkCmpKindConstructor", { fg = "#D4BB6C" })
+  vim.api.nvim_set_hl(0, "BlinkCmpKindReference", { fg = "#D4BB6C" })
+
+  vim.api.nvim_set_hl(0, "BlinkCmpKindFunction", { fg = "#A377BF" })
+  vim.api.nvim_set_hl(0, "BlinkCmpKindStruct", { fg = "#A377BF" })
+  vim.api.nvim_set_hl(0, "BlinkCmpKindClass", { fg = "#A377BF" })
+  vim.api.nvim_set_hl(0, "BlinkCmpKindModule", { fg = "#A377BF" })
+  vim.api.nvim_set_hl(0, "BlinkCmpKindOperator", { fg = "#A377BF" })
+
+  vim.api.nvim_set_hl(0, "BlinkCmpKindVariable", { fg = "#58B5A8" })
+  vim.api.nvim_set_hl(0, "BlinkCmpKindFile", { fg = "#58B5A8" })
+
+  vim.api.nvim_set_hl(0, "BlinkCmpKindUnit", { fg = "#D4A959" })
+  vim.api.nvim_set_hl(0, "BlinkCmpKindSnippet", { fg = "#D4A959" })
+  vim.api.nvim_set_hl(0, "BlinkCmpKindFolder", { fg = "#D4A959" })
+
+  vim.api.nvim_set_hl(0, "BlinkCmpKindMethod", { fg = "#6C8ED4" })
+  vim.api.nvim_set_hl(0, "BlinkCmpKindValue", { fg = "#6C8ED4" })
+  vim.api.nvim_set_hl(0, "BlinkCmpKindEnumMember", { fg = "#6C8ED4" })
+
+  vim.api.nvim_set_hl(0, "BlinkCmpKindInterface", { fg = "#58B5A8" })
+  vim.api.nvim_set_hl(0, "BlinkCmpKindColor", { fg = "#58B5A8" })
+  vim.api.nvim_set_hl(0, "BlinkCmpKindTypeParameter", { fg = "#58B5A8" })
+end
+setCompHL()
 return {
   "saghen/blink.cmp",
+
+  dependencies = {
+    { "onsails/lspkind.nvim" },
+  },
   opts = {
     keymap = {
       preset = "enter",
@@ -12,6 +56,37 @@ return {
       ["<S-Tab>"] = { "snippet_backward", "select_prev", "fallback" },
       ["<Up>"] = { "snippet_backward", "select_prev" },
       ["<C-p>"] = { "snippet_backward", "select_prev" },
+    },
+    appearance = {
+      -- Sets the fallback highlight groups to nvim-cmp's highlight groups
+      -- Useful for when your theme doesn't support blink.cmp
+      -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+      -- Adjusts spacing to ensure icons are aligned
+      nerd_font_variant = "mono",
+    },
+    signature = {
+      enabled = true,
+      trigger = {
+        blocked_trigger_characters = {},
+        blocked_retrigger_characters = {},
+        -- When true, will show the signature help window when the cursor comes after a trigger character when entering insert mode
+        show_on_insert_on_trigger_character = true,
+      },
+      window = {
+        min_width = 1,
+        max_width = 100,
+        max_height = 10,
+        border = "rounded",
+        winblend = 0,
+        winhighlight = "Normal:BlinkCmpSignatureHelp,FloatBorder:BlinkCmpSignatureHelpBorder",
+        scrollbar = false, -- Note that the gutter will be disabled when border ~= 'none'
+        -- Which directions to show the window,
+        -- falling back to the next direction when there's not enough space,
+        -- or another window is in the way
+        direction_priority = { "n", "s" },
+        -- Disable if you run into performance issues
+        treesitter_highlighting = true,
+      },
     },
     completion = {
       trigger = {
@@ -31,42 +106,93 @@ return {
         border = "rounded",
         winblend = 0,
         draw = {
-          columns = { { "kind_icon" }, { "label", "source_name", "label_description", gap = 1 }, { "kind" } },
-          kind_icon = {
-            ellipsis = false,
-            text = function(ctx)
-              return require("lspkind").symbolic(ctx.kind, {
-                mode = "symbol",
-                symbol_map = {
-                  Copilot = "",
-                  Text = "󰓽 Text",
-                  Method = "m Method",
-                  Function = "󰊕 Func",
-                  Constructor = " Constructor",
-                  Field = " Field",
-                  Variable = "󰫧 Variable",
-                  Class = " Class",
-                  Interface = "󱇰 Interface",
-                  Module = " Module",
-                  Property = "󰀔 Property",
-                  Unit = " Unit",
-                  Value = "󱀍 Value",
-                  Keyword = "󰌆 Keyword",
-                  Snippet = " Snippet",
-                  Color = " Color",
-                  File = " File",
-                  Reference = " Reference",
-                  Folder = " Folder",
-                  Enum = " Enummember",
-                  Constant = " Constant",
-                  Struct = "  Struct",
-                  Event = " Event",
-                  Operator = " Operator",
-                  TypeParameter = "󰉺 TypeParameter",
-                  Default = "󰊨 default",
-                },
-              })
-            end,
+          treesitter = { "lsp" },
+          columns = { { "kind_icon" }, { "label", "label_description", "source_name", gap = 1 }, { "kind" } },
+          components = {
+            label = {
+              ellipsis = true,
+              width = { fill = true, max = 50 },
+              text = function(ctx)
+                return ctx.label .. ctx.label_detail
+              end,
+              highlight = function(ctx)
+                local highlights = {
+                  {
+                    0,
+                    #ctx.label,
+                    group = ctx.deprecated and "BlinkCmpLabelDeprecated" or "BlinkCmpLabel",
+                  },
+                }
+                if ctx.label_detail then
+                  table.insert(
+                    highlights,
+                    { #ctx.label, #ctx.label + #ctx.label_detail, group = "BlinkCmpLabelDetail" }
+                  )
+                end
+                for _, idx in ipairs(ctx.label_matched_indices) do
+                  table.insert(highlights, { idx, idx + 1, group = "BlinkCmpLabelMatch" })
+                end
+                return highlights
+              end,
+            },
+            source_name = {
+              width = { max = 30 },
+              -- source_name or source_id are supported
+              text = function(ctx)
+                return ({
+                  LSP = "🦽",
+                  Snippets = "🛠",
+                  Buffer = "💊",
+                  Path = "📂",
+                })[ctx.source_name]
+              end,
+            },
+            kind = {
+              text = function(ctx)
+                return "<" .. ctx.kind .. ">"
+              end,
+              highlight = function(ctx)
+                return require("blink.cmp.completion.windows.render.tailwind").get_hl(ctx) or "BlinkCmpLabel"
+              end,
+            },
+            kind_icon = {
+              ellipsis = false,
+              text = function(ctx)
+                require("lspkind").init({
+                  mode = "symbol",
+                  symbol_map = {
+                    Text = "󰓽",
+                    Method = "m",
+                    Function = "󰊕",
+                    Constructor = " ",
+                    Field = " ",
+                    Variable = "󰫧 ",
+                    Class = " ",
+                    Interface = "󱇰 ",
+                    Module = " ",
+                    Property = "󰀔 ",
+                    Unit = " ",
+                    Value = "󱀍 ",
+                    Keyword = "󰌆",
+                    Snippet = "󰩫",
+                    Color = " ",
+                    File = " ",
+                    Reference = " ",
+                    Folder = " ",
+                    Enum = " ",
+                    Constant = " ",
+                    Struct = "  ",
+                    Event = " ",
+                    Operator = " ",
+                    TypeParameter = "󰉺 ",
+                    Default = "󰊨 ",
+                  },
+                })
+                return require("lspkind").symbolic(ctx.kind, {
+                  mode = "symbol",
+                })
+              end,
+            },
           },
         },
       },
