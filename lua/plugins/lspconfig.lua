@@ -12,6 +12,7 @@ return {
       keys[#keys + 1] = { "gh", "<cmd>Lspsaga hover_doc<CR>" }
       keys[#keys + 1] = { "gd", ":Telescope lsp_definitions theme=dropdown<CR>" }
       keys[#keys + 1] = { "gr", ":Telescope lsp_references theme=dropdown<CR>" }
+      keys[#keys + 1] = { "gi", ":Telescope lsp_implementations theme=dropdown<CR>" }
       keys[#keys + 1] = { "<leader>g", ":Telescope diagnostics theme=dropdown<CR>", desc = "find all diagnostics" }
       keys[#keys + 1] = { "<M-a>", ":Lspsaga code_action<CR>" }
       keys[#keys + 1] =
@@ -24,6 +25,7 @@ return {
       keys[#keys + 1] = { "<leader>e", ":Lspsaga show_line_diagnostics<CR>" }
       -- -- disable a keymap
       keys[#keys + 1] = { "<leader>cr", false }
+      keys[#keys + 1] = { "gI", false }
       -- add a keymap
       keys[#keys + 1] = { "H", "<cmd>echo 'hello'<cr>" }
     end,
