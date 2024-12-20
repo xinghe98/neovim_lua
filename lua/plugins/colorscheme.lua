@@ -1,6 +1,14 @@
 return {
   -- add gruvbox
   {
+    "sainnhe/gruvbox-material",
+    config = function()
+      vim.g.gruvbox_material_enable_italic = true
+      vim.g.gruvbox_material_transparent_background = 1
+    end,
+  },
+  -- add onedarkpro
+  {
     "olimorris/onedarkpro.nvim",
     opts = {
       styles = {
@@ -27,7 +35,8 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "onedark",
+      -- colorscheme = "onedark",
+      colorscheme = "gruvbox-material",
     },
   },
 }
