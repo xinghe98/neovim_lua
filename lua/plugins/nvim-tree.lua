@@ -12,7 +12,7 @@ local function my_on_attach(bufnr)
   vim.keymap.set("n", "e", "j", opts("none"))
   vim.keymap.set("n", "u", "k", opts("none"))
   vim.keymap.set("n", "j", api.fs.rename_basename, opts("rename"))
-  vim.keymap.set("n", "l", api.fs.rename_full, opts("rename_full"))
+  vim.keymap.set("n", "l", api.fs.rename_full, opts("r)ename_full"))
 end
 
 return {
