@@ -48,4 +48,3 @@ vim.opt.pumblend = 0
 vim.opt.winblend = 0
 -- translate
 vim.g.translator_target_lang = "zh"
--- vim.g.translator_default_engines = { "youdao", "google" }

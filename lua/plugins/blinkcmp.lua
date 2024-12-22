@@ -165,8 +165,8 @@ return {
               -- source_name or source_id are supported
               text = function(ctx)
                 return ({
-                  LSP = "🦽",
-                  Snippets = "🛠",
+                  LSP = "🎮",
+                  Snippets = "🛟",
                   Buffer = "💊",
                   Path = "📂",
                 })[ctx.source_name]
