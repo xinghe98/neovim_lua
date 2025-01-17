@@ -108,7 +108,7 @@ return {
         max_items = 200,
         -- Controls if completion items will be selected automatically,
         -- and whether selection automatically inserts
-        selection = "auto_insert",
+        selection = { preselect = false, auto_insert = false },
         -- Controls how the completion items are selected
         -- 'preselect' will automatically select the first item in the completion list
         -- 'manual' will not select any item by default
