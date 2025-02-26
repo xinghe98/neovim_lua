@@ -46,7 +46,7 @@ return {
   },
   opts = {
     keymap = {
-      preset = "enter",
+      preset = "default",
       ["<CR>"] = { "accept", "fallback" },
       ["<C-e>"] = { "scroll_documentation_down" },
       ["<C-u>"] = { "scroll_documentation_up" },
@@ -90,8 +90,9 @@ return {
       },
     },
     completion = {
+      ghost_text = { enabled = false },
       trigger = {
-        show_on_insert_on_trigger_character = false,
+        show_on_insert_on_trigger_character = true,
       },
       documentation = {
         auto_show = true,
