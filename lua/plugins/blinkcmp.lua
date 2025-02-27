@@ -177,9 +177,7 @@ return {
               text = function(ctx)
                 return "<" .. ctx.kind .. ">"
               end,
-              highlight = function(ctx)
-                return require("blink.cmp.completion.windows.render.tailwind").get_hl(ctx) or "BlinkCmpLabel"
-              end,
+              highlight = "BlinkCmpLabel",
             },
             kind_icon = {
               ellipsis = false,
