@@ -20,18 +20,18 @@ require("lazy").setup({
 			require("packsettings.coc")
 		end,
 	},
-	-- {
-	-- 	'akinsho/flutter-tools.nvim',
-	-- 	lazy = false,
-	-- 	dependencies = {
-	-- 		'nvim-lua/plenary.nvim',
-	-- 		'stevearc/dressing.nvim', -- optional for vim.ui.select
-	-- 	},
-	-- 	config = function()
-	-- 		require("packsettings.flutterTool")
-	-- 	end,
-	-- 	ft = "dart"
-	-- },
+	{
+		'akinsho/flutter-tools.nvim',
+		lazy = false,
+		dependencies = {
+			'nvim-lua/plenary.nvim',
+			'stevearc/dressing.nvim', -- optional for vim.ui.select
+		},
+		config = function()
+			require("packsettings.flutterTool")
+		end,
+		ft = "dart"
+	},
 	{
 		'windwp/nvim-autopairs',
 		event = "InsertEnter",
@@ -321,6 +321,17 @@ require("lazy").setup({
 	{ 'marko-cerovac/material.nvim', lazy = false,                               priority = 1000 },
 	{ "olimorris/onedarkpro.nvim",   lazy = false,                               priority = 1000 },
 	{
+		"sainnhe/gruvbox-material",
+		config = function()
+			vim.g.gruvbox_material_enable_italic = true
+			vim.g.gruvbox_material_transparent_background = 1
+			vim.g.gruvbox_material_current_word = "underline"
+			-- 设置补全菜单透明背景
+		end,
+		lazy = false,
+		priority = 1000
+	},
+	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		opts = {
@@ -338,4 +349,22 @@ require("lazy").setup({
 			require("packsettings.noice")
 		end,
 	},
+	-- lazygit
+	{
+		"kdheepak/lazygit.nvim",
+		lazy = true,
+		cmd = {
+			"LazyGit",
+			"LazyGitConfig",
+			"LazyGitCurrentFile",
+			"LazyGitFilter",
+			"LazyGitFilterCurrentFile",
+		},
+		-- optional for floating window border decoration
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		-- setting the keybinding for LazyGit with 'keys' is recommended in
+		-- order to load the plugin when the command is run for the first time
+	}
 }, { defaults = { lazy = true } })

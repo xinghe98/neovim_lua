@@ -34,6 +34,7 @@ keymap("", "yh", "ye", opts)
 keymap("", "l", "u", opts)
 keymap("", "k", "i", opts)
 keymap("", "K", "I", opts)
+keymap("", "W", "b", opts)
 
 keymap("n", "<leader>i", "<C-w>l", opts)
 keymap("n", "<leader>u", "<C-w>k", opts)
@@ -65,6 +66,8 @@ keymap("n", "<leader><backspace>", ":bp<CR>", opts)
 keymap("n", "<c-w>", ":bd<CR>", opts)
 -- nvim-tree
 keymap("n", "tt", ":NvimTreeFindFileToggle<CR>", opts)
+--lazygit
+keymap("n", "<leader>lg", "<cmd>LazyGit<cr>", opts)
 -- copilot
 keymap("i", "<C-q>", 'copilot#Accept("<CR>")', { script = true, silent = true, expr = true })
 -- todo comments

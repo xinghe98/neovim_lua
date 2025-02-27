@@ -9,7 +9,7 @@
 	"coc.preferences.enableMessageDialog": true,
 	"coc.preferences.formatOnSave": true,
 	"coc.preferences.formatOnType": true,
-	"coc.preferences.extensionUpdateCheck": "daily",
+	"extensions.updateCheck": "daily",
 	"coc.preferences.messageLevel": "error",
 	"suggest.labelMaxLength": 65,
 	"suggest.localityBonus": true,
