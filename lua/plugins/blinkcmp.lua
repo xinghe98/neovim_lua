@@ -150,10 +150,7 @@ return {
                   },
                 }
                 if ctx.label_detail then
-                  table.insert(
-                    highlights,
-                    { #ctx.label, #ctx.label + #ctx.label_detail, group = "BlinkCmpLabelDetail" }
-                  )
+                  table.insert(highlights, { #ctx.label, #ctx.label + #ctx.label_detail, group = "BlinkCmpLabel" })
                 end
                 for _, idx in ipairs(ctx.label_matched_indices) do
                   table.insert(highlights, { idx, idx + 1, group = "BlinkCmpLabelMatch" })
@@ -172,6 +169,7 @@ return {
                   Path = "📂",
                 })[ctx.source_name]
               end,
+              highlight = "BlinkCmpLabel",
             },
             kind = {
               text = function(ctx)
