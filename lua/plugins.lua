@@ -64,38 +64,6 @@ require("lazy").setup({
 			require("packsettings.vista")
 		end,
 	},
-	-- 多光标
-	{
-		"brenton-leighton/multiple-cursors.nvim",
-		version = "*", -- Use the latest tagged version
-		keys = {
-			{ "<C-e>",         "<Cmd>MultipleCursorsAddDown<CR>",        mode = { "n", "x" },      desc = "Add cursor and move down" },
-			{ "<C-u>",         "<Cmd>MultipleCursorsAddUp<CR>",          mode = { "n", "x" },      desc = "Add cursor and move up" },
-
-			{ "<C-Up>",        "<Cmd>MultipleCursorsAddUp<CR>",          mode = { "n", "i", "x" }, desc = "Add cursor and move up" },
-			{ "<C-Down>",      "<Cmd>MultipleCursorsAddDown<CR>",        mode = { "n", "i", "x" }, desc = "Add cursor and move down" },
-
-			{ "<C-LeftMouse>", "<Cmd>MultipleCursorsMouseAddDelete<CR>", mode = { "n", "i" },      desc = "Add or remove cursor" },
-
-			{ "<Leader>a",     "<Cmd>MultipleCursorsAddMatches<CR>",     mode = { "n", "x" },      desc = "Add cursors to cword" },
-			{
-				"<Leader>A",
-				"<Cmd>MultipleCursorsAddMatchesV<CR>",
-				mode = { "n", "x" },
-				desc = "Add cursors to cword in previous area",
-			},
-
-			{
-				"<Leader>d",
-				"<Cmd>MultipleCursorsAddJumpNextMatch<CR>",
-				mode = { "n", "x" },
-				desc = "Add cursor and jump to next cword",
-			},
-			{ "<Leader>D", "<Cmd>MultipleCursorsJumpNextMatch<CR>", mode = { "n", "x" }, desc = "Jump to next cword" },
-
-			{ "<Leader>l", "<Cmd>MultipleCursorsLock<CR>",          mode = { "n", "x" }, desc = "Lock virtual cursors" },
-		},
-	},
 	{
 		"nvim-treesitter/nvim-treesitter",
 		event = "VimEnter",
@@ -356,5 +324,38 @@ require("lazy").setup({
 		},
 		-- setting the keybinding for LazyGit with 'keys' is recommended in
 		-- order to load the plugin when the command is run for the first time
-	}
+	},
+	-- 多光标
+	{
+		"brenton-leighton/multiple-cursors.nvim",
+		version = "*", -- Use the latest tagged version
+		opts = {}, -- This causes the plugin setup function to be called
+		keys = {
+			{ "<C-e>",         "<Cmd>MultipleCursorsAddDown<CR>",        mode = { "n", "x" },      desc = "Add cursor and move down" },
+			{ "<C-u>",         "<Cmd>MultipleCursorsAddUp<CR>",          mode = { "n", "x" },      desc = "Add cursor and move up" },
+
+			{ "<C-Up>",        "<Cmd>MultipleCursorsAddUp<CR>",          mode = { "n", "i", "x" }, desc = "Add cursor and move up" },
+			{ "<C-Down>",      "<Cmd>MultipleCursorsAddDown<CR>",        mode = { "n", "i", "x" }, desc = "Add cursor and move down" },
+
+			{ "<C-LeftMouse>", "<Cmd>MultipleCursorsMouseAddDelete<CR>", mode = { "n", "i" },      desc = "Add or remove cursor" },
+
+			{ "<Leader>a",     "<Cmd>MultipleCursorsAddMatches<CR>",     mode = { "n", "x" },      desc = "Add cursors to cword" },
+			{
+				"<Leader>A",
+				"<Cmd>MultipleCursorsAddMatchesV<CR>",
+				mode = { "n", "x" },
+				desc = "Add cursors to cword in previous area",
+			},
+
+			{
+				"<Leader>d",
+				"<Cmd>MultipleCursorsAddJumpNextMatch<CR>",
+				mode = { "n", "x" },
+				desc = "Add cursor and jump to next cword",
+			},
+			{ "<Leader>D", "<Cmd>MultipleCursorsJumpNextMatch<CR>", mode = { "n", "x" }, desc = "Jump to next cword" },
+
+			{ "<Leader>l", "<Cmd>MultipleCursorsLock<CR>",          mode = { "n", "x" }, desc = "Lock virtual cursors" },
+		},
+	},
 }, { defaults = { lazy = true } })
