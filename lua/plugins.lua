@@ -267,16 +267,6 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"github/copilot.vim",
-		lazy = false,
-		event = "VimEnter",
-		config = function()
-			vim.g.copilot_enabled = true
-			vim.g.copilot_no_tab_map = true
-			vim.g.copilot_no_cr_map = true
-		end,
-	},
-	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
 		opts = {},
