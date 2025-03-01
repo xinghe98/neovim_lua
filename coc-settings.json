@@ -13,7 +13,7 @@
 	"coc.preferences.messageLevel": "error",
 	"suggest.labelMaxLength": 65,
 	"suggest.localityBonus": true,
-	"suggest.removeCurrentWord": false,
+	"suggest.removeCurrentWord": true,
 	"suggest.noselect": true,
 	"suggest.enablePreselect": false,
 	"suggest.filterGraceful": true,
