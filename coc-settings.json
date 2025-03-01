@@ -13,14 +13,14 @@
 	"coc.preferences.messageLevel": "error",
 	"suggest.labelMaxLength": 65,
 	"suggest.localityBonus": true,
-	"suggest.removeCurrentWord": false,
+	"suggest.removeCurrentWord": true,
 	"suggest.noselect": true,
 	"suggest.enablePreselect": false,
 	"suggest.filterGraceful": true,
 	"suggest.insertMode": "insert",
 	"suggest.triggerAfterInsertEnter": true,
 	"suggest.autoTrigger": "always",
-	"suggest.defaultSortMethod": "none",
+	"suggest.defaultSortMethod": "length",
 	"suggest.detailField": "abbr",
 	"suggest.minTriggerInputLength": 2,
 	"suggest.timeout": 600,
@@ -40,10 +40,12 @@
 	},
 	"suggest.floatConfig": {
 		"border": true,
+		"rounded": true,
 		"highlight": "CocFloating"
 	},
 	"suggest.pumFloatConfig": {
 		"border": true,
+		"rounded": true,
 		"highlight": "CocFloating"
 	},
 	"signature.floatConfig": {
@@ -65,7 +67,7 @@
 	"suggest.removeDuplicateItems": true,
 	"suggest.reversePumAboveCursor": true,
 	"suggest.snippetIndicator": " 󰁨 ",
-	"suggest.selection": "recentlyUsed",
+	"suggest.selection": "recentlyUsedByPrefix",
 	"suggest.triggerCompletionWait": 0,
 	"suggest.completionItemKindLabels": {
 		"text": "󰓽 Text",
@@ -196,6 +198,7 @@
 	"coc.source.around.priority": 50,
 	"coc.source.word.priority": 50,
 	"coc.source.emoji.priority": 49,
+	"snippets.priority": 51,
 	"coc.source.emoji.shortcut": "EO",
 	"snippets.shortcut": "SN",
 	"coc.source.buffer.shortcut": "BF",
