@@ -42,6 +42,7 @@ vim.g.coc_global_extensions = {
 	"coc-prettier",
 	"coc-prisma",
 	"coc-snippets",
+	"https://github.com/rafamadriz/friendly-snippets@main",
 	-- "coc-syntax",
 	"coc-word",
 	"coc-emoji",
