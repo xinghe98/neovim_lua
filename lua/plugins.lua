@@ -194,7 +194,7 @@ require("lazy").setup({
 	-- 文件搜索插件
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.8",
+		version = false,
 		event = "VimEnter",
 		dependencies = {
 			"nvim-lua/plenary.nvim", -- Lua 开发模块
