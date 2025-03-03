@@ -7,5 +7,6 @@
 	"runtime.version": "LuaJIT",
     "diagnostics.disable": [
         "different-requires"
-    ]
+    ],
+    "completion.autoRequire": false
 }

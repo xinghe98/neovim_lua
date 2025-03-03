@@ -26,10 +26,6 @@ keymap("", "N", "0", opts)
 keymap("", "I", "$", opts)
 keymap("", "<C-U>", "5<C-y>", opts)
 keymap("", "<C-E>", "5<C-e>", opts)
-keymap("", "ci", "cl", opts)
-keymap("", "cn", "ch", opts)
-keymap("", "ck", "ci", opts)
-keymap("", "c,.", "c%", opts)
 keymap("", "yh", "ye", opts)
 
 -- Actions
@@ -38,6 +34,7 @@ keymap("", "k", "i", opts)
 keymap("", "K", "I", opts)
 keymap("", "C", "~", opts)
 keymap("", "W", "b", opts)
+keymap("v", "k", "xi", opts)
 
 keymap("n", "<S-Tab>", "<<", opts)
 keymap("n", "<Tab>", ">>", opts)
@@ -96,6 +93,22 @@ end, { desc = "Next todo comment" })
 vim.keymap.set("n", "[t", function()
   require("todo-comments").jump_prev()
 end, { desc = "Previous todo comment" })
+
+-- 设置选择模式下所有字母（大小写）直接插入对应字符
+for char = string.byte("a"), string.byte("z") do
+  local lowercase_char = string.char(char)
+  local uppercase_char = string.char(char - 32) -- 转换为大写字母
+
+  -- 小写字母
+  vim.keymap.set("s", lowercase_char, function()
+    return lowercase_char
+  end, { noremap = true, silent = true, expr = true })
+
+  -- 大写字母
+  vim.keymap.set("s", uppercase_char, function()
+    return uppercase_char
+  end, { noremap = true, silent = true, expr = true })
+end
 
 vim.cmd([[func! CompileRunGcc()
 		exec "w"
