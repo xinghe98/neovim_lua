@@ -8,6 +8,7 @@ set.modifiable = true
 set.number = true
 set.rnu = true
 set.cursorline = true
+set.cursorcolumn = true
 -- 可以拆行
 set.wrap = true
 set.fileformat = unix
