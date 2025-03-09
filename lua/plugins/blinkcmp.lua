@@ -155,7 +155,7 @@ return {
               ellipsis = true,
               width = { fill = true, max = 50 },
               text = function(ctx)
-                return ctx.label
+                return ctx.label .. ctx.label_detail
               end,
               highlight = function(ctx)
                 -- label and label details
@@ -178,16 +178,6 @@ return {
               end,
             },
             label_description = {
-              width = { max = 30 },
-              text = function(ctx)
-                if ctx.item.detail and ctx.label_description == "" then
-                  return ctx.item.detail
-                end
-                if ctx.label_description and ctx.item.detail then
-                  return ctx.label_description
-                end
-                return ctx.label_description
-              end,
               highlight = "BlinkCmpLabelDescription",
             },
             source_name = {
