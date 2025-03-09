@@ -80,8 +80,6 @@ keymap("v", "<C-_>", "gc", { desc = "Toggle comment for line" })
 keymap("n", "tt", ":NvimTreeFindFileToggle<CR>", opts)
 -- copilot
 keymap("i", "<C-q>", 'copilot#Accept("<CR>")', { script = true, silent = true, expr = true })
--- todo comments
-keymap("n", "<leader>ft", ":TodoTelescope<CR>", opts)
 
 keymap("n", "<M-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 keymap("i", "<M-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)

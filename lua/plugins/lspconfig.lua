@@ -10,10 +10,35 @@ return {
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       -- change a keymap
       keys[#keys + 1] = { "gh", "<cmd>Lspsaga hover_doc<CR>" }
-      keys[#keys + 1] = { "gd", ":Telescope lsp_definitions theme=dropdown<CR>" }
-      keys[#keys + 1] = { "gr", ":Telescope lsp_references theme=dropdown<CR>" }
-      keys[#keys + 1] = { "gi", ":Telescope lsp_implementations theme=dropdown<CR>" }
-      keys[#keys + 1] = { "<leader>gg", ":Telescope diagnostics theme=dropdown<CR>", desc = "find all diagnostics" }
+      keys[#keys + 1] = {
+        "gd",
+        function()
+          Snacks.picker.lsp_definitions()
+        end,
+        desc = "跳转到定义",
+      }
+      keys[#keys + 1] = {
+        "gr",
+        function()
+          Snacks.picker.lsp_references()
+        end,
+        nowait = true,
+        desc = "跳转到引用",
+      }
+      keys[#keys + 1] = {
+        "gi",
+        function()
+          Snacks.picker.lsp_implementations()
+        end,
+        desc = "跳转到实现",
+      }
+      keys[#keys + 1] = {
+        "<leader>gg",
+        function()
+          Snacks.picker.diagnostics()
+        end,
+        desc = "find all diagnostics",
+      }
       keys[#keys + 1] = { "<M-a>", ":Lspsaga code_action<CR>" }
       keys[#keys + 1] =
         { "<M-A>", "<cmd>lua require('lspsaga.codeaction'):code_action({ context = { only = { 'source' } }})<CR>" }
