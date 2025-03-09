@@ -51,6 +51,7 @@ return {
   },
   opts = {
     snippets = {
+      --INFO: 避免dartls补全占位符的问题
       expand = function(args)
         require("luasnip").lsp_expand(args)
       end,
