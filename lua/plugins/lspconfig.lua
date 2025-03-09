@@ -9,7 +9,6 @@ return {
     opts = function()
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       -- change a keymap
-      keys[#keys + 1] = { "gh", "<cmd>Lspsaga hover_doc<CR>" }
       keys[#keys + 1] = {
         "gd",
         function()
@@ -37,22 +36,23 @@ return {
         function()
           Snacks.picker.diagnostics()
         end,
-        desc = "find all diagnostics",
+        desc = "查看所有诊断",
       }
-      keys[#keys + 1] = { "<M-a>", ":Lspsaga code_action<CR>" }
+      keys[#keys + 1] = { "gh", "<cmd>Lspsaga hover_doc<CR>", desc = "查看帮助文档" }
+      -- keys[#keys + 1] = { "<M-a>", ":Lspsaga code_action<CR>" }
+      keys[#keys + 1] = { "<M-a>", ":lua vim.lsp.buf.code_action()<CR>" }
       keys[#keys + 1] =
         { "<M-A>", "<cmd>lua require('lspsaga.codeaction'):code_action({ context = { only = { 'source' } }})<CR>" }
-      -- keys[#keys + 1] = { "<M-a>", ":lua vim.lsp.buf.code_action()<CR>" }
-      -- keys[#keys + 1] = { "<leader>rn", ":Lspsaga rename<CR>" }
-      keys[#keys + 1] = { "<leader>rn", vim.lsp.buf.rename, desc = "Rename", has = "rename" }
-      keys[#keys + 1] = { "g[", ":Lspsaga diagnostic_jump_next<CR>" }
-      keys[#keys + 1] = { "g]", ":Lspsaga diagnostic_jump_prev<CR>" }
-      keys[#keys + 1] = { "<leader>ge", ":Lspsaga show_line_diagnostics<CR>" }
+      keys[#keys + 1] = { "<leader>rn", vim.lsp.buf.rename, desc = "重命名变量", has = "rename" }
+      keys[#keys + 1] = { "g[", ":Lspsaga diagnostic_jump_next<CR>", desc = "下一个诊断" }
+      keys[#keys + 1] = { "g]", ":Lspsaga diagnostic_jump_prev<CR>", desc = "上一个诊断" }
+      keys[#keys + 1] = { "<leader>ge", ":Lspsaga show_line_diagnostics<CR>", desc = "查看详细的错误信息" }
       -- -- disable a keymap
       keys[#keys + 1] = { "<leader>cr", false }
       keys[#keys + 1] = { "gI", false }
+      keys[#keys + 1] = { "K", false }
       -- add a keymap
-      keys[#keys + 1] = { "H", "<cmd>echo 'hello'<cr>" }
+      -- keys[#keys + 1] = { "H", "<cmd>echo 'hello'<cr>" }
     end,
   },
   {
