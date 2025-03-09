@@ -178,6 +178,15 @@ return {
               end,
             },
             label_description = {
+              width = { max = 30 },
+              text = function(ctx)
+                if ctx.item.detail ~= nil and ctx.item.detail ~= "" and #ctx.item.detail <= 10 then
+                  return ctx.item.detail
+                end
+                if ctx.label_description ~= "" and ctx.label_description ~= nil then
+                  return ctx.label_description
+                end
+              end,
               highlight = "BlinkCmpLabelDescription",
             },
             source_name = {
