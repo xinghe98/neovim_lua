@@ -3,6 +3,8 @@ local setCompHL = function()
   -- vim.api.nvim_set_hl(0, "BlinkCmpLabel", { fg = "white", bg = "NONE" })
   vim.api.nvim_set_hl(0, "BlinkCmpKind", { fg = "#7e8294" })
   vim.api.nvim_set_hl(0, "BlinkCmpMenu", { fg = "#808080", bg = "NONE" })
+  vim.api.nvim_set_hl(0, "BlinkCmpLabelDetail", { fg = "#7e8294", bg = "NONE" })
+  vim.api.nvim_set_hl(0, "BlinkCmpLabelDescription", { fg = "#7e8294", bg = "NONE" })
 
   vim.api.nvim_set_hl(0, "BlinkCmpKindField", { fg = "#B5585F" })
   vim.api.nvim_set_hl(0, "BlinkCmpKindProperty", { fg = "#B5585F" })
@@ -48,9 +50,16 @@ return {
       -- follow latest release.
       version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
     },
+    {
+      "rafamadriz/friendly-snippets",
+      config = function()
+        require("luasnip.loaders.from_vscode").lazy_load()
+      end,
+    },
   },
   opts = {
     snippets = {
+      preset = "luasnip",
       --INFO: 避免dartls补全占位符的问题
       expand = function(args)
         require("luasnip").lsp_expand(args)
@@ -59,14 +68,10 @@ return {
     keymap = {
       preset = "default",
       ["<CR>"] = { "accept", "fallback" },
-      ["<C-e>"] = { "scroll_documentation_down" },
-      ["<C-u>"] = { "scroll_documentation_up" },
-      ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
-      ["<Down>"] = { "snippet_forward", "select_next" },
-      ["<C-n>"] = { "snippet_forward", "select_next" },
+      ["<C-e>"] = { "scroll_documentation_down", "snippet_forward" },
+      ["<C-u>"] = { "scroll_documentation_up", "snippet_backward" },
+      ["<Tab>"] = { "select_next", "fallback" },
       ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
-      ["<Up>"] = { "snippet_backward", "select_prev" },
-      ["<C-p>"] = { "snippet_backward", "select_prev" },
       ["<ESC>"] = { "cancel", "fallback" },
     },
     appearance = {
