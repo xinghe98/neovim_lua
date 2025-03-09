@@ -155,24 +155,40 @@ return {
               ellipsis = true,
               width = { fill = true, max = 50 },
               text = function(ctx)
-                return ctx.label .. ctx.label_detail
+                return ctx.label
               end,
               highlight = function(ctx)
+                -- label and label details
                 local highlights = {
-                  {
-                    0,
-                    #ctx.label,
-                    group = ctx.deprecated and "BlinkCmpLabelDeprecated" or "BlinkCmpLabel",
-                  },
+                  { 0, #ctx.label, group = ctx.deprecated and "BlinkCmpLabelDeprecated" or "BlinkCmpLabel" },
                 }
                 if ctx.label_detail then
-                  table.insert(highlights, { #ctx.label, #ctx.label + #ctx.label_detail, group = "BlinkCmpLabel" })
+                  table.insert(
+                    highlights,
+                    { #ctx.label, #ctx.label + #ctx.label_detail, group = "BlinkCmpLabelDetail" }
+                  )
                 end
+
+                -- -- characters matched on the label by the fuzzy matcher
                 for _, idx in ipairs(ctx.label_matched_indices) do
                   table.insert(highlights, { idx, idx + 1, group = "BlinkCmpLabelMatch" })
                 end
+
                 return highlights
               end,
+            },
+            label_description = {
+              width = { max = 30 },
+              text = function(ctx)
+                if ctx.item.detail and ctx.label_description == "" then
+                  return ctx.item.detail
+                end
+                if ctx.label_description and ctx.item.detail then
+                  return ctx.label_description
+                end
+                return ctx.label_description
+              end,
+              highlight = "BlinkCmpLabelDescription",
             },
             source_name = {
               width = { max = 30 },
