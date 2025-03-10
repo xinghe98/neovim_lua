@@ -45,8 +45,8 @@ return {
       keys[#keys + 1] =
         { "<M-A>", ":lua vim.lsp.buf.code_action({ context = {only = { 'source' },diagnostics = {}}})<CR>" }
       keys[#keys + 1] = { "<leader>rn", vim.lsp.buf.rename, desc = "重命名变量", has = "rename" }
-      keys[#keys + 1] = { "]g", ":Lspsaga diagnostic_jump_next<CR>", desc = "下一个诊断" }
-      keys[#keys + 1] = { "[g", ":Lspsaga diagnostic_jump_prev<CR>", desc = "上一个诊断" }
+      keys[#keys + 1] = { "<C-e>", ":Lspsaga diagnostic_jump_next<CR>", desc = "下一个诊断" }
+      keys[#keys + 1] = { "<C-u>", ":Lspsaga diagnostic_jump_prev<CR>", desc = "上一个诊断" }
       keys[#keys + 1] = { "<leader>ge", ":Lspsaga show_line_diagnostics<CR>", desc = "查看详细的错误信息" }
       -- -- disable a keymap
       keys[#keys + 1] = { "<leader>cr", false }
