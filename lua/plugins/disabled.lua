@@ -4,4 +4,5 @@ return {
   { "nvim-neo-tree/neo-tree.nvim", enabled = false },
   { "echasnovski/mini.ai", enabled = false },
   { "ibhagwan/fzf-lua", enabled = false },
+  { "MagicDuck/grug-far.nvim", enabled = false },
 }
