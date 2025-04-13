@@ -13,6 +13,11 @@ return {
     },
     config = function()
       require("rip-substitute").setup({
+        notification = {
+          onSuccess = true,
+          icon = "",
+        },
+        debug = false, -- extra notifications for debugging
         popupWin = {
           title = " rip-substitute",
           border = "single",
