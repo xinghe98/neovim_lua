@@ -51,3 +51,10 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE" })
   end,
 })
+-- ~/.config/nvim/lua/config/autocmds.lua
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.opt_local.spell = false -- 关闭拼写检查
+  end,
+})

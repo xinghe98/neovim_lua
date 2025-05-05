@@ -118,6 +118,7 @@ return {
       -- LSP Server Settings
       ---@type lspconfig.options
       servers = {
+        marksman = {}, -- 确保 marksman 不报中文错误
         lua_ls = {
           -- mason = false, -- set to false if you don't want this server to be installed with mason
           -- Use this to add any additional keymaps
