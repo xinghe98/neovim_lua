@@ -2,3 +2,4 @@
 require("config.lazy")
 require("config.customhighlight")
 require("config.markdown")
+require("config.neovide")
