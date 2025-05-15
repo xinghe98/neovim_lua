@@ -1,5 +1,5 @@
 local setCompHL = function()
-  vim.api.nvim_set_hl(0, "BlinkCmpLabelMatch", { fg = "#82AAFF", bg = "NONE", bold = true })
+  vim.api.nvim_set_hl(0, "BlinkCmpLabelMatch", { fg = "#9FBD73", bg = "NONE", bold = true })
   -- vim.api.nvim_set_hl(0, "BlinkCmpLabel", { fg = "white", bg = "NONE" })
   vim.api.nvim_set_hl(0, "BlinkCmpKind", { fg = "#7e8294" })
   vim.api.nvim_set_hl(0, "BlinkCmpMenu", { fg = "#808080", bg = "NONE" })
@@ -178,9 +178,9 @@ return {
               end,
             },
             label_description = {
-              width = { max = 30 },
+              width = { max = 65 },
               text = function(ctx)
-                if ctx.item.detail ~= nil and ctx.item.detail ~= "" and #ctx.item.detail <= 10 then
+                if ctx.item.detail ~= nil and ctx.item.detail ~= "" and #ctx.item.detail <= 65 then
                   return ctx.item.detail
                 end
                 if ctx.label_description ~= "" and ctx.label_description ~= nil then

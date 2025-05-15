@@ -39,11 +39,12 @@ return {
         desc = "查看所有诊断",
       }
       keys[#keys + 1] = { "gh", "<cmd>Lspsaga hover_doc<CR>", desc = "查看帮助文档" }
-      -- keys[#keys + 1] = { "<M-a>", ":Lspsaga code_action<CR>" }
-      keys[#keys + 1] = { "<M-a>", ":lua vim.lsp.buf.code_action()<CR>" }
-      -- keys[#keys + 1] ={ "<M-A>", "<cmd>lua require('lspsaga.codeaction'):code_action({ context = { only = { 'source' } }})<CR>" }
+      -- keys[#keys + 1] = { "<M-a>", ":lua vim.lsp.buf.code_action()<CR>" }
+      -- keys[#keys + 1] =
+      --   { "<M-A>", ":lua vim.lsp.buf.code_action({ context = {only = { 'source' },diagnostics = {}}})<CR>" }
+      keys[#keys + 1] = { "<M-a>", ":Lspsaga code_action<CR>" }
       keys[#keys + 1] =
-        { "<M-A>", ":lua vim.lsp.buf.code_action({ context = {only = { 'source' },diagnostics = {}}})<CR>" }
+        { "<M-A>", "<cmd>lua require('lspsaga.codeaction'):code_action({ context = { only = { 'source' } }})<CR>" }
       keys[#keys + 1] = { "<leader>rn", vim.lsp.buf.rename, desc = "重命名变量", has = "rename" }
       keys[#keys + 1] = { "<C-e>", ":Lspsaga diagnostic_jump_next<CR>", desc = "下一个诊断" }
       keys[#keys + 1] = { "<C-u>", ":Lspsaga diagnostic_jump_prev<CR>", desc = "上一个诊断" }

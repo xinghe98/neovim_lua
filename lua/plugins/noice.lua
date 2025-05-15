@@ -16,6 +16,15 @@ return {
           skip = true,
         },
       },
+      {
+        filter = {
+          event = "notify",
+          find = "marksman",
+        },
+        opts = {
+          skip = true,
+        },
+      },
     },
     presets = {
       bottom_search = true, -- use a classic bottom cmdline for search
