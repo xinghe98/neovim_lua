@@ -178,7 +178,7 @@ return {
               end,
             },
             label_description = {
-              width = { max = 65 },
+              width = { max = 50 },
               text = function(ctx)
                 if ctx.item.detail ~= nil and ctx.item.detail ~= "" and #ctx.item.detail <= 65 then
                   return ctx.item.detail
@@ -190,7 +190,7 @@ return {
               highlight = "BlinkCmpLabelDescription",
             },
             source_name = {
-              width = { max = 30 },
+              width = { max = 10 },
               -- source_name or source_id are supported
               text = function(ctx)
                 return ({
