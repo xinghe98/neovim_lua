@@ -38,7 +38,7 @@ return {
     priority = 1000,
     config = function()
       require("everforest").setup({
-        transparent_background_level = 100,
+        transparent_background_level = 1,
         inlay_hints_background = "dimmed",
       })
     end,
@@ -49,7 +49,7 @@ return {
     "LazyVim/LazyVim",
     opts = {
       -- colorscheme = "onedark",
-      colorscheme = "onedark",
+      colorscheme = "everforest",
     },
   },
 }
