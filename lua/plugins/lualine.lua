@@ -89,6 +89,13 @@ return {
             },
             {
               function()
+                require("codeium.virtual_text").set_statusbar_refresh(function()
+                  require("lualine").refresh()
+                end)
+              end,
+            },
+            {
+              function()
                 return vim.g.flutter_tools_decorations.device
               end,
             },

@@ -26,6 +26,7 @@ local setCompHL = function()
 
   vim.api.nvim_set_hl(0, "BlinkCmpKindVariable", { fg = "#58B5A8" })
   vim.api.nvim_set_hl(0, "BlinkCmpKindFile", { fg = "#58B5A8" })
+  vim.api.nvim_set_hl(0, "BlinkCmpKindCodeium", { fg = "#58B5A8" })
 
   vim.api.nvim_set_hl(0, "BlinkCmpKindUnit", { fg = "#D4A959" })
   vim.api.nvim_set_hl(0, "BlinkCmpKindSnippet", { fg = "#D4A959" })
@@ -56,6 +57,7 @@ return {
         require("luasnip.loaders.from_vscode").lazy_load()
       end,
     },
+    { "nvim-lua/plenary.nvim" },
   },
   opts = {
     snippets = {
@@ -198,6 +200,7 @@ return {
                   Snippets = "🛟",
                   Buffer = "💊",
                   Path = "📂",
+                  Codeium = "🐣",
                 })[ctx.source_name]
               end,
               highlight = "BlinkCmpLabel",
@@ -239,6 +242,7 @@ return {
                     Operator = " ",
                     TypeParameter = "󰉺 ",
                     Default = "󰊨 ",
+                    Codeium = " ",
                   },
                 })
                 return require("lspkind").symbolic(ctx.kind, {
