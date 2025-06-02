@@ -7,6 +7,7 @@ return {
       set = "'",
       next = "m",
       delete_line = "''",
+      delete_buf = "'a",
     },
   },
 }
