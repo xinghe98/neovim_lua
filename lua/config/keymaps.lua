@@ -35,6 +35,7 @@ keymap("", "K", "I", opts)
 keymap("", "C", "~", opts)
 keymap("", "W", "b", opts)
 keymap("v", "k", "xi", opts)
+keymap("n", "<C-k>", "<C-i>", opts)
 
 keymap("n", "<S-Tab>", "<<", opts)
 keymap("n", "<Tab>", ">>", opts)
