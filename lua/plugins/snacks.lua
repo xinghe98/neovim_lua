@@ -19,11 +19,16 @@ return {
           char = {
             -- corner_top = "┌",
             -- corner_bottom = "└",
-            corner_top = "╭",
-            corner_bottom = "╰",
-            horizontal = "─",
-            vertical = "│",
-            arrow = ">",
+            corner_top = "┏", -- 粗左上角 (U+250F)
+            corner_bottom = "┗", -- 粗左下角 (U+2517)
+            horizontal = "━", -- 粗横线 (U+2501)
+            vertical = "┃", -- 粗竖线 (U+2503)
+            arrow = "➞",
+            -- corner_top = "╭",
+            -- corner_bottom = "╰",
+            -- horizontal = "─",
+            -- vertical = "│",
+            -- arrow = ">",
           },
         },
       },
