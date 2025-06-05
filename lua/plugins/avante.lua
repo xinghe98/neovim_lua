@@ -5,6 +5,7 @@ return {
   opts = {
     -- 在此处添加任何选项
     -- 例如
+    language = "Chinese",
     provider = "deepseek",
     providers = {
       deepseek = {
@@ -15,19 +16,20 @@ return {
         model = "deepseek-coder",
       },
     },
-  },
-  mappings = {
-    sidebar = {
-      edit_user_request = "k",
+    mappings = {
+      sidebar = {
+        edit_user_request = "k",
+      },
     },
   },
-  build = function()
-    if vim.fn.has("win32") == 1 then
-      return "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
-    else
-      return "make"
-    end
-  end,
+  build = "make",
+  -- build = function()
+  --   if vim.fn.has("win32") == 1 then
+  --     return "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+  --   else
+  --     return "make"
+  --   end
+  -- end,
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
     "stevearc/dressing.nvim",
