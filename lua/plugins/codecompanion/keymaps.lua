@@ -5,6 +5,7 @@ local opts = { noremap = true, silent = true }
 keymap("n", "<leader>aa", "<cmd>CodeCompanionChat Toggle<cr>", opts)
 -- 针对选中文本输入 AI 指令
 keymap("v", "<leader>aa", ":CodeCompanion ", { noremap = true, silent = false })
+keymap("v", "<leader>ad", ":CodeCompanionChat Add<cr> ", { noremap = true, silent = false })
 keymap("v", "<leader>ao", ":CodeCompanionChat<cr> ", { noremap = true, silent = false })
 -- 打开 AI 操作面板
 keymap("n", "<leader>ac", "<cmd>CodeCompanionActions<cr>", opts)

@@ -141,6 +141,21 @@ return {
           },
           lualine_y = {
             require("codecompanion._extensions.spinner.styles.lualine").get_lualine_component(),
+            {
+              function()
+                local ok, ms = pcall(require, "plugins.codecompanion.model_selector")
+                if not ok then
+                  return ""
+                end
+                local adapter = ms.active_adapter
+                local model = ms.current[adapter] or "?"
+                -- 截取模型名末段，避免过长（如 "anthropic/claude-3.7-sonnet" → "claude-3.7-sonnet"）
+                local short = model:match("[^/]+$") or model
+                return short
+              end,
+              icon = "🤖",
+              color = { fg = "#a9b665", gui = "bold" },
+            },
             "branch",
             "filetype",
             "progress",
