@@ -2,6 +2,9 @@
 
 > 基于 [LazyVim](https://github.com/LazyVim/LazyVim) 的个人 Neovim 配置，深度适配 **Colemak-DH** 键盘布局，集成 AI 编程助手、Flutter 开发工具链，支持 Windows / WSL / Linux 跨平台使用。
 
+<img width="2658" height="1412" alt="swappy-20260305-221926" src="https://github.com/user-attachments/assets/8d4394f7-ecda-411b-a1fc-313e54c6dac3" />
+
+
 ## ✨ 特性概览
 
 - 🧠 **Colemak-DH 全局适配** — 移动键 `n/e/u/i` 替代 `h/j/k/l`，所有插件按键均已重映射
