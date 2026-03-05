@@ -11,4 +11,8 @@ keymap("n", "<leader>ac", "<cmd>CodeCompanionActions<cr>", opts)
 -- 生成中文 Git 提交信息
 vim.keymap.set("n", "<leader>am", function()
   vim.cmd("CodeCompanion Commit Message (CN)")
-end, { buffer = true, desc = "AI 生成中文 Commit Message" })
+end, { desc = "AI 生成中文 Commit Message" })
+-- 切换 AI 模型
+vim.keymap.set("n", "<leader>as", function()
+  require("plugins.codecompanion.model_selector").select_adapter_and_model()
+end, { desc = "切换 AI 模型" })
