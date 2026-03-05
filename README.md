@@ -2,7 +2,7 @@
 
 > 基于 [LazyVim](https://github.com/LazyVim/LazyVim) 的个人 Neovim 配置，深度适配 **Colemak-DH** 键盘布局，集成 AI 编程助手、Flutter 开发工具链，支持 Windows / WSL / Linux 跨平台使用。
 
-<img width="2691" height="1440" alt="图片" src="https://github.com/user-attachments/assets/b116e7e7-cc6a-417f-8748-d7b57fef0a1d" />
+<img width="2560" height="1440" alt="图片" src="https://github.com/user-attachments/assets/ae07ed6c-1a46-438a-bf4a-46483b825682" />
 
 
 
