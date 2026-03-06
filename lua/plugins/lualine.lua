@@ -137,20 +137,13 @@ local comp_diff = {
   },
 }
 
-local comp_ai_model = {
-  function()
-    local ok, ms = pcall(require, "plugins.codecompanion.model_selector")
-    if not ok then
-      return ""
-    end
-    local adapter = ms.active_adapter
-    local model = ms.current[adapter] or "?"
-    local short = model:match("[^/]+$") or model
-    return adapter .. "(" .. short .. ")"
-  end,
-  icon = "🤖",
-  color = { gui = "bold" },
-}
+local comp_ai_model = (function()
+  local ok, ms = pcall(require, "cc_model_selector")
+  if ok then
+    return ms.get_lualine_component()
+  end
+  return { function() return "" end }
+end)()
 
 local comp_spinner = require("codecompanion._extensions.spinner.styles.lualine").get_lualine_component()
 

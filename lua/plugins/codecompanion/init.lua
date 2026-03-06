@@ -3,6 +3,7 @@ return {
   dependencies = {
     "lalitmee/codecompanion-spinners.nvim",
     "j-hui/fidget.nvim",
+    "xinghe98/codecompanion-model-selector.nvim",
   },
   init = function()
     require("plugins.codecompanion.keymaps")

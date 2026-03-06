@@ -15,5 +15,5 @@ vim.keymap.set("n", "<leader>am", function()
 end, { desc = "AI 生成中文 Commit Message" })
 -- 切换 AI 模型
 vim.keymap.set("n", "<leader>as", function()
-  require("plugins.codecompanion.model_selector").select_adapter_and_model()
+  require("cc_model_selector").select_adapter_and_model()
 end, { desc = "切换 AI 模型" })

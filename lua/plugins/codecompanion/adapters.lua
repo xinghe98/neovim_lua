@@ -1,4 +1,4 @@
-local ms = require("plugins.codecompanion.model_selector")
+local ms = require("cc_model_selector")
 
 return {
   http = {
@@ -12,7 +12,7 @@ return {
         schema = {
           model = {
             default = ms.get_current_model("openrouter"),
-            choices = ms.models.openrouter.choices,
+            choices = ms.config.models.openrouter and ms.config.models.openrouter.choices or {},
           },
           temperature = {
             default = 0.0,
@@ -47,7 +47,7 @@ return {
         schema = {
           model = {
             default = ms.get_current_model("yunwu"),
-            choices = ms.models.yunwu.choices,
+            choices = ms.config.models.yunwu and ms.config.models.yunwu.choices or {},
           },
           temperature = {
             default = 0.0,
