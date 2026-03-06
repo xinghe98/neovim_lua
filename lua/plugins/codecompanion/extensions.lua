@@ -3,8 +3,14 @@ return {
   model_selector = {
     opts = {
       default_adapter = "yunwu",
-      models = {
+      adapters = {
         openrouter = {
+          base = "openai_compatible",
+          env = {
+            url = "https://openrouter.ai/api/v1",
+            api_key = "cmd:echo $openrouter",
+            chat_url = "/chat/completions",
+          },
           default = "minimax/minimax-m2.5",
           choices = {
             "minimax/minimax-m2.5",
@@ -16,6 +22,12 @@ return {
           },
         },
         yunwu = {
+          base = "openai_compatible",
+          env = {
+            url = "https://yunwu.ai",
+            api_key = "cmd:echo $YUNWU_KEY",
+            chat_url = "/v1/chat/completions",
+          },
           default = "claude-sonnet-4-6",
           choices = {
             "claude-sonnet-4-6",
@@ -24,6 +36,10 @@ return {
           },
         },
         deepseek = {
+          base = "deepseek",
+          env = {
+            api_key = "cmd:echo $DEEPSEEK_KEY",
+          },
           default = "deepseek-chat",
           choices = {
             "deepseek-chat",

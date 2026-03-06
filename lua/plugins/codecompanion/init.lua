@@ -12,7 +12,6 @@ return {
     extensions = require("plugins.codecompanion.extensions"),
     language = "zh-CN",
     strategies = require("plugins.codecompanion.strategies"),
-    adapters = require("plugins.codecompanion.adapters"),
     prompt_library = require("plugins.codecompanion.prompts"),
   },
 }
