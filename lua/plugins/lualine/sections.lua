@@ -3,79 +3,168 @@ local components = require("plugins.lualine.components")
 
 local M = {}
 
--- Separator icons
-local sep = {
-  left = { "", "" }, -- Powerline left separator
-  right = { "'", "'" }, -- Powerline right separator
-  block = { "", "" }, -- No separator
-  space = { " ", " " }, -- Space separator
+-- Triangle separators for parallelogram shapes
+local sep_fwd = { -- \xxx\ forward leaning (left side: a, b)
+  left = vim.fn.nr2char(0xE0BE),
+  right = vim.fn.nr2char(0xE0B8),
+}
+local sep_bwd = { -- /xxxx/ backward leaning (right side: z)
+  left = vim.fn.nr2char(0xE0BA),
+  right = vim.fn.nr2char(0xE0BC),
 }
 
--- Helper: create colored component
-local function hl(comp, opts)
-  opts = opts or {}
-  local c = type(comp) == "string" and { comp } or vim.deepcopy(comp)
-  if opts.color then
-    c.color = opts.color
-  end
-  if opts.cond then
-    c.cond = opts.cond
-  end
-  if opts.padding then
-    c.padding = opts.padding
-  end
-  if opts.separator then
-    c.separator = opts.separator
-  end
-  return c
-end
+-- Mode name mapping
+local mode_map = {
+  n = "NORMAL",
+  no = "OP-PEND",
+  nov = "OP-VIS",
+  noV = "OP-LIN",
+  ni = "NORMAL",
+  nt = "TERM",
+  ntT = "TERM",
+  v = "VISUAL",
+  vs = "VISUAL",
+  V = "V-LINE",
+  Vs = "V-LINE",
+  s = "SELECT",
+  S = "S-LINE",
+  i = "INSERT",
+  ic = "INSERT",
+  ix = "INSERT",
+  t = "TERM",
+  R = "REPLACE",
+  Rc = "REPLACE",
+  Rx = "REPLACE",
+  Rv = "V-REPLACE",
+  r = "PENDING",
+  rm = "MORE",
+  rQ = "CONFIRM",
+  ["!"] = "SHELL",
+}
+
+-- Mode icons
+local mode_icon = {
+  n = "󰣭",
+  i = "󰏫",
+  v = "󰈔",
+  V = "󰈊",
+  t = "󱊦",
+  R = "󱎕",
+}
 
 -- Active sections
 M.sections = {
+  --  ╱ NORMAL ╱  (forward leaning parallelogram)
   lualine_a = {
-    hl(components.mode, { separator = sep.left }),
+    {
+      "mode",
+      separator = sep_fwd,
+      fmt = function(mode_name)
+        local raw = vim.fn.mode()
+        local display_mode = mode_map[raw] or mode_name
+        return (mode_icon[raw] or "") .. " " .. display_mode
+      end,
+    },
   },
 
+  --  ╱ branch ╱  ╱ +1 -2 ╱  (forward leaning parallelograms)
   lualine_b = {
-    hl(components.branch, { separator = sep.left }),
-    hl(components.diff, { separator = sep.left }),
+    components.spacer,
+    {
+      "branch",
+      icon = { vim.fn.nr2char(0xf126) .. "", color = { fg = colors.violet } },
+      colored = true,
+      color = { bg = colors.grey },
+      separator = sep_fwd,
+    },
+    {
+      "diff",
+      symbols = {
+        added = "󰸋 ",
+        modified = "󰛿 ",
+        removed = "󰍷 ",
+      },
+      diff_color = {
+        added = { fg = colors.green, gui = "bold" },
+        modified = { fg = colors.yellow, gui = "bold" },
+        removed = { fg = colors.red, gui = "bold" },
+      },
+      color = { bg = colors.black },
+      separator = sep_fwd,
+    },
+    components.spacer,
+    {
+      "diagnostics",
+      sources = { "nvim_diagnostic" },
+      color = { bg = colors.grey },
+      separator = sep_fwd,
+      symbols = {
+        error = "󰅙 ",
+        warn = "󰀦 ",
+        info = "󰋼 ",
+        hint = "󰌶",
+      },
+      diagnostics_color = {
+        error = { fg = colors.red, gui = "bold" },
+        warn = { fg = colors.orange },
+        info = { fg = colors.cyan },
+        hint = { fg = colors.violet },
+      },
+    },
   },
 
-  lualine_c = {
-    hl(components.diagnostics, { separator = sep.space }),
-  },
-
-  lualine_x = {
-    hl(components.spinner, { separator = sep.space, color = { fg = colors.yellow } }),
-    hl(components.ai_model, { separator = sep.space }),
-    hl(components.codeium, { separator = sep.space }),
-  },
-
-  lualine_y = {
-    hl(components.filetype, { separator = sep.right }),
-    hl(components.lsp, { separator = sep.right }),
-  },
-
-  lualine_z = {
-    hl(components.progress, { separator = sep.right }),
-  },
-}
-
--- Inactive sections (minimal)
-M.inactive_sections = {
-  lualine_a = {},
-  lualine_b = {},
+  -- filename  diagnostics (transparent, no parallelogram)
   lualine_c = {
     {
       "filename",
-      path = 1, -- Relative path
-      symbols = { modified = "●", readonly = " ", unnamed = "[No Name]" },
-      color = { fg = colors.surface_alt },
+      path = 1,
+      symbols = {
+        modified = "󰷮",
+        readonly = "󰌾 ",
+        unnamed = "󰈙 ",
+        exclusive = "󰈔 ",
+      },
+      color = function()
+        if vim.bo.modified then
+          return { fg = colors.yellow, gui = "bold" }
+        elseif vim.bo.readonly then
+          return { fg = colors.red, gui = "bold" }
+        end
+        return {}
+      end,
     },
   },
+
+  -- AI / tool status (transparent, no parallelogram)
   lualine_x = {
-    -- { "location", color = { fg = colors.surface_alt } },
+    components.spinner,
+    components.codeium,
+    components.flutter_device,
+    components.ai_model,
   },
+
+  lualine_y = {},
+
+  --  ╲  lsp ╲  (backward leaning parallelogram)
+  lualine_z = {
+    {
+      "filetype",
+      left_padding = 1,
+      color = { bg = colors.black },
+      separator = sep_bwd,
+      icon_only = true,
+    },
+    components.spacer,
+    components.lsp,
+  },
+}
+
+-- Inactive sections
+M.inactive_sections = {
+  lualine_a = {},
+  lualine_b = { { "filename", path = 1 } },
+  lualine_c = {},
+  lualine_x = { "filetype" },
   lualine_y = {},
   lualine_z = {},
 }

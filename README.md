@@ -314,6 +314,39 @@ nvim/
 - [Nerd Font](https://www.nerdfonts.com/) (推荐 Consolas Nerd Font，已附带 `ttf` 文件)
 - [lazygit](https://github.com/jesseduffield/lazygit) (可选，Git 可视化)
 
+### ⚠️ Treesitter 特别说明
+
+Treesitter 解析器需要编译，如果遇到 Treesitter 相关报错，请确保已安装以下依赖：
+
+- **tree-sitter CLI** — 用于编译 Treesitter 解析器
+- **gcc** — C 编译器，用于编译解析器
+
+#### Windows 安装方式 (推荐使用 Scoop)
+
+```powershell
+# 安装 Scoop (如果尚未安装)
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+
+# 使用 Scoop 安装依赖
+scoop install tree-sitter gcc
+```
+
+#### 其他平台
+
+```bash
+# macOS (Homebrew)
+brew install tree-sitter gcc
+
+# Linux (Debian/Ubuntu)
+sudo apt install tree-sitter gcc
+
+# Linux (Arch)
+sudo pacman -S tree-sitter gcc
+```
+
+> **提示**: 如果 Treesitter 报错（如 `tree-sitter cli not found` 或编译失败），请先尝试升级这两个工具到最新版本。
+
 ### 步骤
 
 ```bash
