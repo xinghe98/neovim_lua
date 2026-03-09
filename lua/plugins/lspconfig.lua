@@ -143,23 +143,23 @@ return {
         },
 
         -- emmet_language_server = {},
-        volar = {
-          -- explicitly add default filetypes, so that we can extend
-          -- them in related extras
-          filetypes = {
-            -- "javascriptreact",
-            -- "javascript.jsx",
-            -- "typescriptreact",
-            -- "typescript.tsx",
-            "vue",
-          },
-          init_options = {
-            vue = {
-              hybridMode = true,
-            },
-          },
-          settings = {},
-        },
+        -- volar = {
+        --   -- explicitly add default filetypes, so that we can extend
+        --   -- them in related extras
+        --   filetypes = {
+        --     -- "javascriptreact",
+        --     -- "javascript.jsx",
+        --     -- "typescriptreact",
+        --     -- "typescript.tsx",
+        --     "vue",
+        --   },
+        --   init_options = {
+        --     vue = {
+        --       hybridMode = true,
+        --     },
+        --   },
+        --   settings = {},
+        -- },
 
         vtsls = {
           enabled = true,

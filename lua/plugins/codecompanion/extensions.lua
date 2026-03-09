@@ -14,11 +14,7 @@ return {
           default = "minimax/minimax-m2.5",
           choices = {
             "minimax/minimax-m2.5",
-            "claude-3.5-sonnet",
-            "claude-3.7-sonnet",
-            "claude-3.7-sonnet-thought",
-            "gpt-4o-2024-08-06",
-            "gemini-2.0-flash-001",
+            "glm-5",
           },
         },
         yunwu = {
@@ -28,7 +24,7 @@ return {
             api_key = "cmd:echo $YUNWU_KEY",
             chat_url = "/v1/chat/completions",
           },
-          default = "claude-sonnet-4-6",
+          default = "glm-5",
           choices = {
             "claude-sonnet-4-6",
             "claude-opus-4-6-thinking",
