@@ -16,10 +16,17 @@ M.lsp = {
 
     local names = {}
     for _, client in ipairs(clients) do
+      -- Filter out copilot LSP
+      if client.name:lower():find("copilot") then
+        goto continue
+      end
+
       local filetypes = client.config and client.config.filetypes or {}
       if vim.tbl_contains(filetypes, buf_ft) or #filetypes == 0 then
         table.insert(names, client.name)
       end
+
+      ::continue::
     end
 
     if #names == 0 then
