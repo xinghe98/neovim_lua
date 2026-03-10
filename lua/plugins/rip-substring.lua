@@ -36,35 +36,14 @@ return {
         },
         keymaps = { -- normal & visual mode, if not stated otherwise
           abort = "q",
-          confirm = "<CR>",
-          insertModeConfirm = "<C-Enter>",
+          confirmAndSubstituteInBuffer = "<CR>",
+          insertModeConfirmAndSubstituteInBuffer = "<C-Enter>",
           prevSubst = "<Up>",
           nextSubst = "<Down>",
           toggleFixedStrings = "<C-f>", -- ripgrep's `--fixed-strings`
           toggleIgnoreCase = "<C-c>", -- ripgrep's `--ignore-case`
           openAtRegex101 = "R",
         },
-        incrementalPreview = {
-          matchHlGroup = "IncSearch",
-          rangeBackdrop = {
-            enabled = true,
-            blend = 50, -- between 0 and 100
-          },
-        },
-        regexOptions = {
-          startWithFixedStringsOn = false,
-          startWithIgnoreCase = false,
-          -- pcre2 enables lookarounds and backreferences, but performs slower
-          pcre2 = true,
-          -- disable if you use named capture groups (see README for details)
-          autoBraceSimpleCaptureGroups = true,
-        },
-        editingBehavior = {
-          -- When typing `()` in the `search` line, automatically adds `$n` to the
-          -- `replace` line.
-          autoCaptureGroups = false,
-        },
-        notificationOnSuccess = true,
       })
     end,
   },
