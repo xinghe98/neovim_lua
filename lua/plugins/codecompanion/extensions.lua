@@ -14,7 +14,7 @@ return {
           default = "minimax/minimax-m2.5",
           choices = {
             "minimax/minimax-m2.5",
-            "glm-5",
+            "openai/gpt-5.3-codex",
           },
         },
         yunwu = {
@@ -29,6 +29,9 @@ return {
             "claude-sonnet-4-6",
             "claude-opus-4-6-thinking",
             "gemini-3-pro-preview",
+            "gpt-5.3-codex",
+            "MiniMax-M2.5",
+            "glm-5",
           },
         },
         deepseek = {
