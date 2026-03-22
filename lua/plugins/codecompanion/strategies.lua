@@ -1,4 +1,15 @@
 return {
+  cli = {
+    agent = "opencode",
+    agents = {
+      opencode = {
+        cmd = "opencode",
+        args = {},
+        description = "open Code CLI",
+        provider = "terminal",
+      },
+    },
+  },
   chat = {
     -- adapter = "minimax",
     adapter = "openrouter",
