@@ -1,0 +1,92 @@
+return {
+  -- {
+  --   "yetone/avante.nvim",
+  --   event = "VeryLazy",
+  --   lazy = false,
+  --   version = false, -- 保持获取最新代码
+  --   opts = {
+  --     mode = "agentic",
+  --     -- 默认使用的提供商，指向下面自定义的 minimax
+  --     provider = "minimax",
+  --     -- auto_suggestions_provider = "minimax",
+  --
+  --     -- 自定义模型配置
+  --     providers = {
+  --       minimax = {
+  --         __inherited_from = "openai",
+  --         endpoint = "https://api.minimaxi.com/v1",
+  --         model = "MiniMax-M2.7",
+  --         api_key_name = "MINMAX_KEY", -- 直接读取环境变量，不需要 cmd:echo
+  --         parse_curl_args = function(opts, code_opts)
+  --           -- 继承 openai 的默认请求参数
+  --           local args = require("avante.providers.openai").parse_curl_args(opts, code_opts)
+  --           -- 可以在这里清洗不需要的参数，但通常 Avante 的 OpenAI 适配器非常干净，不需要额外干预
+  --           return args
+  --         end,
+  --       },
+  --     },
+  --     behaviour = {
+  --       auto_suggestions = false, -- 是否开启类似 Copilot 的行内自动补全
+  --       auto_set_highlight_group = true,
+  --       auto_set_keymaps = false,
+  --       auto_apply_diff_after_generation = false,
+  --       support_paste_from_clipboard = true,
+  --       -- 只有文件编辑相关工具需要审批，其他工具自动执行
+  --       auto_approve_tool_permissions = {
+  --         "str_replace",
+  --         "write_to_file",
+  --         "create_file",
+  --         "move_path",
+  --         "copy_path",
+  --         "delete_path",
+  --         "create_dir",
+  --       },
+  --     },
+  --   },
+  --   keys = {
+  --     -- 打开 Avante 对话
+  --     { "<Leader>oa", "<cmd>AvanteChat<CR>", desc = "Open Avante" },
+  --     -- 切换 Help Panel
+  --     { "<Leader>oh", "<cmd>AvanteHelp<CR>", desc = "Avante Help" },
+  --     -- 刷新/重新生成响应
+  --     { "<Leader>or", "<cmd>AvanteRefresh<CR>", desc = "Refresh" },
+  --     -- 接受当前建议
+  --     { "ga", "<cmd>AvanteAccept<CR>", desc = "Accept Suggestion" },
+  --     -- 拒绝当前建议
+  --     { "gr", "<cmd>AvanteReject<CR>", desc = "Reject Suggestion" },
+  --     -- 聚焦到输入框
+  --     { "<Leader>ok", "<cmd>AvanteFocus<CR>", desc = "Focus Input" },
+  --   },
+  --   -- Windows 下的编译命令。如果你装了 make 也可以用 "make"
+  --   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false",
+  --   dependencies = {
+  --     "stevearc/dressing.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --     "MunifTanjim/nui.nvim",
+  --     "nvim-tree/nvim-web-devicons",
+  --     {
+  --       -- 支持直接在对话框粘贴图片给大模型
+  --       "HakonHarnes/img-clip.nvim",
+  --       event = "VeryLazy",
+  --       opts = {
+  --         default = {
+  --           embed_image_as_base64 = false,
+  --           prompt_for_file_name = false,
+  --           drag_and_drop = {
+  --             insert_mode = true,
+  --           },
+  --           use_absolute_path = true,
+  --         },
+  --       },
+  --     },
+  --     {
+  --       -- 渲染 Markdown 效果，让对话框更好看
+  --       "MeanderingProgrammer/render-markdown.nvim",
+  --       opts = {
+  --         file_types = { "markdown", "Avante" },
+  --       },
+  --       ft = { "markdown", "Avante" },
+  --     },
+  --   },
+  -- },
+}
