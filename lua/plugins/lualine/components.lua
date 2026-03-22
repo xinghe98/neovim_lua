@@ -108,24 +108,18 @@ M.codeium = {
 -- AI Model Component
 --------------------------------------------------------------------------------
 
-local ok_ms, ms = pcall(require, "cc_model_selector")
-M.ai_model = ok_ms and ms.get_lualine_component({
-  icon = "🤖",
-  color = { fg = colors.green, gui = "bold" },
-}) or {
-  function()
-    return ""
-  end,
-  cond = function()
-    return false
-  end,
-}
-
---------------------------------------------------------------------------------
--- CodeCompanion Spinner Component
---------------------------------------------------------------------------------
-
-M.spinner = require("codecompanion._extensions.spinner.styles.lualine").get_lualine_component()
+-- local ok_ms, ms = pcall(require, "cc_model_selector")
+-- M.ai_model = ok_ms and ms.get_lualine_component({
+--   icon = "🤖",
+--   color = { fg = colors.green, gui = "bold" },
+-- }) or {
+--   function()
+--     return ""
+--   end,
+--   cond = function()
+--     return false
+--   end,
+-- }
 
 --------------------------------------------------------------------------------
 -- Spacer Component (transparent gap)

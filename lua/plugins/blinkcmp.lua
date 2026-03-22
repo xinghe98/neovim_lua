@@ -47,6 +47,7 @@ return {
   dependencies = {
     {
       "L3MON4D3/LuaSnip",
+      "Kaiser-Yang/blink-cmp-avante",
       -- follow latest release.
       version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
     },
@@ -59,7 +60,18 @@ return {
     { "nvim-lua/plenary.nvim" },
   },
   opts = {
+
     sources = {
+      default = { "avante", "lsp", "path", "snippets", "buffer" },
+      providers = {
+        avante = {
+          module = "blink-cmp-avante",
+          name = "Avante",
+          opts = {
+            -- options for blink-cmp-avante
+          },
+        },
+      },
       per_filetype = {
         codecompanion = { "codecompanion" },
       },
