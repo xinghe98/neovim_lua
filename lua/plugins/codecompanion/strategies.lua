@@ -1,7 +1,7 @@
 return {
   chat = {
     -- adapter = "minimax",
-    adapter = "yunwu",
+    adapter = "openrouter",
     tools = {
       ["mcp"] = {
         opts = {
