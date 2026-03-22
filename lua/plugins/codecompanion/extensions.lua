@@ -4,6 +4,18 @@ return {
     opts = {
       default_adapter = "openrouter",
       adapters = {
+        minimax = {
+          base = "openai_compatible",
+          env = {
+            api_key = "cmd:echo $MINMAX_KEY",
+            url = "https://api.minimaxi.com/v1",
+            chat_url = "/chat/completions",
+          },
+          default = "MiniMax-M2.7",
+          choices = {
+            "MiniMax-M2.7",
+          },
+        },
         openrouter = {
           base = "openai_compatible",
           env = {
