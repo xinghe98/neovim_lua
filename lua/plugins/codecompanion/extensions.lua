@@ -2,7 +2,7 @@ return {
   -- 模型选择器扩展（与 spinner 同级配置）
   model_selector = {
     opts = {
-      default_adapter = "yunwu",
+      default_adapter = "openrouter",
       adapters = {
         openrouter = {
           base = "openai_compatible",
@@ -11,27 +11,12 @@ return {
             api_key = "cmd:echo $openrouter",
             chat_url = "/chat/completions",
           },
-          default = "minimax/minimax-m2.5",
+          default = "minimax/minimax-m2.7",
           choices = {
-            "minimax/minimax-m2.5",
-            "openai/gpt-5.3-codex",
-          },
-        },
-        yunwu = {
-          base = "openai_compatible",
-          env = {
-            url = "https://yunwu.ai",
-            api_key = "cmd:echo $YUNWU_KEY",
-            chat_url = "/v1/chat/completions",
-          },
-          default = "glm-5",
-          choices = {
-            "claude-sonnet-4-6",
-            "claude-opus-4-6-thinking",
-            "gemini-3-pro-preview",
-            "gpt-5.3-codex",
-            "MiniMax-M2.5",
-            "glm-5",
+            "minimax/minimax-m2.7",
+            "z-ai/glm-5",
+            "moonshotai/kimi-k2.5",
+            "qwen/qwen3-coder-next",
           },
         },
         deepseek = {
