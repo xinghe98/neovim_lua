@@ -36,7 +36,18 @@ return {
           __inherited_from = "openai",
           endpoint = "https://openrouter.ai/api/v1",
           model = "minimax/minimax-m2.7",
-          api_key_name = "openrouter",
+          api_key_name = "OPENROUTER_KEY",
+          parse_curl_args = function(opts, code_opts)
+            local args = require("avante.providers.openai").parse_curl_args(opts, code_opts)
+            return args
+          end,
+        },
+
+        openrouter_glm = {
+          __inherited_from = "openai",
+          endpoint = "https://openrouter.ai/api/v1",
+          model = "z-ai/glm-5",
+          api_key_name = "OPENROUTER_KEY",
           parse_curl_args = function(opts, code_opts)
             local args = require("avante.providers.openai").parse_curl_args(opts, code_opts)
             return args
@@ -70,20 +81,57 @@ return {
           "create_dir",
         },
       },
+      mappings = {
+        diff = {
+          next = "}",
+          prev = "{",
+        },
+      },
     },
     keys = {
-      -- 打开 Avante 对话
-      { "<Leader>aa", "<cmd>AvanteChat<CR>", desc = "Open Avante" },
+      -- 打开 Avante 对话 (normal 和 visual 模式)
+      { "<Leader>aa", "<cmd>AvanteChat<CR>", desc = "Open Avante", mode = { "n", "v" } },
+      -- Avante 编辑命令 (normal 和 visual 模式)
+      { "<Leader>ae", "<cmd>AvanteEdit<CR>", desc = "Avante Edit", mode = { "n", "v" } },
       -- 切换 Help Panel
-      { "<Leader>ah", "<cmd>AvanteHelp<CR>", desc = "Avante Help" },
+      { "<Leader>as", "<cmd>AvanteModels<CR>", desc = "Avante model selector" },
       -- 刷新/重新生成响应
       { "<Leader>ar", "<cmd>AvanteRefresh<CR>", desc = "Refresh" },
-      -- 接受当前建议
-      { "ga", "<cmd>AvanteAccept<CR>", desc = "Accept Suggestion" },
-      -- 拒绝当前建议
-      { "gr", "<cmd>AvanteReject<CR>", desc = "Reject Suggestion" },
       -- 聚焦到输入框
-      { "<Leader>ok", "<cmd>AvanteFocus<CR>", desc = "Focus Input" },
+      { "<Leader>ai", "<cmd>AvanteFocus<CR>", desc = "Focus Input" },
+    },
+    windows = {
+      -- 美化配置
+      chat = {
+        border = "rounded",
+        title = "Avante Chat",
+        title_pos = "center",
+        winblend = 10,
+        width = 0.8,
+        height = 0.8,
+        row = 0.5,
+        col = 0.5,
+      },
+      edit = {
+        border = "rounded",
+        title = "Avante Edit",
+        title_pos = "center",
+        winblend = 10,
+        width = 0.8,
+        height = 0.8,
+        row = 0.5,
+        col = 0.5,
+      },
+      selector = {
+        border = "rounded",
+        title = "Model Selector",
+        title_pos = "center",
+        winblend = 10,
+        width = 0.6,
+        height = 0.6,
+        row = 0.5,
+        col = 0.5,
+      },
     },
     -- Windows 下的编译命令。如果你装了 make 也可以用 "make"
     -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false",
