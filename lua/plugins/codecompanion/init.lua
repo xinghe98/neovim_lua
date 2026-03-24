@@ -1,5 +1,5 @@
 return {
-  "olimorris/codecompanion.nvim",
+  -- "olimorris/codecompanion.nvim",
   -- dependencies = {
   --   "lalitmee/codecompanion-spinners.nvim",
   --   "j-hui/fidget.nvim",
