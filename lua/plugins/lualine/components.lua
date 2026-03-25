@@ -107,6 +107,30 @@ M.codeium = {
 --------------------------------------------------------------------------------
 -- AI Model Component
 --------------------------------------------------------------------------------
+M.avante = {
+  function()
+    if not package.loaded["avante.config"] then
+      return ""
+    end
+
+    local Config = require("avante.config")
+    local provider = Config.provider or ""
+    if provider == "" then
+      return ""
+    end
+
+    local provider_config = Config.get_provider_config(provider)
+    local model = provider_config and provider_config.model or ""
+
+    -- 对过长的模型名字进行截断处理
+    if string.len(model) > 15 then
+      model = string.sub(model, 1, 15) .. "..."
+    end
+
+    return string.format("🤖%s: %s", provider, model)
+  end,
+  color = { fg = colors.green, gui = "bold" },
+}
 
 -- local ok_ms, ms = pcall(require, "cc_model_selector")
 -- M.ai_model = ok_ms and ms.get_lualine_component({

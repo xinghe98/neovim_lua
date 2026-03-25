@@ -32,7 +32,7 @@ return {
             return args
           end,
         },
-        openrouter = {
+        op = {
           __inherited_from = "openai",
           endpoint = "https://openrouter.ai/api/v1",
           model = "minimax/minimax-m2.7",
@@ -43,7 +43,7 @@ return {
           end,
         },
 
-        openrouter_glm = {
+        op_glm = {
           __inherited_from = "openai",
           endpoint = "https://openrouter.ai/api/v1",
           model = "z-ai/glm-5",
@@ -65,10 +65,11 @@ return {
         },
       },
       behaviour = {
+        confirmation_ui_style = "popup", -- 必须确认的弹窗改回悬浮窗
+        auto_apply_diff_after_generation = false, -- 代码生成后直接上墙显示 Diff
         auto_suggestions = false, -- 是否开启类似 Copilot 的行内自动补全
         auto_set_highlight_group = true,
         auto_set_keymaps = false,
-        auto_apply_diff_after_generation = false,
         support_paste_from_clipboard = true,
         -- 只有文件编辑相关工具需要审批，其他工具自动执行
         auto_approve_tool_permissions = {
@@ -91,6 +92,7 @@ return {
     keys = {
       -- 打开 Avante 对话 (normal 和 visual 模式)
       { "<Leader>aa", "<cmd>AvanteChat<CR>", desc = "Open Avante", mode = { "n", "v" } },
+      { "<Leader>an", "<cmd>AvanteChatNew<CR>", desc = "Open Avante", mode = { "n", "v" } },
       -- Avante 编辑命令 (normal 和 visual 模式)
       { "<Leader>ae", "<cmd>AvanteEdit<CR>", desc = "Avante Edit", mode = { "n", "v" } },
       -- 切换 Help Panel
@@ -98,40 +100,7 @@ return {
       -- 刷新/重新生成响应
       { "<Leader>ar", "<cmd>AvanteRefresh<CR>", desc = "Refresh" },
       -- 聚焦到输入框
-      { "<Leader>ai", "<cmd>AvanteFocus<CR>", desc = "Focus Input" },
-    },
-    windows = {
-      -- 美化配置
-      chat = {
-        border = "rounded",
-        title = "Avante Chat",
-        title_pos = "center",
-        winblend = 10,
-        width = 0.8,
-        height = 0.8,
-        row = 0.5,
-        col = 0.5,
-      },
-      edit = {
-        border = "rounded",
-        title = "Avante Edit",
-        title_pos = "center",
-        winblend = 10,
-        width = 0.8,
-        height = 0.8,
-        row = 0.5,
-        col = 0.5,
-      },
-      selector = {
-        border = "rounded",
-        title = "Model Selector",
-        title_pos = "center",
-        winblend = 10,
-        width = 0.6,
-        height = 0.6,
-        row = 0.5,
-        col = 0.5,
-      },
+      { "<Leader>ak", "<cmd>AvanteFocus<CR>", desc = "Focus Input" },
     },
     -- Windows 下的编译命令。如果你装了 make 也可以用 "make"
     -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false",
@@ -160,6 +129,66 @@ return {
         "MeanderingProgrammer/render-markdown.nvim",
         opts = {
           file_types = { "markdown", "Avante" },
+          -- 美化配置
+          render = {
+            -- 代码块美化
+            code_block = {
+              highlight = true,
+              line_numbers = true,
+              line_number_highlight = "LineNr",
+              virtual_text = false,
+            },
+            -- 列表美化
+            list = {
+              bullet = "•",
+              checkbox = {
+                unchecked = "☐",
+                checked = "☑",
+              },
+            },
+            -- 表格美化
+            table = {
+              header_separator = "─",
+              column_separator = "│",
+              row_separator = "─",
+            },
+            -- 标题美化
+            heading = {
+              level_1 = { prefix = "# ", highlight = "Title" },
+              level_2 = { prefix = "## ", highlight = "Title" },
+              level_3 = { prefix = "### ", highlight = "Title" },
+              level_4 = { prefix = "#### ", highlight = "Title" },
+              level_5 = { prefix = "##### ", highlight = "Title" },
+              level_6 = { prefix = "###### ", highlight = "Title" },
+            },
+            -- 链接美化
+            link = {
+              highlight = "Underlined",
+              virtual_text = true,
+            },
+            -- 引用块美化
+            blockquote = {
+              prefix = "│ ",
+              highlight = "Comment",
+              indent = 2,
+            },
+            -- 水平线美化
+            horizontal_rule = {
+              char = "─",
+              highlight = "Comment",
+            },
+          },
+          -- 语法高亮主题
+          highlight = {
+            theme = "everforest", -- 匹配当前主题
+            background = "none", -- 透明背景
+          },
+          -- 动画效果
+          animations = {
+            enabled = true,
+            fade_in_speed = 10,
+            fade_out_speed = 10,
+          },
         },
         ft = { "markdown", "Avante" },
       },

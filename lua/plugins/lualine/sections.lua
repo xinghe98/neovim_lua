@@ -139,6 +139,7 @@ M.sections = {
   lualine_x = {
     components.flutter_device,
     -- components.ai_model,
+    components.avante,
   },
 
   lualine_y = {},
