@@ -5,4 +5,5 @@ return {
   { "nvim-ai/mini.ai", enabled = false },
   { "ibhagwan/fzf-lua", enabled = false },
   { "MagicDuck/grug-far.nvim", enabled = false },
+  { "mfussenegger/nvim-lint", enabled = false },
 }
