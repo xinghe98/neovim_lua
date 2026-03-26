@@ -1,17 +1,41 @@
+-- LSP 悬浮提示
 vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#888888", bg = "none", italic = false })
+
+-- 补全菜单匹配高亮
 vim.api.nvim_set_hl(0, "BlinkCmpLabelMatch", { bg = "NONE", fg = "#BCEE68", bold = true })
+
+-- 状态栏透明
 vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE", fg = "NONE" })
 vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE", fg = "NONE" })
+
+-- 当前词高亮
 vim.api.nvim_set_hl(0, "CurrentWord", {
-  bg = "#696969", -- 你的浅灰色
-  fg = "NONE", -- 保持前景(文字)颜色不变
+  bg = "#696969",
+  fg = "NONE",
   bold = false,
 })
+
+-- LSP 参考高亮
 vim.api.nvim_set_hl(0, "LspReferenceText", {
-  -- bg = "#696969", -- 你的浅灰色
-  bg = "NONE", -- 你的浅灰色
-  fg = "NONE", -- 保持前景(文字)颜色不变
+  bg = "NONE",
+  fg = "NONE",
   bold = false,
 })
 vim.api.nvim_set_hl(0, "LspReferenceRead", { link = "LspReferenceText" })
--- vim.api.nvim_set_hl(0, "LspReferenceWrite", { link = "LspReferenceText" })
+
+-- 窗口分割线用空格代替
+local fillchars = vim.opt.fillchars:get()
+fillchars.vert = " "
+fillchars.horiz = " "
+fillchars.vertleft = " "
+fillchars.vertright = " "
+fillchars.verthoriz = " "
+fillchars.horizup = " "
+fillchars.horizdown = " "
+vim.opt.fillchars = fillchars
+
+-- Avante 边框透明
+vim.api.nvim_set_hl(0, "AvantePanelBorder", { fg = "NONE", bg = "NONE" })
+vim.api.nvim_set_hl(0, "AvanteBorder", { fg = "NONE", bg = "NONE" })
+vim.api.nvim_set_hl(0, "AvanteSidebarBorder", { fg = "NONE", bg = "NONE" })
+vim.api.nvim_set_hl(0, "WinSeparator", { fg = "NONE", bg = "NONE" })

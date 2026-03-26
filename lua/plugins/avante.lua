@@ -5,16 +5,28 @@ return {
     lazy = false,
     version = false, -- 保持获取最新代码
     opts = {
-      mode = "agentic",
+      -- mode = "agentic",
+      mode = "legacy",
       -- 默认使用的提供商，指向下面自定义的 minimax
       provider = "minimax",
       -- auto_suggestions_provider = "minimax",
       --
+      -- 隐藏边框和分割线
+      windows = {
+        border = "none",
+        winblend = 0,
+        input = {
+          height = 12,
+        },
+        sidebar_header = {
+          include_model = true,
+        },
+      },
+      --
       selector = {
         --- @alias avante.SelectorProvider "native" | "fzf_lua" | "mini_pick" | "snacks" | "telescope" | fun(selector: avante.ui.Selector): nil
-        --- @type avante.SelectorProvider
         provider = "snacks",
-        -- Options override for custom providers
+        -- 自定义 provider 的选项
         provider_opts = {},
       },
 
@@ -65,27 +77,21 @@ return {
         },
       },
       behaviour = {
-        confirmation_ui_style = "popup", -- 必须确认的弹窗改回悬浮窗
-        auto_apply_diff_after_generation = false, -- 代码生成后直接上墙显示 Diff
+        auto_approve_tool_permissions = false,
+        confirmation_ui_style = "inline_buttons", -- 必须确认的弹窗改回悬浮窗
+        auto_apply_diff_after_generation = true, -- 代码生成后直接上墙显示 Diff
         auto_suggestions = false, -- 是否开启类似 Copilot 的行内自动补全
         auto_set_highlight_group = true,
         auto_set_keymaps = false,
         support_paste_from_clipboard = true,
-        -- 只有文件编辑相关工具需要审批，其他工具自动执行
-        auto_approve_tool_permissions = {
-          "str_replace",
-          "write_to_file",
-          "create_file",
-          "move_path",
-          "copy_path",
-          "delete_path",
-          "create_dir",
-        },
       },
       mappings = {
         diff = {
           next = "}",
           prev = "{",
+          ours = "gr", -- Choose Ours: 拒绝当前修改（保留原代码）
+          theirs = "gc", -- Choose Theirs: 同意当前修改（使用 AI 的代码）
+          all_theirs = "ga", -- Accept All: 【一键同意】当前文件中的所有 AI 修改
         },
       },
     },
