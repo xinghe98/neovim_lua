@@ -138,7 +138,7 @@ M.sections = {
   -- AI / tool status (transparent, no parallelogram)
   lualine_x = {
     components.flutter_device,
-    -- components.ai_model,
+    components.ai_model,
     components.avante,
   },
 

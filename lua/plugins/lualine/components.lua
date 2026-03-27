@@ -132,18 +132,18 @@ M.avante = {
   color = { fg = colors.green, gui = "bold" },
 }
 
--- local ok_ms, ms = pcall(require, "cc_model_selector")
--- M.ai_model = ok_ms and ms.get_lualine_component({
---   icon = "🤖",
---   color = { fg = colors.green, gui = "bold" },
--- }) or {
---   function()
---     return ""
---   end,
---   cond = function()
---     return false
---   end,
--- }
+local ok_ms, ms = pcall(require, "cc_model_selector")
+M.ai_model = ok_ms and ms.get_lualine_component({
+  icon = "🤖",
+  color = { fg = colors.green, gui = "bold" },
+}) or {
+  function()
+    return ""
+  end,
+  cond = function()
+    return false
+  end,
+}
 
 --------------------------------------------------------------------------------
 -- Spacer Component (transparent gap)

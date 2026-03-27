@@ -11,7 +11,7 @@ return {
     },
   },
   chat = {
-    adapter = "minimax",
+    adapter = "openrouter",
     tools = {
       ["mcp"] = {
         opts = {
