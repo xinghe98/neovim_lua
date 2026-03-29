@@ -19,6 +19,22 @@ return {
             "qwen/qwen3-coder-next",
           },
         },
+
+        ucloud = {
+          base = "openai_compatible",
+          env = {
+            url = "https://api.modelverse.cn/v1",
+            api_key = "cmd:echo $UCLOUD_KEY",
+            chat_url = "/chat/completions",
+          },
+          default = "zai-org/glm-5",
+          choices = {
+            "zai-org/glm-5",
+            "gpt-5.3-codex",
+            "MiniMax-M2.5",
+            "Qwen/Qwen3-Coder",
+          },
+        },
         deepseek = {
           base = "deepseek",
           env = {
