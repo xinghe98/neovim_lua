@@ -13,5 +13,18 @@ return {
     language = "zh-CN",
     strategies = require("plugins.codecompanion.strategies"),
     prompt_library = require("plugins.codecompanion.prompts"),
+    display = {
+      diff = {
+        enabled = true,
+
+        -- At or below this diff size, always display the diff in the chat buffer
+        threshold_for_chat = 6,
+
+        word_highlights = {
+          additions = true,
+          deletions = true,
+        },
+      },
+    },
   },
 }
