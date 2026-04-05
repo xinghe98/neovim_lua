@@ -26,5 +26,21 @@ return {
         },
       },
     },
+    rules = {
+      default = {
+        description = "Collection of common files for all projects",
+        files = {
+          "AGENT.md",
+          "AGENTS.md",
+        },
+        is_preset = true,
+      },
+      opts = {
+        chat = {
+          autoload = "default", -- The rule groups to load
+          enabled = true,
+        },
+      },
+    },
   },
 }
