@@ -11,10 +11,10 @@ return {
             api_key = "cmd:echo $OPENROUTER_KEY",
             chat_url = "/chat/completions",
           },
-          default = "minimax/minimax-m2.7",
+          default = "z-ai/glm-5.1",
           choices = {
             "minimax/minimax-m2.7",
-            "z-ai/glm-5",
+            "z-ai/glm-5.1",
             "moonshotai/kimi-k2.5",
             "qwen/qwen3-coder-next",
           },
