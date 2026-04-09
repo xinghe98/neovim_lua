@@ -11,7 +11,7 @@ return {
     },
   },
   chat = {
-    adapter = "openrouter",
+    adapter = "zai",
     tools = {
       ["mcp"] = {
         opts = {

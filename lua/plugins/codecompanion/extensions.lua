@@ -2,7 +2,7 @@ return {
   -- 模型选择器扩展（与 spinner 同级配置）
   model_selector = {
     opts = {
-      default_adapter = "openrouter",
+      default_adapter = "zai",
       adapters = {
         openrouter = {
           base = "openai_compatible",
@@ -19,7 +19,18 @@ return {
             "qwen/qwen3-coder-next",
           },
         },
-
+        zai = {
+          base = "openai_compatible",
+          env = {
+            url = "https://api.z.ai/api/coding/paas/v4",
+            api_key = "cmd:echo $ZAI_KEY",
+            chat_url = "/chat/completions",
+          },
+          default = "glm-5.1",
+          choices = {
+            "glm-5.1",
+          },
+        },
         ucloud = {
           base = "openai_compatible",
           env = {
