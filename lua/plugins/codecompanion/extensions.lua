@@ -6,9 +6,9 @@ return {
       adapters = {
         copilot = {
           base = "copilot",
-          default = "GPT-5.3-Codex",
+          default = "gpt-5.3-codex",
           choices = {
-            "GPT-5.3-Codex",
+            "gpt-5.3-codex",
           },
         },
         openrouter = {
@@ -36,21 +36,6 @@ return {
           default = "glm-5.1",
           choices = {
             "glm-5.1",
-          },
-        },
-        ucloud = {
-          base = "openai_compatible",
-          env = {
-            url = "https://api.modelverse.cn/v1",
-            api_key = "cmd:echo $UCLOUD_KEY",
-            chat_url = "/chat/completions",
-          },
-          default = "zai-org/glm-5",
-          choices = {
-            "zai-org/glm-5",
-            "gpt-5.3-codex",
-            "MiniMax-M2.5",
-            "Qwen/Qwen3-Coder",
           },
         },
         deepseek = {
