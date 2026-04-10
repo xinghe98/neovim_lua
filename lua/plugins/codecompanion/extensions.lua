@@ -2,8 +2,15 @@ return {
   -- 模型选择器扩展（与 spinner 同级配置）
   model_selector = {
     opts = {
-      default_adapter = "zai",
+      default_adapter = "copilot",
       adapters = {
+        copilot = {
+          base = "copilot",
+          default = "GPT-5.3-Codex",
+          choices = {
+            "GPT-5.3-Codex",
+          },
+        },
         openrouter = {
           base = "openai_compatible",
           env = {

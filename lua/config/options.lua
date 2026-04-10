@@ -44,6 +44,8 @@ vim.opt.signcolumn = "yes"
 vim.o.foldmethod = "indent"
 vim.o.foldenable = false
 vim.o.foldlevel = 99
+vim.opt.encoding = "utf-8"
+vim.opt.fileencoding = "utf-8"
 vim.opt.clipboard = "unnamedplus"
 -- rendermarkdown
 vim.opt.conceallevel = 0
