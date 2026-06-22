@@ -142,7 +142,7 @@ return {
         max_width = 80,
         max_height = 10,
         border = "rounded",
-        winblend = 0,
+        winblend = 10,
         winhighlight = "Normal:BlinkCmpSignatureHelp,FloatBorder:BlinkCmpSignatureHelpBorder",
         scrollbar = false, -- Note that the gutter will be disabled when border ~= 'none'
         -- Which directions to show the window,
@@ -193,7 +193,7 @@ return {
       },
       menu = {
         border = "rounded",
-        winblend = 0,
+        winblend = 10,
         winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
         draw = {
           treesitter = { "lsp" },

@@ -37,11 +37,27 @@ return {
         enabled = true,
         win = {
           input = {
+            wo = {
+              winblend = 10,
+              winhl = "Normal:SnacksPickerInput,FloatBorder:SnacksPickerBorder",
+            },
             keys = {
               ["<Tab>"] = { "list_down", mode = { "i", "n" } },
               ["<S-Tab>"] = { "list_up", mode = { "i", "n" } },
               ["<c-e>"] = { "preview_scroll_down", mode = { "i", "n" } },
               ["<c-u>"] = { "preview_scroll_up", mode = { "i", "n" } },
+            },
+          },
+          list = {
+            wo = {
+              winblend = 10,
+              winhl = "Normal:SnacksPickerList,FloatBorder:SnacksPickerBorder",
+            },
+          },
+          preview = {
+            wo = {
+              winblend = 10,
+              winhl = "Normal:SnacksPickerPreview,FloatBorder:SnacksPickerBorder",
             },
           },
         },

@@ -44,13 +44,6 @@ vim.api.nvim_create_autocmd("QuitPre", {
   end,
 })
 
-vim.api.nvim_create_autocmd("ColorScheme", {
-  pattern = "*", -- 对所有主题生效
-  callback = function()
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
-    vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE" })
-  end,
-})
 -- ~/.config/nvim/lua/config/autocmds.lua
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",

@@ -25,6 +25,15 @@ return {
           skip = true,
         },
       },
+      {
+        filter = {
+          event = "msg_show",
+          find = "Font can't be updated",
+        },
+        opts = {
+          skip = true,
+        },
+      },
     },
     presets = {
       bottom_search = true, -- use a classic bottom cmdline for search
