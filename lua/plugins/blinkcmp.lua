@@ -48,6 +48,7 @@ return {
     {
       "L3MON4D3/LuaSnip",
       "Kaiser-Yang/blink-cmp-avante",
+      "saghen/blink.lib",
       -- follow latest release.
       version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
     },
