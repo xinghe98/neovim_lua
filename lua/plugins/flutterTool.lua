@@ -1,12 +1,21 @@
-local flutter_path
+local flutter_path = ""
+local dart_path = ""
 
--- 自动检测flutter路径
+local function is_wsl()
+  local output = vim.fn.system("uname -r")
+  return output:lower():find("microsoft") ~= nil
+end
+
 if vim.fn.has("win32") == 1 then
-  -- Windows 系统: 使用 PowerShell 的 Get-Command 查找
+  -- Windows 原生 Neovim
   flutter_path =
-    vim.fn.trim(vim.fn.system([[powershell -Command "& {Get-Command flutter | Select-Object -ExpandProperty Path}"]]))
+    vim.fn.trim(vim.fn.system([[powershell -Command "& {Get-Command flutter | Select-Object -ExpandProperty Source}"]]))
+elseif is_wsl() then
+  -- WSL Neovim：调用包装脚本，间接执行 Windows Flutter
+  flutter_path = vim.fn.trim(vim.fn.system("which flutter"))
+  dart_path = "/home/xinghe/flutter-bin/flutter/bin/dart"
 else
-  -- Unix 系统: 使用 `which` 命令查找
+  -- Linux / macOS
   flutter_path = vim.fn.trim(vim.fn.system("which flutter"))
 end
 return {
@@ -62,13 +71,10 @@ return {
         auto_open = false, -- if true this will open the outline automatically when it is first populated
       },
       lsp = {
-        color = { -- show the derived colours for dart variables
-          enabled = true, -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
-          background = false, -- highlight the background
-          background_color = nil, -- required, when background is transparent (i.e. background_color = { r = 19, g = 17, b = 24},)
-          foreground = false, -- highlight the foreground
-          virtual_text = true, -- show the highlight using virtual text
-          virtual_text_str = "■", -- the virtual text character to highlight
+        cmd = {
+          dart_path,
+          "language-server",
+          "--protocol=lsp",
         },
         settings = {
           enableSnippets = true,

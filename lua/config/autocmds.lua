@@ -58,3 +58,12 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.spell = false -- 关闭拼写检查
   end,
 })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("lsp_document_color", { clear = true }),
+  callback = function(ev)
+    if vim.lsp.document_color then
+      vim.lsp.document_color.enable(true, { bufnr = ev.buf })
+    end
+  end,
+})
