@@ -1,5 +1,4 @@
 local flutter_path = ""
-local dart_path = ""
 
 local function is_wsl()
   local output = vim.fn.system("uname -r")
@@ -13,7 +12,6 @@ if vim.fn.has("win32") == 1 then
 elseif is_wsl() then
   -- WSL Neovim：调用包装脚本，间接执行 Windows Flutter
   flutter_path = vim.fn.trim(vim.fn.system("which flutter"))
-  dart_path = "/home/xinghe/flutter-bin/flutter/bin/dart"
 else
   -- Linux / macOS
   flutter_path = vim.fn.trim(vim.fn.system("which flutter"))
@@ -71,11 +69,6 @@ return {
         auto_open = false, -- if true this will open the outline automatically when it is first populated
       },
       lsp = {
-        cmd = {
-          dart_path,
-          "language-server",
-          "--protocol=lsp",
-        },
         settings = {
           enableSnippets = true,
           showTodos = true,
