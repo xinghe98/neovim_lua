@@ -71,7 +71,42 @@ keymap("n", "<leader>5", ":BufferLineGoToBuffer 5<CR>", opts)
 keymap("n", "<leader>6", ":BufferLineGoToBuffer 6<CR>", opts)
 keymap("n", "<leader><leader>", ":bn<CR>", opts)
 keymap("n", "<leader><backspace>", ":bp<CR>", opts)
-keymap("n", "<c-w>", ":bd<CR>", opts)
+vim.keymap.set("n", "<c-w>", function()
+  local buf = vim.api.nvim_get_current_buf()
+
+  if vim.bo[buf].modified then
+    vim.cmd("bdelete " .. buf)
+    return
+  end
+
+  local target
+  local alternate = vim.fn.bufnr("#")
+  if alternate > 0 and alternate ~= buf and vim.api.nvim_buf_is_valid(alternate) and vim.bo[alternate].buflisted then
+    target = alternate
+  end
+
+  for _, listed_buf in ipairs(vim.api.nvim_list_bufs()) do
+    if not target and listed_buf ~= buf and vim.bo[listed_buf].buflisted then
+      target = listed_buf
+      break
+    end
+  end
+
+  if target then
+    vim.cmd("buffer " .. target)
+    vim.cmd("bdelete " .. buf)
+    return
+  end
+
+  for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+    if vim.w[win].sidekick_cli then
+      require("sidekick.cli").hide({ all = true })
+      break
+    end
+  end
+
+  vim.cmd("bdelete " .. buf)
+end, vim.tbl_extend("force", opts, { desc = "Close buffer" }))
 vim.keymap.del("n", "<c-/>")
 vim.keymap.del("n", "<c-_>")
 keymap("n", "<C-/>", "gcc", { desc = "Toggle comment for line" })
