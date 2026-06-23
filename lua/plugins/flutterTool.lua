@@ -23,6 +23,22 @@ return {
       "nvim-lua/plenary.nvim",
       "stevearc/dressing.nvim", -- optional for vim.ui.select
     },
+    init = function()
+      vim.api.nvim_create_autocmd("BufWinEnter", {
+        group = vim.api.nvim_create_augroup("flutter_dev_log_window", { clear = true }),
+        pattern = "__FLUTTER_DEV_LOG__",
+        callback = function(ev)
+          vim.wo.winfixheight = true
+          vim.wo.number = false
+          vim.wo.relativenumber = false
+          vim.wo.signcolumn = "no"
+          vim.wo.foldcolumn = "0"
+
+          vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = ev.buf, silent = true, desc = "Close Flutter log" })
+          vim.keymap.set("n", "<Esc>", "<cmd>close<cr>", { buffer = ev.buf, silent = true, desc = "Close Flutter log" })
+        end,
+      })
+    end,
     opts = {
       -- flutter_path = "/usr/bin/flutter",
       -- flutter_path = "/Users/lixinghe/.local/share/flutter/bin/flutter",
@@ -55,10 +71,10 @@ return {
         enabled = true, -- set to false to disable
       },
       dev_log = {
-        enabled = false,
-        notify_errors = false, -- if there is an error whilst running then notify the user
-        open_cmd = "tabnew",
-        focus_on_open = false,
+        enabled = true,
+        notify_errors = true,
+        open_cmd = "botright 16split",
+        focus_on_open = true,
       },
       dev_tools = {
         autostart = false, -- autostart devtools server if not detected

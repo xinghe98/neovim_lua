@@ -73,6 +73,12 @@ keymap("n", "<leader><leader>", ":bn<CR>", opts)
 keymap("n", "<leader><backspace>", ":bp<CR>", opts)
 vim.keymap.set("n", "<c-w>", function()
   local buf = vim.api.nvim_get_current_buf()
+  local name = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buf), ":t")
+
+  if name == "__FLUTTER_DEV_LOG__" then
+    vim.cmd("close")
+    return
+  end
 
   if vim.bo[buf].modified then
     vim.cmd("bdelete " .. buf)

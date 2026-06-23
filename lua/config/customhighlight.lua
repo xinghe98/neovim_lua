@@ -23,22 +23,22 @@ vim.api.nvim_set_hl(0, "LspReferenceText", {
 })
 vim.api.nvim_set_hl(0, "LspReferenceRead", { link = "LspReferenceText" })
 
--- 窗口分割线用空格代替
+-- 窗口分割线
 local fillchars = vim.opt.fillchars:get()
-fillchars.vert = " "
-fillchars.horiz = " "
-fillchars.vertleft = " "
-fillchars.vertright = " "
-fillchars.verthoriz = " "
-fillchars.horizup = " "
-fillchars.horizdown = " "
+fillchars.vert = "│"
+fillchars.horiz = "─"
+fillchars.vertleft = "┤"
+fillchars.vertright = "├"
+fillchars.verthoriz = "┼"
+fillchars.horizup = "┴"
+fillchars.horizdown = "┬"
 vim.opt.fillchars = fillchars
 
 -- Avante 边框透明
 vim.api.nvim_set_hl(0, "AvantePanelBorder", { fg = "NONE", bg = "NONE" })
 vim.api.nvim_set_hl(0, "AvanteBorder", { fg = "NONE", bg = "NONE" })
 vim.api.nvim_set_hl(0, "AvanteSidebarBorder", { fg = "NONE", bg = "NONE" })
-vim.api.nvim_set_hl(0, "WinSeparator", { fg = "NONE", bg = "NONE" })
+vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#4b5563", bg = "NONE" })
 
 local function set_float_transparent_hl()
   local groups = {
