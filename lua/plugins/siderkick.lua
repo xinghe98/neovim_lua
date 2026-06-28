@@ -7,41 +7,8 @@ local function send_to_terminal(sequence)
   end
 end
 
-local function switch_sidekick_ime()
-  local ime = require("config.input_method")
-
-  vim.defer_fn(function()
-    if vim.w.sidekick_cli then
-      ime.to_zh({ force = true })
-    else
-      ime.to_en({ remember = false })
-    end
-  end, 50)
-end
-
 return {
   "folke/sidekick.nvim",
-  init = function()
-    local group = vim.api.nvim_create_augroup("sidekick_input_method", { clear = true })
-
-    vim.api.nvim_create_autocmd({ "WinEnter", "BufWinEnter", "TermEnter" }, {
-      group = group,
-      callback = function()
-        if vim.w.sidekick_cli then
-          require("config.input_method").to_zh({ force = true })
-        end
-      end,
-    })
-
-    vim.api.nvim_create_autocmd({ "WinLeave", "BufWinLeave" }, {
-      group = group,
-      callback = function()
-        if vim.w.sidekick_cli then
-          require("config.input_method").to_en({ remember = false })
-        end
-      end,
-    })
-  end,
   opts = {
     cli = {
       mux = {
@@ -50,6 +17,24 @@ return {
       },
       win = {
         keys = {
+          stopinsert = {
+            "<c-q>",
+            function()
+              require("config.input_method").to_en({ remember = false })
+              vim.cmd.stopinsert()
+            end,
+            mode = "t",
+            desc = "进入 Sidekick 普通模式并切英文",
+          },
+          insert_a = {
+            "a",
+            function()
+              require("config.input_method").to_zh({ force = true })
+              vim.cmd.startinsert()
+            end,
+            mode = "n",
+            desc = "进入 Sidekick 输入并切中文",
+          },
           opencode_page_up = { "<PageUp>", send_to_terminal("\027[5~"), mode = "n", desc = "opencode 向上翻页" },
           opencode_page_down = { "<PageDown>", send_to_terminal("\027[6~"), mode = "n", desc = "opencode 向下翻页" },
           opencode_half_page_up = { "<C-u>", send_to_terminal("\027\021"), mode = "n", desc = "opencode 向上半页" },
@@ -81,7 +66,6 @@ return {
       "<c-.>",
       function()
         require("sidekick.cli").focus()
-        switch_sidekick_ime()
       end,
       mode = { "n", "t", "i", "x" },
       desc = "AI 聚焦/返回 Sidekick",
@@ -93,7 +77,6 @@ return {
       "<leader>aa",
       function()
         require("sidekick.cli").toggle()
-        switch_sidekick_ime()
       end,
       desc = "AI 打开/隐藏 Sidekick",
     },
@@ -108,7 +91,6 @@ return {
       "<leader>ac",
       function()
         require("sidekick.cli").prompt()
-        switch_sidekick_ime()
       end,
       mode = { "n", "x" },
       desc = "AI 选择操作提示词",

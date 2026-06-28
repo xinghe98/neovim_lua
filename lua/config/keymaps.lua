@@ -107,7 +107,6 @@ vim.keymap.set("n", "<c-w>", function()
   for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
     if vim.w[win].sidekick_cli then
       require("sidekick.cli").hide({ all = true })
-      require("config.input_method").to_en({ remember = false })
       break
     end
   end
