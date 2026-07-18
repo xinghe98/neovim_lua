@@ -50,13 +50,6 @@ CapsLock::ESC
 ;大写切换不会经常用,平时用shift
 LShift & CapsLock::CapsLock
 !w:: Send !{f4}
-!+l:: Send ^#{right} 
-!+j:: Send ^#{left}
-!i::send {up}
-!k::send {Down}
-!j::send {Left}
-!l::send {Right}
-
 !1::switchDesktopByNumber(1)
 !2::switchDesktopByNumber(2)
 !3::switchDesktopByNumber(3)

@@ -1,8 +1,8 @@
--- 引导加载 lazy.nvim、LazyVim 及插件
+-- Bootstrap lazy.nvim, LazyVim and plugins
 require("config.lazy")
--- 加载自定义高亮配置
+-- Load custom highlight configuration
 require("config.customhighlight")
--- 加载 Markdown 相关设置
+-- Load Markdown related settings
 require("config.markdown")
--- 加载 Neovide 相关设置（GUI）
+-- Load Neovide related settings (GUI)
 require("config.neovide")
