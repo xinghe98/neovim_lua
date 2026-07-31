@@ -1,0 +1,33 @@
+# Migrated from ~/.config/opencode/tui.json.
+# OMP supports single chords, not OpenCode's <leader> sequences.
+app.model.cycleForward: F2
+app.model.cycleBackward: Shift+F2
+app.clipboard.pasteImage:
+  - Ctrl+Shift+V
+  - Ctrl+V
+  - Alt+V
+
+# Autocomplete menu navigation.
+# Tab also toggles plan mode during normal input via tab-plan-toggle extension.
+tui.input.tab: []
+tui.select.down: Tab
+tui.select.up: Shift+Tab
+tui.select.confirm: Enter
+# Thinking level cycle (was Shift+Tab; Ctrl+T was visibility toggle).
+app.thinking.cycle: Ctrl+T
+app.thinking.toggle: []
+# Normal input: Tab toggles write <-> plan mode.
+app.plan.toggle:
+  - Tab
+  - Alt+Shift+P
+
+# Chat/transcript paging is handled by WezTerm (Ctrl+U / Ctrl+E -> ScrollByPage).
+# OMP page* only moves multi-line draft cursor and is a no-op on short input.
+# Keep physical PageUp/PageDown for editor/select lists only.
+tui.editor.pageUp: PageUp
+tui.editor.pageDown: PageDown
+tui.select.pageUp: PageUp
+tui.select.pageDown: PageDown
+# Free Emacs kill-line; line end stays End (Ctrl+E is WezTerm scroll down).
+tui.editor.deleteToLineStart: []
+tui.editor.cursorLineEnd: End

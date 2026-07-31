@@ -1,0 +1,12 @@
+shellPath: C:\WINDOWS\system32\bash.exe
+providers: 
+  webSearchOrder: 
+    []
+modelRoles: 
+  default: xai-oauth/grok-4.5:high
+symbolPreset: unicode
+theme: 
+  light: light
+  dark: titanium
+setupVersion: 1
+hideThinkingBlock: true
