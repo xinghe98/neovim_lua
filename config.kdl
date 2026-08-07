@@ -162,7 +162,7 @@ keybinds clear-defaults=true {
         bind "Alt o" { NewPane; }
         bind "Alt Shift n" { MoveTab "left"; }
         bind "Alt Shift i" { MoveTab "right"; }
-        bind "Alt p" { TogglePaneInGroup; }
+        // bind "Alt p" { TogglePaneInGroup; }
         bind "Alt Shift p" { ToggleGroupMarking; }
         bind "Alt Shift w" { CloseFocus; }
         bind "Alt q" { Quit; }
