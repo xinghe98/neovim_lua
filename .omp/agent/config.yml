@@ -3,10 +3,19 @@ providers:
   webSearchOrder: 
     []
 modelRoles: 
-  default: xai-oauth/grok-4.5:high
+  default: openai-codex/gpt-5.6-terra:max
+  plan: openai-codex/gpt-5.6-terra:xhigh
+  task: opencode-go/deepseek-v4-flash:max
+  smol: xai-oauth/grok-4.5:high
+  tiny: deepseek/deepseek-v4-flash:max
+  slow: openai-codex/gpt-5.6-sol:xhigh
+  designer: xai-oauth/grok-4.5:xhigh
+  commit: opencode-go/deepseek-v4-flash:max
 symbolPreset: unicode
 theme: 
   light: light
   dark: titanium
 setupVersion: 1
 hideThinkingBlock: true
+dev:
+  autoqaConsent: granted

@@ -10,8 +10,12 @@ app.clipboard.pasteImage:
 # Autocomplete menu navigation.
 # Tab also toggles plan mode during normal input via tab-plan-toggle extension.
 tui.input.tab: []
-tui.select.down: Tab
-tui.select.up: Shift+Tab
+tui.select.down:
+  - Down
+  - Tab
+tui.select.up:
+  - Up
+  - Shift+Tab
 tui.select.confirm: Enter
 # Thinking level cycle (was Shift+Tab; Ctrl+T was visibility toggle).
 app.thinking.cycle: Ctrl+T

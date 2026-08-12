@@ -153,15 +153,18 @@ keybinds clear-defaults=true {
         bind "Alt =" { Resize "Increase"; }
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
-        bind "Alt f" { ToggleFloatingPanes; }
+        bind "Alt f" { ToggleFocusFullscreen; }
+        bind "Alt Shift f" { ToggleFloatingPanes; }
         bind "Ctrl l" { SwitchToMode "locked"; }
         bind "Alt n" { MoveFocusOrTab "left"; }
         bind "Alt e" { MoveFocus "down"; }
         bind "Alt u" { MoveFocus "up"; }
         bind "Alt i" { MoveFocusOrTab "right"; }
         bind "Alt o" { NewPane; }
-        bind "Alt Shift n" { MoveTab "left"; }
-        bind "Alt Shift i" { MoveTab "right"; }
+        bind "Alt Shift n" { MovePane "left"; }
+        bind "Alt Shift e" { MovePane "down"; }
+        bind "Alt Shift u" { MovePane "up"; }
+        bind "Alt Shift i" { MovePane "right"; }
         // bind "Alt p" { TogglePaneInGroup; }
         bind "Alt Shift p" { ToggleGroupMarking; }
         bind "Alt Shift w" { CloseFocus; }
