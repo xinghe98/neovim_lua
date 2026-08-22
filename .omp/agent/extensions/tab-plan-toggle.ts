@@ -3,13 +3,13 @@ import { CustomEditor } from "@oh-my-pi/pi-coding-agent/modes/components";
 import { canonicalKeyId, parseKey } from "@oh-my-pi/pi-tui";
 
 /**
- * Make Tab context-sensitive:
- * - autocomplete open  → navigate / confirm as usual (select.down)
- * - normal editor input → app.plan.toggle (write <-> plan)
+ * Make Tab / Enter context-sensitive:
+ * - autocomplete open  → navigate / confirm as usual (select.down / select.confirm)
+ * - normal editor input → app.plan.toggle (write <-> plan) and Enter follow-up
  *
- * OMP registers app.plan.toggle as a custom key handler that always consumes
- * the chord before the editor sees it. This subclass only bypasses that path
- * while the autocomplete popup is visible.
+ * OMP registers app.plan.toggle and app.message.followUp as custom key handlers
+ * that always consume the chord before the editor sees it. This subclass only
+ * bypasses that path while the autocomplete popup is visible.
  *
  * Chat paging (Ctrl+U / Ctrl+E) is intentionally NOT handled here — OMP page
  * bindings only move the multi-line draft cursor. WezTerm ScrollByPage owns
@@ -22,6 +22,14 @@ class TabPlanToggleEditor extends CustomEditor {
 		if (canonical === "tab" && this.isShowingAutocomplete()) {
 			// Skip CustomEditor app/custom shortcut interception so Tab reaches
 			// Editor autocomplete navigation (tui.select.down).
+			this.handleDraftEdit(data);
+			return;
+		}
+		if (
+			(canonical === "enter" || canonical === "return") &&
+			this.isShowingAutocomplete()
+		) {
+			// Keep Enter as autocomplete confirm; followUp is bound to Enter globally.
 			this.handleDraftEdit(data);
 			return;
 		}

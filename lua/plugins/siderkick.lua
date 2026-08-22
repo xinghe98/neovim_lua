@@ -13,7 +13,18 @@ return {
     cli = {
       mux = {
         backend = "zellij",
-        enabled = false,
+        enabled = true,
+      },
+      tools = {
+        -- 原生已经有 pi = {}，再加一个 omp
+        omp = {
+          cmd = { "omp" },
+          -- 可选：参考 pi 的配置
+          -- is_proc = "\\<omp\\>",
+          -- resume = { "--resume" },
+          -- continue = { "--continue" },
+          -- native_scroll = false,
+        },
       },
       win = {
         keys = {
@@ -50,6 +61,26 @@ return {
       },
     },
   },
+  config = function(_, opts)
+    require("sidekick").setup(opts)
+
+    -- Zellij's installed filename is `zellij.EXE`, but Sidekick's Windows
+    -- launcher checks for a lower-case `.exe` suffix before preserving argv.
+    -- Use an explicit lower-case executable name so layout paths with spaces
+    -- remain one argument.
+    if vim.fn.has("win32") == 1 then
+      local zellij = require("sidekick.cli.session.zellij")
+      if not zellij._windows_executable_workaround then
+        local terminal = zellij.terminal
+        zellij.terminal = function(self)
+          local command = terminal(self)
+          command.cmd[1] = "zellij.exe"
+          return command
+        end
+        zellij._windows_executable_workaround = true
+      end
+    end
+  end,
   keys = {
     -- 普通模式的 <Tab> 已用于缩进，因此用 ]a 跳转或应用下一条 AI 编辑建议。
     -- ] 前缀也延续了 Neovim 中“跳到下一项”的习惯。

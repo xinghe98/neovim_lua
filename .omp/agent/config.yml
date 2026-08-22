@@ -3,19 +3,29 @@ providers:
   webSearchOrder: 
     []
 modelRoles: 
-  default: openai-codex/gpt-5.6-terra:max
-  plan: openai-codex/gpt-5.6-terra:xhigh
-  task: opencode-go/deepseek-v4-flash:max
+  default: xai-oauth/grok-4.6:medium
+  plan: openai-codex/gpt-5.6-sol:high
+  task: google-antigravity/gemini-3.7-flash:high
   smol: xai-oauth/grok-4.5:high
   tiny: deepseek/deepseek-v4-flash:max
-  slow: openai-codex/gpt-5.6-sol:xhigh
-  designer: xai-oauth/grok-4.5:xhigh
+  slow: cursor/cursor-grok-4.6:xhigh
+  designer: cursor/cursor-grok-4.6-high
   commit: opencode-go/deepseek-v4-flash:max
-symbolPreset: unicode
+  vision: google-antigravity/gemini-3.7-flash:high
+  advisor: openai-codex/gpt-5.6-luna:max
+symbolPreset: nerd
 theme: 
-  light: light
-  dark: titanium
-setupVersion: 1
+  light: light-catppuccin
+  dark: dark-catppuccin
+tui: 
+  tight: true
+setupVersion: 2
 hideThinkingBlock: true
-dev:
+dev: 
   autoqaConsent: granted
+defaultThinkingLevel: auto
+composer: 
+  shape: box
+task: 
+  agentModelOverrides: 
+    task: "@task"
