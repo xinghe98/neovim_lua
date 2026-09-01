@@ -12,31 +12,28 @@ local function my_on_attach(bufnr)
   vim.keymap.set("n", "e", "j", opts("none"))
   vim.keymap.set("n", "u", "k", opts("none"))
   vim.keymap.set("n", "j", api.fs.rename_basename, opts("rename"))
-  vim.keymap.set("n", "l", api.fs.rename_full, opts("r)ename_full"))
+  vim.keymap.set("n", "l", api.fs.rename_full, opts("rename_full"))
 end
 
 return {
   {
     "nvim-tree/nvim-tree.lua",
     config = function()
-      require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
+      require("nvim-tree").setup({
         on_attach = my_on_attach,
         auto_reload_on_write = true,
-        create_in_closed_folder = false,
         disable_netrw = false,
         hijack_cursor = false,
         hijack_netrw = true,
         hijack_unnamed_buffer_when_opening = false,
-        --open_on_setup = false,
-        --open_on_setup_file = false,
-        open_on_tab = false,
-        sort_by = "name",
-        update_cwd = false,
+        sync_root_with_cwd = false,
         reload_on_bufenter = false,
         respect_buf_cwd = false,
+        sort = {
+          sorter = "name",
+        },
         view = {
           width = 30,
-          -- hide_root_folder = false,
           side = "left",
           preserve_window_proportions = false,
           number = false,
@@ -46,9 +43,9 @@ return {
         renderer = {
           add_trailing = false,
           group_empty = false,
-          highlight_git = false,
+          highlight_git = "none",
           highlight_opened_files = "none",
-          root_folder_modifier = ":~",
+          root_folder_label = ":~",
           indent_markers = {
             enable = false,
             icons = {
@@ -58,9 +55,16 @@ return {
             },
           },
           icons = {
-            webdev_colors = true,
+            web_devicons = {
+              file = {
+                enable = true,
+                color = true,
+              },
+            },
             git_placement = "before",
-            padding = " ",
+            padding = {
+              icon = " ",
+            },
             symlink_arrow = " ➛ ",
             show = {
               file = true,
@@ -100,12 +104,10 @@ return {
         },
         update_focused_file = {
           enable = false,
-          update_cwd = false,
-          ignore_list = {},
-        },
-        system_open = {
-          cmd = "",
-          args = {},
+          update_root = {
+            enable = false,
+            ignore_list = {},
+          },
         },
         diagnostics = {
           enable = true,
@@ -118,13 +120,13 @@ return {
           },
         },
         filters = {
+          git_ignored = false,
           dotfiles = false,
           custom = {},
           exclude = {},
         },
         git = {
           enable = true,
-          ignore = false,
           timeout = 400,
         },
         actions = {
@@ -155,7 +157,11 @@ return {
         },
         trash = {
           cmd = "trash",
-          require_confirm = true,
+        },
+        ui = {
+          confirm = {
+            trash = true,
+          },
         },
         live_filter = {
           prefix = "[FILTER]: ",
@@ -173,7 +179,7 @@ return {
             profile = false,
           },
         },
-      }) -- END_DEFAULT_OPTS
+      })
     end,
     lazy = false,
     dependencies = {

@@ -104,13 +104,6 @@ vim.keymap.set("n", "<c-w>", function()
     return
   end
 
-  for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
-    if vim.w[win].sidekick_cli then
-      require("sidekick.cli").hide({ all = true })
-      break
-    end
-  end
-
   vim.cmd("bdelete " .. buf)
 end, vim.tbl_extend("force", opts, { desc = "Close buffer" }))
 vim.keymap.del("n", "<c-/>")
@@ -121,6 +114,11 @@ keymap("v", "<C-/>", "gc", { desc = "Toggle comment for selection" })
 keymap("n", "<C-_>", "gcc", { desc = "Toggle comment for line" })
 keymap("v", "<C-_>", "gc", { desc = "Toggle comment for line" })
 -- nvim-tree
+
+local omp_zellij = require("config.omp_zellij")
+vim.keymap.set("x", "<leader>ad", omp_zellij.send_selection, { desc = "AI 发送选中内容" })
+vim.keymap.set({ "n", "x" }, "<leader>at", omp_zellij.send_position, { desc = "AI 发送当前位置上下文" })
+vim.keymap.set("n", "<leader>af", omp_zellij.send_file, { desc = "AI 发送当前文件" })
 keymap("n", "tt", ":NvimTreeFindFileToggle<CR>", opts)
 
 keymap("n", "<M-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
