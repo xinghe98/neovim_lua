@@ -11,6 +11,8 @@ local function my_on_attach(bufnr)
   -- custom mappings
   vim.keymap.set("n", "e", "j", opts("none"))
   vim.keymap.set("n", "u", "k", opts("none"))
+  vim.keymap.set("n", "U", "5k", opts("Move up 5 lines"))
+  vim.keymap.set("n", "E", "5j", opts("Move down 5 lines"))
   vim.keymap.set("n", "j", api.fs.rename_basename, opts("rename"))
   vim.keymap.set("n", "l", api.fs.rename_full, opts("rename_full"))
 end
@@ -41,6 +43,7 @@ return {
           signcolumn = "yes",
         },
         renderer = {
+          full_name = true,
           add_trailing = false,
           group_empty = false,
           highlight_git = "none",
