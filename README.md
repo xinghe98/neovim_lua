@@ -132,6 +132,33 @@ nvim/
 | [copilot.lua](https://github.com/zbirenbaum/copilot.lua)              | GitHub Copilot 代码补全                   |
 | [action-hints.nvim](https://github.com/roobert/action-hints.nvim)     | LSP 操作虚拟文本提示                      |
 
+**OMP + Herdr：**
+
+在同一 Herdr workspace 中启动 Neovim 和 OMP；`herdr` 命令需在 Neovim 的 `PATH` 中可用。
+快捷键只将内容粘贴到 OMP 输入框，不自动按 Enter 提交，也不切换焦点。
+
+| 按键 | 模式 | 功能 |
+| ---- | ---- | ---- |
+| `<leader>ad` | Visual | 发送选中内容 |
+| `<leader>at` | Normal / Visual | 发送当前文件的光标位置或选区范围 |
+| `<leader>af` | Normal | 发送当前文件引用 |
+
+`lua/config/omp_herdr.lua` 通过 Herdr 的 `agent = "omp"` 识别目标，自动选择仅限当前 workspace，
+优先同 tab，其次匹配 Neovim 工作目录；候选并列时提示显式指定，不随意发送。
+文件引用沿用 `@路径`（工作目录内使用相对路径），位置附加 `:L行:C列` 等范围信息；
+发送文件或位置要求文件已存在磁盘，不会自动保存修改。
+
+多个 OMP 或跨 workspace 发送时，可用 `herdr pane list` 查询完整 pane ID，然后设置：
+
+```lua
+vim.g.omp_herdr_pane_id = "w1:p2" -- 替换为实际 pane_id，不是 terminal_id
+```
+
+也可在启动 Neovim 前设置环境变量 `OMP_HERDR_PANE_ID`；Lua 配置优先。
+目标不能是当前 Neovim pane，关闭或移动目标后需更新 ID。
+Zellij 的 require 和快捷键已在 `lua/config/keymaps.lua` 中注释，旧模块 `omp_zellij.lua` 保留但不加载；
+旧 `OMP_ZELLIJ_PANE_ID` / `vim.g.omp_zellij_pane_id` 不再参与目标选择，Sidekick 仍禁用。
+
 **CodeCompanion 快捷键：**
 
 | 按键         | 功能                                                        |
