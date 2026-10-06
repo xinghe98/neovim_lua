@@ -1,6 +1,6 @@
 local M = {}
 
-local TITLE = "OMP Herdr"
+local TITLE = "AI Herdr"
 local CHUNK_SIZE = 8192
 
 local function notify(message, level)
@@ -21,7 +21,7 @@ end
 local function select_omp_pane(panes, current)
   local configured = configured_pane_id()
   if configured and configured == current.pane_id then
-    return nil, "OMP pane 不能与当前 Neovim pane 相同"
+    return nil, "目标 agent pane 不能与当前 Neovim pane 相同"
   end
 
   local candidates = {}
@@ -30,8 +30,12 @@ local function select_omp_pane(panes, current)
     if configured and pane.pane_id == configured then
       return configured
     end
-    if pane.pane_id ~= current.pane_id and pane.workspace_id == current.workspace_id and pane.agent == "omp" then
-      local score = pane.tab_id == current.tab_id and 2 or 0
+    if
+      pane.pane_id ~= current.pane_id
+      and pane.workspace_id == current.workspace_id
+      and (pane.agent == "omp" or pane.agent == "opencode")
+    then
+      local score = (pane.agent == "omp" and 4 or 0) + (pane.tab_id == current.tab_id and 2 or 0)
       local pane_cwd = pane.foreground_cwd or pane.cwd
       if type(pane_cwd) == "string" and vim.fs.normalize(pane_cwd) == cwd then
         score = score + 1
@@ -51,13 +55,13 @@ local function select_omp_pane(panes, current)
   end)
 
   if #candidates == 0 then
-    return nil, "当前 workspace 未找到 OMP pane；请启动 omp，或设置 vim.g.omp_herdr_pane_id / OMP_HERDR_PANE_ID"
+    return nil, "当前 workspace 未找到 OMP / OpenCode pane；请启动 agent，或设置 vim.g.omp_herdr_pane_id / OMP_HERDR_PANE_ID"
   end
   if candidates[2] and candidates[2].score == candidates[1].score then
     local ids = vim.tbl_map(function(candidate)
       return candidate.id
     end, candidates)
-    return nil, "发现多个 OMP pane（" .. table.concat(ids, ", ") .. "）；请显式设置目标 pane id"
+    return nil, "发现多个同优先级 agent pane（" .. table.concat(ids, ", ") .. "）；请显式设置目标 pane id"
   end
   return candidates[1].id
 end
