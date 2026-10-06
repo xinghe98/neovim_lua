@@ -20,7 +20,7 @@ end
 
 local function select_omp_pane(panes, current)
   local configured = configured_pane_id()
-  if configured == current.pane_id then
+  if configured and configured == current.pane_id then
     return nil, "OMP pane 不能与当前 Neovim pane 相同"
   end
 
@@ -77,6 +77,38 @@ local function run_herdr(args, callback)
   end
 end
 
+local function resolve_context(callback)
+  -- The headless sidebar belongs to a tab; its initial pane can be closed
+  -- while the daemon survives. Picker-spawned daemons may have no pane env.
+  if vim.env.HERDR_PLUGIN_ID == "chmarax.herdr-nvim" and vim.tbl_contains(vim.v.argv, "--headless") then
+    local workspace, tab = vim.env.HERDR_WORKSPACE_ID, vim.env.HERDR_TAB_ID
+    if not workspace or workspace == "" or not tab or tab == "" then
+      callback(nil, "Herdr 侧边栏缺少 workspace/tab 上下文")
+      return
+    end
+    callback({ workspace_id = workspace, tab_id = tab })
+    return
+  end
+  if vim.env.HERDR_ENV ~= "1" or not vim.env.HERDR_PANE_ID or vim.env.HERDR_PANE_ID == "" then
+    callback(nil, "当前 Neovim 不在 Herdr pane 中")
+    return
+  end
+  -- Ordinary pane IDs can change when moved; ask Herdr for live context.
+  run_herdr({ "current", "--current" }, function(result)
+    if result.code ~= 0 then
+      callback(nil, "读取当前 Herdr pane 失败：" .. (result.stderr or "unknown error"))
+      return
+    end
+    local ok, response = pcall(vim.json.decode, result.stdout or "")
+    local current = ok and type(response) == "table" and type(response.result) == "table" and response.result.pane
+    if type(current) ~= "table" or not current.pane_id or not current.workspace_id then
+      callback(nil, "无法解析当前 Herdr pane")
+      return
+    end
+    callback(current)
+  end)
+end
+
 local function next_chunk(text, offset)
   local last = math.min(offset + CHUNK_SIZE - 1, #text)
   if last < #text then
@@ -126,17 +158,9 @@ local function process_next()
     process_next()
   end
 
-  -- Resolve live caller context: inherited IDs can be stale after moving a pane.
-  run_herdr({ "current", "--current" }, function(result)
-    if result.code ~= 0 then
-      notify("读取当前 Herdr pane 失败：" .. (result.stderr or "unknown error"))
-      done()
-      return
-    end
-    local ok, response = pcall(vim.json.decode, result.stdout or "")
-    local current = ok and type(response) == "table" and type(response.result) == "table" and response.result.pane
-    if type(current) ~= "table" or not current.pane_id or not current.workspace_id then
-      notify("无法解析当前 Herdr pane")
+  resolve_context(function(current, err)
+    if not current then
+      notify(err)
       done()
       return
     end
@@ -167,10 +191,6 @@ local function process_next()
 end
 
 local function send(message)
-  if vim.env.HERDR_ENV ~= "1" or not vim.env.HERDR_PANE_ID or vim.env.HERDR_PANE_ID == "" then
-    notify("当前 Neovim 不在 Herdr pane 中")
-    return
-  end
   if vim.fn.executable("herdr") ~= 1 then
     notify("未找到 herdr 命令，请检查 PATH")
     return

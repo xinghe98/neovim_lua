@@ -145,6 +145,9 @@ nvim/
 
 `lua/config/omp_herdr.lua` 通过 Herdr 的 `agent = "omp"` 识别目标，自动选择仅限当前 workspace，
 优先同 tab，其次匹配 Neovim 工作目录；候选并列时提示显式指定，不随意发送。
+普通 Neovim 从 `herdr pane current --current` 获取实时上下文；herdr-nvim 的 headless
+侧边栏 daemon 按 `HERDR_WORKSPACE_ID` / `HERDR_TAB_ID` 定位目标，不要求普通 pane 环境，
+也不使用关闭重开侧边栏前留下的 pane ID。两种入口均支持 `ad/at/af`。
 文件引用沿用 `@路径`（工作目录内使用相对路径），位置附加 `:L行:C列` 等范围信息；
 发送文件或位置要求文件已存在磁盘，不会自动保存修改。
 
@@ -158,6 +161,44 @@ vim.g.omp_herdr_pane_id = "w1:p2" -- 替换为实际 pane_id，不是 terminal_i
 目标不能是当前 Neovim pane，关闭或移动目标后需更新 ID。
 Zellij 的 require 和快捷键已在 `lua/config/keymaps.lua` 中注释，旧模块 `omp_zellij.lua` 保留但不加载；
 旧 `OMP_ZELLIJ_PANE_ID` / `vim.g.omp_zellij_pane_id` 不再参与目标选择，Sidekick 仍禁用。
+
+**herdr-nvim（ChmaraX/herdr-nvim）：**
+
+与 Herdr 双向集成的批注工作流，发送目标是 Herdr 识别的编码 agent（包括 OMP）。
+批注快捷键与上面 OMP 的选区/位置快捷键共存。
+
+- Herdr 侧（侧边栏 + 文件 picker）：`herdr plugin install ChmaraX/herdr-nvim` 安装，
+  键位在 `~/.config/herdr/config.toml`：`prefix+v` 开关全高 nvim 侧边栏，
+  `prefix+p` 从文件列表中模糊选择打开；优先会话记录、Git 未提交改动，缺少会话解析时扫描终端输出。
+  每 tab 一个持久 headless daemon，关闭再打开侧边栏保留 buffer 和待发批注。
+- Neovim 侧（批注）：`lua/plugins/herdr-nvim.lua`。
+  插件启动时加载，设置 `keymaps = false`，所有批注键位由 lazy.nvim 的 `keys` 注册；
+  侧边栏 daemon 在 VimEnter 再调用 setup 时，不会重复注册并弹出映射冲突警告。
+
+`prefix+p` 不提供 diff 内容预览，行末的 `+N/-M` 只是 Git 行数统计，基准为 `HEAD`
+（含已暂存和未暂存改动）；新文件显示 `new`，干净文件或非 Git 目录没有行数统计。
+仓库由目标 agent 的前台工作目录决定，而不是 Neovim 当前文件所在目录。
+当前版本没有 OMP 会话日志解析器，OMP 走 Git/终端输出回退，无法完整识别会话编辑历史。
+要查看代码差异，在 picker 中回车打开文件后，普通模式按 `<leader>ghd` 打开并排 diff，
+`<leader>ghp` 预览当前改动块；这些键位由现有 GitSigns 在文件附加后提供。
+应在项目仓库中启动 agent，使 picker 的 Git 统计和仓库搜索覆盖该项目。
+
+| 按键 | 模式 | 功能 |
+| ---- | ---- | ---- |
+| `<leader>ac` | Normal / Visual | 批注当前行 / 选区 |
+| `<leader>al` | Normal | 批注列表（悬浮） |
+| `<leader>as` | Normal | 发送全部批注到 agent（不自动提交） |
+| `<leader>aS` | Normal | 发送全部批注并自动提交 |
+| `<leader>ai` | Normal / Visual | 在 agent 输入框插入 `path:行号` 引用 |
+
+Leader 是空格。若按空格不显示 which-key 菜单，可用 `:echo reg_recording()` 检查
+是否正在录制宏；录宏时 which-key 会停用提示。仅在正在录制时，普通模式按 `q` 结束录制。
+
+批注内存 ephemeral 存储（extmark 跟随编辑），发送成功后清空，附带 file:line 与 git 分支上下文；
+状态栏可加 `require("herdr-nvim").statusline()` 显示待发数（`● 3`）。
+要求 nvim ≥ 0.10、herdr ≥ 0.7.5，且 Neovim 运行在 herdr 会话内。
+注意：`herdr-nvim doctor` 的 D-F19 检查硬编码 QWERTY `i` 进入插入模式，
+在本配置的 Colemak 映射（`i`→`l`）下会误报 FAIL，可忽略；其余检查（布局、toggle 回环、daemon）均应 OK。
 
 **CodeCompanion 快捷键：**
 
